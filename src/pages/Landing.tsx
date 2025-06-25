@@ -82,21 +82,21 @@ const Landing = () => {
   const painPoints = [
     {
       icon: Users,
-      title: "Listas de Espera Excesivas",
-      description: "Reduce los tiempos de espera de 45 a 15 minutos por consulta",
-      metric: "67% reducción"
+      title: language === 'en' ? "Excessive Waiting Lists" : language === 'fr' ? "Listes d'Attente Excessives" : "Listas de Espera Excesivas",
+      description: language === 'en' ? "Reduce waiting times from 45 to 15 minutes per consultation" : language === 'fr' ? "Réduire les temps d'attente de 45 à 15 minutes par consultation" : "Reduce los tiempos de espera de 45 a 15 minutos por consulta",
+      metric: language === 'en' ? "67% reduction" : language === 'fr' ? "67% de réduction" : "67% reducción"
     },
     {
       icon: Activity,
-      title: "Diagnósticos Tardíos",
-      description: "Detección temprana previene complicaciones costosas",
-      metric: "94% precisión"
+      title: language === 'en' ? "Late Diagnoses" : language === 'fr' ? "Diagnostics Tardifs" : "Diagnósticos Tardíos",
+      description: language === 'en' ? "Early detection prevents costly complications" : language === 'fr' ? "La détection précoce prévient les complications coûteuses" : "Detección temprana previene complicaciones costosas",
+      metric: language === 'en' ? "94% accuracy" : language === 'fr' ? "94% de précision" : "94% precisión"
     },
     {
       icon: TrendingUp,
-      title: "Baja Eficiencia",
-      description: "Optimiza recursos médicos limitados con IA especializada",
-      metric: "40% más eficiente"
+      title: language === 'en' ? "Low Efficiency" : language === 'fr' ? "Faible Efficacité" : "Baja Eficiencia",
+      description: language === 'en' ? "Optimize limited medical resources with specialized AI" : language === 'fr' ? "Optimiser les ressources médicales limitées avec l'IA spécialisée" : "Optimiza recursos médicos limitados con IA especializada",
+      metric: language === 'en' ? "40% more efficient" : language === 'fr' ? "40% plus efficace" : "40% más eficiente"
     }
   ];
 
@@ -140,9 +140,6 @@ const Landing = () => {
               </Link>
               <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
                 {t('nav.contact')}
-              </Link>
-              <Link to="/information" className="text-gray-600 hover:text-blue-600 transition-colors">
-                {t('nav.info')}
               </Link>
             </div>
 
@@ -232,10 +229,10 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Problemas Hospitalarios que Resolvemos
+              {language === 'en' ? "Hospital Problems We Solve" : language === 'fr' ? "Problèmes Hospitaliers que Nous Résolvons" : "Problemas Hospitalarios que Resolvemos"}
             </h2>
             <p className="text-lg text-gray-600">
-              Optimiza tu hospital y mejora la atención al paciente
+              {language === 'en' ? "Optimize your hospital and improve patient care" : language === 'fr' ? "Optimisez votre hôpital et améliorez les soins aux patients" : "Optimiza tu hospital y mejora la atención al paciente"}
             </p>
           </div>
           
@@ -310,19 +307,31 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Resultados Comprobados
+              {language === 'en' ? "Proven Results" : language === 'fr' ? "Résultats Prouvés" : "Resultados Comprobados"}
             </h2>
             <p className="text-lg text-gray-600">
-              Hospitales que ya usan MedAI reportan mejoras significativas
+              {language === 'en' ? "Hospitals using MedAI report significant improvements" : language === 'fr' ? "Les hôpitaux utilisant MedAI rapportent des améliorations significatives" : "Hospitales que ya usan MedAI reportan mejoras significativas"}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { metric: "67%", desc: "Reducción en listas de espera" },
-              { metric: "40%", desc: "Aumento en eficiencia" },
-              { metric: "25%", desc: "Mejora en satisfacción" },
-              { metric: "30%", desc: "Reducción en costos" }
+              { 
+                metric: "67%", 
+                desc: language === 'en' ? "Reduction in waiting lists" : language === 'fr' ? "Réduction des listes d'attente" : "Reducción en listas de espera" 
+              },
+              { 
+                metric: "40%", 
+                desc: language === 'en' ? "Increase in efficiency" : language === 'fr' ? "Augmentation de l'efficacité" : "Aumento en eficiencia" 
+              },
+              { 
+                metric: "25%", 
+                desc: language === 'en' ? "Improvement in satisfaction" : language === 'fr' ? "Amélioration de la satisfaction" : "Mejora en satisfacción" 
+              },
+              { 
+                metric: "30%", 
+                desc: language === 'en' ? "Cost reduction" : language === 'fr' ? "Réduction des coûts" : "Reducción en costos" 
+              }
             ].map((stat, index) => (
               <div key={index} className="text-center bg-white p-6 rounded-lg shadow-sm">
                 <div className="text-3xl font-bold text-blue-600 mb-2">{stat.metric}</div>
@@ -354,7 +363,7 @@ const Landing = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-3"
+                className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-3 bg-transparent"
               >
                 {t('landing.cta.demo')}
               </Button>
@@ -373,36 +382,36 @@ const Landing = () => {
                 <span className="text-lg font-bold">MedAI</span>
               </div>
               <p className="text-sm">
-                Plataforma profesional de análisis médico con inteligencia artificial.
+                {language === 'en' ? "Professional medical analysis platform with artificial intelligence." : language === 'fr' ? "Plateforme professionnelle d'analyse médicale avec intelligence artificielle." : "Plataforma profesional de análisis médico con inteligencia artificial."}
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">Producto</h4>
+              <h4 className="font-semibold mb-3">{language === 'en' ? "Product" : language === 'fr' ? "Produit" : "Producto"}</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/information" className="hover:text-white">Características</Link></li>
-                <li><Link to="/contact" className="hover:text-white">Precios</Link></li>
+                <li><a href="#" className="hover:text-white">{language === 'en' ? "Features" : language === 'fr' ? "Caractéristiques" : "Características"}</a></li>
+                <li><Link to="/contact" className="hover:text-white">{language === 'en' ? "Pricing" : language === 'fr' ? "Tarifs" : "Precios"}</Link></li>
                 <li><a href="#" className="hover:text-white">API</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">Recursos</h4>
+              <h4 className="font-semibold mb-3">{language === 'en' ? "Resources" : language === 'fr' ? "Ressources" : "Recursos"}</h4>
               <ul className="space-y-2 text-sm">
                 <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
-                <li><a href="#" className="hover:text-white">Documentación</a></li>
-                <li><a href="#" className="hover:text-white">Soporte</a></li>
+                <li><a href="#" className="hover:text-white">{language === 'en' ? "Documentation" : language === 'fr' ? "Documentation" : "Documentación"}</a></li>
+                <li><a href="#" className="hover:text-white">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">Contacto</h4>
+              <h4 className="font-semibold mb-3">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/contact" className="hover:text-white">Contacto</Link></li>
-                <li><a href="#" className="hover:text-white">Ventas</a></li>
-                <li><a href="#" className="hover:text-white">Soporte</a></li>
+                <li><Link to="/contact" className="hover:text-white">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</Link></li>
+                <li><a href="#" className="hover:text-white">{language === 'en' ? "Sales" : language === 'fr' ? "Ventes" : "Ventas"}</a></li>
+                <li><a href="#" className="hover:text-white">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-            <p>© 2024 MedAI. Todos los derechos reservados.</p>
+            <p>© 2024 MedAI. {language === 'en' ? "All rights reserved." : language === 'fr' ? "Tous droits réservés." : "Todos los derechos reservados."}</p>
           </div>
         </div>
       </footer>

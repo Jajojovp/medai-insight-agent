@@ -7,7 +7,6 @@ import {
   Brain, 
   MessageSquare, 
   BarChart3, 
-  BookOpen, 
   Settings, 
   User,
   Menu,
@@ -31,7 +30,6 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
   const navItems = [
     { id: 'dashboard', label: t('nav.dashboard'), icon: BarChart3 },
     { id: 'chat', label: t('nav.chat'), icon: MessageSquare },
-    { id: 'info', label: t('nav.info'), icon: Info },
     { id: 'admin', label: t('nav.admin'), icon: Settings },
   ];
 
