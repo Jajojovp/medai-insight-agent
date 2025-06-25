@@ -82,7 +82,8 @@ const Landing = () => {
         fr: 'Analyse prédictive du risque de diabète et contrôle glycémique'
       },
       prevalence: '10.5%',
-      models: 9
+      models: 9,
+      accuracy: '94.2%'
     },
     {
       icon: Users,
@@ -97,7 +98,8 @@ const Landing = () => {
         fr: 'Détection précoce et classification bénin/malin'
       },
       prevalence: '12.5%',
-      models: 8
+      models: 8,
+      accuracy: '96.8%'
     },
     {
       icon: Activity,
@@ -112,7 +114,8 @@ const Landing = () => {
         fr: 'Évaluation des risques et progression chez les hommes'
       },
       prevalence: '11.6%',
-      models: 7
+      models: 7,
+      accuracy: '92.5%'
     },
     {
       icon: Heart,
@@ -127,7 +130,8 @@ const Landing = () => {
         fr: 'Prédiction du risque cardiovasculaire et prévention'
       },
       prevalence: '6.2%',
-      models: 8
+      models: 8,
+      accuracy: '98.0%'
     },
     {
       icon: Brain,
@@ -142,7 +146,8 @@ const Landing = () => {
         fr: 'Analyse du risque d\'AVC et facteurs de prévention'
       },
       prevalence: '2.8%',
-      models: 6
+      models: 6,
+      accuracy: '89.7%'
     },
     {
       icon: Shield,
@@ -157,7 +162,8 @@ const Landing = () => {
         fr: 'Détection précoce de la détérioration de la fonction rénale'
       },
       prevalence: '9.1%',
-      models: 5
+      models: 5,
+      accuracy: '91.3%'
     },
     {
       icon: Zap,
@@ -172,7 +178,8 @@ const Landing = () => {
         fr: 'Détection à haut risque et analyse des biomarqueurs'
       },
       prevalence: '0.6%',
-      models: 4
+      models: 4,
+      accuracy: '87.4%'
     }
   ];
 
@@ -221,14 +228,14 @@ const Landing = () => {
 
   if (showAuth) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
-        <div className="w-full max-w-md">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="w-full max-w-md backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl">
           <AuthForm onSuccess={() => setShowAuth(false)} />
           <div className="text-center mt-4">
             <Button
               variant="ghost"
               onClick={() => setShowAuth(false)}
-              className="text-gray-600"
+              className="text-gray-600 hover:bg-white/20 rounded-2xl"
             >
               {t('auth.backToStart')}
             </Button>
@@ -239,14 +246,14 @@ const Landing = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30 backdrop-blur-sm">
       {/* Header */}
       <nav className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-xl">
           <div className="flex items-center space-x-2">
             <Brain className="h-8 w-8 text-blue-600" />
             <span className="text-2xl font-bold text-gray-900">MedAI</span>
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+            <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
               Pro
             </Badge>
           </div>
@@ -264,13 +271,13 @@ const Landing = () => {
 
             {/* Language Selector */}
             <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-32">
+              <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
                 <div className="flex items-center space-x-2">
                   <Globe className="h-4 w-4" />
                   <SelectValue />
                 </div>
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl">
                 <SelectItem value="es">{t('language.spanish')}</SelectItem>
                 <SelectItem value="en">{t('language.english')}</SelectItem>
                 <SelectItem value="fr">{t('language.french')}</SelectItem>
@@ -279,7 +286,7 @@ const Landing = () => {
             
             <Button 
               onClick={() => setShowAuth(true)}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-blue-600 hover:bg-blue-700 rounded-2xl"
             >
               {t('auth.professionalAccess')}
             </Button>
@@ -289,7 +296,7 @@ const Landing = () => {
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-5xl mx-auto">
+        <div className="text-center max-w-5xl mx-auto backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-12 shadow-2xl">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             {language === 'es' ? 'Análisis Predictivo Multi-Enfermedad con IA' :
              language === 'fr' ? 'Analyse Prédictive Multi-Maladies avec IA' :
@@ -305,7 +312,7 @@ const Landing = () => {
             <Button 
               size="lg" 
               onClick={() => setShowAuth(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3"
+              className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all"
             >
               <Stethoscope className="mr-2 h-5 w-5" />
               {t('landing.cta.start')}
@@ -314,7 +321,7 @@ const Landing = () => {
               size="lg" 
               variant="outline"
               onClick={() => document.getElementById('diseases')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-lg px-8 py-3"
+              className="text-lg px-8 py-3 rounded-2xl backdrop-blur-sm bg-white/20 border-white/30 hover:bg-white/30"
             >
               {language === 'es' ? 'Ver Análisis' :
                language === 'fr' ? 'Voir Analyses' :
@@ -324,7 +331,7 @@ const Landing = () => {
               <Button 
                 size="lg" 
                 variant="secondary"
-                className="text-lg px-8 py-3"
+                className="text-lg px-8 py-3 rounded-2xl backdrop-blur-sm bg-white/20 hover:bg-white/30"
               >
                 {t('landing.cta.demo')}
               </Button>
@@ -333,7 +340,7 @@ const Landing = () => {
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
+            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
               <div className="text-3xl font-bold text-blue-600 mb-2">7</div>
               <div className="text-gray-600">
                 {language === 'es' ? 'Tipos de Análisis' :
@@ -341,7 +348,7 @@ const Landing = () => {
                  'Analysis Types'}
               </div>
             </div>
-            <div className="text-center">
+            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
               <div className="text-3xl font-bold text-blue-600 mb-2">47+</div>
               <div className="text-gray-600">
                 {language === 'es' ? 'Modelos de IA' :
@@ -349,11 +356,11 @@ const Landing = () => {
                  'AI Models'}
               </div>
             </div>
-            <div className="text-center">
+            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
               <div className="text-3xl font-bold text-blue-600 mb-2">94%</div>
               <div className="text-gray-600">{t('landing.stats.accuracy')}</div>
             </div>
-            <div className="text-center">
+            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
               <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
               <div className="text-gray-600">{t('landing.stats.cases')}</div>
             </div>
@@ -362,7 +369,7 @@ const Landing = () => {
       </div>
 
       {/* Supported Diseases Section */}
-      <div id="diseases" className="bg-white py-16">
+      <div id="diseases" className="bg-white/20 backdrop-blur-md py-16 rounded-3xl mx-4 mb-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -381,13 +388,13 @@ const Landing = () => {
             {supportedDiseases.map((disease, index) => {
               const Icon = disease.icon;
               return (
-                <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div key={index} className="backdrop-blur-md bg-white/20 border border-white/30 rounded-3xl p-6 hover:shadow-2xl transition-all hover:bg-white/30">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-blue-100/80 rounded-full flex items-center justify-center backdrop-blur-sm">
                       <Icon className="h-6 w-6 text-blue-600" />
                     </div>
                     <div className="text-right">
-                      <Badge variant="secondary" className="mb-1">{disease.prevalence}</Badge>
+                      <Badge variant="secondary" className="mb-1 rounded-full bg-green-100/80 text-green-700">{disease.accuracy}</Badge>
                       <div className="text-xs text-gray-500">
                         {disease.models} {language === 'es' ? 'modelos' : language === 'fr' ? 'modèles' : 'models'}
                       </div>
@@ -396,9 +403,15 @@ const Landing = () => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {disease.name[language as keyof typeof disease.name]}
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-sm mb-3">
                     {disease.description[language as keyof typeof disease.description]}
                   </p>
+                  <div className="flex justify-between items-center">
+                    <Badge variant="outline" className="text-xs rounded-full">{disease.prevalence}</Badge>
+                    <span className="text-xs text-gray-500">
+                      {language === 'es' ? 'Prevalencia' : language === 'fr' ? 'Prévalence' : 'Prevalence'}
+                    </span>
+                  </div>
                 </div>
               );
             })}
@@ -407,7 +420,7 @@ const Landing = () => {
       </div>
 
       {/* Pain Points Section */}
-      <div className="bg-white py-16">
+      <div className="backdrop-blur-md bg-white/10 py-16 rounded-3xl mx-4 mb-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -422,13 +435,13 @@ const Landing = () => {
             {painPoints.map((point, index) => {
               const Icon = point.icon;
               return (
-                <div key={index} className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow">
-                  <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                <div key={index} className="text-center p-6 backdrop-blur-sm bg-white/20 rounded-3xl hover:shadow-2xl transition-all border border-white/30">
+                  <div className="mx-auto w-16 h-16 bg-red-100/80 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                     <Icon className="h-8 w-8 text-red-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{point.title}</h3>
                   <p className="text-gray-600 text-sm mb-3">{point.description}</p>
-                  <Badge className="bg-green-600 text-white">{point.metric}</Badge>
+                  <Badge className="bg-green-600 text-white rounded-full">{point.metric}</Badge>
                 </div>
               );
             })}
@@ -451,8 +464,8 @@ const Landing = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div key={index} className="text-center p-6 bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
-                <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+              <div key={index} className="text-center p-6 backdrop-blur-md bg-white/20 rounded-3xl shadow-xl border border-white/30 hover:shadow-2xl transition-all hover:bg-white/30">
+                <div className="mx-auto w-16 h-16 bg-blue-100/80 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                   <Icon className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
@@ -463,7 +476,7 @@ const Landing = () => {
         </div>
 
         {/* ML Models Section */}
-        <div className="bg-white rounded-xl p-8 shadow-sm border">
+        <div className="backdrop-blur-md bg-white/20 rounded-3xl p-8 shadow-2xl border border-white/30">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               {language === 'es' ? '47+ Modelos de Machine Learning Especializados' :
@@ -479,7 +492,7 @@ const Landing = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {modelSources.map((source, index) => (
-              <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+              <div key={index} className="flex items-center space-x-3 p-3 backdrop-blur-sm bg-white/20 rounded-2xl border border-white/30">
                 <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
                 <span className="text-sm text-gray-700">{source}</span>
               </div>
@@ -489,7 +502,7 @@ const Landing = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="bg-gray-50 py-16">
+      <div className="backdrop-blur-md bg-white/10 py-16 rounded-3xl mx-4 mb-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -519,7 +532,7 @@ const Landing = () => {
                 desc: language === 'en' ? "Cost reduction" : language === 'fr' ? "Réduction des coûts" : "Reducción en costos" 
               }
             ].map((stat, index) => (
-              <div key={index} className="text-center bg-white p-6 rounded-lg shadow-sm">
+              <div key={index} className="text-center backdrop-blur-sm bg-white/20 p-6 rounded-3xl shadow-xl border border-white/30">
                 <div className="text-3xl font-bold text-blue-600 mb-2">{stat.metric}</div>
                 <div className="text-gray-600">{stat.desc}</div>
               </div>
@@ -529,19 +542,16 @@ const Landing = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-600 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-md text-white py-16 rounded-3xl mx-4 mb-16 border border-white/20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
             {t('landing.cta.final')}
           </h2>
-          <p className="text-xl mb-8 opacity-90">
-            {t('landing.cta.final.desc')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button 
               size="lg" 
               onClick={() => setShowAuth(true)}
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3"
+              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all"
             >
               {t('landing.cta.professional')}
             </Button>
@@ -549,7 +559,7 @@ const Landing = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-3 bg-transparent"
+                className="border-white text-white hover:bg-white/20 hover:text-white text-lg px-8 py-3 bg-transparent rounded-2xl backdrop-blur-sm"
               >
                 {t('landing.cta.demo')}
               </Button>
@@ -559,7 +569,7 @@ const Landing = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-8">
+      <footer className="backdrop-blur-md bg-gray-900/90 text-gray-300 py-8 rounded-3xl mx-4">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
