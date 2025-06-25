@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -39,12 +40,12 @@ interface PatientData {
 }
 
 const ChatInterface = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       type: 'bot',
-      content: "¡Hola! Soy tu asistente médico de IA. Te ayudaré a analizar síntomas y resultados de laboratorio de pacientes usando 9 modelos avanzados de ML. Comencemos con los síntomas principales del paciente.",
+      content: t('chat.greeting'),
       timestamp: new Date()
     }
   ]);
@@ -93,42 +94,42 @@ const ChatInterface = () => {
       case 'symptoms':
         const symptoms = userInput.split(',').map(s => s.trim()).filter(s => s);
         setPatientData(prev => ({ ...prev, symptoms }));
-        addMessage('bot', `I've recorded the following symptoms: ${symptoms.join(', ')}. Now, please provide any available lab results (e.g., glucose levels, blood pressure, cholesterol, etc.)`);
+        addMessage('bot', t('chat.symptoms.recorded').replace('{symptoms}', symptoms.join(', ')));
         setCurrentStep('labResults');
         break;
 
       case 'labResults':
         const labResults = userInput.split(',').map(s => s.trim()).filter(s => s);
         setPatientData(prev => ({ ...prev, labResults }));
-        addMessage('bot', `Lab results recorded: ${labResults.join(', ')}. Please provide patient demographics (age, gender, weight, height) or type 'skip' to proceed with analysis.`);
+        addMessage('bot', t('chat.labResults.recorded').replace('{labResults}', labResults.join(', ')));
         setCurrentStep('demographics');
         break;
 
       case 'demographics':
-        if (userInput.toLowerCase() !== 'skip') {
-          // Parse demographics (simple parsing - in production, use more sophisticated NLP)
+        const skipWords = ['skip', 'saltar', 'ignorer'];
+        if (!skipWords.includes(userInput.toLowerCase())) {
           const demographics = parseDemographics(userInput);
           setPatientData(prev => ({ ...prev, demographics }));
         }
-        addMessage('bot', 'Perfect! I have all the information needed. I will now analyze this case using our 5 AI models and generate a comprehensive report.');
+        addMessage('bot', t('chat.analysis.complete'));
         setCurrentStep('analysis');
         await performAnalysis();
         break;
 
       default:
-        addMessage('bot', 'Please start a new consultation to analyze another case.');
+        addMessage('bot', t('chat.newConsultation'));
     }
   };
 
   const parseDemographics = (input: string) => {
     const demographics: any = {};
-    const ageMatch = input.match(/(\d+)\s*(?:years?|yrs?|y\.o\.?)/i);
+    const ageMatch = input.match(/(\d+)\s*(?:years?|yrs?|y\.o\.?|años?|ans?)/i);
     if (ageMatch) demographics.age = parseInt(ageMatch[1]);
     
-    const genderMatch = input.match(/\b(male|female|m|f)\b/i);
+    const genderMatch = input.match(/\b(male|female|m|f|masculino|femenino|homme|femme)\b/i);
     if (genderMatch) demographics.gender = genderMatch[1].toLowerCase();
     
-    const weightMatch = input.match(/(\d+(?:\.\d+)?)\s*(?:kg|lbs?|pounds?)/i);
+    const weightMatch = input.match(/(\d+(?:\.\d+)?)\s*(?:kg|lbs?|pounds?|libras?)/i);
     if (weightMatch) demographics.weight = parseFloat(weightMatch[1]);
     
     return demographics;
@@ -140,91 +141,260 @@ const ChatInterface = () => {
         name: 'Diabetes Prediction SystemV3',
         url: 'https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3',
         confidence: 94,
-        prediction: 'Alto Riesgo'
+        prediction: language === 'es' ? 'Alto Riesgo' : language === 'fr' ? 'Risque Élevé' : 'High Risk'
       },
       {
         name: 'Advanced ML Diabetes Model',
         url: 'https://github.com/JitKrNaskar/Diabetes-Prediction',
         confidence: 87,
-        prediction: 'Riesgo Moderado'
+        prediction: language === 'es' ? 'Riesgo Moderado' : language === 'fr' ? 'Risque Modéré' : 'Moderate Risk'
       },
       {
         name: 'Comprehensive Prediction Model',
         url: 'https://github.com/MYoussef885/Diabetes_Prediction',
         confidence: 96,
-        prediction: 'Positivo'
+        prediction: language === 'es' ? 'Positivo' : language === 'fr' ? 'Positif' : 'Positive'
       },
       {
         name: 'ML-Based Diabetes Detection',
         url: 'https://github.com/aravinda-1402/Diabetes-Prediction-using-Machine-Learning',
         confidence: 91,
-        prediction: 'Diabetes Tipo 2'
+        prediction: language === 'es' ? 'Diabetes Tipo 2' : language === 'fr' ? 'Diabète Type 2' : 'Type 2 Diabetes'
       },
       {
         name: 'Kaggle Diabetes Predictor',
         url: 'https://www.kaggle.com/code/mvanshika/diabetes-prediction',
         confidence: 89,
-        prediction: 'Alta Prioridad'
+        prediction: language === 'es' ? 'Alta Prioridad' : language === 'fr' ? 'Haute Priorité' : 'High Priority'
       },
       {
         name: 'Advanced ML Implementation',
         url: 'https://www.kaggle.com/code/isilguler/diabetes-prediction-with-machine-learning',
         confidence: 88,
-        prediction: 'Riesgo Elevado'
+        prediction: language === 'es' ? 'Riesgo Elevado' : language === 'fr' ? 'Risque Élevé' : 'Elevated Risk'
       },
       {
         name: 'Optimized ML Model',
         url: 'https://www.kaggle.com/code/ahmetcankaraolan/diabetes-prediction-using-machine-learning',
         confidence: 90,
-        prediction: 'Diagnóstico Positivo'
+        prediction: language === 'es' ? 'Diagnóstico Positivo' : language === 'fr' ? 'Diagnostic Positif' : 'Positive Diagnosis'
       },
       {
         name: 'PyCaret Implementation',
         url: 'https://www.analyticsvidhya.com/blog/2021/07/diabetes-prediction-with-pycaret/',
         confidence: 93,
-        prediction: 'Síndrome Metabólico'
+        prediction: language === 'es' ? 'Síndrome Metabólico' : language === 'fr' ? 'Syndrome Métabolique' : 'Metabolic Syndrome'
       },
       {
         name: 'Deep Learning Model',
         url: 'https://github.com/jarred13/Deeplearning_and_Diabetes',
         confidence: 95,
-        prediction: 'Diabetes Confirmada'
+        prediction: language === 'es' ? 'Diabetes Confirmada' : language === 'fr' ? 'Diabète Confirmé' : 'Diabetes Confirmed'
       }
     ];
 
-    return {
-      diagnosis: 'Diabetes Tipo 2 con Síndrome Metabólico',
-      confidence: 92,
-      riskFactors: [
+    const diagnosisTexts = {
+      es: 'Diabetes Tipo 2 con Síndrome Metabólico',
+      en: 'Type 2 Diabetes with Metabolic Syndrome',
+      fr: 'Diabète Type 2 avec Syndrome Métabolique'
+    };
+
+    const riskFactorsTexts = {
+      es: [
         'Niveles elevados de glucosa',
         'IMC >30',
         'Antecedentes familiares de diabetes',
         'Estilo de vida sedentario'
       ],
-      recommendations: [
+      en: [
+        'Elevated glucose levels',
+        'BMI >30',
+        'Family history of diabetes',
+        'Sedentary lifestyle'
+      ],
+      fr: [
+        'Niveaux de glucose élevés',
+        'IMC >30',
+        'Antécédents familiaux de diabète',
+        'Mode de vie sédentaire'
+      ]
+    };
+
+    const recommendationsTexts = {
+      es: [
         'Monitoreo inmediato de glucosa',
         'Consulta nutricional',
         'Inicio de programa de ejercicio',
         'Seguimiento en 2 semanas'
       ],
+      en: [
+        'Immediate glucose monitoring',
+        'Nutritional consultation',
+        'Start exercise program',
+        'Follow-up in 2 weeks'
+      ],
+      fr: [
+        'Surveillance immédiate du glucose',
+        'Consultation nutritionnelle',
+        'Début du programme d\'exercice',
+        'Suivi dans 2 semaines'
+      ]
+    };
+
+    return {
+      diagnosis: diagnosisTexts[language],
+      confidence: 92,
+      riskFactors: riskFactorsTexts[language],
+      recommendations: recommendationsTexts[language],
       modelResults: modelSources
     };
+  };
+
+  const generateEmailReport = (analysisResults: any) => {
+    const emailTemplates = {
+      es: `
+REPORTE DE ANÁLISIS MÉDICO - MedAI Platform
+
+Estimado/a Doctor/a,
+
+Se ha completado el análisis predictivo para el paciente utilizando 9 modelos avanzados de Machine Learning.
+
+=== RESUMEN DEL ANÁLISIS ===
+Diagnóstico Principal: ${analysisResults.diagnosis}
+Nivel de Confianza: ${analysisResults.confidence}%
+
+=== SÍNTOMAS REPORTADOS ===
+${patientData.symptoms.join(', ')}
+
+=== RESULTADOS DE LABORATORIO ===
+${patientData.labResults.join(', ')}
+
+=== FACTORES DE RIESGO IDENTIFICADOS ===
+${analysisResults.riskFactors.map((factor: string, index: number) => `${index + 1}. ${factor}`).join('\n')}
+
+=== RECOMENDACIONES MÉDICAS ===
+${analysisResults.recommendations.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n')}
+
+=== RESULTADOS POR MODELO ===
+${analysisResults.modelResults.map((result: any, index: number) => 
+  `${index + 1}. ${result.name}: ${result.prediction} (${result.confidence}% confianza)`
+).join('\n')}
+
+Este reporte ha sido generado automáticamente por MedAI Platform.
+Para más información, visite: https://medai.platform
+
+Saludos cordiales,
+Sistema MedAI
+      `,
+      en: `
+MEDICAL ANALYSIS REPORT - MedAI Platform
+
+Dear Doctor,
+
+Predictive analysis for the patient has been completed using 9 advanced Machine Learning models.
+
+=== ANALYSIS SUMMARY ===
+Primary Diagnosis: ${analysisResults.diagnosis}
+Confidence Level: ${analysisResults.confidence}%
+
+=== REPORTED SYMPTOMS ===
+${patientData.symptoms.join(', ')}
+
+=== LABORATORY RESULTS ===
+${patientData.labResults.join(', ')}
+
+=== IDENTIFIED RISK FACTORS ===
+${analysisResults.riskFactors.map((factor: string, index: number) => `${index + 1}. ${factor}`).join('\n')}
+
+=== MEDICAL RECOMMENDATIONS ===
+${analysisResults.recommendations.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n')}
+
+=== RESULTS BY MODEL ===
+${analysisResults.modelResults.map((result: any, index: number) => 
+  `${index + 1}. ${result.name}: ${result.prediction} (${result.confidence}% confidence)`
+).join('\n')}
+
+This report has been automatically generated by MedAI Platform.
+For more information, visit: https://medai.platform
+
+Best regards,
+MedAI System
+      `,
+      fr: `
+RAPPORT D'ANALYSE MÉDICALE - Plateforme MedAI
+
+Cher Docteur,
+
+L'analyse prédictive pour le patient a été complétée en utilisant 9 modèles d'apprentissage automatique avancés.
+
+=== RÉSUMÉ DE L'ANALYSE ===
+Diagnostic Principal: ${analysisResults.diagnosis}
+Niveau de Confiance: ${analysisResults.confidence}%
+
+=== SYMPTÔMES RAPPORTÉS ===
+${patientData.symptoms.join(', ')}
+
+=== RÉSULTATS DE LABORATOIRE ===
+${patientData.labResults.join(', ')}
+
+=== FACTEURS DE RISQUE IDENTIFIÉS ===
+${analysisResults.riskFactors.map((factor: string, index: number) => `${index + 1}. ${factor}`).join('\n')}
+
+=== RECOMMANDATIONS MÉDICALES ===
+${analysisResults.recommendations.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n')}
+
+=== RÉSULTATS PAR MODÈLE ===
+${analysisResults.modelResults.map((result: any, index: number) => 
+  `${index + 1}. ${result.name}: ${result.prediction} (${result.confidence}% confiance)`
+).join('\n')}
+
+Ce rapport a été généré automatiquement par la Plateforme MedAI.
+Pour plus d'informations, visitez: https://medai.platform
+
+Cordialement,
+Système MedAI
+      `
+    };
+
+    return emailTemplates[language];
   };
 
   const sendToN8n = async (analysisResults: any) => {
     if (!n8nWebhook) return;
 
     try {
-      addMessage('system', 'Sending results to n8n automation...');
+      const systemMessages = {
+        es: {
+          sending: 'Enviando resultados a automatización n8n...',
+          success: 'Resultados enviados al flujo n8n exitosamente. El reporte PDF será generado y enviado por email.',
+          error: 'Error enviando al flujo n8n. Verifique la URL del webhook.'
+        },
+        en: {
+          sending: 'Sending results to n8n automation...',
+          success: 'Results sent to n8n workflow successfully. PDF report will be generated and emailed.',
+          error: 'Error sending to n8n workflow. Please check the webhook URL.'
+        },
+        fr: {
+          sending: 'Envoi des résultats à l\'automatisation n8n...',
+          success: 'Résultats envoyés au flux n8n avec succès. Le rapport PDF sera généré et envoyé par email.',
+          error: 'Erreur lors de l\'envoi au flux n8n. Veuillez vérifier l\'URL du webhook.'
+        }
+      };
+
+      addMessage('system', systemMessages[language].sending);
+      
+      const emailReport = generateEmailReport(analysisResults);
       
       const payload = {
         patientData,
         analysisResults,
+        emailReport,
+        language,
         timestamp: new Date().toISOString(),
         source: 'MedAI Platform'
       };
 
-      const response = await fetch(n8nWebhook, {
+      await fetch(n8nWebhook, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -233,20 +403,26 @@ const ChatInterface = () => {
         body: JSON.stringify(payload)
       });
 
-      addMessage('system', 'Results sent to n8n workflow successfully. PDF report will be generated and emailed.');
+      addMessage('system', systemMessages[language].success);
       
       toast({
-        title: "Success",
-        description: "Analysis sent to n8n workflow. PDF report will be emailed to the doctor.",
+        title: language === 'es' ? 'Éxito' : language === 'fr' ? 'Succès' : 'Success',
+        description: systemMessages[language].success,
       });
       
     } catch (error) {
       console.error('n8n webhook error:', error);
-      addMessage('system', 'Error sending to n8n workflow. Please check the webhook URL.');
+      const systemMessages = {
+        es: 'Error enviando al flujo n8n. Verifique la URL del webhook.',
+        en: 'Error sending to n8n workflow. Please check the webhook URL.',
+        fr: 'Erreur lors de l\'envoi au flux n8n. Veuillez vérifier l\'URL du webhook.'
+      };
+      
+      addMessage('system', systemMessages[language]);
       
       toast({
-        title: "Error",
-        description: "Failed to send to n8n workflow. Please check your webhook URL.",
+        title: language === 'es' ? 'Error' : 'Erreur',
+        description: systemMessages[language],
         variant: "destructive",
       });
     }
@@ -257,7 +433,7 @@ const ChatInterface = () => {
       {
         id: Date.now().toString(),
         type: 'bot',
-        content: "Starting a new consultation. Please describe the patient's primary symptoms.",
+        content: t('chat.newConsultation'),
         timestamp: new Date()
       }
     ]);
@@ -291,16 +467,18 @@ const ChatInterface = () => {
               <div className="mt-3 space-y-2">
                 <div className="flex items-center space-x-2">
                   <Brain className="h-4 w-4 text-blue-600" />
-                  <span className="font-semibold text-blue-600">Diagnosis: {message.data.diagnosis}</span>
+                  <span className="font-semibold text-blue-600">
+                    {language === 'es' ? 'Diagnóstico' : language === 'fr' ? 'Diagnostic' : 'Diagnosis'}: {message.data.diagnosis}
+                  </span>
                   <Badge variant="default" className="bg-green-600">
-                    {message.data.confidence}% confidence
+                    {message.data.confidence}% {t('dashboard.confidence')}
                   </Badge>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <div>
                     <h4 className="font-semibold text-sm mb-2 flex items-center">
                       <AlertCircle className="h-3 w-3 mr-1 text-red-500" />
-                      Risk Factors
+                      {language === 'es' ? 'Factores de Riesgo' : language === 'fr' ? 'Facteurs de Risque' : 'Risk Factors'}
                     </h4>
                     <ul className="text-xs space-y-1">
                       {message.data.riskFactors.map((factor: string, index: number) => (
@@ -314,7 +492,7 @@ const ChatInterface = () => {
                   <div>
                     <h4 className="font-semibold text-sm mb-2 flex items-center">
                       <CheckCircle className="h-3 w-3 mr-1 text-green-500" />
-                      Recommendations
+                      {language === 'es' ? 'Recomendaciones' : language === 'fr' ? 'Recommandations' : 'Recommendations'}
                     </h4>
                     <ul className="text-xs space-y-1">
                       {message.data.recommendations.map((rec: string, index: number) => (
@@ -327,11 +505,13 @@ const ChatInterface = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <h4 className="font-semibold text-sm mb-2">Model Results</h4>
+                  <h4 className="font-semibold text-sm mb-2">
+                    {language === 'es' ? 'Resultados por Modelo' : language === 'fr' ? 'Résultats par Modèle' : 'Model Results'}
+                  </h4>
                   <div className="space-y-1">
                     {message.data.modelResults.map((result: any, index: number) => (
                       <div key={index} className="flex items-center justify-between text-xs p-2 bg-gray-50 rounded">
-                        <span>{result.model}</span>
+                        <span>{result.name}</span>
                         <div className="flex items-center space-x-2">
                           <span className="text-gray-600">{result.prediction}</span>
                           <Badge variant="secondary" className="text-xs">
@@ -356,45 +536,59 @@ const ChatInterface = () => {
   const performAnalysis = async () => {
     setIsAnalyzing(true);
     
+    const analysisMessages = {
+      es: [
+        'Inicializando análisis de IA...',
+        'Ejecutando Modelo 1: Evaluación de Riesgo de Diabetes...',
+        'Ejecutando Modelo 2: Análisis Cardiovascular...',
+        'Ejecutando Modelo 3: Detección de Síndrome Metabólico...',
+        'Ejecutando Modelo 4: Reconocimiento de Patrones de Síntomas...',
+        'Ejecutando Modelo 5: Perfilado Integral de Riesgo...',
+        'Ejecutando Modelo 6: Análisis ML Avanzado...',
+        'Ejecutando Modelo 7: Modelo ML Optimizado...',
+        'Ejecutando Modelo 8: Implementación PyCaret...',
+        'Ejecutando Modelo 9: Modelo de Aprendizaje Profundo...',
+        'Realizando meta-análisis con OpenAI...'
+      ],
+      en: [
+        'Initializing AI analysis...',
+        'Running Model 1: Diabetes Risk Assessment...',
+        'Running Model 2: Cardiovascular Analysis...',
+        'Running Model 3: Metabolic Syndrome Detection...',
+        'Running Model 4: Symptom Pattern Recognition...',
+        'Running Model 5: Comprehensive Risk Profiling...',
+        'Running Model 6: Advanced ML Analysis...',
+        'Running Model 7: Optimized ML Model...',
+        'Running Model 8: PyCaret Implementation...',
+        'Running Model 9: Deep Learning Model...',
+        'Performing meta-analysis with OpenAI...'
+      ],
+      fr: [
+        'Initialisation de l\'analyse IA...',
+        'Exécution du Modèle 1: Évaluation du Risque de Diabète...',
+        'Exécution du Modèle 2: Analyse Cardiovasculaire...',
+        'Exécution du Modèle 3: Détection du Syndrome Métabolique...',
+        'Exécution du Modèle 4: Reconnaissance des Patterns de Symptômes...',
+        'Exécution du Modèle 5: Profilage de Risque Complet...',
+        'Exécution du Modèle 6: Analyse ML Avancée...',
+        'Exécution du Modèle 7: Modèle ML Optimisé...',
+        'Exécution du Modèle 8: Implémentation PyCaret...',
+        'Exécution du Modèle 9: Modèle d\'Apprentissage Profond...',
+        'Réalisation de méta-analyse avec OpenAI...'
+      ]
+    };
+    
     try {
-      // Simulate AI analysis process
-      addMessage('system', 'Inicializando análisis de IA...');
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      addMessage('system', 'Ejecutando Modelo 1: Evaluación de Riesgo de Diabetes...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Ejecutando Modelo 2: Análisis Cardiovascular...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Ejecutando Modelo 3: Detección de Síndrome Metabólico...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Ejecutando Modelo 4: Reconocimiento de Patrones de Síntomas...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Ejecutando Modelo 5: Perfilado Integral de Riesgo...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      addMessage('system', 'Ejecutando Modelo 6: Análisis ML Avanzado...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      addMessage('system', 'Ejecutando Modelo 7: Modelo ML Optimizado...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      addMessage('system', 'Ejecutando Modelo 8: Implementación PyCaret...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      addMessage('system', 'Ejecutando Modelo 9: Modelo de Aprendizaje Profundo...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Realizando meta-análisis con OpenAI...');
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Simulate AI analysis process with multilingual messages
+      for (const message of analysisMessages[language]) {
+        addMessage('system', message);
+        await new Promise(resolve => setTimeout(resolve, 1500));
+      }
 
       // Generate mock analysis results
       const analysisResults = generateMockAnalysis();
       
-      addMessage('bot', '¡Análisis completado! Aquí están los resultados:', analysisResults);
+      addMessage('bot', t('chat.analysis.result'), analysisResults);
       
       // Send to n8n webhook if configured
       if (n8nWebhook) {
@@ -406,7 +600,12 @@ const ChatInterface = () => {
       
     } catch (error) {
       console.error('Analysis error:', error);
-      addMessage('bot', 'Lo siento, hubo un error durante el análisis. Por favor, intenta nuevamente.');
+      const errorMessages = {
+        es: 'Lo siento, hubo un error durante el análisis. Por favor, intenta nuevamente.',
+        en: 'Sorry, there was an error during analysis. Please try again.',
+        fr: 'Désolé, il y a eu une erreur pendant l\'analyse. Veuillez réessayer.'
+      };
+      addMessage('bot', errorMessages[language]);
     } finally {
       setIsAnalyzing(false);
     }

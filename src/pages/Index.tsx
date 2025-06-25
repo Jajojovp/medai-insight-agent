@@ -7,14 +7,19 @@ import { Activity, Brain, FileText, MessageSquare, Shield, Users } from "lucide-
 import ChatInterface from "@/components/ChatInterface";
 import Navigation from "@/components/Navigation";
 import DashboardStats from "@/components/DashboardStats";
+import AdminSettings from "@/components/AdminSettings";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
   const [activeView, setActiveView] = useState('dashboard');
+  const { t } = useLanguage();
 
   const renderContent = () => {
     switch (activeView) {
       case 'chat':
         return <ChatInterface />;
+      case 'admin':
+        return <AdminSettings />;
       case 'dashboard':
       default:
         return (
@@ -23,24 +28,24 @@ const Index = () => {
               <div className="flex items-center justify-center space-x-2">
                 <Brain className="h-8 w-8 text-blue-600" />
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  MedAI Diagnostic Platform
+                  {t('dashboard.title')}
                 </h1>
               </div>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Advanced AI-powered medical diagnosis with multi-model analysis and automated reporting
+                {t('dashboard.subtitle')}
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 <Badge variant="secondary" className="bg-blue-100 text-blue-800">
                   <Activity className="h-3 w-3 mr-1" />
-                  5 AI Models
+                  {t('dashboard.badges.models')}
                 </Badge>
                 <Badge variant="secondary" className="bg-green-100 text-green-800">
                   <Shield className="h-3 w-3 mr-1" />
-                  HIPAA Compliant
+                  {t('dashboard.badges.hipaa')}
                 </Badge>
                 <Badge variant="secondary" className="bg-purple-100 text-purple-800">
                   <FileText className="h-3 w-3 mr-1" />
-                  Auto Reports
+                  {t('dashboard.badges.reports')}
                 </Badge>
               </div>
             </div>
@@ -53,15 +58,15 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <MessageSquare className="h-5 w-5 text-blue-600" />
-                    <span>Start Diagnosis</span>
+                    <span>{t('dashboard.cards.diagnosis.title')}</span>
                   </CardTitle>
                   <CardDescription>
-                    Begin a new patient consultation with our AI assistant
+                    {t('dashboard.cards.diagnosis.desc')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    New Consultation
+                    {t('dashboard.cards.diagnosis.button')}
                   </Button>
                 </CardContent>
               </Card>
@@ -70,15 +75,15 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <FileText className="h-5 w-5 text-green-600" />
-                    <span>Case History</span>
+                    <span>{t('dashboard.cards.history.title')}</span>
                   </CardTitle>
                   <CardDescription>
-                    Review previous consultations and reports
+                    {t('dashboard.cards.history.desc')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full">
-                    View Cases
+                    {t('dashboard.cards.history.button')}
                   </Button>
                 </CardContent>
               </Card>
@@ -87,15 +92,15 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <Users className="h-5 w-5 text-purple-600" />
-                    <span>Patient Management</span>
+                    <span>{t('dashboard.cards.patients.title')}</span>
                   </CardTitle>
                   <CardDescription>
-                    Manage patient records and follow-ups
+                    {t('dashboard.cards.patients.desc')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full">
-                    Manage Patients
+                    {t('dashboard.cards.patients.button')}
                   </Button>
                 </CardContent>
               </Card>
@@ -103,7 +108,7 @@ const Index = () => {
 
             <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-0">
               <CardHeader>
-                <CardTitle className="text-center">How It Works</CardTitle>
+                <CardTitle className="text-center">{t('dashboard.howItWorks.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-4 gap-4 text-center">
@@ -111,29 +116,29 @@ const Index = () => {
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto">
                       <span className="text-white font-bold">1</span>
                     </div>
-                    <h3 className="font-semibold">Input Symptoms</h3>
-                    <p className="text-sm text-gray-600">Describe patient symptoms and lab results</p>
+                    <h3 className="font-semibold">{t('dashboard.howItWorks.step1.title')}</h3>
+                    <p className="text-sm text-gray-600">{t('dashboard.howItWorks.step1.desc')}</p>
                   </div>
                   <div className="space-y-2">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto">
                       <span className="text-white font-bold">2</span>
                     </div>
-                    <h3 className="font-semibold">AI Analysis</h3>
-                    <p className="text-sm text-gray-600">5 ML models analyze the data</p>
+                    <h3 className="font-semibold">{t('dashboard.howItWorks.step2.title')}</h3>
+                    <p className="text-sm text-gray-600">{t('dashboard.howItWorks.step2.desc')}</p>
                   </div>
                   <div className="space-y-2">
                     <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto">
                       <span className="text-white font-bold">3</span>
                     </div>
-                    <h3 className="font-semibold">Meta-Analysis</h3>
-                    <p className="text-sm text-gray-600">OpenAI combines results</p>
+                    <h3 className="font-semibold">{t('dashboard.howItWorks.step3.title')}</h3>
+                    <p className="text-sm text-gray-600">{t('dashboard.howItWorks.step3.desc')}</p>
                   </div>
                   <div className="space-y-2">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mx-auto">
                       <span className="text-white font-bold">4</span>
                     </div>
-                    <h3 className="font-semibold">Auto Report</h3>
-                    <p className="text-sm text-gray-600">PDF sent to doctor</p>
+                    <h3 className="font-semibold">{t('dashboard.howItWorks.step4.title')}</h3>
+                    <p className="text-sm text-gray-600">{t('dashboard.howItWorks.step4.desc')}</p>
                   </div>
                 </div>
               </CardContent>
