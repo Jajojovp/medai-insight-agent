@@ -181,6 +181,14 @@ const ChatInterface = () => {
   };
 
   const generateMockAnalysis = () => {
+    const modelSources = [
+      'https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3',
+      'https://github.com/JitKrNaskar/Diabetes-Prediction',
+      'https://github.com/MYoussef885/Diabetes_Prediction',
+      'https://github.com/aravinda-1402/Diabetes-Prediction-using-Machine-Learning',
+      'https://www.kaggle.com/code/mvanshika/diabetes-prediction'
+    ];
+
     return {
       diagnosis: 'Type 2 Diabetes with Metabolic Syndrome',
       confidence: 92,
@@ -197,11 +205,11 @@ const ChatInterface = () => {
         'Follow-up in 2 weeks'
       ],
       modelResults: [
-        { model: 'Diabetes Risk Assessment', confidence: 94, prediction: 'High Risk' },
-        { model: 'Cardiovascular Analysis', confidence: 87, prediction: 'Moderate Risk' },
-        { model: 'Metabolic Syndrome', confidence: 96, prediction: 'Positive' },
-        { model: 'Symptom Pattern Recognition', confidence: 91, prediction: 'Diabetes Type 2' },
-        { model: 'Risk Profiling', confidence: 89, prediction: 'High Priority' }
+        { model: 'Diabetes Prediction SystemV3', confidence: 94, prediction: 'High Risk', source: modelSources[0] },
+        { model: 'Advanced ML Diabetes Model', confidence: 87, prediction: 'Moderate Risk', source: modelSources[1] },
+        { model: 'Comprehensive Prediction Model', confidence: 96, prediction: 'Positive', source: modelSources[2] },
+        { model: 'ML-Based Diabetes Detection', confidence: 91, prediction: 'Diabetes Type 2', source: modelSources[3] },
+        { model: 'Kaggle Diabetes Predictor', confidence: 89, prediction: 'High Priority', source: modelSources[4] }
       ]
     };
   };
@@ -366,13 +374,16 @@ const ChatInterface = () => {
         <CardContent>
           {/* n8n Webhook Configuration */}
           <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-sm mb-2">n8n Webhook Configuration</h3>
+            <h3 className="font-semibold text-sm mb-2">Configuración Webhook n8n</h3>
             <Input
-              placeholder="Enter your n8n webhook URL for automated reporting"
+              placeholder="Ingresa tu URL de webhook n8n para reportes automáticos"
               value={n8nWebhook}
               onChange={(e) => setN8nWebhook(e.target.value)}
               className="text-sm"
             />
+            <p className="text-xs text-gray-500 mt-1">
+              Los reportes PDF se generarán automáticamente y se enviarán por email
+            </p>
           </div>
 
           {/* Chat Messages */}
@@ -384,10 +395,10 @@ const ChatInterface = () => {
           <div className="flex space-x-2 mt-4">
             <Textarea
               placeholder={
-                currentStep === 'symptoms' ? "Describe patient symptoms (comma-separated)..." :
-                currentStep === 'labResults' ? "Enter lab results (comma-separated)..." :
-                currentStep === 'demographics' ? "Enter patient demographics or type 'skip'..." :
-                "Analysis complete. Start a new consultation."
+                currentStep === 'symptoms' ? "Describe los síntomas del paciente (separados por comas)..." :
+                currentStep === 'labResults' ? "Ingresa los resultados de laboratorio (separados por comas)..." :
+                currentStep === 'demographics' ? "Ingresa datos demográficos del paciente o escribe 'skip'..." :
+                "Análisis completo. Inicia una nueva consulta."
               }
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -415,7 +426,7 @@ const ChatInterface = () => {
                   variant="outline"
                   className="text-xs"
                 >
-                  New Case
+                  Nuevo Caso
                 </Button>
               )}
             </div>
@@ -424,19 +435,19 @@ const ChatInterface = () => {
           {/* Current Progress */}
           <div className="mt-4 p-3 bg-blue-50 rounded-lg">
             <div className="flex items-center justify-between text-sm">
-              <span className="font-medium">Progress:</span>
+              <span className="font-medium">Progreso:</span>
               <div className="flex space-x-2">
                 <Badge variant={currentStep === 'symptoms' ? 'default' : 'secondary'}>
-                  1. Symptoms
+                  1. Síntomas
                 </Badge>
                 <Badge variant={currentStep === 'labResults' ? 'default' : 'secondary'}>
-                  2. Lab Results
+                  2. Laboratorios
                 </Badge>
                 <Badge variant={currentStep === 'demographics' ? 'default' : 'secondary'}>
-                  3. Demographics
+                  3. Demografía
                 </Badge>
                 <Badge variant={currentStep === 'analysis' ? 'default' : 'secondary'}>
-                  4. Analysis
+                  4. Análisis
                 </Badge>
               </div>
             </div>

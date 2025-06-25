@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +12,7 @@ import {
   Menu,
   X
 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface NavigationProps {
   activeView: string;
@@ -21,6 +21,7 @@ interface NavigationProps {
 
 const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
@@ -29,6 +30,10 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
     { id: 'blog', label: 'Research', icon: BookOpen },
     { id: 'admin', label: 'Admin', icon: Settings },
   ];
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
@@ -67,9 +72,12 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
 
           {/* User Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
+            <div className="text-sm text-gray-600">
+              Bienvenido, <span className="font-medium">{user?.name}</span>
+            </div>
+            <Button variant="ghost" size="sm" onClick={handleLogout}>
               <User className="h-4 w-4 mr-2" />
-              Dr. Smith
+              Cerrar Sesión
             </Button>
           </div>
 
@@ -109,6 +117,19 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
                   </Button>
                 );
               })}
+              <div className="border-t pt-2 mt-2">
+                <div className="px-3 py-2 text-sm text-gray-600">
+                  {user?.name}
+                </div>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+                  onClick={handleLogout}
+                >
+                  <User className="h-4 w-4 mr-2" />
+                  Cerrar Sesión
+                </Button>
+              </div>
             </div>
           </div>
         )}
