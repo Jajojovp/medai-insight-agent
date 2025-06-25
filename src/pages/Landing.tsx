@@ -18,7 +18,9 @@ import {
   Hospital,
   Zap,
   Heart,
-  Droplets
+  Droplets,
+  Menu,
+  X
 } from "lucide-react";
 import AuthForm from "@/components/AuthForm";
 import { useAuth } from "@/contexts/AuthContext";
@@ -27,6 +29,7 @@ import { Link } from "react-router-dom";
 
 const Landing = () => {
   const [showAuth, setShowAuth] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useAuth();
   const { language, setLanguage, t } = useLanguage();
 
@@ -34,6 +37,15 @@ const Landing = () => {
   if (user) {
     return <Navigate to="/dashboard" replace />;
   }
+
+  const getLanguageAbbreviation = (lang: string) => {
+    switch (lang) {
+      case 'es': return 'ES';
+      case 'en': return 'EN';
+      case 'fr': return 'FR';
+      default: return 'ES';
+    }
+  };
 
   const features = [
     {
@@ -249,7 +261,7 @@ const Landing = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white/30 backdrop-blur-sm">
       {/* Header */}
       <nav className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-2xl">
+        <div className="flex items-center justify-between backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-2xl relative">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-blue-100/20 rounded-2xl backdrop-blur-sm">
               <Brain className="h-8 w-8 text-blue-600" />
@@ -263,7 +275,7 @@ const Landing = () => {
           </div>
           
           <div className="flex items-center space-x-6">
-            {/* Navigation Links */}
+            {/* Navigation Links - Desktop Only */}
             <div className="hidden md:flex items-center space-x-8">
               <Link to="/blog" className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">
                 {t('nav.blog')}
@@ -273,20 +285,22 @@ const Landing = () => {
               </Link>
             </div>
 
-            {/* Language Selector */}
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl hover:bg-white/30 transition-all duration-300">
-                <div className="flex items-center space-x-2">
-                  <Globe className="h-4 w-4" />
-                  <SelectValue />
-                </div>
-              </SelectTrigger>
-              <SelectContent className="backdrop-blur-xl bg-white/90 border-white/30 rounded-2xl">
-                <SelectItem value="es">{t('language.spanish')}</SelectItem>
-                <SelectItem value="en">{t('language.english')}</SelectItem>
-                <SelectItem value="fr">{t('language.french')}</SelectItem>
-              </SelectContent>
-            </Select>
+            {/* Language Selector - Desktop Only */}
+            <div className="hidden md:block">
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl hover:bg-white/30 transition-all duration-300">
+                  <div className="flex items-center space-x-2">
+                    <Globe className="h-4 w-4" />
+                    <SelectValue />
+                  </div>
+                </SelectTrigger>
+                <SelectContent className="backdrop-blur-xl bg-white/90 border-white/30 rounded-2xl">
+                  <SelectItem value="es">{t('language.spanish')}</SelectItem>
+                  <SelectItem value="en">{t('language.english')}</SelectItem>
+                  <SelectItem value="fr">{t('language.french')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             
             {/* Professional Access Button - Desktop Only */}
             <div className="hidden md:block">
@@ -297,7 +311,76 @@ const Landing = () => {
                 {t('auth.professionalAccess')}
               </Button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="rounded-2xl p-2"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden absolute left-0 right-0 top-full mt-2 backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl z-[55] mx-4">
+              <div className="p-4 space-y-3">
+                <Link 
+                  to="/blog" 
+                  className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('nav.blog')}
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('nav.contact')}
+                </Link>
+                
+                {/* Language Selector for Mobile */}
+                <div className="border-t border-gray-200 pt-3">
+                  <div className="px-4 py-2 text-sm text-gray-500 font-medium">
+                    {language === 'es' ? 'Idioma' : language === 'en' ? 'Language' : 'Langue'}
+                  </div>
+                  <Select value={language} onValueChange={(value) => {
+                    setLanguage(value);
+                    setMobileMenuOpen(false);
+                  }}>
+                    <SelectTrigger className="w-full backdrop-blur-sm bg-white/20 border-white/30 rounded-xl">
+                      <div className="flex items-center space-x-2">
+                        <Globe className="h-4 w-4" />
+                        <span>{getLanguageAbbreviation(language)}</span>
+                      </div>
+                    </SelectTrigger>
+                    <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-[60]">
+                      <SelectItem value="es">ES</SelectItem>
+                      <SelectItem value="en">EN</SelectItem>
+                      <SelectItem value="fr">FR</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="border-t border-gray-200 pt-3">
+                  <Button 
+                    className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl"
+                    onClick={() => {
+                      setShowAuth(true);
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    {t('auth.professionalAccess')}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -305,7 +388,7 @@ const Landing = () => {
       <div className="container mx-auto px-4 py-20">
         <div className="text-center max-w-6xl mx-auto backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-16 shadow-2xl">
           <div className="space-y-8">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
               {language === 'es' ? 'Análisis Predictivo Multi-Enfermedad con IA' :
                language === 'fr' ? 'Analyse Prédictive Multi-Maladies avec IA' :
                'Multi-Disease Predictive Analysis with AI'}
