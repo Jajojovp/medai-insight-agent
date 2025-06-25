@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -17,7 +16,9 @@ import {
   Clock,
   Globe,
   Hospital,
-  Zap
+  Zap,
+  Heart,
+  Droplets
 } from "lucide-react";
 import AuthForm from "@/components/AuthForm";
 import { useAuth } from "@/contexts/AuthContext";
@@ -67,16 +68,134 @@ const Landing = () => {
     }
   ];
 
+  const supportedDiseases = [
+    {
+      icon: Droplets,
+      name: {
+        es: 'Diabetes Tipo 2',
+        en: 'Type 2 Diabetes',
+        fr: 'Diabète Type 2'
+      },
+      description: {
+        es: 'Análisis predictivo del riesgo de diabetes y control glucémico',
+        en: 'Predictive analysis of diabetes risk and glycemic control',
+        fr: 'Analyse prédictive du risque de diabète et contrôle glycémique'
+      },
+      prevalence: '10.5%',
+      models: 9
+    },
+    {
+      icon: Users,
+      name: {
+        es: 'Cáncer de Mama',
+        en: 'Breast Cancer',
+        fr: 'Cancer du Sein'
+      },
+      description: {
+        es: 'Detección temprana y clasificación benigno/maligno',
+        en: 'Early detection and benign/malignant classification',
+        fr: 'Détection précoce et classification bénin/malin'
+      },
+      prevalence: '12.5%',
+      models: 8
+    },
+    {
+      icon: Activity,
+      name: {
+        es: 'Cáncer de Próstata',
+        en: 'Prostate Cancer',
+        fr: 'Cancer de la Prostate'
+      },
+      description: {
+        es: 'Evaluación de riesgo y progresión en hombres',
+        en: 'Risk assessment and progression evaluation in men',
+        fr: 'Évaluation des risques et progression chez les hommes'
+      },
+      prevalence: '11.6%',
+      models: 7
+    },
+    {
+      icon: Heart,
+      name: {
+        es: 'Enfermedades Cardíacas',
+        en: 'Heart Disease',
+        fr: 'Maladies Cardiaques'
+      },
+      description: {
+        es: 'Predicción de riesgo cardiovascular y prevención',
+        en: 'Cardiovascular risk prediction and prevention',
+        fr: 'Prédiction du risque cardiovasculaire et prévention'
+      },
+      prevalence: '6.2%',
+      models: 8
+    },
+    {
+      icon: Brain,
+      name: {
+        es: 'Accidente Cerebrovascular',
+        en: 'Stroke Risk',
+        fr: 'Risque d\'AVC'
+      },
+      description: {
+        es: 'Análisis de riesgo de ACV y factores de prevención',
+        en: 'Stroke risk analysis and prevention factors',
+        fr: 'Analyse du risque d\'AVC et facteurs de prévention'
+      },
+      prevalence: '2.8%',
+      models: 6
+    },
+    {
+      icon: Shield,
+      name: {
+        es: 'Enfermedad Renal Crónica',
+        en: 'Chronic Kidney Disease',
+        fr: 'Maladie Rénale Chronique'
+      },
+      description: {
+        es: 'Detección temprana de deterioro de función renal',
+        en: 'Early detection of kidney function deterioration',
+        fr: 'Détection précoce de la détérioration de la fonction rénale'
+      },
+      prevalence: '9.1%',
+      models: 5
+    },
+    {
+      icon: Zap,
+      name: {
+        es: 'Cáncer de Páncreas',
+        en: 'Pancreatic Cancer',
+        fr: 'Cancer du Pancréas'
+      },
+      description: {
+        es: 'Detección de alto riesgo y biomarcadores',
+        en: 'High-risk detection and biomarker analysis',
+        fr: 'Détection à haut risque et analyse des biomarqueurs'
+      },
+      prevalence: '0.6%',
+      models: 4
+    }
+  ];
+
   const modelSources = [
     "GitHub: Diabetes-Prediction-SystemV3",
     "GitHub: Advanced ML Diabetes Models", 
     "GitHub: Comprehensive Diabetes Prediction",
     "GitHub: ML-Based Diabetes Detection",
-    "Kaggle: Machine Learning Predictions",
-    "Kaggle: Advanced ML Implementation",
-    "Kaggle: Optimized ML Model",
+    "Kaggle: Breast Cancer Prediction (WDBC)",
+    "Kaggle: Breast Cancer ML Analysis",
+    "GitHub: Breast-Cancer-Prediction-ANN",
+    "GitHub: Prostate-Cancer-Prediction",
+    "Kaggle: Prostate Cancer Risk Analysis",
+    "GitHub: Heart-Disease-Prediction-ML",
+    "Kaggle: Heart Disease 98% Accuracy",
+    "GitHub: Stroke-Prediction-ML",
+    "Kaggle: Stroke Prediction Ensemble",
+    "GitHub: Chronic-Kidney-Disease-Prediction",
+    "Kaggle: CKD Prediction Analysis",
+    "GitHub: Pancreatic-Cancer-Prediction-ML",
+    "Kaggle: Pancreatic Cancer Risk Prediction",
     "Analytics Vidhya: PyCaret Implementation",
-    "Deep Learning & Diabetes Research"
+    "Deep Learning & Medical Research Models"
   ];
 
   const painPoints = [
@@ -172,10 +291,14 @@ const Landing = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            {t('landing.title')}
+            {language === 'es' ? 'Análisis Predictivo Multi-Enfermedad con IA' :
+             language === 'fr' ? 'Analyse Prédictive Multi-Maladies avec IA' :
+             'Multi-Disease Predictive Analysis with AI'}
           </h1>
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            {t('landing.subtitle')}
+            {language === 'es' ? 'Plataforma profesional de análisis médico con 7 tipos de análisis predictivos, 47+ modelos de IA y detección temprana de enfermedades críticas.' :
+             language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 7 types d\'analyses prédictives, 47+ modèles d\'IA et détection précoce de maladies critiques.' :
+             'Professional medical analysis platform with 7 types of predictive analysis, 47+ AI models and early detection of critical diseases.'}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -190,10 +313,12 @@ const Landing = () => {
             <Button 
               size="lg" 
               variant="outline"
-              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('diseases')?.scrollIntoView({ behavior: 'smooth' })}
               className="text-lg px-8 py-3"
             >
-              {t('landing.cta.features')}
+              {language === 'es' ? 'Ver Análisis' :
+               language === 'fr' ? 'Voir Analyses' :
+               'View Analysis'}
             </Button>
             <Link to="/contact">
               <Button 
@@ -207,19 +332,76 @@ const Landing = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">7</div>
+              <div className="text-gray-600">
+                {language === 'es' ? 'Tipos de Análisis' :
+                 language === 'fr' ? 'Types d\'Analyses' :
+                 'Analysis Types'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">47+</div>
+              <div className="text-gray-600">
+                {language === 'es' ? 'Modelos de IA' :
+                 language === 'fr' ? 'Modèles d\'IA' :
+                 'AI Models'}
+              </div>
+            </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600 mb-2">94%</div>
               <div className="text-gray-600">{t('landing.stats.accuracy')}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">9</div>
-              <div className="text-gray-600">{t('landing.stats.models')}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">2500+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
               <div className="text-gray-600">{t('landing.stats.cases')}</div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Supported Diseases Section */}
+      <div id="diseases" className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {language === 'es' ? 'Análisis Predictivos Disponibles' :
+               language === 'fr' ? 'Analyses Prédictives Disponibles' :
+               'Available Predictive Analysis'}
+            </h2>
+            <p className="text-lg text-gray-600">
+              {language === 'es' ? '7 tipos diferentes de análisis con múltiples modelos de IA especializados' :
+               language === 'fr' ? '7 types d\'analyses différents avec plusieurs modèles d\'IA spécialisés' :
+               '7 different types of analysis with multiple specialized AI models'}
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {supportedDiseases.map((disease, index) => {
+              const Icon = disease.icon;
+              return (
+                <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div className="text-right">
+                      <Badge variant="secondary" className="mb-1">{disease.prevalence}</Badge>
+                      <div className="text-xs text-gray-500">
+                        {disease.models} {language === 'es' ? 'modelos' : language === 'fr' ? 'modèles' : 'models'}
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {disease.name[language as keyof typeof disease.name]}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {disease.description[language as keyof typeof disease.description]}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -284,10 +466,14 @@ const Landing = () => {
         <div className="bg-white rounded-xl p-8 shadow-sm border">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {t('landing.models.title')}
+              {language === 'es' ? '47+ Modelos de Machine Learning Especializados' :
+               language === 'fr' ? '47+ Modèles de Machine Learning Spécialisés' :
+               '47+ Specialized Machine Learning Models'}
             </h3>
             <p className="text-gray-600">
-              {t('landing.models.subtitle')}
+              {language === 'es' ? 'Fuentes verificadas de GitHub, Kaggle y revistas científicas' :
+               language === 'fr' ? 'Sources vérifiées de GitHub, Kaggle et revues scientifiques' :
+               'Verified sources from GitHub, Kaggle and scientific journals'}
             </p>
           </div>
           
