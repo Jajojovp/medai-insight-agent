@@ -284,12 +284,15 @@ const Landing = () => {
               </SelectContent>
             </Select>
             
-            <Button 
-              onClick={() => setShowAuth(true)}
-              className="bg-blue-600 hover:bg-blue-700 rounded-2xl"
-            >
-              {t('auth.professionalAccess')}
-            </Button>
+            {/* Professional Access Button - Desktop Only */}
+            <div className="hidden md:block">
+              <Button 
+                onClick={() => setShowAuth(true)}
+                className="bg-blue-600 hover:bg-blue-700 rounded-2xl"
+              >
+                {t('auth.professionalAccess')}
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
@@ -548,13 +551,16 @@ const Landing = () => {
             {t('landing.cta.final')}
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button 
-              size="lg" 
-              onClick={() => setShowAuth(true)}
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-            >
-              {t('landing.cta.professional')}
-            </Button>
+            {/* Professional Access Button - Desktop Only */}
+            <div className="hidden md:block">
+              <Button 
+                size="lg" 
+                onClick={() => setShowAuth(true)}
+                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              >
+                {t('landing.cta.professional')}
+              </Button>
+            </div>
             <Link to="/contact">
               <Button 
                 size="lg" 
