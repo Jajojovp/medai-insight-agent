@@ -75,7 +75,7 @@ const PublicNavigation = () => {
               <SelectTrigger className="w-20 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
                 <Globe className="h-4 w-4" />
               </SelectTrigger>
-              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl">
+              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-50">
                 <SelectItem value="es">{t('language.spanish')}</SelectItem>
                 <SelectItem value="en">{t('language.english')}</SelectItem>
                 <SelectItem value="fr">{t('language.french')}</SelectItem>
