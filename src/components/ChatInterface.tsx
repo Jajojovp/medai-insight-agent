@@ -2,42 +2,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { 
-  Send, 
-  Bot, 
-  User, 
-  Brain,
-  Activity,
-  FileText,
-  AlertCircle,
-  CheckCircle,
-  Loader2
-} from "lucide-react";
+import { Send, Brain, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-interface Message {
-  id: string;
-  type: 'user' | 'bot' | 'system';
-  content: string;
-  timestamp: Date;
-  data?: any;
-}
-
-interface PatientData {
-  symptoms: string[];
-  labResults: string[];
-  demographics: {
-    age?: number;
-    gender?: string;
-    weight?: number;
-    height?: number;
-  };
-}
+import { Message, PatientData, ChatStep } from "@/types/chat";
+import MessageComponent from "@/components/chat/MessageComponent";
+import ProgressIndicator from "@/components/chat/ProgressIndicator";
+import WebhookConfig from "@/components/chat/WebhookConfig";
+import { generateMockAnalysis, generateEmailReport, parseDemographics } from "@/utils/analysisUtils";
 
 const ChatInterface = () => {
   const { t, language } = useLanguage();
@@ -56,7 +31,7 @@ const ChatInterface = () => {
     labResults: [],
     demographics: {}
   });
-  const [currentStep, setCurrentStep] = useState('symptoms');
+  const [currentStep, setCurrentStep] = useState<ChatStep>('symptoms');
   const [n8nWebhook, setN8nWebhook] = useState('');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -85,7 +60,6 @@ const ChatInterface = () => {
     addMessage('user', userMessage);
     setInput('');
 
-    // Process the message based on current step
     await processUserInput(userMessage);
   };
 
@@ -121,244 +95,6 @@ const ChatInterface = () => {
     }
   };
 
-  const parseDemographics = (input: string) => {
-    const demographics: any = {};
-    const ageMatch = input.match(/(\d+)\s*(?:years?|yrs?|y\.o\.?|años?|ans?)/i);
-    if (ageMatch) demographics.age = parseInt(ageMatch[1]);
-    
-    const genderMatch = input.match(/\b(male|female|m|f|masculino|femenino|homme|femme)\b/i);
-    if (genderMatch) demographics.gender = genderMatch[1].toLowerCase();
-    
-    const weightMatch = input.match(/(\d+(?:\.\d+)?)\s*(?:kg|lbs?|pounds?|libras?)/i);
-    if (weightMatch) demographics.weight = parseFloat(weightMatch[1]);
-    
-    return demographics;
-  };
-
-  const generateMockAnalysis = () => {
-    const modelSources = [
-      {
-        name: 'Diabetes Prediction SystemV3',
-        url: 'https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3',
-        confidence: 94,
-        prediction: language === 'es' ? 'Alto Riesgo' : language === 'fr' ? 'Risque Élevé' : 'High Risk'
-      },
-      {
-        name: 'Advanced ML Diabetes Model',
-        url: 'https://github.com/JitKrNaskar/Diabetes-Prediction',
-        confidence: 87,
-        prediction: language === 'es' ? 'Riesgo Moderado' : language === 'fr' ? 'Risque Modéré' : 'Moderate Risk'
-      },
-      {
-        name: 'Comprehensive Prediction Model',
-        url: 'https://github.com/MYoussef885/Diabetes_Prediction',
-        confidence: 96,
-        prediction: language === 'es' ? 'Positivo' : language === 'fr' ? 'Positif' : 'Positive'
-      },
-      {
-        name: 'ML-Based Diabetes Detection',
-        url: 'https://github.com/aravinda-1402/Diabetes-Prediction-using-Machine-Learning',
-        confidence: 91,
-        prediction: language === 'es' ? 'Diabetes Tipo 2' : language === 'fr' ? 'Diabète Type 2' : 'Type 2 Diabetes'
-      },
-      {
-        name: 'Kaggle Diabetes Predictor',
-        url: 'https://www.kaggle.com/code/mvanshika/diabetes-prediction',
-        confidence: 89,
-        prediction: language === 'es' ? 'Alta Prioridad' : language === 'fr' ? 'Haute Priorité' : 'High Priority'
-      },
-      {
-        name: 'Advanced ML Implementation',
-        url: 'https://www.kaggle.com/code/isilguler/diabetes-prediction-with-machine-learning',
-        confidence: 88,
-        prediction: language === 'es' ? 'Riesgo Elevado' : language === 'fr' ? 'Risque Élevé' : 'Elevated Risk'
-      },
-      {
-        name: 'Optimized ML Model',
-        url: 'https://www.kaggle.com/code/ahmetcankaraolan/diabetes-prediction-using-machine-learning',
-        confidence: 90,
-        prediction: language === 'es' ? 'Diagnóstico Positivo' : language === 'fr' ? 'Diagnostic Positif' : 'Positive Diagnosis'
-      },
-      {
-        name: 'PyCaret Implementation',
-        url: 'https://www.analyticsvidhya.com/blog/2021/07/diabetes-prediction-with-pycaret/',
-        confidence: 93,
-        prediction: language === 'es' ? 'Síndrome Metabólico' : language === 'fr' ? 'Syndrome Métabolique' : 'Metabolic Syndrome'
-      },
-      {
-        name: 'Deep Learning Model',
-        url: 'https://github.com/jarred13/Deeplearning_and_Diabetes',
-        confidence: 95,
-        prediction: language === 'es' ? 'Diabetes Confirmada' : language === 'fr' ? 'Diabète Confirmé' : 'Diabetes Confirmed'
-      }
-    ];
-
-    const diagnosisTexts = {
-      es: 'Diabetes Tipo 2 con Síndrome Metabólico',
-      en: 'Type 2 Diabetes with Metabolic Syndrome',
-      fr: 'Diabète Type 2 avec Syndrome Métabolique'
-    };
-
-    const riskFactorsTexts = {
-      es: [
-        'Niveles elevados de glucosa',
-        'IMC >30',
-        'Antecedentes familiares de diabetes',
-        'Estilo de vida sedentario'
-      ],
-      en: [
-        'Elevated glucose levels',
-        'BMI >30',
-        'Family history of diabetes',
-        'Sedentary lifestyle'
-      ],
-      fr: [
-        'Niveaux de glucose élevés',
-        'IMC >30',
-        'Antécédents familiaux de diabète',
-        'Mode de vie sédentaire'
-      ]
-    };
-
-    const recommendationsTexts = {
-      es: [
-        'Monitoreo inmediato de glucosa',
-        'Consulta nutricional',
-        'Inicio de programa de ejercicio',
-        'Seguimiento en 2 semanas'
-      ],
-      en: [
-        'Immediate glucose monitoring',
-        'Nutritional consultation',
-        'Start exercise program',
-        'Follow-up in 2 weeks'
-      ],
-      fr: [
-        'Surveillance immédiate du glucose',
-        'Consultation nutritionnelle',
-        'Début du programme d\'exercice',
-        'Suivi dans 2 semaines'
-      ]
-    };
-
-    return {
-      diagnosis: diagnosisTexts[language],
-      confidence: 92,
-      riskFactors: riskFactorsTexts[language],
-      recommendations: recommendationsTexts[language],
-      modelResults: modelSources
-    };
-  };
-
-  const generateEmailReport = (analysisResults: any) => {
-    const emailTemplates = {
-      es: `
-REPORTE DE ANÁLISIS MÉDICO - MedAI Platform
-
-Estimado/a Doctor/a,
-
-Se ha completado el análisis predictivo para el paciente utilizando 9 modelos avanzados de Machine Learning.
-
-=== RESUMEN DEL ANÁLISIS ===
-Diagnóstico Principal: ${analysisResults.diagnosis}
-Nivel de Confianza: ${analysisResults.confidence}%
-
-=== SÍNTOMAS REPORTADOS ===
-${patientData.symptoms.join(', ')}
-
-=== RESULTADOS DE LABORATORIO ===
-${patientData.labResults.join(', ')}
-
-=== FACTORES DE RIESGO IDENTIFICADOS ===
-${analysisResults.riskFactors.map((factor: string, index: number) => `${index + 1}. ${factor}`).join('\n')}
-
-=== RECOMENDACIONES MÉDICAS ===
-${analysisResults.recommendations.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n')}
-
-=== RESULTADOS POR MODELO ===
-${analysisResults.modelResults.map((result: any, index: number) => 
-  `${index + 1}. ${result.name}: ${result.prediction} (${result.confidence}% confianza)`
-).join('\n')}
-
-Este reporte ha sido generado automáticamente por MedAI Platform.
-Para más información, visite: https://medai.platform
-
-Saludos cordiales,
-Sistema MedAI
-      `,
-      en: `
-MEDICAL ANALYSIS REPORT - MedAI Platform
-
-Dear Doctor,
-
-Predictive analysis for the patient has been completed using 9 advanced Machine Learning models.
-
-=== ANALYSIS SUMMARY ===
-Primary Diagnosis: ${analysisResults.diagnosis}
-Confidence Level: ${analysisResults.confidence}%
-
-=== REPORTED SYMPTOMS ===
-${patientData.symptoms.join(', ')}
-
-=== LABORATORY RESULTS ===
-${patientData.labResults.join(', ')}
-
-=== IDENTIFIED RISK FACTORS ===
-${analysisResults.riskFactors.map((factor: string, index: number) => `${index + 1}. ${factor}`).join('\n')}
-
-=== MEDICAL RECOMMENDATIONS ===
-${analysisResults.recommendations.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n')}
-
-=== RESULTS BY MODEL ===
-${analysisResults.modelResults.map((result: any, index: number) => 
-  `${index + 1}. ${result.name}: ${result.prediction} (${result.confidence}% confidence)`
-).join('\n')}
-
-This report has been automatically generated by MedAI Platform.
-For more information, visit: https://medai.platform
-
-Best regards,
-MedAI System
-      `,
-      fr: `
-RAPPORT D'ANALYSE MÉDICALE - Plateforme MedAI
-
-Cher Docteur,
-
-L'analyse prédictive pour le patient a été complétée en utilisant 9 modèles d'apprentissage automatique avancés.
-
-=== RÉSUMÉ DE L'ANALYSE ===
-Diagnostic Principal: ${analysisResults.diagnosis}
-Niveau de Confiance: ${analysisResults.confidence}%
-
-=== SYMPTÔMES RAPPORTÉS ===
-${patientData.symptoms.join(', ')}
-
-=== RÉSULTATS DE LABORATOIRE ===
-${patientData.labResults.join(', ')}
-
-=== FACTEURS DE RISQUE IDENTIFIÉS ===
-${analysisResults.riskFactors.map((factor: string, index: number) => `${index + 1}. ${factor}`).join('\n')}
-
-=== RECOMMANDATIONS MÉDICALES ===
-${analysisResults.recommendations.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n')}
-
-=== RÉSULTATS PAR MODÈLE ===
-${analysisResults.modelResults.map((result: any, index: number) => 
-  `${index + 1}. ${result.name}: ${result.prediction} (${result.confidence}% confiance)`
-).join('\n')}
-
-Ce rapport a été généré automatiquement par la Plateforme MedAI.
-Pour plus d'informations, visitez: https://medai.platform
-
-Cordialement,
-Système MedAI
-      `
-    };
-
-    return emailTemplates[language];
-  };
-
   const sendToN8n = async (analysisResults: any) => {
     if (!n8nWebhook) return;
 
@@ -381,9 +117,9 @@ Système MedAI
         }
       };
 
-      addMessage('system', systemMessages[language].sending);
+      addMessage('system', systemMessages[language as keyof typeof systemMessages].sending);
       
-      const emailReport = generateEmailReport(analysisResults);
+      const emailReport = generateEmailReport(analysisResults, patientData, language);
       
       const payload = {
         patientData,
@@ -403,11 +139,11 @@ Système MedAI
         body: JSON.stringify(payload)
       });
 
-      addMessage('system', systemMessages[language].success);
+      addMessage('system', systemMessages[language as keyof typeof systemMessages].success);
       
       toast({
         title: language === 'es' ? 'Éxito' : language === 'fr' ? 'Succès' : 'Success',
-        description: systemMessages[language].success,
+        description: systemMessages[language as keyof typeof systemMessages].success,
       });
       
     } catch (error) {
@@ -418,11 +154,11 @@ Système MedAI
         fr: 'Erreur lors de l\'envoi au flux n8n. Veuillez vérifier l\'URL du webhook.'
       };
       
-      addMessage('system', systemMessages[language]);
+      addMessage('system', systemMessages[language as keyof typeof systemMessages]);
       
       toast({
         title: language === 'es' ? 'Error' : 'Erreur',
-        description: systemMessages[language],
+        description: systemMessages[language as keyof typeof systemMessages],
         variant: "destructive",
       });
     }
@@ -439,98 +175,6 @@ Système MedAI
     ]);
     setPatientData({ symptoms: [], labResults: [], demographics: {} });
     setCurrentStep('symptoms');
-  };
-
-  const renderMessage = (message: Message) => {
-    const isUser = message.type === 'user';
-    const isSystem = message.type === 'system';
-    
-    return (
-      <div key={message.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
-        <div className={`flex items-start space-x-2 max-w-[80%] ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
-          <div className={`p-2 rounded-full ${
-            isUser ? 'bg-blue-600 text-white' : 
-            isSystem ? 'bg-gray-600 text-white' : 
-            'bg-green-600 text-white'
-          }`}>
-            {isUser ? <User className="h-4 w-4" /> : 
-             isSystem ? <Activity className="h-4 w-4" /> :
-             <Bot className="h-4 w-4" />}
-          </div>
-          <div className={`p-3 rounded-lg ${
-            isUser ? 'bg-blue-600 text-white' : 
-            isSystem ? 'bg-gray-100 text-gray-800 border-l-4 border-l-blue-500' :
-            'bg-white border border-gray-200'
-          }`}>
-            <div className="text-sm">{message.content}</div>
-            {message.data && (
-              <div className="mt-3 space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Brain className="h-4 w-4 text-blue-600" />
-                  <span className="font-semibold text-blue-600">
-                    {language === 'es' ? 'Diagnóstico' : language === 'fr' ? 'Diagnostic' : 'Diagnosis'}: {message.data.diagnosis}
-                  </span>
-                  <Badge variant="default" className="bg-green-600">
-                    {message.data.confidence}% {t('dashboard.confidence')}
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <div>
-                    <h4 className="font-semibold text-sm mb-2 flex items-center">
-                      <AlertCircle className="h-3 w-3 mr-1 text-red-500" />
-                      {language === 'es' ? 'Factores de Riesgo' : language === 'fr' ? 'Facteurs de Risque' : 'Risk Factors'}
-                    </h4>
-                    <ul className="text-xs space-y-1">
-                      {message.data.riskFactors.map((factor: string, index: number) => (
-                        <li key={index} className="flex items-center">
-                          <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
-                          {factor}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-sm mb-2 flex items-center">
-                      <CheckCircle className="h-3 w-3 mr-1 text-green-500" />
-                      {language === 'es' ? 'Recomendaciones' : language === 'fr' ? 'Recommandations' : 'Recommendations'}
-                    </h4>
-                    <ul className="text-xs space-y-1">
-                      {message.data.recommendations.map((rec: string, index: number) => (
-                        <li key={index} className="flex items-center">
-                          <span className="w-1 h-1 bg-green-500 rounded-full mr-2"></span>
-                          {rec}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <h4 className="font-semibold text-sm mb-2">
-                    {language === 'es' ? 'Resultados por Modelo' : language === 'fr' ? 'Résultats par Modèle' : 'Model Results'}
-                  </h4>
-                  <div className="space-y-1">
-                    {message.data.modelResults.map((result: any, index: number) => (
-                      <div key={index} className="flex items-center justify-between text-xs p-2 bg-gray-50 rounded">
-                        <span>{result.name}</span>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-gray-600">{result.prediction}</span>
-                          <Badge variant="secondary" className="text-xs">
-                            {result.confidence}%
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-            <div className="text-xs text-gray-500 mt-2">
-              {message.timestamp.toLocaleTimeString()}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   const performAnalysis = async () => {
@@ -579,23 +223,19 @@ Système MedAI
     };
     
     try {
-      // Simulate AI analysis process with multilingual messages
-      for (const message of analysisMessages[language]) {
+      for (const message of analysisMessages[language as keyof typeof analysisMessages]) {
         addMessage('system', message);
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
 
-      // Generate mock analysis results
-      const analysisResults = generateMockAnalysis();
+      const analysisResults = generateMockAnalysis(language);
       
       addMessage('bot', t('chat.analysis.result'), analysisResults);
       
-      // Send to n8n webhook if configured
       if (n8nWebhook) {
         await sendToN8n(analysisResults);
       }
       
-      // Reset for new consultation
       setCurrentStep('complete');
       
     } catch (error) {
@@ -605,7 +245,7 @@ Système MedAI
         en: 'Sorry, there was an error during analysis. Please try again.',
         fr: 'Désolé, il y a eu une erreur pendant l\'analyse. Veuillez réessayer.'
       };
-      addMessage('bot', errorMessages[language]);
+      addMessage('bot', errorMessages[language as keyof typeof errorMessages]);
     } finally {
       setIsAnalyzing(false);
     }
@@ -627,26 +267,14 @@ Système MedAI
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {/* n8n Webhook Configuration */}
-          <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-sm mb-2">{t('chat.webhook.title')}</h3>
-            <Input
-              placeholder={t('chat.webhook.placeholder')}
-              value={n8nWebhook}
-              onChange={(e) => setN8nWebhook(e.target.value)}
-              className="text-sm"
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              {t('chat.webhook.description')}
-            </p>
-          </div>
+          <WebhookConfig n8nWebhook={n8nWebhook} setN8nWebhook={setN8nWebhook} />
 
-          {/* Chat Messages */}
           <ScrollArea className="h-96 w-full border rounded-lg p-4" ref={scrollAreaRef}>
-            {messages.map(renderMessage)}
+            {messages.map(message => (
+              <MessageComponent key={message.id} message={message} />
+            ))}
           </ScrollArea>
 
-          {/* Input Area */}
           <div className="flex space-x-2 mt-4">
             <Textarea
               placeholder={
@@ -687,26 +315,7 @@ Système MedAI
             </div>
           </div>
 
-          {/* Current Progress */}
-          <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-            <div className="flex items-center justify-between text-sm">
-              <span className="font-medium">{t('chat.progress')}</span>
-              <div className="flex space-x-2">
-                <Badge variant={currentStep === 'symptoms' ? 'default' : 'secondary'}>
-                  1. {t('chat.symptoms')}
-                </Badge>
-                <Badge variant={currentStep === 'labResults' ? 'default' : 'secondary'}>
-                  2. {t('chat.labResults')}
-                </Badge>
-                <Badge variant={currentStep === 'demographics' ? 'default' : 'secondary'}>
-                  3. {t('chat.demographics')}
-                </Badge>
-                <Badge variant={currentStep === 'analysis' ? 'default' : 'secondary'}>
-                  4. {t('chat.analysis')}
-                </Badge>
-              </div>
-            </div>
-          </div>
+          <ProgressIndicator currentStep={currentStep} />
         </CardContent>
       </Card>
     </div>
