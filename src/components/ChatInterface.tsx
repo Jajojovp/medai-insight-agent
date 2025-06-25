@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,6 +17,7 @@ import {
   Loader2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Message {
   id: string;
@@ -39,11 +39,12 @@ interface PatientData {
 }
 
 const ChatInterface = () => {
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       type: 'bot',
-      content: "Hello! I'm your AI medical assistant. I'll help you analyze patient symptoms and lab results using advanced ML models. Let's start with the patient's primary symptoms.",
+      content: "¡Hola! Soy tu asistente médico de IA. Te ayudaré a analizar síntomas y resultados de laboratorio de pacientes usando 9 modelos avanzados de ML. Comencemos con los síntomas principales del paciente.",
       timestamp: new Date()
     }
   ]);
@@ -133,84 +134,80 @@ const ChatInterface = () => {
     return demographics;
   };
 
-  const performAnalysis = async () => {
-    setIsAnalyzing(true);
-    
-    try {
-      // Simulate AI analysis process
-      addMessage('system', 'Initializing AI analysis...');
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      addMessage('system', 'Running Model 1: Diabetes Risk Assessment...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Running Model 2: Cardiovascular Analysis...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Running Model 3: Metabolic Syndrome Detection...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Running Model 4: Symptom Pattern Recognition...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Running Model 5: Comprehensive Risk Profiling...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      addMessage('system', 'Performing meta-analysis with OpenAI...');
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Generate mock analysis results
-      const analysisResults = generateMockAnalysis();
-      
-      addMessage('bot', 'Analysis complete! Here are the results:', analysisResults);
-      
-      // Send to n8n webhook if configured
-      if (n8nWebhook) {
-        await sendToN8n(analysisResults);
-      }
-      
-      // Reset for new consultation
-      setCurrentStep('complete');
-      
-    } catch (error) {
-      console.error('Analysis error:', error);
-      addMessage('bot', 'Sorry, there was an error during analysis. Please try again.');
-    } finally {
-      setIsAnalyzing(false);
-    }
-  };
-
   const generateMockAnalysis = () => {
     const modelSources = [
-      'https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3',
-      'https://github.com/JitKrNaskar/Diabetes-Prediction',
-      'https://github.com/MYoussef885/Diabetes_Prediction',
-      'https://github.com/aravinda-1402/Diabetes-Prediction-using-Machine-Learning',
-      'https://www.kaggle.com/code/mvanshika/diabetes-prediction'
+      {
+        name: 'Diabetes Prediction SystemV3',
+        url: 'https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3',
+        confidence: 94,
+        prediction: 'Alto Riesgo'
+      },
+      {
+        name: 'Advanced ML Diabetes Model',
+        url: 'https://github.com/JitKrNaskar/Diabetes-Prediction',
+        confidence: 87,
+        prediction: 'Riesgo Moderado'
+      },
+      {
+        name: 'Comprehensive Prediction Model',
+        url: 'https://github.com/MYoussef885/Diabetes_Prediction',
+        confidence: 96,
+        prediction: 'Positivo'
+      },
+      {
+        name: 'ML-Based Diabetes Detection',
+        url: 'https://github.com/aravinda-1402/Diabetes-Prediction-using-Machine-Learning',
+        confidence: 91,
+        prediction: 'Diabetes Tipo 2'
+      },
+      {
+        name: 'Kaggle Diabetes Predictor',
+        url: 'https://www.kaggle.com/code/mvanshika/diabetes-prediction',
+        confidence: 89,
+        prediction: 'Alta Prioridad'
+      },
+      {
+        name: 'Advanced ML Implementation',
+        url: 'https://www.kaggle.com/code/isilguler/diabetes-prediction-with-machine-learning',
+        confidence: 88,
+        prediction: 'Riesgo Elevado'
+      },
+      {
+        name: 'Optimized ML Model',
+        url: 'https://www.kaggle.com/code/ahmetcankaraolan/diabetes-prediction-using-machine-learning',
+        confidence: 90,
+        prediction: 'Diagnóstico Positivo'
+      },
+      {
+        name: 'PyCaret Implementation',
+        url: 'https://www.analyticsvidhya.com/blog/2021/07/diabetes-prediction-with-pycaret/',
+        confidence: 93,
+        prediction: 'Síndrome Metabólico'
+      },
+      {
+        name: 'Deep Learning Model',
+        url: 'https://github.com/jarred13/Deeplearning_and_Diabetes',
+        confidence: 95,
+        prediction: 'Diabetes Confirmada'
+      }
     ];
 
     return {
-      diagnosis: 'Type 2 Diabetes with Metabolic Syndrome',
+      diagnosis: 'Diabetes Tipo 2 con Síndrome Metabólico',
       confidence: 92,
       riskFactors: [
-        'Elevated glucose levels',
-        'BMI >30',
-        'Family history of diabetes',
-        'Sedentary lifestyle'
+        'Niveles elevados de glucosa',
+        'IMC >30',
+        'Antecedentes familiares de diabetes',
+        'Estilo de vida sedentario'
       ],
       recommendations: [
-        'Immediate glucose monitoring',
-        'Dietary consultation',
-        'Exercise program initiation',
-        'Follow-up in 2 weeks'
+        'Monitoreo inmediato de glucosa',
+        'Consulta nutricional',
+        'Inicio de programa de ejercicio',
+        'Seguimiento en 2 semanas'
       ],
-      modelResults: [
-        { model: 'Diabetes Prediction SystemV3', confidence: 94, prediction: 'High Risk', source: modelSources[0] },
-        { model: 'Advanced ML Diabetes Model', confidence: 87, prediction: 'Moderate Risk', source: modelSources[1] },
-        { model: 'Comprehensive Prediction Model', confidence: 96, prediction: 'Positive', source: modelSources[2] },
-        { model: 'ML-Based Diabetes Detection', confidence: 91, prediction: 'Diabetes Type 2', source: modelSources[3] },
-        { model: 'Kaggle Diabetes Predictor', confidence: 89, prediction: 'High Priority', source: modelSources[4] }
-      ]
+      modelResults: modelSources
     };
   };
 
@@ -356,17 +353,76 @@ const ChatInterface = () => {
     );
   };
 
+  const performAnalysis = async () => {
+    setIsAnalyzing(true);
+    
+    try {
+      // Simulate AI analysis process
+      addMessage('system', 'Inicializando análisis de IA...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      addMessage('system', 'Ejecutando Modelo 1: Evaluación de Riesgo de Diabetes...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addMessage('system', 'Ejecutando Modelo 2: Análisis Cardiovascular...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addMessage('system', 'Ejecutando Modelo 3: Detección de Síndrome Metabólico...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addMessage('system', 'Ejecutando Modelo 4: Reconocimiento de Patrones de Síntomas...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addMessage('system', 'Ejecutando Modelo 5: Perfilado Integral de Riesgo...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      addMessage('system', 'Ejecutando Modelo 6: Análisis ML Avanzado...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      addMessage('system', 'Ejecutando Modelo 7: Modelo ML Optimizado...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      addMessage('system', 'Ejecutando Modelo 8: Implementación PyCaret...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      addMessage('system', 'Ejecutando Modelo 9: Modelo de Aprendizaje Profundo...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addMessage('system', 'Realizando meta-análisis con OpenAI...');
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Generate mock analysis results
+      const analysisResults = generateMockAnalysis();
+      
+      addMessage('bot', '¡Análisis completado! Aquí están los resultados:', analysisResults);
+      
+      // Send to n8n webhook if configured
+      if (n8nWebhook) {
+        await sendToN8n(analysisResults);
+      }
+      
+      // Reset for new consultation
+      setCurrentStep('complete');
+      
+    } catch (error) {
+      console.error('Analysis error:', error);
+      addMessage('bot', 'Lo siento, hubo un error durante el análisis. Por favor, intenta nuevamente.');
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Brain className="h-5 w-5 text-blue-600" />
-            <span>AI Medical Consultation</span>
+            <span>{t('chat.title')}</span>
             {isAnalyzing && (
               <Badge variant="default" className="bg-blue-600 animate-pulse">
                 <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-                Analyzing...
+                {t('chat.analyzing')}
               </Badge>
             )}
           </CardTitle>
@@ -374,15 +430,15 @@ const ChatInterface = () => {
         <CardContent>
           {/* n8n Webhook Configuration */}
           <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-sm mb-2">Configuración Webhook n8n</h3>
+            <h3 className="font-semibold text-sm mb-2">{t('chat.webhook.title')}</h3>
             <Input
-              placeholder="Ingresa tu URL de webhook n8n para reportes automáticos"
+              placeholder={t('chat.webhook.placeholder')}
               value={n8nWebhook}
               onChange={(e) => setN8nWebhook(e.target.value)}
               className="text-sm"
             />
             <p className="text-xs text-gray-500 mt-1">
-              Los reportes PDF se generarán automáticamente y se enviarán por email
+              {t('chat.webhook.description')}
             </p>
           </div>
 
@@ -395,10 +451,10 @@ const ChatInterface = () => {
           <div className="flex space-x-2 mt-4">
             <Textarea
               placeholder={
-                currentStep === 'symptoms' ? "Describe los síntomas del paciente (separados por comas)..." :
-                currentStep === 'labResults' ? "Ingresa los resultados de laboratorio (separados por comas)..." :
-                currentStep === 'demographics' ? "Ingresa datos demográficos del paciente o escribe 'skip'..." :
-                "Análisis completo. Inicia una nueva consulta."
+                currentStep === 'symptoms' ? t('chat.placeholder.symptoms') :
+                currentStep === 'labResults' ? t('chat.placeholder.labResults') :
+                currentStep === 'demographics' ? t('chat.placeholder.demographics') :
+                t('chat.placeholder.complete')
               }
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -426,7 +482,7 @@ const ChatInterface = () => {
                   variant="outline"
                   className="text-xs"
                 >
-                  Nuevo Caso
+                  {t('chat.newCase')}
                 </Button>
               )}
             </div>
@@ -435,19 +491,19 @@ const ChatInterface = () => {
           {/* Current Progress */}
           <div className="mt-4 p-3 bg-blue-50 rounded-lg">
             <div className="flex items-center justify-between text-sm">
-              <span className="font-medium">Progreso:</span>
+              <span className="font-medium">{t('chat.progress')}</span>
               <div className="flex space-x-2">
                 <Badge variant={currentStep === 'symptoms' ? 'default' : 'secondary'}>
-                  1. Síntomas
+                  1. {t('chat.symptoms')}
                 </Badge>
                 <Badge variant={currentStep === 'labResults' ? 'default' : 'secondary'}>
-                  2. Laboratorios
+                  2. {t('chat.labResults')}
                 </Badge>
                 <Badge variant={currentStep === 'demographics' ? 'default' : 'secondary'}>
-                  3. Demografía
+                  3. {t('chat.demographics')}
                 </Badge>
                 <Badge variant={currentStep === 'analysis' ? 'default' : 'secondary'}>
-                  4. Análisis
+                  4. {t('chat.analysis')}
                 </Badge>
               </div>
             </div>

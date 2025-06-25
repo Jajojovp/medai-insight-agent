@@ -10,11 +10,14 @@ import {
   CheckCircle,
   AlertTriangle
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const DashboardStats = () => {
+  const { t } = useLanguage();
+
   const stats = [
     {
-      title: "Total Consultations",
+      title: t('dashboard.totalConsultations'),
       value: "1,247",
       change: "+12%",
       changeType: "positive",
@@ -22,7 +25,7 @@ const DashboardStats = () => {
       color: "blue"
     },
     {
-      title: "Active Patients",
+      title: t('dashboard.activePatients'),
       value: "892",
       change: "+8%",
       changeType: "positive",
@@ -30,7 +33,7 @@ const DashboardStats = () => {
       color: "green"
     },
     {
-      title: "Reports Generated",
+      title: t('dashboard.reportsGenerated'),
       value: "1,156",
       change: "+15%",
       changeType: "positive",
@@ -38,7 +41,7 @@ const DashboardStats = () => {
       color: "purple"
     },
     {
-      title: "Accuracy Rate",
+      title: t('dashboard.accuracyRate'),
       value: "94.7%",
       change: "+2.1%",
       changeType: "positive",
@@ -50,27 +53,27 @@ const DashboardStats = () => {
   const recentActivity = [
     {
       id: 1,
-      patient: "Patient #1247",
-      diagnosis: "Type 2 Diabetes",
+      patient: "Paciente #1247",
+      diagnosis: "Diabetes Tipo 2",
       confidence: 92,
       status: "completed",
-      time: "2 hours ago"
+      time: "hace 2 horas"
     },
     {
       id: 2,
-      patient: "Patient #1246",
-      diagnosis: "Hypertension",
+      patient: "Paciente #1246",
+      diagnosis: "Hipertensión",
       confidence: 88,
       status: "pending",
-      time: "4 hours ago"
+      time: "hace 4 horas"
     },
     {
       id: 3,
-      patient: "Patient #1245",
-      diagnosis: "Metabolic Syndrome",
+      patient: "Paciente #1245",
+      diagnosis: "Síndrome Metabólico",
       confidence: 95,
       status: "completed",
-      time: "6 hours ago"
+      time: "hace 6 horas"
     }
   ];
 
@@ -105,7 +108,7 @@ const DashboardStats = () => {
                 <div className="flex items-center space-x-1 text-sm">
                   <TrendingUp className="h-3 w-3 text-green-600" />
                   <span className="text-green-600">{stat.change}</span>
-                  <span className="text-gray-500">from last month</span>
+                  <span className="text-gray-500">{t('dashboard.fromLastMonth')}</span>
                 </div>
               </CardContent>
             </Card>
@@ -118,7 +121,7 @@ const DashboardStats = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Clock className="h-5 w-5" />
-            <span>Recent Activity</span>
+            <span>{t('dashboard.recentActivity')}</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -147,7 +150,7 @@ const DashboardStats = () => {
                     variant={activity.confidence >= 90 ? "default" : "secondary"}
                     className={activity.confidence >= 90 ? "bg-green-600" : ""}
                   >
-                    {activity.confidence}% confidence
+                    {activity.confidence}% {t('dashboard.confidence')}
                   </Badge>
                   <div className="text-sm text-gray-500 mt-1">{activity.time}</div>
                 </div>

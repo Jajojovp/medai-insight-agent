@@ -1,18 +1,22 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Brain, 
   MessageSquare, 
   BarChart3, 
-  FileText, 
   BookOpen, 
   Settings, 
   User,
   Menu,
-  X
+  X,
+  Globe,
+  Info
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface NavigationProps {
   activeView: string;
@@ -22,13 +26,13 @@ interface NavigationProps {
 const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, logout } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
-    { id: 'chat', label: 'AI Chat', icon: MessageSquare },
-    { id: 'cases', label: 'Cases', icon: FileText },
-    { id: 'blog', label: 'Research', icon: BookOpen },
-    { id: 'admin', label: 'Admin', icon: Settings },
+    { id: 'dashboard', label: t('nav.dashboard'), icon: BarChart3 },
+    { id: 'chat', label: t('nav.chat'), icon: MessageSquare },
+    { id: 'info', label: t('nav.info'), icon: Info },
+    { id: 'admin', label: t('nav.admin'), icon: Settings },
   ];
 
   const handleLogout = () => {
@@ -72,12 +76,27 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
 
           {/* User Menu */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Language Selector */}
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger className="w-32">
+                <div className="flex items-center space-x-2">
+                  <Globe className="h-4 w-4" />
+                  <SelectValue />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="es">{t('language.spanish')}</SelectItem>
+                <SelectItem value="en">{t('language.english')}</SelectItem>
+                <SelectItem value="fr">{t('language.french')}</SelectItem>
+              </SelectContent>
+            </Select>
+
             <div className="text-sm text-gray-600">
-              Bienvenido, <span className="font-medium">{user?.name}</span>
+              {t('nav.welcome')}, <span className="font-medium">{user?.name}</span>
             </div>
             <Button variant="ghost" size="sm" onClick={handleLogout}>
               <User className="h-4 w-4 mr-2" />
-              Cerrar Sesión
+              {t('nav.logout')}
             </Button>
           </div>
 
@@ -127,7 +146,7 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
                   onClick={handleLogout}
                 >
                   <User className="h-4 w-4 mr-2" />
-                  Cerrar Sesión
+                  {t('nav.logout')}
                 </Button>
               </div>
             </div>
