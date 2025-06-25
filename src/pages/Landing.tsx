@@ -184,25 +184,25 @@ const Landing = () => {
   ];
 
   const modelSources = [
-    "GitHub: Diabetes-Prediction-SystemV3",
-    "GitHub: Advanced ML Diabetes Models", 
-    "GitHub: Comprehensive Diabetes Prediction",
-    "GitHub: ML-Based Diabetes Detection",
-    "Kaggle: Breast Cancer Prediction (WDBC)",
-    "Kaggle: Breast Cancer ML Analysis",
-    "GitHub: Breast-Cancer-Prediction-ANN",
-    "GitHub: Prostate-Cancer-Prediction",
-    "Kaggle: Prostate Cancer Risk Analysis",
-    "GitHub: Heart-Disease-Prediction-ML",
-    "Kaggle: Heart Disease 98% Accuracy",
-    "GitHub: Stroke-Prediction-ML",
-    "Kaggle: Stroke Prediction Ensemble",
-    "GitHub: Chronic-Kidney-Disease-Prediction",
-    "Kaggle: CKD Prediction Analysis",
-    "GitHub: Pancreatic-Cancer-Prediction-ML",
-    "Kaggle: Pancreatic Cancer Risk Prediction",
-    "Analytics Vidhya: PyCaret Implementation",
-    "Deep Learning & Medical Research Models"
+    "GitHub: Diabetes",
+    "Kaggle: Diabetes", 
+    "GitHub: Diabetes ML",
+    "Analytics: Diabetes",
+    "Kaggle: Breast Cancer",
+    "GitHub: Breast Cancer",
+    "Kaggle: Breast Cancer ML",
+    "GitHub: Prostate Cancer",
+    "Kaggle: Prostate Cancer",
+    "GitHub: Heart Disease",
+    "Kaggle: Heart Disease",
+    "GitHub: Stroke",
+    "Kaggle: Stroke",
+    "GitHub: Kidney Disease",
+    "Kaggle: Kidney Disease",
+    "GitHub: Pancreatic Cancer",
+    "Kaggle: Pancreatic Cancer",
+    "Analytics: PyCaret",
+    "Research: Medical Models"
   ];
 
   const painPoints = [

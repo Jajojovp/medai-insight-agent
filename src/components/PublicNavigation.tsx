@@ -44,8 +44,8 @@ const PublicNavigation = () => {
             </Link>
           </div>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
+          {/* Right Side Actions - Desktop Only */}
+          <div className="hidden md:flex items-center space-x-4">
             {/* Language Selector */}
             <Select value={language} onValueChange={setLanguage}>
               <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
@@ -68,15 +68,29 @@ const PublicNavigation = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden rounded-2xl"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          {/* Mobile Menu Button and Language Selector */}
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Language Selector for Mobile */}
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger className="w-20 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
+                <Globe className="h-4 w-4" />
+              </SelectTrigger>
+              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl">
+                <SelectItem value="es">{t('language.spanish')}</SelectItem>
+                <SelectItem value="en">{t('language.english')}</SelectItem>
+                <SelectItem value="fr">{t('language.french')}</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              className="rounded-2xl"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
