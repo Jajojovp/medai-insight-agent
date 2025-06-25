@@ -16,6 +16,15 @@ const PublicNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
+  const getLanguageAbbreviation = (lang: string) => {
+    switch (lang) {
+      case 'es': return 'ES';
+      case 'en': return 'EN';
+      case 'fr': return 'FR';
+      default: return 'ES';
+    }
+  };
+
   return (
     <nav className="backdrop-blur-md bg-white/10 shadow-sm border-b border-white/20 sticky top-0 z-50 rounded-b-3xl mx-4">
       <div className="container mx-auto px-4">
@@ -68,20 +77,8 @@ const PublicNavigation = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button and Language Selector */}
-          <div className="md:hidden flex items-center space-x-2">
-            {/* Language Selector for Mobile */}
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-20 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
-                <Globe className="h-4 w-4" />
-              </SelectTrigger>
-              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-[60]">
-                <SelectItem value="es">{t('language.spanish')}</SelectItem>
-                <SelectItem value="en">{t('language.english')}</SelectItem>
-                <SelectItem value="fr">{t('language.french')}</SelectItem>
-              </SelectContent>
-            </Select>
-
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
             <Button
               variant="ghost"
               size="sm"
@@ -120,6 +117,30 @@ const PublicNavigation = () => {
               >
                 {t('nav.contact')}
               </Link>
+              
+              {/* Language Selector for Mobile */}
+              <div className="border-t border-gray-200 pt-3">
+                <div className="px-4 py-2 text-sm text-gray-500 font-medium">
+                  {t('nav.language') || 'Idioma'}
+                </div>
+                <Select value={language} onValueChange={(value) => {
+                  setLanguage(value);
+                  setMobileMenuOpen(false);
+                }}>
+                  <SelectTrigger className="w-full backdrop-blur-sm bg-white/20 border-white/30 rounded-xl">
+                    <div className="flex items-center space-x-2">
+                      <Globe className="h-4 w-4" />
+                      <span>{getLanguageAbbreviation(language)}</span>
+                    </div>
+                  </SelectTrigger>
+                  <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-[60]">
+                    <SelectItem value="es">ES</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                    <SelectItem value="fr">FR</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div className="border-t border-gray-200 pt-3">
                 <Link 
                   to="/" 
