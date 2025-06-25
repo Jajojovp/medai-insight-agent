@@ -7,10 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
   CheckCircle,
   Brain,
   CreditCard,
@@ -294,98 +290,36 @@ const Contact = () => {
             </CardContent>
           </Card>
 
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  {language === 'en' ? "Contact Information" :
-                   language === 'fr' ? "Informations de Contact" :
-                   "Información de Contacto"}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-blue-600" />
-                  <div>
-                    <div className="font-medium">Email</div>
-                    <div className="text-gray-600">contact@medai.com</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-blue-600" />
-                  <div>
-                    <div className="font-medium">
-                      {language === 'en' ? "Phone" :
-                       language === 'fr' ? "Téléphone" :
-                       "Teléfono"}
-                    </div>
-                    <div className="text-gray-600">+1 (555) 123-4567</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-blue-600" />
-                  <div>
-                    <div className="font-medium">
-                      {language === 'en' ? "Office" :
-                       language === 'fr' ? "Bureau" :
-                       "Oficina"}
-                    </div>
-                    <div className="text-gray-600">
-                      {language === 'en' ? "Mexico City, Mexico" :
-                       language === 'fr' ? "Mexico, Mexique" :
-                       "Ciudad de México, México"}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-blue-600" />
-                  <div>
-                    <div className="font-medium">
-                      {language === 'en' ? "Hours" :
-                       language === 'fr' ? "Horaires" :
-                       "Horario"}
-                    </div>
-                    <div className="text-gray-600">
-                      {language === 'en' ? "Mon-Fri 9:00-18:00" :
-                       language === 'fr' ? "Lun-Ven 9:00-18:00" :
-                       "Lun-Vie 9:00-18:00"}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-green-50 border-green-200">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="font-semibold text-green-800">
-                    {language === 'en' ? "Free Demo Includes:" :
-                     language === 'fr' ? "La Démo Gratuite Comprend :" :
-                     "Demo Gratuita Incluye:"}
-                  </span>
-                </div>
-                <ul className="space-y-2 text-sm text-green-700">
-                  <li>• {language === 'en' ? "Analysis of real cases from your hospital" :
-                           language === 'fr' ? "Analyse de cas réels de votre hôpital" :
-                           "Análisis de casos reales de tu hospital"}</li>
-                  <li>• {language === 'en' ? "Personalized configuration" :
-                           language === 'fr' ? "Configuration personnalisée" :
-                           "Configuración personalizada"}</li>
-                  <li>• {language === 'en' ? "Integration with existing systems" :
-                           language === 'fr' ? "Intégration avec les systèmes existants" :
-                           "Integración con sistemas existentes"}</li>
-                  <li>• {language === 'en' ? "Medical team training" :
-                           language === 'fr' ? "Formation de l'équipe médicale" :
-                           "Entrenamiento del equipo médico"}</li>
-                  <li>• {language === 'en' ? "30-day free trial" :
-                           language === 'fr' ? "Essai gratuit de 30 jours" :
-                           "30 días de prueba gratuita"}</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+          {/* Demo Information */}
+          <Card className="bg-green-50 border-green-200">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-2 mb-3">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span className="font-semibold text-green-800">
+                  {language === 'en' ? "Free Demo Includes:" :
+                   language === 'fr' ? "La Démo Gratuite Comprend :" :
+                   "Demo Gratuita Incluye:"}
+                </span>
+              </div>
+              <ul className="space-y-2 text-sm text-green-700">
+                <li>• {language === 'en' ? "Analysis of real cases from your hospital" :
+                         language === 'fr' ? "Analyse de cas réels de votre hôpital" :
+                         "Análisis de casos reales de tu hospital"}</li>
+                <li>• {language === 'en' ? "Personalized configuration" :
+                         language === 'fr' ? "Configuration personnalisée" :
+                         "Configuración personalizada"}</li>
+                <li>• {language === 'en' ? "Integration with existing systems" :
+                         language === 'fr' ? "Intégration avec les systèmes existants" :
+                         "Integración con sistemas existentes"}</li>
+                <li>• {language === 'en' ? "Medical team training" :
+                         language === 'fr' ? "Formation de l'équipe médicale" :
+                         "Entrenamiento del equipo médico"}</li>
+                <li>• {language === 'en' ? "7-day free trial" :
+                         language === 'fr' ? "Essai gratuit de 7 jours" :
+                         "7 días de prueba gratuita"}</li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Pricing Plans */}

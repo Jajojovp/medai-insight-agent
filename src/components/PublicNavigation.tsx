@@ -7,7 +7,8 @@ import {
   Brain, 
   Menu,
   X,
-  Globe
+  Globe,
+  Home
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -40,6 +41,10 @@ const PublicNavigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
+            <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors flex items-center space-x-1">
+              <Home className="h-4 w-4" />
+              <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
+            </Link>
             <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">
               {t('nav.blog')}
             </Link>
@@ -70,7 +75,7 @@ const PublicNavigation = () => {
               </SelectContent>
             </Select>
             
-            <Link to="/">
+            <Link to="/dashboard">
               <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl">
                 {t('auth.professionalAccess')}
               </Button>
@@ -94,6 +99,14 @@ const PublicNavigation = () => {
         {mobileMenuOpen && (
           <div className="md:hidden absolute left-4 right-4 top-full mt-2 backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl z-[55]">
             <div className="p-4 space-y-3">
+              <Link 
+                to="/" 
+                className="flex items-center space-x-2 px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Home className="h-4 w-4" />
+                <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
+              </Link>
               <Link 
                 to="/blog" 
                 className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
@@ -143,7 +156,7 @@ const PublicNavigation = () => {
 
               <div className="border-t border-gray-200 pt-3">
                 <Link 
-                  to="/" 
+                  to="/dashboard" 
                   className="block w-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >
