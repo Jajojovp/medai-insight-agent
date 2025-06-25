@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Activity, Users, Brain, Kidney, Zap, Droplets } from "lucide-react";
+import { Heart, Activity, Users, Brain, Shield, Zap, Droplets } from "lucide-react";
 import { DiseaseType, DiseaseInfo } from "@/types/chat";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -157,7 +157,7 @@ const DiseaseSelector = ({ onSelectDisease }: DiseaseSelectorProps) => {
       case 'prostate-cancer': return <Activity {...iconProps} />;
       case 'heart-disease': return <Heart {...iconProps} />;
       case 'stroke': return <Brain {...iconProps} />;
-      case 'kidney-disease': return <Kidney {...iconProps} />;
+      case 'kidney-disease': return <Shield {...iconProps} />;
       case 'pancreatic-cancer': return <Zap {...iconProps} />;
       default: return <Activity {...iconProps} />;
     }
