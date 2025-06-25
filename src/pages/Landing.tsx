@@ -260,8 +260,8 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white/30 backdrop-blur-sm">
       {/* Header */}
-      <nav className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-2xl relative">
+      <nav className="container mx-auto px-4 py-6 relative">
+        <div className="flex items-center justify-between backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-2xl">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-blue-100/20 rounded-2xl backdrop-blur-sm">
               <Brain className="h-8 w-8 text-blue-600" />
@@ -317,17 +317,19 @@ const Landing = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="rounded-2xl p-2"
+                className="rounded-2xl p-2 z-50 relative"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           </div>
+        </div>
 
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <div className="md:hidden absolute left-0 right-0 top-full mt-2 backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl z-[55] mx-4">
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute left-4 right-4 top-full mt-2 z-[100]">
+            <div className="backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl">
               <div className="p-4 space-y-3">
                 <Link 
                   to="/blog" 
@@ -349,25 +351,27 @@ const Landing = () => {
                   <div className="px-4 py-2 text-sm text-gray-500 font-medium">
                     {language === 'es' ? 'Idioma' : language === 'en' ? 'Language' : 'Langue'}
                   </div>
-                  <Select value={language} onValueChange={(value) => {
-                    setLanguage(value);
-                    setMobileMenuOpen(false);
-                  }}>
-                    <SelectTrigger className="w-full backdrop-blur-sm bg-white/20 border-white/30 rounded-xl">
-                      <div className="flex items-center space-x-2">
-                        <Globe className="h-4 w-4" />
-                        <span>{getLanguageAbbreviation(language)}</span>
-                      </div>
-                    </SelectTrigger>
-                    <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-[60]">
-                      <SelectItem value="es">ES</SelectItem>
-                      <SelectItem value="en">EN</SelectItem>
-                      <SelectItem value="fr">FR</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <div className="px-4">
+                    <Select value={language} onValueChange={(value) => {
+                      setLanguage(value);
+                      setMobileMenuOpen(false);
+                    }}>
+                      <SelectTrigger className="w-full backdrop-blur-sm bg-white/80 border-white/50 rounded-xl">
+                        <div className="flex items-center space-x-2">
+                          <Globe className="h-4 w-4" />
+                          <span>{getLanguageAbbreviation(language)}</span>
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent className="backdrop-blur-md bg-white/95 border-white/50 rounded-2xl z-[150]">
+                        <SelectItem value="es">ES</SelectItem>
+                        <SelectItem value="en">EN</SelectItem>
+                        <SelectItem value="fr">FR</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-3">
+                <div className="border-t border-gray-200 pt-3 px-4">
                   <Button 
                     className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl"
                     onClick={() => {
@@ -380,15 +384,15 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-20">
         <div className="text-center max-w-6xl mx-auto backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-16 shadow-2xl">
           <div className="space-y-8">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
               {language === 'es' ? 'Análisis Predictivo Multi-Enfermedad con IA' :
                language === 'fr' ? 'Analyse Prédictive Multi-Maladies avec IA' :
                'Multi-Disease Predictive Analysis with AI'}
