@@ -54,7 +54,7 @@ const PublicNavigation = () => {
                   <SelectValue />
                 </div>
               </SelectTrigger>
-              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl">
+              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-50">
                 <SelectItem value="es">{t('language.spanish')}</SelectItem>
                 <SelectItem value="en">{t('language.english')}</SelectItem>
                 <SelectItem value="fr">{t('language.french')}</SelectItem>
@@ -75,7 +75,7 @@ const PublicNavigation = () => {
               <SelectTrigger className="w-20 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
                 <Globe className="h-4 w-4" />
               </SelectTrigger>
-              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-50">
+              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-[60]">
                 <SelectItem value="es">{t('language.spanish')}</SelectItem>
                 <SelectItem value="en">{t('language.english')}</SelectItem>
                 <SelectItem value="fr">{t('language.french')}</SelectItem>
@@ -85,7 +85,7 @@ const PublicNavigation = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="rounded-2xl"
+              className="rounded-2xl p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -93,20 +93,20 @@ const PublicNavigation = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Positioned absolutely for better visibility */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/20 backdrop-blur-sm bg-white/10 rounded-2xl mt-2">
-            <div className="space-y-2">
+          <div className="md:hidden absolute left-4 right-4 top-full mt-2 backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl z-[55]">
+            <div className="p-4 space-y-3">
               <Link 
                 to="/blog" 
-                className="block px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors rounded-2xl hover:bg-white/20"
+                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t('nav.blog')}
               </Link>
               <Link 
                 to="/health-recommendations" 
-                className="block px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors rounded-2xl hover:bg-white/20"
+                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {language === 'en' ? "Health Tips" : 
@@ -115,11 +115,22 @@ const PublicNavigation = () => {
               </Link>
               <Link 
                 to="/contact" 
-                className="block px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors rounded-2xl hover:bg-white/20"
+                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t('nav.contact')}
               </Link>
+              <div className="border-t border-gray-200 pt-3">
+                <Link 
+                  to="/" 
+                  className="block w-full"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl">
+                    {t('auth.professionalAccess')}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
