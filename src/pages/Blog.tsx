@@ -1,9 +1,9 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, User, Clock } from "lucide-react";
+import { Calendar, User, Clock, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import PublicNavigation from "@/components/PublicNavigation";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const { t, language } = useLanguage();
@@ -127,39 +127,75 @@ const Blog = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {blogPosts.map((post) => (
-            <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
-              <div className="aspect-video bg-gray-200 rounded-t-lg overflow-hidden">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary">{post.category}</Badge>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {post.readTime}
-                  </div>
+            <Link key={post.id} to={`/blog/${post.id}`}>
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer overflow-hidden h-full">
+                <div className="aspect-video bg-gray-200 rounded-t-lg overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <CardTitle className="text-xl mb-2 hover:text-blue-600 transition-colors">{post.title}</CardTitle>
-                <p className="text-gray-600 text-sm line-clamp-3">{post.excerpt}</p>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center">
-                    <User className="h-4 w-4 mr-1" />
-                    {post.author}
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary">{post.category}</Badge>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <Clock className="h-4 w-4 mr-1" />
+                      {post.readTime}
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    {post.date}
+                  <CardTitle className="text-xl mb-2 hover:text-blue-600 transition-colors">{post.title}</CardTitle>
+                  <p className="text-gray-600 text-sm line-clamp-3">{post.excerpt}</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center justify-between text-sm text-gray-500">
+                    <div className="flex items-center">
+                      <User className="h-4 w-4 mr-1" />
+                      {post.author}
+                    </div>
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-1" />
+                      {post.date}
+                    </div>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+
+        {/* Health Recommendations Section */}
+        <div className="mt-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {language === 'en' ? "Health & Wellness" : 
+               language === 'fr' ? "Santé & Bien-être" : 
+               "Salud y Bienestar"}
+            </h2>
+            <p className="text-lg text-gray-600">
+              {language === 'en' ? "Discover evidence-based recommendations for optimal health" :
+               language === 'fr' ? "Découvrez des recommandations basées sur des preuves pour une santé optimale" :
+               "Descubre recomendaciones basadas en evidencia para una salud óptima"}
+            </p>
+          </div>
+          
+          <Link to="/health-recommendations">
+            <Card className="bg-gradient-to-r from-green-500 to-blue-500 text-white hover:shadow-lg transition-shadow cursor-pointer">
+              <CardContent className="p-8 text-center">
+                <Heart className="h-12 w-12 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-2">
+                  {language === 'en' ? "Complete Health Guide" :
+                   language === 'fr' ? "Guide Complet de Santé" :
+                   "Guía Completa de Salud"}
+                </h3>
+                <p className="text-lg opacity-90">
+                  {language === 'en' ? "Nutrition, exercise, sleep, mental health and more" :
+                   language === 'fr' ? "Nutrition, exercice, sommeil, santé mentale et plus" :
+                   "Nutrición, ejercicio, sueño, salud mental y más"}
+                </p>
               </CardContent>
             </Card>
-          ))}
+          </Link>
         </div>
 
         {/* Call to Action */}

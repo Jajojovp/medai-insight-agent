@@ -37,6 +37,11 @@ const PublicNavigation = () => {
             <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">
               {t('nav.blog')}
             </Link>
+            <Link to="/health-recommendations" className="text-gray-600 hover:text-blue-600 transition-colors">
+              {language === 'en' ? "Health Tips" : 
+               language === 'fr' ? "Conseils Santé" : 
+               "Consejos de Salud"}
+            </Link>
             <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
               {t('nav.contact')}
             </Link>
@@ -94,6 +99,15 @@ const PublicNavigation = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t('nav.blog')}
+              </Link>
+              <Link 
+                to="/health-recommendations" 
+                className="block px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {language === 'en' ? "Health Tips" : 
+                 language === 'fr' ? "Conseils Santé" : 
+                 "Consejos de Salud"}
               </Link>
               <Link 
                 to="/contact" 

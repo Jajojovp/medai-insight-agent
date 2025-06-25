@@ -9,6 +9,8 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
+import BlogPostPage from "./pages/BlogPostPage";
+import HealthRecommendations from "./pages/HealthRecommendations";
 import Contact from "./pages/Contact";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
@@ -26,6 +28,8 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPostPage />} />
+              <Route path="/health-recommendations" element={<HealthRecommendations />} />
               <Route path="/contact" element={<Contact />} />
               <Route 
                 path="/dashboard" 
