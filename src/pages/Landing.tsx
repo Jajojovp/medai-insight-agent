@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -184,25 +185,25 @@ const Landing = () => {
   ];
 
   const modelSources = [
-    "GitHub: Diabetes",
-    "Kaggle: Diabetes", 
-    "GitHub: Diabetes ML",
-    "Analytics: Diabetes",
+    "Kaggle: Diabetes",
+    "GitHub: Diabetes", 
+    "Scikit: Diabetes",
+    "TensorFlow: Diabetes",
     "Kaggle: Breast Cancer",
-    "GitHub: Breast Cancer",
-    "Kaggle: Breast Cancer ML",
-    "GitHub: Prostate Cancer",
-    "Kaggle: Prostate Cancer",
     "GitHub: Heart Disease",
-    "Kaggle: Heart Disease",
-    "GitHub: Stroke",
-    "Kaggle: Stroke",
-    "GitHub: Kidney Disease",
-    "Kaggle: Kidney Disease",
-    "GitHub: Pancreatic Cancer",
-    "Kaggle: Pancreatic Cancer",
-    "Analytics: PyCaret",
-    "Research: Medical Models"
+    "PyTorch: Prostate",
+    "Scikit: Stroke",
+    "Keras: Kidney",
+    "XGBoost: Pancreatic",
+    "Random Forest: Diabetes",
+    "SVM: Breast Cancer",
+    "Neural Net: Heart",
+    "Gradient Boost: Stroke",
+    "Decision Tree: Kidney",
+    "Logistic Reg: Pancreatic",
+    "Ensemble: Multi-Disease",
+    "Deep Learning: Medical",
+    "PyCaret: Analytics"
   ];
 
   const painPoints = [
@@ -228,14 +229,14 @@ const Landing = () => {
 
   if (showAuth) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30 backdrop-blur-sm flex items-center justify-center p-4">
-        <div className="w-full max-w-md backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white/30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="w-full max-w-md backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl">
           <AuthForm onSuccess={() => setShowAuth(false)} />
-          <div className="text-center mt-4">
+          <div className="text-center mt-6">
             <Button
               variant="ghost"
               onClick={() => setShowAuth(false)}
-              className="text-gray-600 hover:bg-white/20 rounded-2xl"
+              className="text-gray-600 hover:bg-white/20 rounded-2xl transition-all duration-300"
             >
               {t('auth.backToStart')}
             </Button>
@@ -246,38 +247,42 @@ const Landing = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30 backdrop-blur-sm">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white/30 backdrop-blur-sm">
       {/* Header */}
       <nav className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-xl">
-          <div className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">MedAI</span>
-            <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
+        <div className="flex items-center justify-between backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-2xl">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 bg-blue-100/20 rounded-2xl backdrop-blur-sm">
+              <Brain className="h-8 w-8 text-blue-600" />
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              MedAI
+            </span>
+            <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full px-3 py-1">
               Pro
             </Badge>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-6">
-              <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/blog" className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">
                 {t('nav.blog')}
               </Link>
-              <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">
                 {t('nav.contact')}
               </Link>
             </div>
 
             {/* Language Selector */}
             <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
+              <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl hover:bg-white/30 transition-all duration-300">
                 <div className="flex items-center space-x-2">
                   <Globe className="h-4 w-4" />
                   <SelectValue />
                 </div>
               </SelectTrigger>
-              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl">
+              <SelectContent className="backdrop-blur-xl bg-white/90 border-white/30 rounded-2xl">
                 <SelectItem value="es">{t('language.spanish')}</SelectItem>
                 <SelectItem value="en">{t('language.english')}</SelectItem>
                 <SelectItem value="fr">{t('language.french')}</SelectItem>
@@ -288,7 +293,7 @@ const Landing = () => {
             <div className="hidden md:block">
               <Button 
                 onClick={() => setShowAuth(true)}
-                className="bg-blue-600 hover:bg-blue-700 rounded-2xl"
+                className="bg-blue-600 hover:bg-blue-700 rounded-2xl px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 {t('auth.professionalAccess')}
               </Button>
@@ -298,120 +303,124 @@ const Landing = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-5xl mx-auto backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-12 shadow-2xl">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            {language === 'es' ? 'Análisis Predictivo Multi-Enfermedad con IA' :
-             language === 'fr' ? 'Analyse Prédictive Multi-Maladies avec IA' :
-             'Multi-Disease Predictive Analysis with AI'}
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            {language === 'es' ? 'Plataforma profesional de análisis médico con 7 tipos de análisis predictivos, 47+ modelos de IA y detección temprana de enfermedades críticas.' :
-             language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 7 types d\'analyses prédictives, 47+ modèles d\'IA et détection précoce de maladies critiques.' :
-             'Professional medical analysis platform with 7 types of predictive analysis, 47+ AI models and early detection of critical diseases.'}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button 
-              size="lg" 
-              onClick={() => setShowAuth(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-            >
-              <Stethoscope className="mr-2 h-5 w-5" />
-              {t('landing.cta.start')}
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              onClick={() => document.getElementById('diseases')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-lg px-8 py-3 rounded-2xl backdrop-blur-sm bg-white/20 border-white/30 hover:bg-white/30"
-            >
-              {language === 'es' ? 'Ver Análisis' :
-               language === 'fr' ? 'Voir Analyses' :
-               'View Analysis'}
-            </Button>
-            <Link to="/contact">
+      <div className="container mx-auto px-4 py-20">
+        <div className="text-center max-w-6xl mx-auto backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-16 shadow-2xl">
+          <div className="space-y-8">
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+              {language === 'es' ? 'Análisis Predictivo Multi-Enfermedad con IA' :
+               language === 'fr' ? 'Analyse Prédictive Multi-Maladies avec IA' :
+               'Multi-Disease Predictive Analysis with AI'}
+            </h1>
+            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              {language === 'es' ? 'Plataforma profesional de análisis médico con 7 tipos de análisis predictivos, 47+ modelos de IA y detección temprana de enfermedades críticas.' :
+               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 7 types d\'analyses prédictives, 47+ modèles d\'IA et détection précoce de maladies critiques.' :
+               'Professional medical analysis platform with 7 types of predictive analysis, 47+ AI models and early detection of critical diseases.'}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
               <Button 
                 size="lg" 
-                variant="secondary"
-                className="text-lg px-8 py-3 rounded-2xl backdrop-blur-sm bg-white/20 hover:bg-white/30"
+                onClick={() => setShowAuth(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
               >
-                {t('landing.cta.demo')}
+                <Stethoscope className="mr-3 h-5 w-5" />
+                {t('landing.cta.start')}
               </Button>
-            </Link>
-          </div>
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => document.getElementById('diseases')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-lg px-10 py-4 rounded-2xl backdrop-blur-sm bg-white/20 border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105"
+              >
+                {language === 'es' ? 'Ver Análisis' :
+                 language === 'fr' ? 'Voir Analyses' :
+                 'View Analysis'}
+              </Button>
+              <Link to="/contact">
+                <Button 
+                  size="lg" 
+                  variant="secondary"
+                  className="text-lg px-10 py-4 rounded-2xl backdrop-blur-sm bg-white/20 hover:bg-white/30 transition-all duration-300 transform hover:scale-105"
+                >
+                  {t('landing.cta.demo')}
+                </Button>
+              </Link>
+            </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
-              <div className="text-3xl font-bold text-blue-600 mb-2">7</div>
-              <div className="text-gray-600">
-                {language === 'es' ? 'Tipos de Análisis' :
-                 language === 'fr' ? 'Types d\'Analyses' :
-                 'Analysis Types'}
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16">
+              <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <div className="text-4xl font-bold text-blue-600 mb-3">7</div>
+                <div className="text-gray-700 font-medium">
+                  {language === 'es' ? 'Tipos de Análisis' :
+                   language === 'fr' ? 'Types d\'Analyses' :
+                   'Analysis Types'}
+                </div>
               </div>
-            </div>
-            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
-              <div className="text-3xl font-bold text-blue-600 mb-2">47+</div>
-              <div className="text-gray-600">
-                {language === 'es' ? 'Modelos de IA' :
-                 language === 'fr' ? 'Modèles d\'IA' :
-                 'AI Models'}
+              <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <div className="text-4xl font-bold text-blue-600 mb-3">47+</div>
+                <div className="text-gray-700 font-medium">
+                  {language === 'es' ? 'Modelos de IA' :
+                   language === 'fr' ? 'Modèles d\'IA' :
+                   'AI Models'}
+                </div>
               </div>
-            </div>
-            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
-              <div className="text-3xl font-bold text-blue-600 mb-2">94%</div>
-              <div className="text-gray-600">{t('landing.stats.accuracy')}</div>
-            </div>
-            <div className="text-center backdrop-blur-sm bg-white/20 rounded-2xl p-6 border border-white/30">
-              <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
-              <div className="text-gray-600">{t('landing.stats.cases')}</div>
+              <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <div className="text-4xl font-bold text-blue-600 mb-3">94%</div>
+                <div className="text-gray-700 font-medium">{t('landing.stats.accuracy')}</div>
+              </div>
+              <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <div className="text-4xl font-bold text-blue-600 mb-3">5000+</div>
+                <div className="text-gray-700 font-medium">{t('landing.stats.cases')}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Supported Diseases Section */}
-      <div id="diseases" className="bg-white/20 backdrop-blur-md py-16 rounded-3xl mx-4 mb-16">
+      <div id="diseases" className="backdrop-blur-xl bg-white/10 py-20 rounded-3xl mx-4 mb-20 border border-white/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
               {language === 'es' ? 'Análisis Predictivos Disponibles' :
                language === 'fr' ? 'Analyses Prédictives Disponibles' :
                'Available Predictive Analysis'}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               {language === 'es' ? '7 tipos diferentes de análisis con múltiples modelos de IA especializados' :
                language === 'fr' ? '7 types d\'analyses différents avec plusieurs modèles d\'IA spécialisés' :
                '7 different types of analysis with multiple specialized AI models'}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {supportedDiseases.map((disease, index) => {
               const Icon = disease.icon;
               return (
-                <div key={index} className="backdrop-blur-md bg-white/20 border border-white/30 rounded-3xl p-6 hover:shadow-2xl transition-all hover:bg-white/30">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-blue-100/80 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <Icon className="h-6 w-6 text-blue-600" />
+                <div key={index} className="backdrop-blur-md bg-white/20 border border-white/30 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:bg-white/30 group">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-16 h-16 bg-blue-100/80 rounded-2xl flex items-center justify-center backdrop-blur-sm group-hover:bg-blue-200/80 transition-all duration-300">
+                      <Icon className="h-8 w-8 text-blue-600" />
                     </div>
                     <div className="text-right">
-                      <Badge variant="secondary" className="mb-1 rounded-full bg-green-100/80 text-green-700">{disease.accuracy}</Badge>
-                      <div className="text-xs text-gray-500">
+                      <Badge variant="secondary" className="mb-2 rounded-full bg-green-100/80 text-green-700 px-3 py-1 font-semibold">
+                        {disease.accuracy}
+                      </Badge>
+                      <div className="text-sm text-gray-600 font-medium">
                         {disease.models} {language === 'es' ? 'modelos' : language === 'fr' ? 'modèles' : 'models'}
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {disease.name[language as keyof typeof disease.name]}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-3">
+                  <p className="text-gray-700 mb-6 leading-relaxed">
                     {disease.description[language as keyof typeof disease.description]}
                   </p>
                   <div className="flex justify-between items-center">
-                    <Badge variant="outline" className="text-xs rounded-full">{disease.prevalence}</Badge>
-                    <span className="text-xs text-gray-500">
+                    <Badge variant="outline" className="text-sm rounded-full px-3 py-1">{disease.prevalence}</Badge>
+                    <span className="text-sm text-gray-600 font-medium">
                       {language === 'es' ? 'Prevalencia' : language === 'fr' ? 'Prévalence' : 'Prevalence'}
                     </span>
                   </div>
@@ -423,13 +432,13 @@ const Landing = () => {
       </div>
 
       {/* Pain Points Section */}
-      <div className="backdrop-blur-md bg-white/10 py-16 rounded-3xl mx-4 mb-16">
+      <div className="backdrop-blur-xl bg-white/10 py-20 rounded-3xl mx-4 mb-20 border border-white/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-6">
               {language === 'en' ? "Hospital Problems We Solve" : language === 'fr' ? "Problèmes Hospitaliers que Nous Résolvons" : "Problemas Hospitalarios que Resolvemos"}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               {language === 'en' ? "Optimize your hospital and improve patient care" : language === 'fr' ? "Optimisez votre hôpital et améliorez les soins aux patients" : "Optimiza tu hospital y mejora la atención al paciente"}
             </p>
           </div>
@@ -438,13 +447,13 @@ const Landing = () => {
             {painPoints.map((point, index) => {
               const Icon = point.icon;
               return (
-                <div key={index} className="text-center p-6 backdrop-blur-sm bg-white/20 rounded-3xl hover:shadow-2xl transition-all border border-white/30">
-                  <div className="mx-auto w-16 h-16 bg-red-100/80 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
-                    <Icon className="h-8 w-8 text-red-600" />
+                <div key={index} className="text-center p-8 backdrop-blur-sm bg-white/20 rounded-3xl hover:shadow-2xl transition-all duration-300 border border-white/30 group hover:bg-white/30">
+                  <div className="mx-auto w-20 h-20 bg-red-100/80 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm group-hover:bg-red-200/80 transition-all duration-300">
+                    <Icon className="h-10 w-10 text-red-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{point.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{point.description}</p>
-                  <Badge className="bg-green-600 text-white rounded-full">{point.metric}</Badge>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{point.title}</h3>
+                  <p className="text-gray-700 mb-6 leading-relaxed">{point.description}</p>
+                  <Badge className="bg-green-600 text-white rounded-full px-4 py-2 font-semibold">{point.metric}</Badge>
                 </div>
               );
             })}
@@ -453,51 +462,51 @@ const Landing = () => {
       </div>
 
       {/* Features Section */}
-      <div id="features" className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <div id="features" className="container mx-auto px-4 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
             {t('landing.features.title')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             {t('landing.features.subtitle')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div key={index} className="text-center p-6 backdrop-blur-md bg-white/20 rounded-3xl shadow-xl border border-white/30 hover:shadow-2xl transition-all hover:bg-white/30">
-                <div className="mx-auto w-16 h-16 bg-blue-100/80 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
-                  <Icon className="h-8 w-8 text-blue-600" />
+              <div key={index} className="text-center p-8 backdrop-blur-xl bg-white/20 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl transition-all duration-300 hover:bg-white/30 group">
+                <div className="mx-auto w-20 h-20 bg-blue-100/80 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm group-hover:bg-blue-200/80 transition-all duration-300">
+                  <Icon className="h-10 w-10 text-blue-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-700 leading-relaxed">{feature.description}</p>
               </div>
             );
           })}
         </div>
 
         {/* ML Models Section */}
-        <div className="backdrop-blur-md bg-white/20 rounded-3xl p-8 shadow-2xl border border-white/30">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="backdrop-blur-xl bg-white/20 rounded-3xl p-12 shadow-2xl border border-white/20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
               {language === 'es' ? '47+ Modelos de Machine Learning Especializados' :
                language === 'fr' ? '47+ Modèles de Machine Learning Spécialisés' :
                '47+ Specialized Machine Learning Models'}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               {language === 'es' ? 'Fuentes verificadas de GitHub, Kaggle y revistas científicas' :
                language === 'fr' ? 'Sources vérifiées de GitHub, Kaggle et revues scientifiques' :
                'Verified sources from GitHub, Kaggle and scientific journals'}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {modelSources.map((source, index) => (
-              <div key={index} className="flex items-center space-x-3 p-3 backdrop-blur-sm bg-white/20 rounded-2xl border border-white/30">
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                <span className="text-sm text-gray-700">{source}</span>
+              <div key={index} className="flex items-center space-x-4 p-4 backdrop-blur-sm bg-white/20 rounded-2xl border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
+                <span className="text-gray-800 font-medium">{source}</span>
               </div>
             ))}
           </div>
@@ -505,13 +514,13 @@ const Landing = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="backdrop-blur-md bg-white/10 py-16 rounded-3xl mx-4 mb-16">
+      <div className="backdrop-blur-xl bg-white/10 py-20 rounded-3xl mx-4 mb-20 border border-white/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-6">
               {language === 'en' ? "Proven Results" : language === 'fr' ? "Résultats Prouvés" : "Resultados Comprobados"}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               {language === 'en' ? "Hospitals using MedAI report significant improvements" : language === 'fr' ? "Les hôpitaux utilisant MedAI rapportent des améliorations significatives" : "Hospitales que ya usan MedAI reportan mejoras significativas"}
             </p>
           </div>
@@ -535,9 +544,9 @@ const Landing = () => {
                 desc: language === 'en' ? "Cost reduction" : language === 'fr' ? "Réduction des coûts" : "Reducción en costos" 
               }
             ].map((stat, index) => (
-              <div key={index} className="text-center backdrop-blur-sm bg-white/20 p-6 rounded-3xl shadow-xl border border-white/30">
-                <div className="text-3xl font-bold text-blue-600 mb-2">{stat.metric}</div>
-                <div className="text-gray-600">{stat.desc}</div>
+              <div key={index} className="text-center backdrop-blur-sm bg-white/20 p-8 rounded-3xl shadow-xl border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <div className="text-4xl font-bold text-blue-600 mb-4">{stat.metric}</div>
+                <div className="text-gray-700 font-medium">{stat.desc}</div>
               </div>
             ))}
           </div>
@@ -545,18 +554,18 @@ const Landing = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-md text-white py-16 rounded-3xl mx-4 mb-16 border border-white/20">
+      <div className="bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-xl text-white py-20 rounded-3xl mx-4 mb-20 border border-white/20 shadow-2xl">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-8">
             {t('landing.cta.final')}
           </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             {/* Professional Access Button - Desktop Only */}
             <div className="hidden md:block">
               <Button 
                 size="lg" 
                 onClick={() => setShowAuth(true)}
-                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
               >
                 {t('landing.cta.professional')}
               </Button>
@@ -565,7 +574,7 @@ const Landing = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/20 hover:text-white text-lg px-8 py-3 bg-transparent rounded-2xl backdrop-blur-sm"
+                className="border-white text-white hover:bg-white/20 hover:text-white text-lg px-10 py-4 bg-transparent rounded-2xl backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
               >
                 {t('landing.cta.demo')}
               </Button>
@@ -575,44 +584,46 @@ const Landing = () => {
       </div>
 
       {/* Footer */}
-      <footer className="backdrop-blur-md bg-gray-900/90 text-gray-300 py-8 rounded-3xl mx-4">
+      <footer className="backdrop-blur-xl bg-gray-900/90 text-gray-300 py-12 rounded-3xl mx-4 border border-white/10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Brain className="h-6 w-6 text-blue-400" />
-                <span className="text-lg font-bold">MedAI</span>
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="p-2 bg-blue-100/20 rounded-2xl backdrop-blur-sm">
+                  <Brain className="h-6 w-6 text-blue-400" />
+                </div>
+                <span className="text-xl font-bold">MedAI</span>
               </div>
-              <p className="text-sm">
+              <p className="text-sm leading-relaxed">
                 {language === 'en' ? "Professional medical analysis platform with artificial intelligence." : language === 'fr' ? "Plateforme professionnelle d'analyse médicale avec intelligence artificielle." : "Plataforma profesional de análisis médico con inteligencia artificial."}
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">{language === 'en' ? "Product" : language === 'fr' ? "Produit" : "Producto"}</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white">{language === 'en' ? "Features" : language === 'fr' ? "Caractéristiques" : "Características"}</a></li>
-                <li><Link to="/contact" className="hover:text-white">{language === 'en' ? "Pricing" : language === 'fr' ? "Tarifs" : "Precios"}</Link></li>
-                <li><a href="#" className="hover:text-white">API</a></li>
+              <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Product" : language === 'fr' ? "Produit" : "Producto"}</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Features" : language === 'fr' ? "Caractéristiques" : "Características"}</a></li>
+                <li><Link to="/contact" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Pricing" : language === 'fr' ? "Tarifs" : "Precios"}</Link></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-300">API</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">{language === 'en' ? "Resources" : language === 'fr' ? "Ressources" : "Recursos"}</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
-                <li><a href="#" className="hover:text-white">{language === 'en' ? "Documentation" : language === 'fr' ? "Documentation" : "Documentación"}</a></li>
-                <li><a href="#" className="hover:text-white">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
+              <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Resources" : language === 'fr' ? "Ressources" : "Recursos"}</h4>
+              <ul className="space-y-3 text-sm">
+                <li><Link to="/blog" className="hover:text-white transition-colors duration-300">Blog</Link></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Documentation" : language === 'fr' ? "Documentation" : "Documentación"}</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/contact" className="hover:text-white">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</Link></li>
-                <li><a href="#" className="hover:text-white">{language === 'en' ? "Sales" : language === 'fr' ? "Ventes" : "Ventas"}</a></li>
-                <li><a href="#" className="hover:text-white">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
+              <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</h4>
+              <ul className="space-y-3 text-sm">
+                <li><Link to="/contact" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</Link></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Sales" : language === 'fr' ? "Ventes" : "Ventas"}</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+          <div className="border-t border-gray-700 mt-12 pt-8 text-center text-sm">
             <p>© 2024 MedAI. {language === 'en' ? "All rights reserved." : language === 'fr' ? "Tous droits réservés." : "Todos los derechos reservados."}</p>
           </div>
         </div>
