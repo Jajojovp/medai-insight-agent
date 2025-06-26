@@ -12,7 +12,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
   const [activeView, setActiveView] = useState('dashboard');
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
 
   const renderContent = () => {
     switch (activeView) {
@@ -28,7 +28,9 @@ const Index = () => {
               <div className="flex items-center justify-center space-x-2">
                 <Brain className="h-8 w-8 text-blue-600" />
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {t('dashboard.title')}
+                  {language === 'es' ? 'MedAI Dashboard' : 
+                   language === 'fr' ? 'Tableau de Bord MedAI' : 
+                   'MedAI Dashboard'}
                 </h1>
               </div>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -47,7 +49,7 @@ const Index = () => {
                 </Badge>
                 <Badge variant="secondary" className="bg-purple-100/80 text-purple-800 rounded-full backdrop-blur-sm">
                   <Shield className="h-3 w-3 mr-1" />
-                  {t('dashboard.badges.hipaa')}
+                  {language === 'es' ? 'Cumplimiento HIPAA' : language === 'fr' ? 'Conformité HIPAA' : 'HIPAA Compliant'}
                 </Badge>
                 <Badge variant="secondary" className="bg-red-100/80 text-red-800 rounded-full backdrop-blur-sm">
                   <Heart className="h-3 w-3 mr-1" />
