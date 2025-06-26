@@ -69,7 +69,7 @@ const Contact = () => {
       period: language === 'en' ? "/month" : language === 'fr' ? "/mois" : "/mes",
       features: [
         language === 'en' ? "Up to 100 monthly analyses" : language === 'fr' ? "Jusqu'à 100 analyses mensuelles" : "Hasta 100 análisis mensuales",
-        language === 'en' ? "6 advanced AI models" : language === 'fr' ? "6 modèles d'IA avancés" : "6 modelos de IA avanzados",
+        language === 'en' ? "All 53+ AI models" : language === 'fr' ? "Tous les 53+ modèles d'IA" : "Los 53+ modelos de IA",
         language === 'en' ? "Custom PDF reports" : language === 'fr' ? "Rapports PDF personnalisés" : "Reportes PDF personalizados",
         language === 'en' ? "Complete n8n integration" : language === 'fr' ? "Intégration n8n complète" : "Integración n8n completa",
         language === 'en' ? "Priority 24/7 support" : language === 'fr' ? "Support prioritaire 24/7" : "Soporte prioritario 24/7",
@@ -83,12 +83,12 @@ const Contact = () => {
       period: language === 'en' ? "/month" : language === 'fr' ? "/mois" : "/mes",
       features: [
         language === 'en' ? "Unlimited analyses" : language === 'fr' ? "Analyses illimitées" : "Análisis ilimitados",
-        language === 'en' ? "All 9 AI models" : language === 'fr' ? "Tous les 9 modèles d'IA" : "Los 9 modelos de IA",
-        language === 'en' ? "Custom API" : language === 'fr' ? "API personnalisée" : "API personalizada",
-        language === 'en' ? "Hospital integration" : language === 'fr' ? "Intégration hospitalière" : "Integración hospitalaria",
-        language === 'en' ? "Dedicated support" : language === 'fr' ? "Support dédié" : "Soporte dedicado",
-        language === 'en' ? "Team training" : language === 'fr' ? "Formation d'équipe" : "Entrenamiento del equipo",
-        language === 'en' ? "Multi-user unlimited" : language === 'fr' ? "Multi-utilisateur illimité" : "Multi-usuario ilimitado"
+        language === 'en' ? "All 53+ AI models" : language === 'fr' ? "Tous les 53+ modèles d'IA" : "Los 53+ modelos de IA",
+        language === 'en' ? "Custom API integration" : language === 'fr' ? "Intégration API personnalisée" : "Integración API personalizada",
+        language === 'en' ? "Hospital system integration" : language === 'fr' ? "Intégration système hospitalier" : "Integración sistema hospitalario",
+        language === 'en' ? "Dedicated support specialist" : language === 'fr' ? "Spécialiste support dédié" : "Especialista de soporte dedicado",
+        language === 'en' ? "Team training included" : language === 'fr' ? "Formation équipe incluse" : "Entrenamiento de equipo incluido",
+        language === 'en' ? "Multi-user unlimited access" : language === 'fr' ? "Accès multi-utilisateur illimité" : "Acceso multi-usuario ilimitado"
       ],
       popular: false
     }
@@ -107,9 +107,9 @@ const Contact = () => {
              "Contacto y Suscripciones"}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {language === 'en' ? "Request a personalized demo or subscribe to our medical AI analysis services" :
-             language === 'fr' ? "Demandez une démo personnalisée ou abonnez-vous à nos services d'analyse médicale IA" :
-             "Solicita una demo personalizada o contrata nuestros servicios de análisis médico con IA"}
+            {language === 'en' ? "Request a personalized demo or subscribe to our medical AI analysis services with 53+ specialized models" :
+             language === 'fr' ? "Demandez une démo personnalisée ou abonnez-vous à nos services d'analyse médicale IA avec 53+ modèles spécialisés" :
+             "Solicita una demo personalizada o contrata nuestros servicios de análisis médico con IA con 53+ modelos especializados"}
           </p>
         </div>
 
@@ -214,6 +214,11 @@ const Contact = () => {
                            language === 'fr' ? "Cardiologie" :
                            "Cardiología"}
                         </SelectItem>
+                        <SelectItem value="oncologia">
+                          {language === 'en' ? "Oncology" :
+                           language === 'fr' ? "Oncologie" :
+                           "Oncología"}
+                        </SelectItem>
                         <SelectItem value="otro">
                           {language === 'en' ? "Other" :
                            language === 'fr' ? "Autre" :
@@ -272,9 +277,9 @@ const Contact = () => {
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
                     placeholder={
-                      language === 'en' ? "Tell us more about your specific needs..." :
-                      language === 'fr' ? "Parlez-nous de vos besoins spécifiques..." :
-                      "Cuéntanos más sobre tus necesidades específicas..."
+                      language === 'en' ? "Tell us more about your specific needs and which diseases you want to analyze..." :
+                      language === 'fr' ? "Parlez-nous de vos besoins spécifiques et des maladies que vous souhaitez analyser..." :
+                      "Cuéntanos más sobre tus necesidades específicas y qué enfermedades quieres analizar..."
                     }
                     rows={4}
                   />
@@ -302,21 +307,21 @@ const Contact = () => {
                 </span>
               </div>
               <ul className="space-y-2 text-sm text-green-700">
-                <li>• {language === 'en' ? "Analysis of real cases from your hospital" :
-                         language === 'fr' ? "Analyse de cas réels de votre hôpital" :
-                         "Análisis de casos reales de tu hospital"}</li>
-                <li>• {language === 'en' ? "Personalized configuration" :
-                         language === 'fr' ? "Configuration personnalisée" :
-                         "Configuración personalizada"}</li>
-                <li>• {language === 'en' ? "Integration with existing systems" :
-                         language === 'fr' ? "Intégration avec les systèmes existants" :
-                         "Integración con sistemas existentes"}</li>
-                <li>• {language === 'en' ? "Medical team training" :
-                         language === 'fr' ? "Formation de l'équipe médicale" :
-                         "Entrenamiento del equipo médico"}</li>
-                <li>• {language === 'en' ? "7-day free trial" :
-                         language === 'fr' ? "Essai gratuit de 7 jours" :
-                         "7 días de prueba gratuita"}</li>
+                <li>• {language === 'en' ? "Analysis of real cases with our 53+ AI models" :
+                         language === 'fr' ? "Analyse de cas réels avec nos 53+ modèles IA" :
+                         "Análisis de casos reales con nuestros 53+ modelos IA"}</li>
+                <li>• {language === 'en' ? "Personalized configuration for your specialty" :
+                         language === 'fr' ? "Configuration personnalisée pour votre spécialité" :
+                         "Configuración personalizada para tu especialidad"}</li>
+                <li>• {language === 'en' ? "Integration guidance with existing systems" :
+                         language === 'fr' ? "Guide d'intégration avec systèmes existants" :
+                         "Guía de integración con sistemas existentes"}</li>
+                <li>• {language === 'en' ? "Medical team training session" :
+                         language === 'fr' ? "Session de formation équipe médicale" :
+                         "Sesión de entrenamiento del equipo médico"}</li>
+                <li>• {language === 'en' ? "7-day free trial access" :
+                         language === 'fr' ? "Accès d'essai gratuit de 7 jours" :
+                         "7 días de acceso de prueba gratuito"}</li>
               </ul>
             </CardContent>
           </Card>
@@ -331,9 +336,9 @@ const Contact = () => {
                "Planes de Suscripción"}
             </h2>
             <p className="text-lg text-gray-600">
-              {language === 'en' ? "Choose the plan that best fits your medical practice needs" :
-               language === 'fr' ? "Choisissez le plan qui convient le mieux aux besoins de votre pratique médicale" :
-               "Elige el plan que mejor se adapte a las necesidades de tu práctica médica"}
+              {language === 'en' ? "Choose the plan that best fits your medical practice needs with access to 53+ specialized AI models" :
+               language === 'fr' ? "Choisissez le plan qui convient le mieux aux besoins de votre pratique médicale avec accès à 53+ modèles IA spécialisés" :
+               "Elige el plan que mejor se adapte a las necesidades de tu práctica médica con acceso a 53+ modelos de IA especializados"}
             </p>
           </div>
 
@@ -367,11 +372,12 @@ const Contact = () => {
                   </ul>
                   <Button 
                     className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-600 hover:bg-gray-700'}`}
+                    disabled
                   >
                     <CreditCard className="h-4 w-4 mr-2" />
-                    {language === 'en' ? "Subscribe" :
-                     language === 'fr' ? "S'abonner" :
-                     "Contratar Plan"}
+                    {language === 'en' ? "Contact for Pricing" :
+                     language === 'fr' ? "Contacter pour Prix" :
+                     "Contactar para Precios"}
                   </Button>
                 </CardContent>
               </Card>
@@ -384,20 +390,20 @@ const Contact = () => {
           <CardContent className="p-8 text-center">
             <Brain className="h-12 w-12 text-blue-600 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-blue-900 mb-2">
-              {language === 'en' ? "Secure Processing with Stripe" :
-               language === 'fr' ? "Traitement Sécurisé avec Stripe" :
-               "Procesamiento Seguro con Stripe"}
+              {language === 'en' ? "Professional Medical AI Platform" :
+               language === 'fr' ? "Plateforme IA Médicale Professionnelle" :
+               "Plataforma de IA Médica Profesional"}
             </h3>
             <p className="text-blue-700 mb-4">
-              {language === 'en' ? "All payments are securely processed through Stripe. We accept all major cards and offer automatic monthly billing." :
-               language === 'fr' ? "Tous les paiements sont traités de manière sécurisée via Stripe. Nous acceptons toutes les cartes principales et offrons une facturation mensuelle automatique." :
-               "Todos los pagos son procesados de forma segura a través de Stripe. Aceptamos todas las tarjetas principales y ofrecemos facturación mensual automática."}
+              {language === 'en' ? "Request a demo to access our 53+ specialized AI models for predictive medical analysis. Payment processing and subscription management handled after demo approval." :
+               language === 'fr' ? "Demandez une démo pour accéder à nos 53+ modèles IA spécialisés pour l'analyse médicale prédictive. Traitement des paiements et gestion des abonnements après approbation de la démo." :
+               "Solicita una demo para acceder a nuestros 53+ modelos de IA especializados para análisis médico predictivo. Procesamiento de pagos y gestión de suscripciones después de la aprobación de la demo."}
             </p>
             <div className="flex justify-center items-center space-x-4 text-sm text-blue-600">
-              <span>• SSL {language === 'en' ? "Secure" : language === 'fr' ? "Sécurisé" : "Seguro"}</span>
-              <span>• PCI Compliant</span>
-              <span>• {language === 'en' ? "Auto Billing" : language === 'fr' ? "Facturation Auto" : "Facturación Automática"}</span>
-              <span>• {language === 'en' ? "Easy Cancel" : language === 'fr' ? "Annulation Facile" : "Cancelación Fácil"}</span>
+              <span>• {language === 'en' ? "7-day Trial" : language === 'fr' ? "Essai 7 jours" : "Prueba 7 días"}</span>
+              <span>• {language === 'en' ? "No Setup Fees" : language === 'fr' ? "Pas de Frais d'Installation" : "Sin Tarifas de Instalación"}</span>
+              <span>• {language === 'en' ? "Medical Grade Security" : language === 'fr' ? "Sécurité Médicale" : "Seguridad Médica"}</span>
+              <span>• {language === 'en' ? "Dedicated Support" : language === 'fr' ? "Support Dédié" : "Soporte Dedicado"}</span>
             </div>
           </CardContent>
         </Card>

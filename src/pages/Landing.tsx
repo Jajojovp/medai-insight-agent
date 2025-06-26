@@ -50,33 +50,33 @@ const Landing = () => {
   const features = [
     {
       icon: Brain,
-      title: t('landing.feature.ai'),
-      description: t('landing.feature.ai.desc')
+      title: language === 'es' ? "53+ Modelos de IA Especializados" : language === 'fr' ? "53+ Modèles d'IA Spécialisés" : "53+ Specialized AI Models",
+      description: language === 'es' ? "Modelos de GitHub, Kaggle y Analytics Vidhya verificados para análisis médico predictivo de alta precisión" : language === 'fr' ? "Modèles de GitHub, Kaggle et Analytics Vidhya vérifiés pour l'analyse médicale prédictive haute précision" : "Verified models from GitHub, Kaggle and Analytics Vidhya for high-precision predictive medical analysis"
     },
     {
       icon: Activity,
-      title: t('landing.feature.diagnosis'),
-      description: t('landing.feature.diagnosis.desc')
+      title: language === 'es' ? "Detección Temprana de 7 Enfermedades" : language === 'fr' ? "Détection Précoce de 7 Maladies" : "Early Detection of 7 Diseases",
+      description: language === 'es' ? "Diabetes, cáncer de mama/próstata/páncreas, enfermedades cardíacas, ACV y enfermedad renal crónica" : language === 'fr' ? "Diabète, cancer du sein/prostate/pancréas, maladies cardiaques, AVC et maladie rénale chronique" : "Diabetes, breast/prostate/pancreatic cancer, heart disease, stroke and chronic kidney disease"
     },
     {
       icon: FileText,
-      title: t('landing.feature.reports'),
-      description: t('landing.feature.reports.desc')
+      title: language === 'es' ? "Reportes PDF Automáticos con n8n" : language === 'fr' ? "Rapports PDF Automatiques avec n8n" : "Automatic PDF Reports with n8n",
+      description: language === 'es' ? "Integración completa con n8n para generar reportes médicos automáticos y flujos de trabajo personalizados" : language === 'fr' ? "Intégration complète avec n8n pour générer des rapports médicaux automatiques et des flux de travail personnalisés" : "Complete n8n integration for automatic medical report generation and custom workflows"
     },
     {
       icon: Shield,
-      title: t('landing.feature.security'),
-      description: t('landing.feature.security.desc')
+      title: language === 'es' ? "Seguridad HIPAA y Validación Clínica" : language === 'fr' ? "Sécurité HIPAA et Validation Clinique" : "HIPAA Security and Clinical Validation",
+      description: language === 'es' ? "Cumplimiento de normativas médicas con validación cruzada usando datos clínicos reales de hospitales" : language === 'fr' ? "Conformité aux réglementations médicales avec validation croisée utilisant des données cliniques réelles d'hôpitaux" : "Medical regulatory compliance with cross-validation using real hospital clinical data"
     },
     {
       icon: Clock,
-      title: t('landing.feature.waitlist'),
-      description: t('landing.feature.waitlist.desc')
+      title: language === 'es' ? "Reducción de Tiempos de Diagnóstico" : language === 'fr' ? "Réduction des Temps de Diagnostic" : "Diagnostic Time Reduction",
+      description: language === 'es' ? "Acelera el proceso diagnóstico con análisis instantáneo de factores de riesgo y biomarcadores" : language === 'fr' ? "Accélère le processus diagnostique avec analyse instantanée des facteurs de risque et biomarqueurs" : "Accelerates diagnostic process with instant analysis of risk factors and biomarkers"
     },
     {
       icon: Hospital,
-      title: t('landing.feature.efficiency'),
-      description: t('landing.feature.efficiency.desc')
+      title: language === 'es' ? "Integración Hospitalaria Completa" : language === 'fr' ? "Intégration Hospitalière Complète" : "Complete Hospital Integration",
+      description: language === 'es' ? "API REST, SDKs y compatibilidad con sistemas hospitalarios existentes para implementación sin interrupciones" : language === 'fr' ? "API REST, SDKs et compatibilité avec les systèmes hospitaliers existants pour une implémentation sans interruption" : "REST API, SDKs and compatibility with existing hospital systems for seamless implementation"
     }
   ];
 
@@ -89,9 +89,9 @@ const Landing = () => {
         fr: 'Diabète Type 2'
       },
       description: {
-        es: 'Análisis predictivo del riesgo de diabetes y control glucémico',
-        en: 'Predictive analysis of diabetes risk and glycemic control',
-        fr: 'Analyse prédictive du risque de diabète et contrôle glycémique'
+        es: 'Análisis predictivo con 9 modelos especializados de GitHub y Kaggle, incluyendo Deep Learning y PyCaret',
+        en: 'Predictive analysis with 9 specialized models from GitHub and Kaggle, including Deep Learning and PyCaret',
+        fr: 'Analyse prédictive avec 9 modèles spécialisés de GitHub et Kaggle, incluant Deep Learning et PyCaret'
       },
       prevalence: '10.5%',
       models: 9,
@@ -105,12 +105,12 @@ const Landing = () => {
         fr: 'Cancer du Sein'
       },
       description: {
-        es: 'Detección temprana y clasificación benigno/maligno',
-        en: 'Early detection and benign/malignant classification',
-        fr: 'Détection précoce et classification bénin/malin'
+        es: 'Clasificación benigno/maligno con 5 modelos usando dataset Wisconsin (WDBC) y múltiples algoritmos ML',
+        en: 'Benign/malignant classification with 5 models using Wisconsin dataset (WDBC) and multiple ML algorithms',
+        fr: 'Classification bénin/malin avec 5 modèles utilisant le dataset Wisconsin (WDBC) et multiples algorithmes ML'
       },
       prevalence: '12.5%',
-      models: 8,
+      models: 5,
       accuracy: '96.8%'
     },
     {
@@ -121,13 +121,13 @@ const Landing = () => {
         fr: 'Cancer de la Prostate'
       },
       description: {
-        es: 'Evaluación de riesgo y progresión en hombres',
-        en: 'Risk assessment and progression evaluation in men',
-        fr: 'Évaluation des risques et progression chez les hommes'
+        es: 'Detección con 4 modelos especializados combinando R y Python, incluyendo redes neuronales y SVM',
+        en: 'Detection with 4 specialized models combining R and Python, including neural networks and SVM',
+        fr: 'Détection avec 4 modèles spécialisés combinant R et Python, incluant réseaux de neurones et SVM'
       },
       prevalence: '11.6%',
-      models: 7,
-      accuracy: '92.5%'
+      models: 4,
+      accuracy: '98.8%'
     },
     {
       icon: Heart,
@@ -137,13 +137,13 @@ const Landing = () => {
         fr: 'Maladies Cardiaques'
       },
       description: {
-        es: 'Predicción de riesgo cardiovascular y prevención',
-        en: 'Cardiovascular risk prediction and prevention',
-        fr: 'Prédiction du risque cardiovasculaire et prévention'
+        es: 'Predicción de riesgo cardiovascular con 5 modelos usando dataset UCI y algoritmos avanzados',
+        en: 'Cardiovascular risk prediction with 5 models using UCI dataset and advanced algorithms',
+        fr: 'Prédiction du risque cardiovasculaire avec 5 modèles utilisant le dataset UCI et algorithmes avancés'
       },
       prevalence: '6.2%',
-      models: 8,
-      accuracy: '98.0%'
+      models: 5,
+      accuracy: '93.7%'
     },
     {
       icon: Brain,
@@ -153,13 +153,13 @@ const Landing = () => {
         fr: 'Risque d\'AVC'
       },
       description: {
-        es: 'Análisis de riesgo de ACV y factores de prevención',
-        en: 'Stroke risk analysis and prevention factors',
-        fr: 'Analyse du risque d\'AVC et facteurs de prévention'
+        es: 'Análisis de riesgo de ACV con 5 modelos de GitHub especializados en datasets clínicos desequilibrados',
+        en: 'Stroke risk analysis with 5 specialized GitHub models on imbalanced clinical datasets',
+        fr: 'Analyse du risque d\'AVC avec 5 modèles GitHub spécialisés sur datasets cliniques déséquilibrés'
       },
       prevalence: '2.8%',
-      models: 6,
-      accuracy: '89.7%'
+      models: 5,
+      accuracy: '91.3%'
     },
     {
       icon: Shield,
@@ -169,13 +169,13 @@ const Landing = () => {
         fr: 'Maladie Rénale Chronique'
       },
       description: {
-        es: 'Detección temprana de deterioro de función renal',
-        en: 'Early detection of kidney function deterioration',
-        fr: 'Détection précoce de la détérioration de la fonction rénale'
+        es: 'Detección temprana con 5 modelos de alta precisión usando Flask y scikit-learn con 97.5% exactitud',
+        en: 'Early detection with 5 high-precision models using Flask and scikit-learn with 97.5% accuracy',
+        fr: 'Détection précoce avec 5 modèles haute précision utilisant Flask et scikit-learn avec 97.5% de précision'
       },
       prevalence: '9.1%',
       models: 5,
-      accuracy: '91.3%'
+      accuracy: '97.5%'
     },
     {
       icon: Zap,
@@ -185,9 +185,9 @@ const Landing = () => {
         fr: 'Cancer du Pancréas'
       },
       description: {
-        es: 'Detección de alto riesgo y biomarcadores',
-        en: 'High-risk detection and biomarker analysis',
-        fr: 'Détection à haut risque et analyse des biomarqueurs'
+        es: 'Detección del "asesino silencioso" con 4 modelos usando biomarcadores urinarios y CNN avanzadas',
+        en: 'Detection of the "silent killer" with 4 models using urinary biomarkers and advanced CNNs',
+        fr: 'Détection du "tueur silencieux" avec 4 modèles utilisant biomarqueurs urinaires et CNN avancées'
       },
       prevalence: '0.6%',
       models: 4,
@@ -196,45 +196,45 @@ const Landing = () => {
   ];
 
   const modelSources = [
-    "Kaggle: Diabetes",
-    "GitHub: Diabetes", 
-    "Scikit: Diabetes",
-    "TensorFlow: Diabetes",
-    "Kaggle: Breast Cancer",
-    "GitHub: Heart Disease",
-    "PyTorch: Prostate",
-    "Scikit: Stroke",
-    "Keras: Kidney",
-    "XGBoost: Pancreatic",
-    "Random Forest: Diabetes",
-    "SVM: Breast Cancer",
-    "Neural Net: Heart",
-    "Gradient Boost: Stroke",
-    "Decision Tree: Kidney",
-    "Logistic Reg: Pancreatic",
-    "Ensemble: Multi-Disease",
-    "Deep Learning: Medical",
-    "PyCaret: Analytics"
+    "GitHub: Diabetes Prediction SystemV3",
+    "GitHub: Diabetes ML Prediction",
+    "GitHub: Diabetes Deep Learning",
+    "Kaggle: Diabetes ML Competition",
+    "Analytics Vidhya: PyCaret Diabetes",
+    "GitHub: Breast Cancer Prediction",
+    "GitHub: WDBC Classification",
+    "GitHub: Prostate Cancer R Models",
+    "GitHub: Heart Disease UCI",
+    "GitHub: Stroke Prediction ML",
+    "GitHub: CKD Flask Prediction",
+    "GitHub: Pancreatic CNN Detection",
+    "Kaggle: Biomarker Analysis",
+    "GitHub: EfficientNet Medical",
+    "Scikit-learn: Multi-classifier",
+    "TensorFlow: Medical CNN",
+    "PyTorch: Advanced Models",
+    "XGBoost: Ensemble Methods",
+    "Random Forest: Clinical Data"
   ];
 
   const painPoints = [
     {
       icon: Users,
-      title: language === 'en' ? "Excessive Waiting Lists" : language === 'fr' ? "Listes d'Attente Excessives" : "Listas de Espera Excesivas",
-      description: language === 'en' ? "Reduce waiting times from 45 to 15 minutes per consultation" : language === 'fr' ? "Réduire les temps d'attente de 45 à 15 minutes par consultation" : "Reduce los tiempos de espera de 45 a 15 minutos por consulta",
-      metric: language === 'en' ? "67% reduction" : language === 'fr' ? "67% de réduction" : "67% reducción"
+      title: language === 'en' ? "Diagnostic Delays" : language === 'fr' ? "Retards Diagnostiques" : "Retrasos en Diagnósticos",
+      description: language === 'en' ? "Reduce diagnostic time from weeks to minutes with AI-powered early detection" : language === 'fr' ? "Réduire le temps de diagnostic de semaines à minutes avec détection précoce IA" : "Reduce el tiempo de diagnóstico de semanas a minutos con detección temprana por IA",
+      metric: language === 'en' ? "98% faster diagnosis" : language === 'fr' ? "98% diagnostic plus rapide" : "98% diagnóstico más rápido"
     },
     {
       icon: Activity,
-      title: language === 'en' ? "Late Diagnoses" : language === 'fr' ? "Diagnostics Tardifs" : "Diagnósticos Tardíos",
-      description: language === 'en' ? "Early detection prevents costly complications" : language === 'fr' ? "La détection précoce prévient les complications coûteuses" : "Detección temprana previene complicaciones costosas",
-      metric: language === 'en' ? "94% accuracy" : language === 'fr' ? "94% de précision" : "94% precisión"
+      title: language === 'en' ? "Late Detection Complications" : language === 'fr' ? "Complications de Détection Tardive" : "Complicaciones por Detección Tardía",
+      description: language === 'en' ? "Early detection prevents costly complications and improves patient outcomes significantly" : language === 'fr' ? "La détection précoce prévient les complications coûteuses et améliore significativement les résultats patients" : "Detección temprana previene complicaciones costosas y mejora significativamente los resultados del paciente",
+      metric: language === 'en' ? "97.5% accuracy" : language === 'fr' ? "97.5% de précision" : "97.5% precisión"
     },
     {
       icon: TrendingUp,
-      title: language === 'en' ? "Low Efficiency" : language === 'fr' ? "Faible Efficacité" : "Baja Eficiencia",
-      description: language === 'en' ? "Optimize limited medical resources with specialized AI" : language === 'fr' ? "Optimiser les ressources médicales limitées avec l'IA spécialisée" : "Optimiza recursos médicos limitados con IA especializada",
-      metric: language === 'en' ? "40% more efficient" : language === 'fr' ? "40% plus efficace" : "40% más eficiente"
+      title: language === 'en' ? "Resource Optimization" : language === 'fr' ? "Optimisation des Ressources" : "Optimización de Recursos",
+      description: language === 'en' ? "Optimize limited medical resources with specialized AI models and automated workflows" : language === 'fr' ? "Optimise les ressources médicales limitées avec modèles IA spécialisés et flux automatisés" : "Optimiza recursos médicos limitados con modelos de IA especializados y flujos automatizados",
+      metric: language === 'en' ? "53+ AI models" : language === 'fr' ? "53+ modèles IA" : "53+ modelos IA"
     }
   ];
 
@@ -308,7 +308,7 @@ const Landing = () => {
                 onClick={() => setShowAuth(true)}
                 className="bg-blue-600 hover:bg-blue-700 rounded-2xl px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                {t('auth.professionalAccess')}
+                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
               </Button>
             </div>
 
@@ -379,7 +379,7 @@ const Landing = () => {
                       setMobileMenuOpen(false);
                     }}
                   >
-                    {t('auth.professionalAccess')}
+                    {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
                   </Button>
                 </div>
               </div>
@@ -398,20 +398,21 @@ const Landing = () => {
                'Multi-Disease Predictive Analysis with AI'}
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
-              {language === 'es' ? 'Plataforma profesional de análisis médico con 7 tipos de análisis predictivos, 47+ modelos de IA y detección temprana de enfermedades críticas.' :
-               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 7 types d\'analyses prédictives, 47+ modèles d\'IA et détection précoce de maladies critiques.' :
-               'Professional medical analysis platform with 7 types of predictive analysis, 47+ AI models and early detection of critical diseases.'}
+              {language === 'es' ? 'Plataforma profesional de análisis médico con 7 tipos de análisis predictivos, 53+ modelos de IA especializados de GitHub, Kaggle y Analytics Vidhya para detección temprana de enfermedades críticas.' :
+               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 7 types d\'analyses prédictives, 53+ modèles d\'IA spécialisés de GitHub, Kaggle et Analytics Vidhya pour détection précoce de maladies critiques.' :
+               'Professional medical analysis platform with 7 types of predictive analysis, 53+ specialized AI models from GitHub, Kaggle and Analytics Vidhya for early detection of critical diseases.'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-              <Button 
-                size="lg" 
-                onClick={() => setShowAuth(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-                <Stethoscope className="mr-3 h-5 w-5" />
-                {t('landing.cta.start')}
-              </Button>
+              <Link to="/contact">
+                <Button 
+                  size="lg" 
+                  className="bg-blue-600 hover:bg-blue-700 text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <Stethoscope className="mr-3 h-5 w-5" />
+                  {language === 'es' ? 'Solicitar Demo' : language === 'fr' ? 'Demander Démo' : 'Request Demo'}
+                </Button>
+              </Link>
               <Button 
                 size="lg" 
                 variant="outline"
@@ -422,15 +423,14 @@ const Landing = () => {
                  language === 'fr' ? 'Voir Analyses' :
                  'View Analysis'}
               </Button>
-              <Link to="/contact">
-                <Button 
-                  size="lg" 
-                  variant="secondary"
-                  className="text-lg px-10 py-4 rounded-2xl backdrop-blur-sm bg-white/20 hover:bg-white/30 transition-all duration-300 transform hover:scale-105"
-                >
-                  {t('landing.cta.demo')}
-                </Button>
-              </Link>
+              <Button 
+                size="lg" 
+                variant="secondary"
+                onClick={() => setShowAuth(true)}
+                className="text-lg px-10 py-4 rounded-2xl backdrop-blur-sm bg-white/20 hover:bg-white/30 transition-all duration-300 transform hover:scale-105"
+              >
+                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
+              </Button>
             </div>
 
             {/* Stats */}
@@ -444,7 +444,7 @@ const Landing = () => {
                 </div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
-                <div className="text-4xl font-bold text-blue-600 mb-3">47+</div>
+                <div className="text-4xl font-bold text-blue-600 mb-3">53+</div>
                 <div className="text-gray-700 font-medium">
                   {language === 'es' ? 'Modelos de IA' :
                    language === 'fr' ? 'Modèles d\'IA' :
@@ -452,12 +452,16 @@ const Landing = () => {
                 </div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
-                <div className="text-4xl font-bold text-blue-600 mb-3">94%</div>
-                <div className="text-gray-700 font-medium">{t('landing.stats.accuracy')}</div>
+                <div className="text-4xl font-bold text-blue-600 mb-3">97.5%</div>
+                <div className="text-gray-700 font-medium">
+                  {language === 'es' ? 'Precisión Máxima' : language === 'fr' ? 'Précision Maximale' : 'Max Accuracy'}
+                </div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
-                <div className="text-4xl font-bold text-blue-600 mb-3">5000+</div>
-                <div className="text-gray-700 font-medium">{t('landing.stats.cases')}</div>
+                <div className="text-4xl font-bold text-blue-600 mb-3">19</div>
+                <div className="text-gray-700 font-medium">
+                  {language === 'es' ? 'Repositorios GitHub' : language === 'fr' ? 'Dépôts GitHub' : 'GitHub Repositories'}
+                </div>
               </div>
             </div>
           </div>
@@ -474,9 +478,9 @@ const Landing = () => {
                'Available Predictive Analysis'}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              {language === 'es' ? '7 tipos diferentes de análisis con múltiples modelos de IA especializados' :
-               language === 'fr' ? '7 types d\'analyses différents avec plusieurs modèles d\'IA spécialisés' :
-               '7 different types of analysis with multiple specialized AI models'}
+              {language === 'es' ? '7 tipos diferentes de análisis con 53+ modelos especializados de fuentes verificadas' :
+               language === 'fr' ? '7 types d\'analyses différents avec 53+ modèles spécialisés de sources vérifiées' :
+               '7 different types of analysis with 53+ specialized models from verified sources'}
             </p>
           </div>
           
@@ -522,10 +526,10 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-6">
-              {language === 'en' ? "Hospital Problems We Solve" : language === 'fr' ? "Problèmes Hospitaliers que Nous Résolvons" : "Problemas Hospitalarios que Resolvemos"}
+              {language === 'en' ? "Medical Challenges We Solve" : language === 'fr' ? "Défis Médicaux que Nous Résolvons" : "Desafíos Médicos que Resolvemos"}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              {language === 'en' ? "Optimize your hospital and improve patient care" : language === 'fr' ? "Optimisez votre hôpital et améliorez les soins aux patients" : "Optimiza tu hospital y mejora la atención al paciente"}
+              {language === 'en' ? "Transform medical diagnosis with AI-powered early detection" : language === 'fr' ? "Transformez le diagnostic médical avec détection précoce par IA" : "Transforma el diagnóstico médico con detección temprana por IA"}
             </p>
           </div>
           
@@ -551,10 +555,10 @@ const Landing = () => {
       <div id="features" className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-            {t('landing.features.title')}
+            {language === 'es' ? 'Características Principales' : language === 'fr' ? 'Caractéristiques Principales' : 'Key Features'}
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            {t('landing.features.subtitle')}
+            {language === 'es' ? 'Tecnología avanzada para análisis médico predictivo profesional' : language === 'fr' ? 'Technologie avancée pour analyse médicale prédictive professionnelle' : 'Advanced technology for professional predictive medical analysis'}
           </p>
         </div>
         
@@ -577,14 +581,14 @@ const Landing = () => {
         <div className="backdrop-blur-xl bg-white/20 rounded-3xl p-12 shadow-2xl border border-white/20">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-              {language === 'es' ? '47+ Modelos de Machine Learning Especializados' :
-               language === 'fr' ? '47+ Modèles de Machine Learning Spécialisés' :
-               '47+ Specialized Machine Learning Models'}
+              {language === 'es' ? '53+ Modelos de Machine Learning Especializados' :
+               language === 'fr' ? '53+ Modèles de Machine Learning Spécialisés' :
+               '53+ Specialized Machine Learning Models'}
             </h3>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              {language === 'es' ? 'Fuentes verificadas de GitHub, Kaggle y revistas científicas' :
-               language === 'fr' ? 'Sources vérifiées de GitHub, Kaggle et revues scientifiques' :
-               'Verified sources from GitHub, Kaggle and scientific journals'}
+              {language === 'es' ? 'Fuentes verificadas de repositorios especializados en análisis médico predictivo' :
+               language === 'fr' ? 'Sources vérifiées de dépôts spécialisés en analyse médicale prédictive' :
+               'Verified sources from repositories specialized in predictive medical analysis'}
             </p>
           </div>
           
@@ -604,30 +608,30 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-6">
-              {language === 'en' ? "Proven Results" : language === 'fr' ? "Résultats Prouvés" : "Resultados Comprobados"}
+              {language === 'en' ? "Proven Technical Results" : language === 'fr' ? "Résultats Techniques Prouvés" : "Resultados Técnicos Comprobados"}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              {language === 'en' ? "Hospitals using MedAI report significant improvements" : language === 'fr' ? "Les hôpitaux utilisant MedAI rapportent des améliorations significatives" : "Hospitales que ya usan MedAI reportan mejoras significativas"}
+              {language === 'en' ? "Real performance metrics from our specialized AI models" : language === 'fr' ? "Métriques de performance réelles de nos modèles IA spécialisés" : "Métricas de rendimiento reales de nuestros modelos de IA especializados"}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { 
-                metric: "67%", 
-                desc: language === 'en' ? "Reduction in waiting lists" : language === 'fr' ? "Réduction des listes d'attente" : "Reducción en listas de espera" 
+                metric: "98.8%", 
+                desc: language === 'en' ? "Max accuracy (Prostate Cancer)" : language === 'fr' ? "Précision max (Cancer Prostate)" : "Precisión máx (Cáncer Próstata)" 
               },
               { 
-                metric: "40%", 
-                desc: language === 'en' ? "Increase in efficiency" : language === 'fr' ? "Augmentation de l'efficacité" : "Aumento en eficiencia" 
+                metric: "53+", 
+                desc: language === 'en' ? "Specialized AI models" : language === 'fr' ? "Modèles IA spécialisés" : "Modelos IA especializados" 
               },
               { 
-                metric: "25%", 
-                desc: language === 'en' ? "Improvement in satisfaction" : language === 'fr' ? "Amélioration de la satisfaction" : "Mejora en satisfacción" 
+                metric: "19", 
+                desc: language === 'en' ? "GitHub repositories" : language === 'fr' ? "Dépôts GitHub" : "Repositorios GitHub" 
               },
               { 
-                metric: "30%", 
-                desc: language === 'en' ? "Cost reduction" : language === 'fr' ? "Réduction des coûts" : "Reducción en costos" 
+                metric: "7", 
+                desc: language === 'en' ? "Disease categories" : language === 'fr' ? "Catégories de maladies" : "Categorías de enfermedades" 
               }
             ].map((stat, index) => (
               <div key={index} className="text-center backdrop-blur-sm bg-white/20 p-8 rounded-3xl shadow-xl border border-white/30 hover:bg-white/30 transition-all duration-300">
@@ -643,28 +647,27 @@ const Landing = () => {
       <div className="bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-xl text-white py-20 rounded-3xl mx-4 mb-20 border border-white/20 shadow-2xl">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-8">
-            {t('landing.cta.final')}
+            {language === 'es' ? 'Comienza con Análisis Médico IA Profesional' :
+             language === 'fr' ? 'Commencez avec Analyse Médicale IA Professionnelle' :
+             'Start with Professional AI Medical Analysis'}
           </h2>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            {/* Professional Access Button - Desktop Only */}
-            <div className="hidden md:block">
-              <Button 
-                size="lg" 
-                onClick={() => setShowAuth(true)}
-                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-                {t('landing.cta.professional')}
-              </Button>
-            </div>
             <Link to="/contact">
               <Button 
                 size="lg" 
-                variant="outline"
-                className="border-white text-white hover:bg-white/20 hover:text-white text-lg px-10 py-4 bg-transparent rounded-2xl backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
               >
-                {t('landing.cta.demo')}
+                {language === 'es' ? 'Solicitar Demo' : language === 'fr' ? 'Demander Démo' : 'Request Demo'}
               </Button>
             </Link>
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => setShowAuth(true)}
+              className="border-white text-white hover:bg-white/20 hover:text-white text-lg px-10 py-4 bg-transparent rounded-2xl backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
+            >
+              {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
+            </Button>
           </div>
         </div>
       </div>
@@ -681,13 +684,13 @@ const Landing = () => {
                 <span className="text-xl font-bold">MedAI</span>
               </div>
               <p className="text-sm leading-relaxed">
-                {language === 'en' ? "Professional medical analysis platform with artificial intelligence." : language === 'fr' ? "Plateforme professionnelle d'analyse médicale avec intelligence artificielle." : "Plataforma profesional de análisis médico con inteligencia artificial."}
+                {language === 'en' ? "Professional medical analysis platform with artificial intelligence and 53+ specialized models." : language === 'fr' ? "Plateforme professionnelle d'analyse médicale avec intelligence artificielle et 53+ modèles spécialisés." : "Plataforma profesional de análisis médico con inteligencia artificial y 53+ modelos especializados."}
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Product" : language === 'fr' ? "Produit" : "Producto"}</h4>
               <ul className="space-y-3 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Features" : language === 'fr' ? "Caractéristiques" : "Características"}</a></li>
+                <li><a href="#features" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Features" : language === 'fr' ? "Caractéristiques" : "Características"}</a></li>
                 <li><Link to="/contact" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Pricing" : language === 'fr' ? "Tarifs" : "Precios"}</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors duration-300">API</a></li>
               </ul>

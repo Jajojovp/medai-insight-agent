@@ -77,7 +77,7 @@ const PublicNavigation = () => {
             
             <Link to="/dashboard">
               <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl">
-                {t('auth.professionalAccess')}
+                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
               </Button>
             </Link>
           </div>
@@ -161,7 +161,7 @@ const PublicNavigation = () => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl">
-                    {t('auth.professionalAccess')}
+                    {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
                   </Button>
                 </Link>
               </div>
