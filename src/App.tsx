@@ -12,6 +12,13 @@ import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPostPage";
 import HealthRecommendations from "./pages/HealthRecommendations";
 import Contact from "./pages/Contact";
+import Features from "./pages/Features";
+import Pricing from "./pages/Pricing";
+import API from "./pages/API";
+import Resources from "./pages/Resources";
+import Documentation from "./pages/Documentation";
+import Sales from "./pages/Sales";
+import Support from "./pages/Support";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +38,13 @@ const App = () => (
               <Route path="/blog/:id" element={<BlogPostPage />} />
               <Route path="/health-recommendations" element={<HealthRecommendations />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/api" element={<API />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/documentation" element={<Documentation />} />
+              <Route path="/sales" element={<Sales />} />
+              <Route path="/support" element={<Support />} />
               <Route 
                 path="/dashboard" 
                 element={
