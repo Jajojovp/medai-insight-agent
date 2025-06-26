@@ -18,11 +18,11 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const DashboardStats = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
 
   const stats = [
     {
-      title: t('dashboard.totalConsultations'),
+      title: language === 'es' ? "Total de Consultas" : language === 'fr' ? "Total des Consultations" : "Total Consultations",
       value: "2,847",
       change: "+23%",
       changeType: "positive",
@@ -30,7 +30,7 @@ const DashboardStats = () => {
       color: "blue"
     },
     {
-      title: t('dashboard.activePatients'),
+      title: language === 'es' ? "Pacientes Activos" : language === 'fr' ? "Patients Actifs" : "Active Patients",
       value: "1,492",
       change: "+18%",
       changeType: "positive",
@@ -38,7 +38,7 @@ const DashboardStats = () => {
       color: "green"
     },
     {
-      title: t('dashboard.reportsGenerated'),
+      title: language === 'es' ? "Reportes Generados" : language === 'fr' ? "Rapports Générés" : "Reports Generated",
       value: "2,156",
       change: "+25%",
       changeType: "positive",
@@ -46,7 +46,7 @@ const DashboardStats = () => {
       color: "purple"
     },
     {
-      title: t('dashboard.accuracyRate'),
+      title: language === 'es' ? "Precisión Máxima" : language === 'fr' ? "Précision Maximale" : "Maximum Accuracy",
       value: "98.8%",
       change: "+3.1%",
       changeType: "positive",
@@ -189,7 +189,11 @@ const DashboardStats = () => {
                 <div className="flex items-center space-x-1 text-sm">
                   <TrendingUp className="h-3 w-3 text-green-600" />
                   <span className="text-green-600">{stat.change}</span>
-                  <span className="text-gray-500">{t('dashboard.fromLastMonth')}</span>
+                  <span className="text-gray-500">
+                    {language === 'es' ? "desde el mes pasado" : 
+                     language === 'fr' ? "depuis le mois dernier" : 
+                     "from last month"}
+                  </span>
                 </div>
               </CardContent>
             </Card>
@@ -222,7 +226,8 @@ const DashboardStats = () => {
                     <div>
                       <div className="font-medium text-sm">{analysis.name}</div>
                       <div className="text-xs text-gray-500">
-                        {analysis.count} análisis • {analysis.models} modelos
+                        {analysis.count} {language === 'es' ? "análisis • " : language === 'fr' ? "analyses • " : "analyses • "}
+                        {analysis.models} {language === 'es' ? "modelos" : language === 'fr' ? "modèles" : "models"}
                       </div>
                     </div>
                   </div>
@@ -244,7 +249,11 @@ const DashboardStats = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Clock className="h-5 w-5" />
-            <span>{t('dashboard.recentActivity')}</span>
+            <span>
+              {language === 'es' ? "Actividad Reciente" : 
+               language === 'fr' ? "Activité Récente" : 
+               "Recent Activity"}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -278,7 +287,7 @@ const DashboardStats = () => {
                       variant={activity.confidence >= 95 ? "default" : "secondary"}
                       className={`${activity.confidence >= 95 ? "bg-green-600" : ""} rounded-full mb-1`}
                     >
-                      {activity.confidence}% {t('dashboard.confidence')}
+                      {activity.confidence}% {language === 'es' ? "confianza" : language === 'fr' ? "confiance" : "confidence"}
                     </Badge>
                     <div className="text-sm text-gray-500">{activity.time}</div>
                   </div>
