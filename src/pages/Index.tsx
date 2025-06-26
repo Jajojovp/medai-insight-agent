@@ -32,9 +32,9 @@ const Index = () => {
                 </h1>
               </div>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                {language === 'es' ? 'Plataforma de análisis médico con IA para 7 tipos de enfermedades críticas con 47+ modelos especializados' :
-                 language === 'fr' ? 'Plateforme d\'analyse médicale avec IA pour 7 types de maladies critiques avec 47+ modèles spécialisés' :
-                 'AI medical analysis platform for 7 types of critical diseases with 47+ specialized models'}
+                {language === 'es' ? 'Plataforma de análisis médico con IA para 7 tipos de enfermedades críticas con 37+ modelos especializados' :
+                 language === 'fr' ? 'Plateforme d\'analyse médicale avec IA pour 7 types de maladies critiques avec 37+ modèles spécialisés' :
+                 'AI medical analysis platform for 7 types of critical diseases with 37+ specialized models'}
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full backdrop-blur-sm">
@@ -43,7 +43,7 @@ const Index = () => {
                 </Badge>
                 <Badge variant="secondary" className="bg-green-100/80 text-green-800 rounded-full backdrop-blur-sm">
                   <Activity className="h-3 w-3 mr-1" />
-                  {language === 'es' ? '47+ Modelos IA' : language === 'fr' ? '47+ Modèles IA' : '47+ AI Models'}
+                  {language === 'es' ? '37+ Modelos IA' : language === 'fr' ? '37+ Modèles IA' : '37+ AI Models'}
                 </Badge>
                 <Badge variant="secondary" className="bg-purple-100/80 text-purple-800 rounded-full backdrop-blur-sm">
                   <Shield className="h-3 w-3 mr-1" />
@@ -51,7 +51,7 @@ const Index = () => {
                 </Badge>
                 <Badge variant="secondary" className="bg-red-100/80 text-red-800 rounded-full backdrop-blur-sm">
                   <Heart className="h-3 w-3 mr-1" />
-                  {language === 'es' ? '96.2% Precisión' : language === 'fr' ? '96.2% Précision' : '96.2% Accuracy'}
+                  {language === 'es' ? '98.8% Precisión' : language === 'fr' ? '98.8% Précision' : '98.8% Accuracy'}
                 </Badge>
               </div>
             </div>
@@ -71,9 +71,9 @@ const Index = () => {
                     </span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Inicia análisis médico con IA para 7 tipos de enfermedades' :
-                     language === 'fr' ? 'Commencer l\'analyse médicale avec IA pour 7 types de maladies' :
-                     'Start AI medical analysis for 7 disease types'}
+                    {language === 'es' ? 'Inicia análisis médico con IA para 7 tipos de enfermedades críticas usando 37+ modelos especializados' :
+                     language === 'fr' ? 'Commencer l\'analyse médicale avec IA pour 7 types de maladies critiques utilisant 37+ modèles spécialisés' :
+                     'Start AI medical analysis for 7 critical disease types using 37+ specialized models'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -96,9 +96,9 @@ const Index = () => {
                     </span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Revisa todos los análisis realizados y sus resultados' :
-                     language === 'fr' ? 'Examiner toutes les analyses effectuées et leurs résultats' :
-                     'Review all performed analyses and their results'}
+                    {language === 'es' ? 'Revisa todos los análisis predictivos realizados con modelos de diabetes, cáncer y enfermedades cardíacas' :
+                     language === 'fr' ? 'Examiner toutes les analyses prédictives effectuées avec modèles de diabète, cancer et maladies cardiaques' :
+                     'Review all predictive analyses performed with diabetes, cancer and heart disease models'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -121,9 +121,9 @@ const Index = () => {
                     </span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Administra información y análisis de pacientes' :
-                     language === 'fr' ? 'Gérer les informations et analyses des patients' :
-                     'Manage patient information and analyses'}
+                    {language === 'es' ? 'Administra información de pacientes y análisis predictivos con resultados de alta precisión hasta 98.8%' :
+                     language === 'fr' ? 'Gérer les informations des patients et analyses prédictives avec résultats haute précision jusqu\'à 98.8%' :
+                     'Manage patient information and predictive analyses with high precision results up to 98.8%'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -156,9 +156,9 @@ const Index = () => {
                        'Select Analysis'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Elige entre 7 tipos de análisis predictivos' :
-                       language === 'fr' ? 'Choisissez parmi 7 types d\'analyses prédictives' :
-                       'Choose from 7 types of predictive analyses'}
+                      {language === 'es' ? 'Elige entre 7 tipos de análisis predictivos especializados' :
+                       language === 'fr' ? 'Choisissez parmi 7 types d\'analyses prédictives spécialisées' :
+                       'Choose from 7 types of specialized predictive analyses'}
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -171,9 +171,9 @@ const Index = () => {
                        'Input Data'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Proporciona información médica del paciente' :
-                       language === 'fr' ? 'Fournir les informations médicales du patient' :
-                       'Provide patient medical information'}
+                      {language === 'es' ? 'Proporciona información médica del paciente según el tipo de análisis seleccionado' :
+                       language === 'fr' ? 'Fournir les informations médicales du patient selon le type d\'analyse sélectionné' :
+                       'Provide patient medical information according to selected analysis type'}
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -186,9 +186,9 @@ const Index = () => {
                        'AI Processing'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? '47+ modelos analizan la información' :
-                       language === 'fr' ? '47+ modèles analysent les informations' :
-                       '47+ models analyze the information'}
+                      {language === 'es' ? '37+ modelos especializados analizan la información usando algoritmos avanzados' :
+                       language === 'fr' ? '37+ modèles spécialisés analysent les informations utilisant algorithmes avancés' :
+                       '37+ specialized models analyze the information using advanced algorithms'}
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -201,9 +201,9 @@ const Index = () => {
                        'Accurate Results'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Obtén diagnóstico con 96.2% de precisión' :
-                       language === 'fr' ? 'Obtenez un diagnostic avec 96.2% de précision' :
-                       'Get diagnosis with 96.2% accuracy'}
+                      {language === 'es' ? 'Obtén diagnóstico predictivo con hasta 98.8% de precisión máxima' :
+                       language === 'fr' ? 'Obtenez un diagnostic prédictif avec jusqu\'à 98.8% de précision maximale' :
+                       'Get predictive diagnosis with up to 98.8% maximum accuracy'}
                     </p>
                   </div>
                 </div>

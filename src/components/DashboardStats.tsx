@@ -47,7 +47,7 @@ const DashboardStats = () => {
     },
     {
       title: t('dashboard.accuracyRate'),
-      value: "96.2%",
+      value: "98.8%",
       change: "+3.1%",
       changeType: "positive",
       icon: TrendingUp,
@@ -77,17 +77,17 @@ const DashboardStats = () => {
     {
       id: 3,
       patient: language === 'es' ? "Paciente #2845" : language === 'fr' ? "Patient #2845" : "Patient #2845",
-      diagnosis: language === 'es' ? "Enfermedad Cardíaca" : language === 'fr' ? "Maladie Cardiaque" : "Heart Disease",
+      diagnosis: language === 'es' ? "Cáncer de Próstata" : language === 'fr' ? "Cancer de la Prostate" : "Prostate Cancer",
       confidence: 98,
       status: "pending",
       time: language === 'es' ? "hace 3 horas" : language === 'fr' ? "il y a 3 heures" : "3 hours ago",
-      icon: Heart
+      icon: Activity
     },
     {
       id: 4,
       patient: language === 'es' ? "Paciente #2844" : language === 'fr' ? "Patient #2844" : "Patient #2844",
       diagnosis: language === 'es' ? "Riesgo de ACV" : language === 'fr' ? "Risque d'AVC" : "Stroke Risk",
-      confidence: 89,
+      confidence: 91,
       status: "completed",
       time: language === 'es' ? "hace 4 horas" : language === 'fr' ? "il y a 4 heures" : "4 hours ago",
       icon: Brain
@@ -99,6 +99,7 @@ const DashboardStats = () => {
       name: language === 'es' ? "Diabetes Tipo 2" : language === 'fr' ? "Diabète Type 2" : "Type 2 Diabetes",
       count: 542,
       accuracy: "94.2%",
+      models: 9,
       icon: Droplets,
       color: "blue"
     },
@@ -106,34 +107,39 @@ const DashboardStats = () => {
       name: language === 'es' ? "Cáncer de Mama" : language === 'fr' ? "Cancer du Sein" : "Breast Cancer",
       count: 398,
       accuracy: "96.8%",
+      models: 5,
       icon: Users,
       color: "pink"
     },
     {
-      name: language === 'es' ? "Enfermedad Cardíaca" : language === 'fr' ? "Maladie Cardiaque" : "Heart Disease",
-      count: 467,
-      accuracy: "98.0%",
-      icon: Heart,
-      color: "red"
-    },
-    {
       name: language === 'es' ? "Cáncer de Próstata" : language === 'fr' ? "Cancer de la Prostate" : "Prostate Cancer",
       count: 234,
-      accuracy: "92.5%",
+      accuracy: "98.8%",
+      models: 4,
       icon: Activity,
       color: "indigo"
     },
     {
+      name: language === 'es' ? "Enfermedades Cardíacas" : language === 'fr' ? "Maladies Cardiaques" : "Heart Disease",
+      count: 467,
+      accuracy: "93.7%",
+      models: 5,
+      icon: Heart,
+      color: "red"
+    },
+    {
       name: language === 'es' ? "Riesgo de ACV" : language === 'fr' ? "Risque d'AVC" : "Stroke Risk",
       count: 187,
-      accuracy: "89.7%",
+      accuracy: "91.3%",
+      models: 5,
       icon: Brain,
       color: "purple"
     },
     {
-      name: language === 'es' ? "Enfermedad Renal" : language === 'fr' ? "Maladie Rénale" : "Kidney Disease",
+      name: language === 'es' ? "Enfermedad Renal Crónica" : language === 'fr' ? "Maladie Rénale Chronique" : "Chronic Kidney Disease",
       count: 156,
-      accuracy: "91.3%",
+      accuracy: "97.5%",
+      models: 5,
       icon: Shield,
       color: "teal"
     },
@@ -141,6 +147,7 @@ const DashboardStats = () => {
       name: language === 'es' ? "Cáncer de Páncreas" : language === 'fr' ? "Cancer du Pancréas" : "Pancreatic Cancer",
       count: 98,
       accuracy: "87.4%",
+      models: 4,
       icon: Zap,
       color: "orange"
     }
@@ -196,9 +203,9 @@ const DashboardStats = () => {
           <CardTitle className="flex items-center space-x-2">
             <Brain className="h-5 w-5" />
             <span>
-              {language === 'es' ? "Tipos de Análisis Predictivos" : 
-               language === 'fr' ? "Types d'Analyses Prédictives" : 
-               "Predictive Analysis Types"}
+              {language === 'es' ? "Tipos de Análisis Predictivos (37+ Modelos)" : 
+               language === 'fr' ? "Types d'Analyses Prédictives (37+ Modèles)" : 
+               "Predictive Analysis Types (37+ Models)"}
             </span>
           </CardTitle>
         </CardHeader>
@@ -214,7 +221,9 @@ const DashboardStats = () => {
                     </div>
                     <div>
                       <div className="font-medium text-sm">{analysis.name}</div>
-                      <div className="text-xs text-gray-500">{analysis.count} análisis</div>
+                      <div className="text-xs text-gray-500">
+                        {analysis.count} análisis • {analysis.models} modelos
+                      </div>
                     </div>
                   </div>
                   <Badge 
@@ -266,8 +275,8 @@ const DashboardStats = () => {
                   </div>
                   <div className="text-right">
                     <Badge 
-                      variant={activity.confidence >= 90 ? "default" : "secondary"}
-                      className={`${activity.confidence >= 90 ? "bg-green-600" : ""} rounded-full mb-1`}
+                      variant={activity.confidence >= 95 ? "default" : "secondary"}
+                      className={`${activity.confidence >= 95 ? "bg-green-600" : ""} rounded-full mb-1`}
                     >
                       {activity.confidence}% {t('dashboard.confidence')}
                     </Badge>
