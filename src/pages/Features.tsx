@@ -3,6 +3,7 @@ import { Brain, Shield, Zap, Heart, Activity, Users, Clock, Target } from 'lucid
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PublicNavigation from "@/components/PublicNavigation";
+import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Features = () => {
@@ -138,6 +139,8 @@ const Features = () => {
           </Card>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

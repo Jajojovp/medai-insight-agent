@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import PublicNavigation from "@/components/PublicNavigation";
+import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
@@ -146,6 +147,8 @@ const Pricing = () => {
           </Card>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };
