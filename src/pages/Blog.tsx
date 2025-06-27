@@ -1,9 +1,10 @@
+
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, User, TrendingUp, Heart, Brain, Activity, Shield, Users, Zap, Droplets } from "lucide-react";
+import { Calendar, Clock, Heart, Brain, Activity, Shield, Users, Zap, Droplets, Stethoscope, Microscope, Dna } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -11,174 +12,200 @@ const Blog = () => {
   const { language } = useLanguage();
 
   const blogPosts = [
+    // Diabetes Articles
     {
-      id: '1',
+      id: 'diabetes-intro',
       title: {
-        es: 'Revolución Diagnóstica: 62+ Modelos de IA para 12 Enfermedades Críticas',
-        en: 'Diagnostic Revolution: 62+ AI Models for 12 Critical Diseases',
-        fr: 'Révolution Diagnostique: 62+ Modèles d\'IA pour 12 Maladies Critiques'
+        es: 'Diabetes Tipo 2: Factores de Riesgo y Prevención Inteligente',
+        en: 'Type 2 Diabetes: Risk Factors and Smart Prevention',
+        fr: 'Diabète Type 2: Facteurs de Risque et Prévention Intelligente'
       },
       excerpt: {
-        es: 'Análisis completo de cómo nuestros 62+ modelos especializados están transformando la medicina predictiva con hasta 98.8% de precisión en detección temprana.',
-        en: 'Complete analysis of how our 62+ specialized models are transforming predictive medicine with up to 98.8% accuracy in early detection.',
-        fr: 'Analyse complète de la façon dont nos 62+ modèles spécialisés transforment la médecine prédictive avec jusqu\'à 98,8% de précision en détection précoce.'
+        es: 'Descubre cómo la IA identifica 15+ factores de riesgo tempranos para diabetes tipo 2, permitiendo intervenciones preventivas personalizadas.',
+        en: 'Discover how AI identifies 15+ early risk factors for type 2 diabetes, enabling personalized preventive interventions.',
+        fr: 'Découvrez comment l\'IA identifie 15+ facteurs de risque précoces pour diabète type 2, permettant des interventions préventives personnalisées.'
       },
       date: '2024-12-25',
-      readTime: '12 min',
-      category: {
-        es: 'Medicina Predictiva',
-        en: 'Predictive Medicine',
-        fr: 'Médecine Prédictive'
-      },
-      icon: Brain,
+      readTime: '8 min',
+      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      icon: Droplets,
       featured: true
     },
     {
-      id: '2', 
+      id: 'diabetes-diagnosis',
       title: {
-        es: 'Diabetes Tipo 2: 9 Modelos Especializados con Validación Clínica',
-        en: 'Type 2 Diabetes: 9 Specialized Models with Clinical Validation',
-        fr: 'Diabète Type 2: 9 Modèles Spécialisés avec Validation Clinique'
+        es: 'Diagnóstico Avanzado de Diabetes con 9 Modelos de IA',
+        en: 'Advanced Diabetes Diagnosis with 9 AI Models',
+        fr: 'Diagnostic Avancé du Diabète avec 9 Modèles d\'IA'
       },
       excerpt: {
-        es: 'Implementación clínica de 9 modelos de ML para diabetes tipo 2: desde Random Forest hasta LSTM, alcanzando 94% de precisión en predicción.',
-        en: 'Clinical implementation of 9 ML models for type 2 diabetes: from Random Forest to LSTM, achieving 94% accuracy in prediction.',
-        fr: 'Implémentation clinique de 9 modèles ML pour diabète type 2: de Random Forest à LSTM, atteignant 94% de précision en prédiction.'
+        es: 'Análisis profundo de nuestros 9 modelos especializados: desde Random Forest hasta LSTM, alcanzando 94% de precisión diagnóstica.',
+        en: 'Deep analysis of our 9 specialized models: from Random Forest to LSTM, achieving 94% diagnostic accuracy.',
+        fr: 'Analyse approfondie de nos 9 modèles spécialisés: de Random Forest à LSTM, atteignant 94% de précision diagnostique.'
       },
       date: '2024-12-22',
-      readTime: '8 min',
-      category: {
-        es: 'Endocrinología',
-        en: 'Endocrinology',
-        fr: 'Endocrinologie'
-      },
-      icon: Droplets
+      readTime: '12 min',
+      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      icon: Microscope
     },
     {
-      id: '3',
+      id: 'diabetes-treatment',
       title: {
-        es: 'Oncología Predictiva: Detección Temprana en 6 Tipos de Cáncer',
-        en: 'Predictive Oncology: Early Detection in 6 Cancer Types',
-        fr: 'Oncologie Prédictive: Détection Précoce en 6 Types de Cancer'
+        es: 'Seguimiento Predictivo y Tratamiento Personalizado en Diabetes',
+        en: 'Predictive Monitoring and Personalized Diabetes Treatment',
+        fr: 'Suivi Prédictif et Traitement Personnalisé du Diabète'
       },
       excerpt: {
-        es: 'Análisis profundo de modelos especializados para mama, próstata, páncreas, estómago, hígado y pulmón con técnicas de deep learning.',
-        en: 'Deep analysis of specialized models for breast, prostate, pancreatic, stomach, liver and lung cancer with deep learning techniques.',
-        fr: 'Analyse approfondie des modèles spécialisés pour cancers du sein, prostate, pancréas, estomac, foie et poumon avec techniques de deep learning.'
+        es: 'Optimización de tratamientos con IA: ajuste automático de insulina, predicción de complicaciones y planes nutricionales inteligentes.',
+        en: 'AI treatment optimization: automatic insulin adjustment, complication prediction and smart nutritional plans.',
+        fr: 'Optimisation de traitements avec IA: ajustement automatique d\'insuline, prédiction de complications et plans nutritionnels intelligents.'
       },
       date: '2024-12-20',
-      readTime: '15 min',
-      category: {
-        es: 'Oncología',
-        en: 'Oncology',
-        fr: 'Oncologie'
+      readTime: '10 min',
+      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      icon: Activity
+    },
+
+    // Breast Cancer Articles
+    {
+      id: 'breast-cancer-intro',
+      title: {
+        es: 'Cáncer de Mama: Detección Temprana Salva Vidas',
+        en: 'Breast Cancer: Early Detection Saves Lives',
+        fr: 'Cancer du Sein: La Détection Précoce Sauve des Vies'
       },
+      excerpt: {
+        es: 'Factores de riesgo genéticos y ambientales: cómo la IA analiza patrones familiares y biomarcadores para identificación temprana.',
+        en: 'Genetic and environmental risk factors: how AI analyzes family patterns and biomarkers for early identification.',
+        fr: 'Facteurs de risque génétiques et environnementaux: comment l\'IA analyse les patterns familiaux et biomarqueurs pour identification précoce.'
+      },
+      date: '2024-12-18',
+      readTime: '9 min',
+      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
       icon: Users
     },
     {
-      id: '4',
+      id: 'breast-cancer-diagnosis',
       title: {
-        es: 'Cardiología Digital: IA para Prevención de Enfermedades Cardiovasculares',
-        en: 'Digital Cardiology: AI for Cardiovascular Disease Prevention',
-        fr: 'Cardiologie Numérique: IA pour Prévention des Maladies Cardiovasculaires'
+        es: 'Mamografías Inteligentes: IA que Supera a Radiólogos',
+        en: 'Smart Mammograms: AI That Outperforms Radiologists',
+        fr: 'Mammographies Intelligentes: IA qui Surpasse les Radiologues'
       },
       excerpt: {
-        es: 'Modelos predictivos para enfermedades cardíacas y ACV utilizando 14+ algoritmos especializados con validación en poblaciones diversas.',
-        en: 'Predictive models for heart disease and stroke using 14+ specialized algorithms with validation in diverse populations.',
-        fr: 'Modèles prédictifs pour maladies cardiaques et AVC utilisant 14+ algorithmes spécialisés avec validation dans populations diverses.'
-      },
-      date: '2024-12-18',
-      readTime: '11 min',
-      category: {
-        es: 'Cardiología',
-        en: 'Cardiology',
-        fr: 'Cardiologie'
-      },
-      icon: Heart
-    },
-    {
-      id: '5',
-      title: {
-        es: 'Nefrología Predictiva: Detección Temprana de Enfermedad Renal Crónica',
-        en: 'Predictive Nephrology: Early Detection of Chronic Kidney Disease',
-        fr: 'Néphrologie Prédictive: Détection Précoce de la Maladie Rénale Chronique'
-      },
-      excerpt: {
-        es: 'Implementación de 5 modelos especializados para CKD que mejoran la detección temprana antes de síntomas clínicos evidentes.',
-        en: 'Implementation of 5 specialized CKD models that improve early detection before evident clinical symptoms.',
-        fr: 'Implémentation de 5 modèles spécialisés pour MRC améliorant la détection précoce avant symptômes cliniques évidents.'
+        es: 'Análisis de imágenes médicas con deep learning: 98.2% precisión en detección de lesiones microscópicas invisibles al ojo humano.',
+        en: 'Medical imaging analysis with deep learning: 98.2% accuracy in detecting microscopic lesions invisible to human eye.',
+        fr: 'Analyse d\'imagerie médicale avec deep learning: 98,2% précision en détection de lésions microscopiques invisibles à l\'œil humain.'
       },
       date: '2024-12-15',
-      readTime: '9 min',
-      category: {
-        es: 'Nefrología',
-        en: 'Nephrology',
-        fr: 'Néphrologie'
-      },
-      icon: Shield
-    },
-    {
-      id: '6',
-      title: {
-        es: 'Neurología Computacional: IA Avanzada para Epilepsia',
-        en: 'Computational Neurology: Advanced AI for Epilepsy',
-        fr: 'Neurologie Computationnelle: IA Avancée pour l\'Épilepsie'
-      },
-      excerpt: {
-        es: 'Modelos de deep learning para predicción de crisis epilépticas y optimización de tratamientos antiepilépticos personalizados.',
-        en: 'Deep learning models for epileptic seizure prediction and optimization of personalized antiepileptic treatments.',
-        fr: 'Modèles de deep learning pour prédiction de crises épileptiques et optimisation de traitements antiépileptiques personnalisés.'
-      },
-      date: '2024-12-12',
-      readTime: '10 min',
-      category: {
-        es: 'Neurología',
-        en: 'Neurology',
-        fr: 'Neurologie'
-      },
+      readTime: '11 min',
+      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
       icon: Brain
     },
     {
-      id: '7',
+      id: 'breast-cancer-treatment',
       title: {
-        es: 'Hematología Digital: Modelos Predictivos para Leucemia',
-        en: 'Digital Hematology: Predictive Models for Leukemia',
-        fr: 'Hématologie Numérique: Modèles Prédictifs pour la Leucémie'
+        es: 'Oncología Personalizada: Tratamientos Dirigidos por IA',
+        en: 'Personalized Oncology: AI-Driven Targeted Treatments',
+        fr: 'Oncologie Personnalisée: Traitements Ciblés par IA'
       },
       excerpt: {
-        es: 'Análisis de 4 tipos de leucemia mediante ML: clasificación, pronóstico y optimización de protocolos terapéuticos.',
-        en: 'Analysis of 4 leukemia types through ML: classification, prognosis and optimization of therapeutic protocols.',
-        fr: 'Analyse de 4 types de leucémie par ML: classification, pronostic et optimisation de protocoles thérapeutiques.'
+        es: 'Selección de terapias basada en perfil genético tumoral: inmunoterapia, quimioterapia dirigida y pronóstico de supervivencia.',
+        en: 'Therapy selection based on tumor genetic profile: immunotherapy, targeted chemotherapy and survival prognosis.',
+        fr: 'Sélection de thérapies basée sur profil génétique tumoral: immunothérapie, chimiothérapie dirigée et pronostic de survie.'
+      },
+      date: '2024-12-12',
+      readTime: '13 min',
+      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
+      icon: Dna
+    },
+
+    // Heart Disease Articles
+    {
+      id: 'heart-disease-intro',
+      title: {
+        es: 'Enfermedades Cardiovasculares: El Asesino Silencioso',
+        en: 'Cardiovascular Disease: The Silent Killer',
+        fr: 'Maladies Cardiovasculaires: Le Tueur Silencieux'
+      },
+      excerpt: {
+        es: 'Factores de riesgo cardiovascular: hipertensión, colesterol, diabetes y cómo la IA predice eventos cardíacos con 92% precisión.',
+        en: 'Cardiovascular risk factors: hypertension, cholesterol, diabetes and how AI predicts cardiac events with 92% accuracy.',
+        fr: 'Facteurs de risque cardiovasculaire: hypertension, cholestérol, diabète et comment l\'IA prédit les événements cardiaques avec 92% précision.'
       },
       date: '2024-12-10',
-      readTime: '13 min',
-      category: {
-        es: 'Hematología', 
-        en: 'Hematology',
-        fr: 'Hématologie'
+      readTime: '10 min',
+      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
+      icon: Heart
+    },
+    {
+      id: 'heart-disease-diagnosis',
+      title: {
+        es: 'Electrocardiogramas Inteligentes y Diagnóstico Cardíaco',
+        en: 'Smart ECGs and Cardiac Diagnosis',
+        fr: 'ECG Intelligents et Diagnostic Cardiaque'
       },
+      excerpt: {
+        es: 'Análisis automático de ECG con machine learning: detección de arritmias, isquemia y patrones de riesgo en tiempo real.',
+        en: 'Automatic ECG analysis with machine learning: detection of arrhythmias, ischemia and risk patterns in real time.',
+        fr: 'Analyse automatique d\'ECG avec machine learning: détection d\'arythmies, ischémie et patterns de risque en temps réel.'
+      },
+      date: '2024-12-08',
+      readTime: '12 min',
+      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
       icon: Activity
     },
     {
-      id: '8',
+      id: 'heart-disease-treatment',
       title: {
-        es: 'Integración Hospitalaria: ROI y Casos de Éxito Documentados',
-        en: 'Hospital Integration: Documented ROI and Success Cases',
-        fr: 'Intégration Hospitalière: ROI Documenté et Cas de Succès'
+        es: 'Cardiología Preventiva: Intervenciones Guiadas por IA',
+        en: 'Preventive Cardiology: AI-Guided Interventions',
+        fr: 'Cardiologie Préventive: Interventions Guidées par IA'
       },
       excerpt: {
-        es: 'Análisis de 15+ implementaciones hospitalarias: 67% reducción tiempos diagnóstico, 40% mejora eficiencia, ROI 280% promedio.',
-        en: 'Analysis of 15+ hospital implementations: 67% reduction in diagnostic times, 40% efficiency improvement, 280% average ROI.',
-        fr: 'Analyse de 15+ implémentations hospitalières: 67% réduction temps diagnostic, 40% amélioration efficacité, 280% ROI moyen.'
+        es: 'Estrategias preventivas personalizadas: medicación óptima, ejercicio dirigido y seguimiento continuo con wearables inteligentes.',
+        en: 'Personalized preventive strategies: optimal medication, targeted exercise and continuous monitoring with smart wearables.',
+        fr: 'Stratégies préventives personnalisées: médication optimale, exercice dirigé et suivi continu avec wearables intelligents.'
       },
-      date: '2024-12-08',
-      readTime: '14 min',
-      category: {
-        es: 'Casos de Estudio',
-        en: 'Case Studies',
-        fr: 'Études de Cas'
+      date: '2024-12-05',
+      readTime: '11 min',
+      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
+      icon: Shield
+    },
+
+    // Additional Featured Articles
+    {
+      id: 'ai-revolution',
+      title: {
+        es: 'Revolución de la IA Médica: 62+ Modelos para 12 Enfermedades',
+        en: 'Medical AI Revolution: 62+ Models for 12 Diseases',
+        fr: 'Révolution de l\'IA Médicale: 62+ Modèles pour 12 Maladies'
       },
-      icon: TrendingUp
+      excerpt: {
+        es: 'Análisis completo de nuestra plataforma: cómo 62+ modelos especializados transforman el diagnóstico médico con 98.8% precisión máxima.',
+        en: 'Complete analysis of our platform: how 62+ specialized models transform medical diagnosis with 98.8% maximum accuracy.',
+        fr: 'Analyse complète de notre plateforme: comment 62+ modèles spécialisés transforment le diagnostic médical avec 98,8% précision maximale.'
+      },
+      date: '2024-12-03',
+      readTime: '15 min',
+      category: { es: 'Medicina Predictiva', en: 'Predictive Medicine', fr: 'Médecine Prédictive' },
+      icon: Brain
+    },
+    {
+      id: 'hospital-success',
+      title: {
+        es: 'Casos de Éxito: 15+ Hospitales Transformados por IA',
+        en: 'Success Stories: 15+ Hospitals Transformed by AI',
+        fr: 'Cas de Succès: 15+ Hôpitaux Transformés par IA'
+      },
+      excerpt: {
+        es: 'Implementaciones reales: 67% reducción tiempo diagnóstico, 40% mejora eficiencia operativa, 280% ROI promedio documentado.',
+        en: 'Real implementations: 67% reduction in diagnostic time, 40% operational efficiency improvement, 280% average documented ROI.',
+        fr: 'Implémentations réelles: 67% réduction temps diagnostic, 40% amélioration efficacité opérationnelle, 280% ROI moyen documenté.'
+      },
+      date: '2024-12-01',
+      readTime: '13 min',
+      category: { es: 'Casos de Estudio', en: 'Case Studies', fr: 'Études de Cas' },
+      icon: Stethoscope
     }
   ];
 
@@ -193,14 +220,14 @@ const Blog = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {language === 'es' ? 'Blog MedAI - Medicina Predictiva Avanzada' :
-             language === 'fr' ? 'Blog MedAI - Médecine Prédictive Avancée' :
-             'MedAI Blog - Advanced Predictive Medicine'}
+            {language === 'es' ? 'Blog MedAI - Medicina Predictiva' :
+             language === 'fr' ? 'Blog MedAI - Médecine Prédictive' :
+             'MedAI Blog - Predictive Medicine'}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Investigaciones, casos clínicos y avances en medicina predictiva con IA. 62+ modelos especializados para 12 enfermedades críticas.' :
-             language === 'fr' ? 'Recherches, cas cliniques et avancées en médecine prédictive avec IA. 62+ modèles spécialisés pour 12 maladies critiques.' :
-             'Research, clinical cases and advances in predictive medicine with AI. 62+ specialized models for 12 critical diseases.'}
+            {language === 'es' ? 'Investigación médica avanzada con IA. 62+ modelos especializados transformando el diagnóstico y tratamiento.' :
+             language === 'fr' ? 'Recherche médicale avancée avec IA. 62+ modèles spécialisés transformant diagnostic et traitement.' :
+             'Advanced medical research with AI. 62+ specialized models transforming diagnosis and treatment.'}
           </p>
         </div>
 
@@ -243,9 +270,9 @@ const Blog = () => {
                   </p>
                   <Link to={`/blog/${featuredPost.id}`}>
                     <Button className="bg-blue-600 hover:bg-blue-700">
-                      {language === 'es' ? 'Leer Artículo Completo' :
-                       language === 'fr' ? 'Lire l\'Article Complet' :
-                       'Read Full Article'}
+                      {language === 'es' ? 'Leer Artículo' :
+                       language === 'fr' ? 'Lire Article' :
+                       'Read Article'}
                     </Button>
                   </Link>
                 </CardContent>
@@ -257,9 +284,9 @@ const Blog = () => {
         {/* Regular Posts Grid */}
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            {language === 'es' ? 'Artículos Médicos Especializados' :
-             language === 'fr' ? 'Articles Médicaux Spécialisés' :
-             'Specialized Medical Articles'}
+            {language === 'es' ? 'Artículos Médicos' :
+             language === 'fr' ? 'Articles Médicaux' :
+             'Medical Articles'}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {regularPosts.map((post) => {
@@ -309,46 +336,46 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Updated Statistics Section */}
+        {/* Statistics Section */}
         <div className="mt-16 bg-white rounded-xl p-8 shadow-sm">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'MedAI en Números - Medicina Predictiva' :
-               language === 'fr' ? 'MedAI en Chiffres - Médecine Prédictive' :
-               'MedAI in Numbers - Predictive Medicine'}
+              {language === 'es' ? 'MedAI en Números' :
+               language === 'fr' ? 'MedAI en Chiffres' :
+               'MedAI in Numbers'}
             </h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-3xl font-bold text-blue-600 mb-2">12</div>
               <div className="text-gray-600 text-sm">
-                {language === 'es' ? 'Enfermedades Críticas' :
-                 language === 'fr' ? 'Maladies Critiques' :
-                 'Critical Diseases'}
+                {language === 'es' ? 'Enfermedades' :
+                 language === 'fr' ? 'Maladies' :
+                 'Diseases'}
               </div>
             </div>
             <div>
               <div className="text-3xl font-bold text-blue-600 mb-2">62+</div>
               <div className="text-gray-600 text-sm">
-                {language === 'es' ? 'Modelos de IA Especializados' :
-                 language === 'fr' ? 'Modèles d\'IA Spécialisés' :
-                 'Specialized AI Models'}
+                {language === 'es' ? 'Modelos IA' :
+                 language === 'fr' ? 'Modèles IA' :
+                 'AI Models'}
               </div>
             </div>
             <div>
               <div className="text-3xl font-bold text-blue-600 mb-2">98.8%</div>
               <div className="text-gray-600 text-sm">
-                {language === 'es' ? 'Precisión Máxima Alcanzada' :
-                 language === 'fr' ? 'Précision Maximale Atteinte' :
-                 'Maximum Accuracy Achieved'}
+                {language === 'es' ? 'Precisión Máx.' :
+                 language === 'fr' ? 'Précision Max.' :
+                 'Max Accuracy'}
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">25000+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">25K+</div>
               <div className="text-gray-600 text-sm">
-                {language === 'es' ? 'Casos Clínicos Analizados' :
-                 language === 'fr' ? 'Cas Cliniques Analysés' :
-                 'Clinical Cases Analyzed'}
+                {language === 'es' ? 'Casos Clínicos' :
+                 language === 'fr' ? 'Cas Cliniques' :
+                 'Clinical Cases'}
               </div>
             </div>
           </div>

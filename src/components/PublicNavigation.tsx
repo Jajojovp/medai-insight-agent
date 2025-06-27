@@ -34,102 +34,129 @@ const PublicNavigation = () => {
     }
   };
 
-  const diseases = [
-    { 
-      id: 'diabetes', 
+  const diseaseCategories = [
+    {
       name: {
-        es: 'Diabetes Tipo 2',
-        en: 'Type 2 Diabetes', 
-        fr: 'Diabète Type 2'
-      }
+        es: 'Cáncer',
+        en: 'Cancer',
+        fr: 'Cancer'
+      },
+      diseases: [
+        { 
+          id: 'breast-cancer', 
+          name: {
+            es: 'Mama',
+            en: 'Breast', 
+            fr: 'Sein'
+          }
+        },
+        { 
+          id: 'prostate-cancer', 
+          name: {
+            es: 'Próstata',
+            en: 'Prostate', 
+            fr: 'Prostate'
+          }
+        },
+        { 
+          id: 'pancreatic-cancer', 
+          name: {
+            es: 'Páncreas',
+            en: 'Pancreatic', 
+            fr: 'Pancréas'
+          }
+        },
+        { 
+          id: 'stomach-cancer', 
+          name: {
+            es: 'Estómago',
+            en: 'Stomach', 
+            fr: 'Estomac'
+          }
+        },
+        { 
+          id: 'liver-cancer', 
+          name: {
+            es: 'Hígado',
+            en: 'Liver', 
+            fr: 'Foie'
+          }
+        },
+        { 
+          id: 'lung-cancer', 
+          name: {
+            es: 'Pulmón',
+            en: 'Lung', 
+            fr: 'Poumon'
+          }
+        },
+        { 
+          id: 'leukemia', 
+          name: {
+            es: 'Leucemia',
+            en: 'Leukemia', 
+            fr: 'Leucémie'
+          }
+        }
+      ]
     },
-    { 
-      id: 'breast-cancer', 
+    {
       name: {
-        es: 'Cáncer de Mama',
-        en: 'Breast Cancer', 
-        fr: 'Cancer du Sein'
-      }
+        es: 'Cardiovascular',
+        en: 'Cardiovascular',
+        fr: 'Cardiovasculaire'
+      },
+      diseases: [
+        { 
+          id: 'heart-disease', 
+          name: {
+            es: 'Corazón',
+            en: 'Heart', 
+            fr: 'Cœur'
+          }
+        },
+        { 
+          id: 'stroke', 
+          name: {
+            es: 'ACV',
+            en: 'Stroke', 
+            fr: 'AVC'
+          }
+        }
+      ]
     },
-    { 
-      id: 'prostate-cancer', 
+    {
       name: {
-        es: 'Cáncer de Próstata',
-        en: 'Prostate Cancer', 
-        fr: 'Cancer de la Prostate'
-      }
-    },
-    { 
-      id: 'heart-disease', 
-      name: {
-        es: 'Enfermedades Cardíacas',
-        en: 'Heart Disease', 
-        fr: 'Maladies Cardiaques'
-      }
-    },
-    { 
-      id: 'stroke', 
-      name: {
-        es: 'Riesgo de ACV',
-        en: 'Stroke Risk', 
-        fr: 'Risque d\'AVC'
-      }
-    },
-    { 
-      id: 'chronic-kidney-disease', 
-      name: {
-        es: 'Enfermedad Renal Crónica',
-        en: 'Chronic Kidney Disease', 
-        fr: 'Maladie Rénale Chronique'
-      }
-    },
-    { 
-      id: 'pancreatic-cancer', 
-      name: {
-        es: 'Cáncer de Páncreas',
-        en: 'Pancreatic Cancer', 
-        fr: 'Cancer du Pancréas'
-      }
-    },
-    { 
-      id: 'stomach-cancer', 
-      name: {
-        es: 'Cáncer de Estómago',
-        en: 'Stomach Cancer', 
-        fr: 'Cancer de l\'Estomac'
-      }
-    },
-    { 
-      id: 'leukemia', 
-      name: {
-        es: 'Leucemia',
-        en: 'Leukemia', 
-        fr: 'Leucémie'
-      }
-    },
-    { 
-      id: 'liver-cancer', 
-      name: {
-        es: 'Cáncer de Hígado',
-        en: 'Liver Cancer', 
-        fr: 'Cancer du Foie'
-      }
-    },
-    { 
-      id: 'lung-cancer', 
-      name: {
-        es: 'Cáncer de Pulmón',
-        en: 'Lung Cancer', 
-        fr: 'Cancer du Poumon'
-      }
-    },
-    { 
-      id: 'epilepsy', 
-      name: {
-        es: 'Epilepsia',
-        en: 'Epilepsy', 
-        fr: 'Épilepsie'
-      }
+        es: 'Otras',
+        en: 'Other',
+        fr: 'Autres'
+      },
+      diseases: [
+        { 
+          id: 'diabetes', 
+          name: {
+            es: 'Diabetes',
+            en: 'Diabetes', 
+            fr: 'Diabète'
+          }
+        },
+        { 
+          id: 'chronic-kidney-disease', 
+          name: {
+            es: 'Riñón',
+            en: 'Kidney', 
+            fr: 'Rein'
+          }
+        },
+        { 
+          id: 'epilepsy', 
+          name: {
+            es: 'Epilepsia',
+            en: 'Epilepsy', 
+            fr: 'Épilepsie'
+          }
+        }
+      ]
     }
   ];
 
@@ -153,7 +180,7 @@ const PublicNavigation = () => {
               <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
             </Link>
             
-            {/* Diseases Dropdown */}
+            {/* Diseases Dropdown - Categorized */}
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -161,16 +188,25 @@ const PublicNavigation = () => {
                     {language === 'es' ? 'Enfermedades' : language === 'fr' ? 'Maladies' : 'Diseases'}
                     <ChevronDown className="ml-1 h-3 w-3" />
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-white/95 backdrop-blur-md border border-white/30 rounded-2xl shadow-xl p-4 w-80">
-                    <div className="grid grid-cols-1 gap-2">
-                      {diseases.map((disease) => (
-                        <Link 
-                          key={disease.id}
-                          to={`/${disease.id}`}
-                          className="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl"
-                        >
-                          {disease.name[language as keyof typeof disease.name]}
-                        </Link>
+                  <NavigationMenuContent className="bg-white/95 backdrop-blur-md border border-white/30 rounded-2xl shadow-xl p-6 w-96">
+                    <div className="space-y-4">
+                      {diseaseCategories.map((category, idx) => (
+                        <div key={idx}>
+                          <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">
+                            {category.name[language as keyof typeof category.name]}
+                          </h4>
+                          <div className="grid grid-cols-2 gap-2">
+                            {category.diseases.map((disease) => (
+                              <Link 
+                                key={disease.id}
+                                to={`/${disease.id}`}
+                                className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg"
+                              >
+                                {disease.name[language as keyof typeof disease.name]}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </NavigationMenuContent>
@@ -182,9 +218,9 @@ const PublicNavigation = () => {
               {t('nav.blog')}
             </Link>
             <Link to="/health-recommendations" className="text-gray-600 hover:text-blue-600 transition-colors">
-              {language === 'en' ? "Health Tips" : 
-               language === 'fr' ? "Conseils Santé" : 
-               "Consejos de Salud"}
+              {language === 'en' ? "Tips" : 
+               language === 'fr' ? "Conseils" : 
+               "Consejos"}
             </Link>
             <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
               {t('nav.contact')}
@@ -195,22 +231,22 @@ const PublicNavigation = () => {
           <div className="hidden md:flex items-center space-x-4">
             {/* Language Selector */}
             <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
-                <div className="flex items-center space-x-2">
+              <SelectTrigger className="w-20 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
+                <div className="flex items-center space-x-1">
                   <Globe className="h-4 w-4" />
-                  <SelectValue />
+                  <span className="text-xs">{getLanguageAbbreviation(language)}</span>
                 </div>
               </SelectTrigger>
               <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-50">
-                <SelectItem value="es">{t('language.spanish')}</SelectItem>
-                <SelectItem value="en">{t('language.english')}</SelectItem>
-                <SelectItem value="fr">{t('language.french')}</SelectItem>
+                <SelectItem value="es">ES</SelectItem>
+                <SelectItem value="en">EN</SelectItem>
+                <SelectItem value="fr">FR</SelectItem>
               </SelectContent>
             </Select>
             
             <Link to="/dashboard">
               <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl">
-                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
+                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Connexion' : 'Login'}
               </Button>
             </Link>
           </div>
@@ -241,24 +277,26 @@ const PublicNavigation = () => {
                 <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
               </Link>
               
-              {/* Mobile Diseases Section */}
-              <div className="border-t border-gray-200 pt-3">
-                <div className="px-4 py-2 text-sm text-gray-500 font-medium">
-                  {language === 'es' ? 'Enfermedades' : language === 'fr' ? 'Maladies' : 'Diseases'}
+              {/* Mobile Diseases Section - Categorized */}
+              {diseaseCategories.map((category, idx) => (
+                <div key={idx} className="border-t border-gray-200 pt-3">
+                  <div className="px-4 py-2 text-sm text-gray-500 font-medium">
+                    {category.name[language as keyof typeof category.name]}
+                  </div>
+                  <div className="space-y-1">
+                    {category.diseases.map((disease) => (
+                      <Link 
+                        key={disease.id}
+                        to={`/${disease.id}`}
+                        className="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {disease.name[language as keyof typeof disease.name]}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                <div className="space-y-1 max-h-40 overflow-y-auto">
-                  {diseases.slice(0, 6).map((disease) => (
-                    <Link 
-                      key={disease.id}
-                      to={`/${disease.id}`}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {disease.name[language as keyof typeof disease.name]}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              ))}
 
               <Link 
                 to="/blog" 
@@ -272,9 +310,9 @@ const PublicNavigation = () => {
                 className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {language === 'en' ? "Health Tips" : 
-                 language === 'fr' ? "Conseils Santé" : 
-                 "Consejos de Salud"}
+                {language === 'en' ? "Tips" : 
+                 language === 'fr' ? "Conseils" : 
+                 "Consejos"}
               </Link>
               <Link 
                 to="/contact" 
@@ -286,9 +324,6 @@ const PublicNavigation = () => {
               
               {/* Language Selector for Mobile */}
               <div className="border-t border-gray-200 pt-3">
-                <div className="px-4 py-2 text-sm text-gray-500 font-medium">
-                  {t('nav.language') || 'Idioma'}
-                </div>
                 <Select value={language} onValueChange={(value) => {
                   setLanguage(value);
                   setMobileMenuOpen(false);
@@ -314,7 +349,7 @@ const PublicNavigation = () => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl">
-                    {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
+                    {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Connexion' : 'Login'}
                   </Button>
                 </Link>
               </div>
