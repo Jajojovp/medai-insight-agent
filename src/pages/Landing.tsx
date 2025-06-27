@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -335,20 +334,20 @@ const Landing = () => {
                  'Medical AI'}
               </Badge>
               
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                MedAI Pro
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Diagnóstico IA Médico
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                {language === 'es' ? 'Diagnóstico IA para 12 enfermedades críticas. Detección temprana y resultados confiables.' :
-                 language === 'fr' ? 'Diagnostic IA pour 12 maladies critiques. Détection précoce et résultats fiables.' :
-                 'AI diagnosis for 12 critical diseases. Early detection and reliable results.'}
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                {language === 'es' ? 'IA para 12 enfermedades críticas. Detección temprana confiable.' :
+                 language === 'fr' ? 'IA pour 12 maladies critiques. Détection précoce fiable.' :
+                 'AI for 12 critical diseases. Reliable early detection.'}
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/login">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-2xl text-lg font-semibold shadow-xl">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl">
                   {language === 'es' ? 'Iniciar' :
                    language === 'fr' ? 'Commencer' :
                    'Start'}
@@ -357,7 +356,7 @@ const Landing = () => {
               </Link>
               
               <Link to="/features">
-                <Button variant="outline" size="lg" className="bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 px-8 py-6 rounded-2xl text-lg font-semibold">
+                <Button variant="outline" size="lg" className="bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 px-8 py-4 rounded-2xl text-lg font-semibold">
                   {language === 'es' ? 'Ver Más' :
                    language === 'fr' ? 'Voir Plus' :
                    'Learn More'}
@@ -391,14 +390,14 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'Tecnología IA' :
-               language === 'fr' ? 'Technologie IA' :
-               'AI Technology'}
+              {language === 'es' ? 'Tecnología IA Avanzada' :
+               language === 'fr' ? 'Technologie IA Avancée' :
+               'Advanced AI Technology'}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {language === 'es' ? 'Herramientas diagnósticas avanzadas para mejorar precisión médica' :
-               language === 'fr' ? 'Outils diagnostiques avancés pour améliorer précision médicale' :
-               'Advanced diagnostic tools to improve medical accuracy'}
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {language === 'es' ? 'Herramientas diagnósticas de precisión médica' :
+               language === 'fr' ? 'Outils diagnostiques de précision médicale' :
+               'Medical precision diagnostic tools'}
             </p>
           </div>
           
@@ -515,25 +514,25 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* CTA Section - Fixed button colors */}
+      {/* CTA Section - Fixed button colors and shortened text */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
           <div className="space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              {language === 'es' ? '¿Listo para mejorar diagnósticos?' :
-               language === 'fr' ? 'Prêt à améliorer diagnostics?' :
-               'Ready to improve diagnostics?'}
+              {language === 'es' ? '¿Listo para comenzar?' :
+               language === 'fr' ? 'Prêt à commencer?' :
+               'Ready to start?'}
             </h2>
             
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              {language === 'es' ? 'Únase a profesionales que confían en MedAI para diagnósticos precisos' :
-               language === 'fr' ? 'Rejoignez professionnels qui font confiance à MedAI' :
-               'Join professionals who trust MedAI for accurate diagnostics'}
+            <p className="text-xl text-blue-100 max-w-xl mx-auto">
+              {language === 'es' ? 'Únase a profesionales que usan MedAI' :
+               language === 'fr' ? 'Rejoignez professionnels qui utilisent MedAI' :
+               'Join professionals using MedAI'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/login">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 rounded-2xl text-lg font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-4 rounded-2xl text-lg font-semibold">
                   {language === 'es' ? 'Iniciar' :
                    language === 'fr' ? 'Commencer' :
                    'Start'}
@@ -541,9 +540,9 @@ const Landing = () => {
               </Link>
               
               <Link to="/contact">
-                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-6 rounded-2xl text-lg font-semibold">
-                  {language === 'es' ? 'Contactar' :
-                   language === 'fr' ? 'Contacter' :
+                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-4 rounded-2xl text-lg font-semibold">
+                  {language === 'es' ? 'Contacto' :
+                   language === 'fr' ? 'Contact' :
                    'Contact'}
                 </Button>
               </Link>
