@@ -10,24 +10,25 @@ const StomachCancer = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50/30 to-white/30">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50/30 to-white/30">
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
-          <Badge variant="secondary" className="bg-red-100/80 text-red-800 rounded-full">
-            {language === 'es' ? 'Cáncer de Estómago' : 
-             language === 'fr' ? 'Cancer de l\'Estomac' : 
-             'Stomach Cancer'}
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge variant="secondary" className="bg-emerald-100/80 text-emerald-800 rounded-full">
+            {language === "es" ? "Cáncer de Estómago" : 
+             language === "fr" ? "Cancer de l'Estomac" : 
+             "Stomach Cancer"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Detección de Cáncer Gástrico' : 
-             language === 'fr' ? 'Détection du Cancer Gastrique' : 
-             'Gastric Cancer Detection'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Cáncer de Estómago" : 
+             language === "fr" ? "Analyse Prédictive du Cancer de l'Estomac" : 
+             "Stomach Cancer Predictive Analysis"}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo avanzado para cáncer de estómago usando 5+ modelos especializados con imágenes histopatológicas, endoscopia y análisis de biomarcadores moleculares' :
-             language === 'fr' ? 'Analyse prédictive avancée pour cancer de l\'estomac utilisant 5+ modèles spécialisés avec images histopathologiques, endoscopie et analyse de biomarqueurs moléculaires' :
+            {language === "es" ? 'Análisis predictivo avanzado para cáncer de estómago usando 5+ modelos especializados con imágenes histopatológicas, endoscopia y análisis de biomarcadores moleculares' :
+             language === "fr" ? 'Analyse prédictive avancée pour cancer de l\'estomac utilisant 5+ modèles spécialisés avec images histopathologiques, endoscopie et analyse de biomarqueurs moléculaires' :
              'Advanced predictive analysis for stomach cancer using 5+ specialized models with histopathological images, endoscopy and molecular biomarker analysis'}
           </p>
         </div>
@@ -356,7 +357,7 @@ const StomachCancer = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-br from-red-50/30 to-orange-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+          <Card className="bg-gradient-to-br from-emerald-50/30 to-orange-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
                 {language === 'es' ? 'Detección Gástrica Temprana Vital' : 

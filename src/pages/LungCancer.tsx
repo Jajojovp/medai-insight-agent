@@ -10,24 +10,25 @@ const LungCancer = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50/30 to-white/30">
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
-          <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
-            {language === 'es' ? 'Cáncer de Pulmón' : 
-             language === 'fr' ? 'Cancer du Poumon' : 
-             'Lung Cancer'}
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge variant="secondary" className="bg-gray-100/80 text-gray-800 rounded-full">
+            {language === "es" ? "Cáncer de Pulmón" : 
+             language === "fr" ? "Cancer du Poumon" : 
+             "Lung Cancer"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Detección de Cáncer Pulmonar' : 
-             language === 'fr' ? 'Détection du Cancer Pulmonaire' : 
-             'Lung Cancer Detection'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-600 to-slate-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Cáncer de Pulmón" : 
+             language === "fr" ? "Analyse Prédictive du Cancer du Poumon" : 
+             "Lung Cancer Predictive Analysis"}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo avanzado para cáncer de pulmón usando 5+ modelos especializados con imágenes CT de tórax, análisis histopatológico y biomarcadores moleculares' :
-             language === 'fr' ? 'Analyse prédictive avancée pour cancer du poumon utilisant 5+ modèles spécialisés avec images CT thoraciques, analyse histopathologique et biomarqueurs moléculaires' :
+            {language === "es" ? 'Análisis predictivo avanzado para cáncer de pulmón usando 5+ modelos especializados con imágenes CT de tórax, análisis histopatológico y biomarcadores moleculares' :
+             language === "fr" ? 'Analyse prédictive avancée pour cancer du poumon utilisant 5+ modèles spécialisés avec images CT thoraciques, analyse histopathologique et biomarqueurs moléculaires' :
              'Advanced predictive analysis for lung cancer using 5+ specialized models with chest CT images, histopathological analysis and molecular biomarkers'}
           </p>
         </div>

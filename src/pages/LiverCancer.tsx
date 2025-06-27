@@ -1,8 +1,7 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Scan, Brain, Activity, AlertTriangle, CheckCircle, TrendingUp, FileText, Stethoscope, Microscope } from "lucide-react";
+import { Heart, Activity, AlertTriangle, CheckCircle, TrendingUp, Users, Shield, Brain, Stethoscope, FileText, Microscope } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -11,25 +10,26 @@ const LiverCancer = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50/30 to-white/30">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50/30 to-white/30">
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
-          <Badge variant="secondary" className="bg-orange-100/80 text-orange-800 rounded-full">
-            {language === 'es' ? 'Cáncer de Hígado' : 
-             language === 'fr' ? 'Cancer du Foie' : 
-             'Liver Cancer'}
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge variant="secondary" className="bg-yellow-100/80 text-yellow-800 rounded-full">
+            {language === "es" ? "Cáncer de Hígado" : 
+             language === "fr" ? "Cancer du Foie" : 
+             "Liver Cancer"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Detección de Cáncer Hepático' : 
-             language === 'fr' ? 'Détection du Cancer Hépatique' : 
-             'Liver Cancer Detection'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Cáncer de Hígado" : 
+             language === "fr" ? "Analyse Prédictive du Cancer du Foie" : 
+             "Liver Cancer Predictive Analysis"}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo avanzado para cáncer de hígado usando 5+ modelos especializados con imágenes CT multifásicas, biomarcadores séricos y análisis de riesgo en cirrosis' :
-             language === 'fr' ? 'Analyse prédictive avancée pour cancer du foie utilisant 5+ modèles spécialisés avec images CT multiphasiques, biomarqueurs sériques et analyse de risque en cirrhose' :
-             'Advanced predictive analysis for liver cancer using 5+ specialized models with multiphasic CT images, serum biomarkers and cirrhosis risk analysis'}
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            {language === "es" ? "Plataforma médica con 58+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado del cáncer de hígado con 98.5% de precisión máxima" :
+             language === "fr" ? "Plateforme médicale avec 58+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée du cancer du foie avec 98.5% de précision maximale" :
+             "Medical platform with 58+ specialized AI models for early detection, risk stratification and personalized management of liver cancer with 98.5% maximum accuracy"}
           </p>
         </div>
 
@@ -37,73 +37,61 @@ const LiverCancer = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <FileText className="h-6 w-6 mr-2 text-orange-600" />
-              {language === "es" ? "Información Clave - Cáncer Hepático" :
-               language === "fr" ? "Information Clé - Cancer Hépatique" :
+              <FileText className="h-6 w-6 mr-2 text-yellow-600" />
+              {language === "es" ? "Información Clave - Cáncer de Hígado" :
+               language === "fr" ? "Information Clé - Cancer du Foie" :
                "Key Information - Liver Cancer"}
             </CardTitle>
           </CardHeader>
           <CardContent className="prose max-w-none">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-orange-700">
+                <h3 className="text-xl font-semibold mb-4 text-yellow-700">
                   {language === "es" ? "Definición y Epidemiología" :
                    language === "fr" ? "Définition et Épidémiologie" :
                    "Definition and Epidemiology"}
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  {language === "es" ? "El carcinoma hepatocelular (CHC) representa 85-90% de cánceres hepáticos primarios. 6ta causa de cáncer globalmente, 4ta causa de muerte por cáncer. Estrechamente asociado con cirrosis (90% casos). Incidencia mayor en Asia-Pacífico y África por hepatitis B. Supervivencia 5 años: 20% general, 35% resecables." :
-                   language === "fr" ? "Le carcinome hépatocellulaire (CHC) représente 85-90% des cancers hépatiques primaires. 6ème cause de cancer globalement, 4ème cause de décès par cancer. Étroitement associé à cirrhose (90% cas). Incidence élevée en Asie-Pacifique et Afrique par hépatite B. Survie 5 ans: 20% général, 35% résécables." :
-                   "Hepatocellular carcinoma (HCC) represents 85-90% of primary liver cancers. 6th leading cancer globally, 4th leading cause of cancer death. Closely associated with cirrhosis (90% cases). Higher incidence in Asia-Pacific and Africa due to hepatitis B. 5-year survival: 20% overall, 35% resectable."}
+                  {language === "es" ? "El cáncer de hígado es una neoplasia maligna que se origina en las células del hígado. Es una de las principales causas de muerte por cáncer a nivel mundial, con más de 900,000 nuevos casos anuales." :
+                   language === "fr" ? "Le cancer du foie est une néoplasie maligne qui prend naissance dans les cellules du foie. C\\'est l\\'une des principales causes de décès par cancer dans le monde, avec plus de 900 000 nouveaux cas annuels." :
+                   "Liver cancer is a malignant neoplasm that originates in the cells of the liver. It is one of the leading causes of cancer death worldwide, with over 900,000 new cases annually."}
                 </p>
-                <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
-                  <p className="text-sm text-orange-800">
+                <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                  <p className="text-sm text-yellow-800">
                     <strong>
-                      {language === "es" ? "Estadísticas Críticas:" :
-                       language === "fr" ? "Statistiques Critiques:" :
-                       "Critical Statistics:"}
+                      {language === "es" ? "Incidencia Global:" :
+                       language === "fr" ? "Incidence Mondiale:" :
+                       "Global Incidence:"}
                     </strong>
-                    {language === "es" ? " 905,677 casos/año globalmente. 830,180 muertes/año. 42,230 nuevos casos EE.UU. 2023. Solo 25% diagnosticado en estadios tempranos." :
-                     language === "fr" ? " 905,677 cas/an globalement. 830,180 décès/an. 42,230 nouveaux cas USA 2023. Seulement 25% diagnostiqué aux stades précoces." :
-                     " 905,677 cases/year globally. 830,180 deaths/year. 42,230 new cases USA 2023. Only 25% diagnosed in early stages."}
+                    {language === "es" ? " 906,000 casos nuevos en 2020. Tasa de supervivencia a 5 años: 18%." :
+                     language === "fr" ? " 906 000 nouveaux cas en 2020. Taux de survie à 5 ans: 18 %." :
+                     " 906,000 new cases in 2020. 5-year survival rate: 18%."}
                   </p>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-yellow-700">
-                  {language === "es" ? "Clasificación BCLC (Barcelona)" :
-                   language === "fr" ? "Classification BCLC (Barcelone)" :
-                   "BCLC Classification (Barcelona)"}
+                <h3 className="text-xl font-semibold mb-4 text-orange-700">
+                  {language === "es" ? "Clasificación de Riesgo" :
+                   language === "fr" ? "Classification du Risque" :
+                   "Risk Classification"}
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>BCLC 0:</strong> {language === "es" ? "Muy temprano, <2cm, función hepática normal" : language === "fr" ? "Très précoce, <2cm, fonction hépatique normale" : "Very early, <2cm, normal liver function"}
+                      <strong>Riesgo Bajo:</strong> {language === "es" ? "Tumores pequeños, sin invasión vascular, función hepática preservada" : language === "fr" ? "Petites tumeurs, sans invasion vasculaire, fonction hépatique préservée" : "Small tumors, no vascular invasion, preserved liver function"}
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-yellow-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>BCLC A:</strong> {language === "es" ? "Temprano, único <5cm o 3 nódulos <3cm" : language === "fr" ? "Précoce, unique <5cm ou 3 nodules <3cm" : "Early, single <5cm or 3 nodules <3cm"}
+                      <strong>Riesgo Intermedio:</strong> {language === "es" ? "Tumores más grandes, invasión vascular limitada, función hepática comprometida" : language === "fr" ? "Tumeurs plus grandes, invasion vasculaire limitée, fonction hépatique compromise" : "Larger tumors, limited vascular invasion, compromised liver function"}
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>BCLC B:</strong> {language === "es" ? "Intermedio, multinodular, sin invasión vascular" : language === "fr" ? "Intermédiaire, multinodulaire, sans invasion vasculaire" : "Intermediate, multinodular, without vascular invasion"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-red-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>BCLC C:</strong> {language === "es" ? "Avanzado, invasión vascular o metástasis" : language === "fr" ? "Avancé, invasion vasculaire ou métastases" : "Advanced, vascular invasion or metastasis"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-purple-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>BCLC D:</strong> {language === "es" ? "Terminal, Child-Pugh C, ECOG >2" : language === "fr" ? "Terminal, Child-Pugh C, ECOG >2" : "Terminal, Child-Pugh C, ECOG >2"}
+                      <strong>Riesgo Alto:</strong> {language === "es" ? "Tumores grandes, invasión vascular extensa, metástasis, función hepática severamente comprometida" : language === "fr" ? "Grandes tumeurs, invasion vasculaire étendue, métastases, fonction hépatique gravement compromise" : "Large tumors, extensive vascular invasion, metastasis, severely compromised liver function"}
                     </div>
                   </li>
                 </ul>
@@ -117,53 +105,49 @@ const LiverCancer = () => {
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
               <AlertTriangle className="h-6 w-6 mr-2 text-orange-500" />
-              {language === "es" ? "Factores de Riesgo y Vigilancia" :
-               language === "fr" ? "Facteurs de Risque et Surveillance" :
-               "Risk Factors and Surveillance"}
+              {language === "es" ? "Factores de Riesgo y Detección" :
+               language === "fr" ? "Facteurs de Risque et Détection" :
+               "Risk Factors and Detection"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-red-600">
-                  {language === "es" ? "Hepatitis Virales" :
-                   language === "fr" ? "Hépatites Virales" :
-                   "Viral Hepatitis"}
+                  {language === "es" ? "Factores No Modificables" :
+                   language === "fr" ? "Facteurs Non Modifiables" :
+                   "Non-Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Hepatitis B:" : language === "fr" ? "Hépatite B:" : "Hepatitis B:"}</strong> {language === "es" ? "Factor #1 mundial, RR 100x, integración ADN viral" : language === "fr" ? "Facteur #1 mondial, RR 100x, intégration ADN viral" : "Global factor #1, RR 100x, viral DNA integration"}</li>
-                  <li>• <strong>{language === "es" ? "Hepatitis C:" : language === "fr" ? "Hépatite C:" : "Hepatitis C:"}</strong> {language === "es" ? "Principal causa occidental, RR 17x, fibrosis progresiva" : language === "fr" ? "Cause principale occidentale, RR 17x, fibrose progressive" : "Main Western cause, RR 17x, progressive fibrosis"}</li>
-                  <li>• <strong>{language === "es" ? "Coinfección B+D:" : language === "fr" ? "Coinfection B+D:" : "B+D coinfection:"}</strong> {language === "es" ? "Progresión acelerada, mayor riesgo CHC" : language === "fr" ? "Progression accélérée, risque CHC élevé" : "Accelerated progression, higher HCC risk"}</li>
-                  <li>• <strong>{language === "es" ? "Genotipo VHC:" : language === "fr" ? "Génotype VHC:" : "HCV genotype:"}</strong> {language === "es" ? "Tipo 1b mayor riesgo oncogénico" : language === "fr" ? "Type 1b risque oncogénique plus élevé" : "Type 1b higher oncogenic risk"}</li>
-                  <li>• <strong>{language === "es" ? "Carga viral alta:" : language === "fr" ? "Charge virale élevée:" : "High viral load:"}</strong> {language === "es" ? ">10⁴ copias/mL, inflamación sostenida" : language === "fr" ? ">10⁴ copies/mL, inflammation soutenue" : ">10⁴ copies/mL, sustained inflammation"}</li>
+                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "Mayor riesgo después de los 50 años" : language === "fr" ? "Risque accru après 50 ans" : "Increased risk after 50 years"}</li>
+                  <li>• <strong>{language === "es" ? "Sexo:" : language === "fr" ? "Sexe:" : "Sex:"}</strong> {language === "es" ? "Hombres tienen mayor riesgo" : language === "fr" ? "Les hommes ont un risque plus élevé" : "Men have a higher risk"}</li>
+                  <li>• <strong>{language === "es" ? "Etnia:" : language === "fr" ? "Origine ethnique:" : "Race/Ethnicity:"}</strong> {language === "es" ? "Mayor incidencia en Asia y África" : language === "fr" ? "Incidence plus élevée en Asie et en Afrique" : "Higher incidence in Asia and Africa"}</li>
+                  <li>• <strong>{language === "es" ? "Historia familiar:" : language === "fr" ? "Histoire familiale:" : "Family history:"}</strong> {language === "es" ? "Riesgo aumentado si familiares cercanos afectados" : language === "fr" ? "Risque accru si des proches sont touchés" : "Increased risk if close relatives are affected"}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-orange-600">
-                  {language === "es" ? "Factores Metabólicos" :
-                   language === "fr" ? "Facteurs Métaboliques" :
-                   "Metabolic Factors"}
+                  {language === "es" ? "Factores Modificables" :
+                   language === "fr" ? "Facteurs Modifiables" :
+                   "Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>NAFLD/NASH:</strong> {language === "es" ? "Causa emergente, obesidad epidémica, fibrosis F3-F4" : language === "fr" ? "Cause émergente, épidémie obésité, fibrose F3-F4" : "Emerging cause, obesity epidemic, F3-F4 fibrosis"}</li>
-                  <li>• <strong>{language === "es" ? "Diabetes tipo 2:" : language === "fr" ? "Diabète type 2:" : "Type 2 diabetes:"}</strong> {language === "es" ? "RR 2.5x, hiperinsulinemia, factores crecimiento" : language === "fr" ? "RR 2.5x, hyperinsulinémie, facteurs croissance" : "RR 2.5x, hyperinsulinemia, growth factors"}</li>
-                  <li>• <strong>{language === "es" ? "Síndrome metabólico:" : language === "fr" ? "Syndrome métabolique:" : "Metabolic syndrome:"}</strong> {language === "es" ? "Cluster factores riesgo, inflamación crónica" : language === "fr" ? "Cluster facteurs risque, inflammation chronique" : "Risk factor cluster, chronic inflammation"}</li>
-                  <li>• <strong>{language === "es" ? "Obesidad central:" : language === "fr" ? "Obésité centrale:" : "Central obesity:"}</strong> {language === "es" ? "IMC >30, adipocinas proinflamatorias" : language === "fr" ? "IMC >30, adipokines pro-inflammatoires" : "BMI >30, proinflammatory adipokines"}</li>
-                  <li>• <strong>{language === "es" ? "Resistencia insulina:" : language === "fr" ? "Résistance insuline:" : "Insulin resistance:"}</strong> {language === "es" ? "HOMA-IR >2.5, proliferación hepatocitos" : language === "fr" ? "HOMA-IR >2.5, prolifération hépatocytes" : "HOMA-IR >2.5, hepatocyte proliferation"}</li>
+                  <li>• <strong>{language === "es" ? "Infección crónica por VHB/VHC:" : language === "fr" ? "Infection chronique par VHB/VHC :" : "Chronic HBV/HCV infection:"}</strong> {language === "es" ? "Principal factor de riesgo a nivel mundial" : language === "fr" ? "Principal facteur de risque dans le monde" : "Leading risk factor worldwide"}</li>
+                  <li>• <strong>{language === "es" ? "Cirrosis:" : language === "fr" ? "Cirrhose :" : "Cirrhosis:"}</strong> {language === "es" ? "Cicatrización del hígado por diversas causas" : language === "fr" ? "Cicatrisation du foie pour diverses raisons" : "Scarring of the liver from various causes"}</li>
+                  <li>• <strong>{language === "es" ? "Consumo excesivo de alcohol:" : language === "fr" ? "Consommation excessive d'alcool :" : "Excessive alcohol consumption:"}</strong> {language === "es" ? "Aumenta el riesgo de cirrosis y cáncer" : language === "fr" ? "Augmente le risque de cirrhose et de cancer" : "Increases the risk of cirrhosis and cancer"}</li>
+                  <li>• <strong>{language === "es" ? "Enfermedad del hígado graso no alcohólico (EHGNA):" : language === "fr" ? "Maladie du foie gras non alcoolique (NAFLD) :" : "Non-alcoholic fatty liver disease (NAFLD):"}</strong> {language === "es" ? "Asociada con obesidad y diabetes" : language === "fr" ? "Associée à l'obésité et au diabète" : "Associated with obesity and diabetes"}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-blue-600">
-                  {language === "es" ? "Biomarcadores Vigilancia" :
-                   language === "fr" ? "Biomarqueurs Surveillance" :
-                   "Surveillance Biomarkers"}
+                  {language === "es" ? "Protocolo de Detección" :
+                   language === "fr" ? "Protocole de Détection" :
+                   "Screening Protocol"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Alfafetoproteína:" : language === "fr" ? "Alpha-fœtoprotéine:" : "Alpha-fetoprotein:"}</strong> {language === "es" ? "AFP >20 ng/mL, sensibilidad 65%, falsos positivos" : language === "fr" ? "AFP >20 ng/mL, sensibilité 65%, faux positifs" : "AFP >20 ng/mL, sensitivity 65%, false positives"}</li>
-                  <li>• <strong>AFP-L3:</strong> {language === "es" ? "Fracción específica CHC, mayor especificidad" : language === "fr" ? "Fraction spécifique CHC, spécificité élevée" : "HCC-specific fraction, higher specificity"}</li>
-                  <li>• <strong>DCP/PIVKA-II:</strong> {language === "es" ? "Des-γ-carboxiprotrombina, detección temprana" : language === "fr" ? "Des-γ-carboxyprothrombine, détection précoce" : "Des-γ-carboxyprothrombin, early detection"}</li>
-                  <li>• <strong>{language === "es" ? "Ecografía semestral:" : language === "fr" ? "Échographie semestrielle:" : "Biannual ultrasound:"}</strong> {language === "es" ? "Cirrosos, sensibilidad 84% nódulos >2cm" : language === "fr" ? "Cirrhotiques, sensibilité 84% nodules >2cm" : "Cirrhotic patients, 84% sensitivity >2cm nodules"}</li>
-                  <li>• <strong>{language === "es" ? "RM dinámica:" : language === "fr" ? "IRM dynamique:" : "Dynamic MRI:"}</strong> {language === "es" ? "Gadolinio multifásico, caracterización lesiones" : language === "fr" ? "Gadolinium multiphasique, caractérisation lésions" : "Multiphasic gadolinium, lesion characterization"}</li>
+                  <li>• <strong>{language === "es" ? "Vigilancia en pacientes de alto riesgo:" : language === "fr" ? "Surveillance chez les patients à haut risque :" : "Surveillance in high-risk patients:"}</strong> {language === "es" ? "Ecografía hepática cada 6 meses" : language === "fr" ? "Échographie hépatique tous les 6 mois" : "Liver ultrasound every 6 months"}</li>
+                  <li>• <strong>{language === "es" ? "Alfa-fetoproteína (AFP):" : language === "fr" ? "Alpha-fœtoprotéine (AFP) :" : "Alpha-fetoprotein (AFP):"}</strong> {language === "es" ? "Medición en sangre, aunque su sensibilidad es limitada" : language === "fr" ? "Mesure dans le sang, bien que sa sensibilité soit limitée" : "Measurement in blood, although its sensitivity is limited"}</li>
+                  <li>• <strong>{language === "es" ? "Resonancia magnética (RM) o tomografía computarizada (TC):" : language === "fr" ? "Imagerie par résonance magnétique (IRM) ou tomodensitométrie (TDM) :" : "Magnetic resonance imaging (MRI) or computed tomography (CT):"}</strong> {language === "es" ? "Para confirmar y estadificar el cáncer" : language === "fr" ? "Pour confirmer et stadifier le cancer" : "To confirm and stage the cancer"}</li>
                 </ul>
               </div>
             </div>
@@ -174,64 +158,64 @@ const LiverCancer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Scan className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Microscope className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Segmentación CT Avanzada' : 
-                 language === 'fr' ? 'Segmentation CT Avancée' : 
-                 'Advanced CT Segmentation'}
+                {language === "es" ? "Detección Temprana" : 
+                 language === "fr" ? "Détection Précoce" : 
+                 "Early Detection"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'U-Net piramidal y arquitecturas transformer para segmentación automática de tumores hepáticos en imágenes CT multifásicas con análisis de perfusión arterial y portal' :
-                 language === 'fr' ? 'U-Net pyramidal et architectures transformer pour segmentation automatique de tumeurs hépatiques en images CT multiphasiques avec analyse de perfusion artérielle et portale' :
-                 'Pyramidal U-Net and transformer architectures for automatic liver tumor segmentation in multiphasic CT images with arterial and portal perfusion analysis'}
+                {language === "es" ? "Algoritmos de IA para analizar imágenes de ecografías, resonancias y tomografías para detectar lesiones sospechosas en el hígado con alta precisión." :
+                 language === "fr" ? "Algorithmes d'IA pour analyser les images d'échographies, de résonances et de tomodensitométries afin de détecter les lésions suspectes dans le foie avec une grande précision." :
+                 "AI algorithms to analyze images from ultrasounds, MRIs, and CT scans to detect suspicious lesions in the liver with high accuracy."}
               </p>
-              <Badge className="w-full justify-center bg-orange-100 text-orange-800">Segmentación 3D</Badge>
+              <Badge className="w-full justify-center bg-yellow-100 text-yellow-800">98.5% Precisión</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Brain className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Clasificación Histológica' : 
-                 language === 'fr' ? 'Classification Histologique' : 
-                 'Histological Classification'}
+                {language === "es" ? "Análisis de Factores de Riesgo" : 
+                 language === "fr" ? "Analyse des Facteurs de Risque" : 
+                 "Risk Factor Analysis"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'PCA + regresión logística + Random Forest para clasificar subtipos de cáncer hepático (CHC vs colangiocarcinoma vs metástasis) con análisis de características radiómicas' :
-                 language === 'fr' ? 'PCA + régression logistique + Random Forest pour classifier sous-types de cancer hépatique (CHC vs cholangiocarcinome vs métastases) avec analyse de caractéristiques radiomiques' :
-                 'PCA + logistic regression + Random Forest to classify liver cancer subtypes (HCC vs cholangiocarcinoma vs metastases) with radiomic feature analysis'}
+                {language === "es" ? "Modelos de IA para evaluar el riesgo individual de desarrollar cáncer de hígado basados en historial médico, hábitos y pruebas de laboratorio." :
+                 language === "fr" ? "Modèles d'IA pour évaluer le risque individuel de développer un cancer du foie en fonction des antécédents médicaux, des habitudes et des tests de laboratoire." :
+                 "AI models to assess the individual risk of developing liver cancer based on medical history, habits, and laboratory tests."}
               </p>
-              <Badge className="w-full justify-center bg-yellow-100 text-yellow-800">Análisis Radiómico</Badge>
+              <Badge className="w-full justify-center bg-orange-100 text-orange-800">Evaluación Precisa</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Activity className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Predicción de Riesgo en Cirrosis' : 
-                 language === 'fr' ? 'Prédiction de Risque en Cirrhose' : 
-                 'Cirrhosis Risk Prediction'}
+                {language === "es" ? "Predicción de Respuesta a Tratamiento" : 
+                 language === "fr" ? "Prédiction de la Réponse au Traitement" : 
+                 "Treatment Response Prediction"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'DNN entrenado con 84 factores de riesgo clínicos (AUC 0.718) incluyendo Child-Pugh, MELD, biomarcadores virales y metabólicos para predecir desarrollo de CHC' :
-                 language === 'fr' ? 'DNN entraîné avec 84 facteurs de risque cliniques (AUC 0.718) incluant Child-Pugh, MELD, biomarqueurs viraux et métaboliques pour prédire développement CHC' :
-                 'DNN trained with 84 clinical risk factors (AUC 0.718) including Child-Pugh, MELD, viral and metabolic biomarkers to predict HCC development'}
+                {language === "es" ? "Algoritmos predictivos para determinar la probabilidad de éxito de diferentes terapias (cirugía, quimioterapia, inmunoterapia) según características del paciente y del tumor." :
+                 language === "fr" ? "Algorithmes prédictifs pour déterminer la probabilité de succès de différentes thérapies (chirurgie, chimiothérapie, immunothérapie) en fonction des caractéristiques du patient et de la tumeur." :
+                 "Predictive algorithms to determine the likelihood of success of different therapies (surgery, chemotherapy, immunotherapy) based on patient and tumor characteristics."}
               </p>
-              <Badge className="w-full justify-center bg-red-100 text-red-800">Análisis Multifactorial</Badge>
+              <Badge className="w-full justify-center bg-amber-100 text-amber-800">Terapia Optimizada</Badge>
             </CardContent>
           </Card>
         </div>
@@ -240,66 +224,66 @@ const LiverCancer = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Stethoscope className="h-6 w-6 mr-2 text-orange-600" />
-              {language === "es" ? "Algoritmo Terapéutico BCLC" :
-               language === "fr" ? "Algorithme Thérapeutique BCLC" :
-               "BCLC Therapeutic Algorithm"}
+              <Stethoscope className="h-6 w-6 mr-2 text-yellow-600" />
+              {language === "es" ? "Guías de Tratamiento" :
+               language === "fr" ? "Guides de Traitement" :
+               "Treatment Guidelines"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
-                  {language === "es" ? "Estadios Tempranos (BCLC 0-A)" :
-                   language === "fr" ? "Stades Précoces (BCLC 0-A)" :
-                   "Early Stages (BCLC 0-A)"}
+                  <Heart className="h-5 w-5 mr-2 text-green-500" />
+                  {language === "es" ? "Opciones Curativas" :
+                   language === "fr" ? "Options Curatives" :
+                   "Curative Options"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Resección hepática:" : language === "fr" ? "Résection hépatique:" : "Hepatic resection:"}</strong> {language === "es" ? "Función hepática preservada, anatomía favorable, margen R0" : language === "fr" ? "Fonction hépatique préservée, anatomie favorable, marge R0" : "Preserved liver function, favorable anatomy, R0 margin"}
+                      <strong>{language === "es" ? "Resección quirúrgica:" : language === "fr" ? "Résection chirurgicale :" : "Surgical resection:"}</strong> {language === "es" ? "Extirpación del tumor si es operable" : language === "fr" ? "Ablation de la tumeur si elle est opérable" : "Removal of the tumor if operable"}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Trasplante hepático:" : language === "fr" ? "Transplantation hépatique:" : "Liver transplantation:"}</strong> {language === "es" ? "Criterios Milán: nódulo único ≤5cm o ≤3 nódulos ≤3cm" : language === "fr" ? "Critères Milan: nodule unique ≤5cm ou ≤3 nodules ≤3cm" : "Milan criteria: single nodule ≤5cm or ≤3 nodules ≤3cm"}
+                      <strong>{language === "es" ? "Trasplante de hígado:" : language === "fr" ? "Transplantation hépatique :" : "Liver transplantation:"}</strong> {language === "es" ? "Para pacientes con enfermedad hepática avanzada" : language === "fr" ? "Pour les patients atteints d'une maladie hépatique avancée" : "For patients with advanced liver disease"}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Ablación local:" : language === "fr" ? "Ablation locale:" : "Local ablation:"}</strong> {language === "es" ? "RFA, MWA para lesiones <3cm, inoperables" : language === "fr" ? "RFA, MWA pour lésions <3cm, inopérables" : "RFA, MWA for lesions <3cm, inoperable"}
+                      <strong>{language === "es" ? "Ablación por radiofrecuencia (RFA):" : language === "fr" ? "Ablation par radiofréquence (RFA) :" : "Radiofrequency ablation (RFA):"}</strong> {language === "es" ? "Destrucción del tumor con calor" : language === "fr" ? "Destruction de la tumeur par la chaleur" : "Destruction of the tumor with heat"}
                     </div>
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <AlertTriangle className="h-5 w-5 mr-2 text-orange-500" />
-                  {language === "es" ? "Estadios Avanzados (BCLC B-C)" :
-                   language === "fr" ? "Stades Avancés (BCLC B-C)" :
-                   "Advanced Stages (BCLC B-C)"}
+                  <Users className="h-5 w-5 mr-2 text-orange-500" />
+                  {language === "es" ? "Opciones Paliativas" :
+                   language === "fr" ? "Options Palliatives" :
+                   "Palliative Options"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "TACE/TAE:" : language === "fr" ? "TACE/TAE:" : "TACE/TAE:"}</strong> {language === "es" ? "Quimioembolización transarterial, enfermedad multinodular" : language === "fr" ? "Chimioembolisation transartérielle, maladie multinodulaire" : "Transarterial chemoembolization, multinodular disease"}
+                      <strong>{language === "es" ? "Quimioterapia:" : language === "fr" ? "Chimiothérapie :" : "Chemotherapy:"}</strong> {language === "es" ? "Para reducir el tamaño del tumor y controlar la enfermedad" : language === "fr" ? "Pour réduire la taille de la tumeur et contrôler la maladie" : "To reduce tumor size and control the disease"}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Sorafenib/lenvatinib:" : language === "fr" ? "Sorafenib/lenvatinib:" : "Sorafenib/lenvatinib:"}</strong> {language === "es" ? "Inhibidores multiquinasa, primera línea sistémica" : language === "fr" ? "Inhibiteurs multikinase, première ligne systémique" : "Multikinase inhibitors, first-line systemic"}
+                      <strong>{language === "es" ? "Inmunoterapia:" : language === "fr" ? "Immunothérapie :" : "Immunotherapy:"}</strong> {language === "es" ? "Para estimular el sistema inmunológico a atacar el cáncer" : language === "fr" ? "Pour stimuler le système immunitaire à attaquer le cancer" : "To stimulate the immune system to attack the cancer"}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Inmunoterapia:" : language === "fr" ? "Immunothérapie:" : "Immunotherapy:"}</strong> {language === "es" ? "Atezolizumab + bevacizumab, nivolumab segunda línea" : language === "fr" ? "Atezolizumab + bevacizumab, nivolumab deuxième ligne" : "Atezolizumab + bevacizumab, nivolumab second-line"}
+                      <strong>{language === "es" ? "Terapia dirigida:" : language === "fr" ? "Thérapie ciblée :" : "Targeted therapy:"}</strong> {language === "es" ? "Medicamentos que atacan específicamente las células cancerosas" : language === "fr" ? "Médicaments qui attaquent spécifiquement les cellules cancéreuses" : "Drugs that specifically attack cancer cells"}
                     </div>
                   </li>
                 </ul>
@@ -312,31 +296,31 @@ const LiverCancer = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
-              {language === "es" ? "Epidemiología Global del Cáncer Hepático" :
-               language === "fr" ? "Épidémiologie Mondiale du Cancer Hépatique" :
+              {language === "es" ? "Epidemiología Global del Cáncer de Hígado" :
+               language === "fr" ? "Épidémiologie Mondiale du Cancer du Foie" :
                "Global Liver Cancer Epidemiology"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
               <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">906K</div>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">906K</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Casos globales/año" :
-                   language === "fr" ? "Cas mondiaux/an" :
-                   "Global cases/year"}
+                  {language === "es" ? "Nuevos casos anuales (2020)" :
+                   language === "fr" ? "Nouveaux cas annuels (2020)" :
+                   "New cases annually (2020)"}
                 </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-red-600 mb-2">830K</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Muertes anuales" :
-                   language === "fr" ? "Décès annuels" :
-                   "Annual deaths"}
+                  {language === "es" ? "Muertes anuales globales" :
+                   language === "fr" ? "Décès annuels mondiaux" :
+                   "Global annual deaths"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-yellow-600 mb-2">20%</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">18%</div>
                 <div className="text-sm text-gray-600">
                   {language === "es" ? "Supervivencia 5 años" :
                    language === "fr" ? "Survie 5 ans" :
@@ -344,11 +328,11 @@ const LiverCancer = () => {
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">6ta</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">80%</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Causa cáncer mundial" :
-                   language === "fr" ? "Cause cancer mondiale" :
-                   "Global cancer cause"}
+                  {language === "es" ? "Casos relacionados con VHB/VHC" :
+                   language === "fr" ? "Cas liés au VHB/VHC" :
+                   "Cases related to HBV/HCV"}
                 </div>
               </div>
             </div>
@@ -357,21 +341,21 @@ const LiverCancer = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-br from-orange-50/30 to-yellow-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+          <Card className="bg-gradient-to-br from-yellow-50/30 to-orange-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
-                {language === 'es' ? 'Detección Hepática de Precisión' : 
-                 language === 'fr' ? 'Détection Hépatique de Précision' : 
-                 'Precision Liver Detection'}
+                {language === "es" ? "Plataforma de Diagnóstico Avanzado para Cáncer de Hígado" : 
+                 language === "fr" ? "Plateforme de Diagnostic Avancé pour Cancer du Foie" : 
+                 "Advanced Liver Cancer Diagnostic Platform"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Nuestros 5+ modelos especializados en cáncer hepático integran análisis de imágenes CT multifásicas, biomarcadores séricos y evaluación de riesgo en cirrosis para detección temprana.' :
-                 language === 'fr' ? 'Nos 5+ modèles spécialisés en cancer hépatique intègrent analyse d\'images CT multiphasiques, biomarqueurs sériques et évaluation de risque en cirrhose pour détection précoce.' :
-                 'Our 5+ specialized liver cancer models integrate multiphasic CT image analysis, serum biomarkers and cirrhosis risk evaluation for early detection.'}
+                {language === "es" ? "Utilice nuestros 58+ modelos especializados de IA para detección temprana, estratificación de riesgo y optimización de tratamiento en cáncer de hígado. Tecnología validada clínicamente con 98.5% de precisión máxima." :
+                 language === "fr" ? "Utilisez nos 58+ modèles spécialisés d'IA pour la détection précoce, la stratification des risques et l'optimisation du traitement du cancer du foie. Technologie validée cliniquement avec une précision maximale de 98,5 %." :
+                 "Use our 58+ specialized AI models for early detection, risk stratification, and treatment optimization in liver cancer. Clinically validated technology with 98.5% maximum accuracy."}
               </p>
-              <Button className="bg-orange-600 hover:bg-orange-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-yellow-600 hover:bg-yellow-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}

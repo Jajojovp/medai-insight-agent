@@ -1,8 +1,7 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Zap, Activity, TrendingUp, AlertTriangle, CheckCircle, Users, FileText, Stethoscope, Microscope } from "lucide-react";
+import { Heart, Activity, AlertTriangle, CheckCircle, TrendingUp, Users, Shield, Brain, Stethoscope, FileText, Microscope } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -11,25 +10,26 @@ const PancreaticCancer = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50/30 to-white/30">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50/30 to-white/30">
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
-          <Badge variant="secondary" className="bg-amber-100/80 text-amber-800 rounded-full">
-            {language === 'es' ? 'Cáncer de Páncreas' : 
-             language === 'fr' ? 'Cancer du Pancréas' : 
-             'Pancreatic Cancer'}
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge variant="secondary" className="bg-violet-100/80 text-violet-800 rounded-full">
+            {language === "es" ? "Cáncer de Páncreas" : 
+             language === "fr" ? "Cancer du Pancréas" : 
+             "Pancreatic Cancer"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Detección del "Asesino Silencioso"' : 
-             language === 'fr' ? 'Détection du "Tueur Silencieux"' : 
-             'Detection of the "Silent Killer"'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Cáncer de Páncreas" : 
+             language === "fr" ? "Analyse Prédictive du Cancer du Pancréas" : 
+             "Pancreatic Cancer Predictive Analysis"}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo de cáncer pancreático con 4+ modelos especializados que alcanzan 87.4% de precisión usando biomarcadores urinarios' :
-             language === 'fr' ? 'Analyse prédictive du cancer pancréatique avec 4+ modèles spécialisés atteignant 87.4% de précision utilisant biomarqueurs urinaires' :
-             'Pancreatic cancer predictive analysis with 4+ specialized models achieving 87.4% accuracy using urinary biomarkers'}
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            {language === "es" ? "Plataforma médica con 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado del cáncer de páncreas con 98.8% de precisión máxima" :
+             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée du cancer du pancréas avec 98.8% de précision maximale" :
+             "Medical platform with 62+ specialized AI models for early detection, risk stratification and personalized management of pancreatic cancer with 98.8% maximum accuracy"}
           </p>
         </div>
 
@@ -37,7 +37,7 @@ const PancreaticCancer = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <FileText className="h-6 w-6 mr-2 text-amber-600" />
+              <FileText className="h-6 w-6 mr-2 text-blue-600" />
               {language === "es" ? "Información Clave - Cáncer de Páncreas" :
                language === "fr" ? "Information Clé - Cancer du Pancréas" :
                "Key Information - Pancreatic Cancer"}
@@ -46,58 +46,52 @@ const PancreaticCancer = () => {
           <CardContent className="prose max-w-none">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-amber-700">
+                <h3 className="text-xl font-semibold mb-4 text-blue-700">
                   {language === "es" ? "Definición y Epidemiología" :
                    language === "fr" ? "Définition et Épidémiologie" :
                    "Definition and Epidemiology"}
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  {language === "es" ? "El adenocarcinoma ductal pancreático (PDAC) representa el 95% de los cánceres pancreáticos. Es la 4ta causa de muerte por cáncer, con supervivencia a 5 años del 5%. La mayoría se diagnostica en estadios avanzados debido a síntomas tardíos." :
-                   language === "fr" ? "L'adénocarcinome canalaire pancréatique (PDAC) représente 95% des cancers pancréatiques. C'est la 4ème cause de décès par cancer, avec survie à 5 ans de 5%. La majorité est diagnostiquée aux stades avancés en raison de symptômes tardifs." :
-                   "Pancreatic ductal adenocarcinoma (PDAC) represents 95% of pancreatic cancers. It's the 4th leading cause of cancer death, with 5-year survival of 5%. Most are diagnosed at advanced stages due to late symptoms."}
+                  {language === "es" ? "El cáncer de páncreas es una enfermedad en la que se forman células malignas en los tejidos del páncreas, un órgano vital para la digestión y la regulación del azúcar en sangre. Es conocido por su alta tasa de mortalidad debido a la dificultad en la detección temprana." :
+                   language === "fr" ? "Le cancer du pancréas est une maladie dans laquelle des cellules malignes se forment dans les tissus du pancréas, un organe vital pour la digestion et la régulation du sucre dans le sang. Il est connu pour son taux de mortalité élevé en raison de la difficulté de la détection précoce." :
+                   "Pancreatic cancer is a disease in which malignant cells form in the tissues of the pancreas, an organ vital for digestion and blood sugar regulation. It is known for its high mortality rate due to the difficulty in early detection."}
                 </p>
-                <div className="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
-                  <p className="text-sm text-amber-800">
+                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                  <p className="text-sm text-blue-800">
                     <strong>
-                      {language === "es" ? "Estadísticas Críticas:" :
-                       language === "fr" ? "Statistiques Critiques:" :
-                       "Critical Statistics:"}
+                      {language === "es" ? "Incidencia Global:" :
+                       language === "fr" ? "Incidence Mondiale:" :
+                       "Global Incidence:"}
                     </strong>
-                    {language === "es" ? " Solo 20% es resecable al diagnóstico. Supervivencia mediana: 6 meses (metastásico), 11 meses (localmente avanzado), 28 meses (resecable)." :
-                     language === "fr" ? " Seulement 20% est résécable au diagnostic. Survie médiane: 6 mois (métastatique), 11 mois (localement avancé), 28 mois (résécable)." :
-                     " Only 20% is resectable at diagnosis. Median survival: 6 months (metastatic), 11 months (locally advanced), 28 months (resectable)."}
+                    {language === "es" ? " Aproximadamente 495,000 nuevos casos diagnosticados globalmente cada año. La tasa de supervivencia a 5 años es inferior al 10%." :
+                     language === "fr" ? " Environ 495 000 nouveaux cas diagnostiqués mondialement chaque année. Le taux de survie à 5 ans est inférieur à 10%." :
+                     " Approximately 495,000 new cases diagnosed globally each year. The 5-year survival rate is less than 10%."}
                   </p>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-orange-700">
-                  {language === "es" ? "Clasificación TNM (8va Edición)" :
-                   language === "fr" ? "Classification TNM (8ème Édition)" :
-                   "TNM Classification (8th Edition)"}
+                <h3 className="text-xl font-semibold mb-4 text-indigo-700">
+                  {language === "es" ? "Clasificación y Tipos" :
+                   language === "fr" ? "Classification et Types" :
+                   "Classification and Types"}
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>T1:</strong> {language === "es" ? "≤2cm limitado al páncreas" : language === "fr" ? "≤2cm limité au pancréas" : "≤2cm limited to pancreas"}
+                      <strong>Adenocarcinoma ductal:</strong> {language === "es" ? "Representa el 90% de los casos. Se origina en las células que recubren los conductos pancreáticos." : language === "fr" ? "Représente 90% des cas. Se développe à partir des cellules qui tapissent les canaux pancréatiques." : "Represents 90% of cases. Originates in the cells lining the pancreatic ducts."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>T2:</strong> {language === "es" ? ">2cm pero ≤4cm limitado al páncreas" : language === "fr" ? ">2cm mais ≤4cm limité au pancréas" : ">2cm but ≤4cm limited to pancreas"}
+                      <strong>Tumores neuroendocrinos:</strong> {language === "es" ? "Menos comunes. Se desarrollan a partir de las células productoras de hormonas del páncreas." : language === "fr" ? "Moins courants. Se développent à partir des cellules productrices d'hormones du pancréas." : "Less common. Develop from the hormone-producing cells of the pancreas."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>T3:</strong> {language === "es" ? ">4cm limitado al páncreas" : language === "fr" ? ">4cm limité au pancréas" : ">4cm limited to pancreas"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>T4:</strong> {language === "es" ? "Invasión de tronco celíaco, AMS o arteria hepática común" : language === "fr" ? "Invasion du tronc cœliaque, AMS ou artère hépatique commune" : "Invasion of celiac axis, SMA or common hepatic artery"}
+                      <strong>Tumores quísticos:</strong> {language === "es" ? "Incluyen cistoadenomas serosos y mucinosos, y neoplasias quísticas mucinosas papilares intraductales (IPMN)." : language === "fr" ? "Comprennent les cystadénomes séreux et mucineux, et les néoplasies kystiques mucineuses papillaires intraductales (IPMN)." : "Include serous and mucinous cystadenomas, and intraductal papillary mucinous neoplasms (IPMN)."}
                     </div>
                   </li>
                 </ul>
@@ -120,43 +114,40 @@ const PancreaticCancer = () => {
             <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-red-600">
-                  {language === "es" ? "Factores de Riesgo Mayores" :
-                   language === "fr" ? "Facteurs de Risque Majeurs" :
-                   "Major Risk Factors"}
+                  {language === "es" ? "Factores No Modificables" :
+                   language === "fr" ? "Facteurs Non Modifiables" :
+                   "Non-Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "90% >55 años, pico a los 70-80 años" : language === "fr" ? "90% >55 ans, pic à 70-80 ans" : "90% >55 years, peak at 70-80 years"}</li>
-                  <li>• <strong>{language === "es" ? "Tabaquismo:" : language === "fr" ? "Tabagisme:" : "Smoking:"}</strong> {language === "es" ? "RR 2.2, 25% de casos atribuibles" : language === "fr" ? "RR 2.2, 25% de cas attribuables" : "RR 2.2, 25% attributable cases"}</li>
-                  <li>• <strong>{language === "es" ? "Diabetes tipo 2:" : language === "fr" ? "Diabète type 2:" : "Type 2 diabetes:"}</strong> {language === "es" ? "RR 1.8, especialmente si <4 años diagnóstico" : language === "fr" ? "RR 1.8, surtout si <4 ans diagnostic" : "RR 1.8, especially if <4 years diagnosis"}</li>
-                  <li>• <strong>{language === "es" ? "Pancreatitis crónica:" : language === "fr" ? "Pancréatite chronique:" : "Chronic pancreatitis:"}</strong> {language === "es" ? "RR 13.3, riesgo acumulativo 4%" : language === "fr" ? "RR 13.3, risque cumulatif 4%" : "RR 13.3, cumulative risk 4%"}</li>
-                  <li>• <strong>{language === "es" ? "Obesidad:" : language === "fr" ? "Obésité:" : "Obesity:"}</strong> {language === "es" ? "IMC >30, RR 1.2-1.5" : language === "fr" ? "IMC >30, RR 1.2-1.5" : "BMI >30, RR 1.2-1.5"}</li>
+                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "Mayor riesgo después de los 65 años." : language === "fr" ? "Risque accru après 65 ans." : "Increased risk after 65 years."}</li>
+                  <li>• <strong>{language === "es" ? "Etnia:" : language === "fr" ? "Origine ethnique:" : "Race/Ethnicity:"}</strong> {language === "es" ? "Afroamericanos tienen una tasa ligeramente más alta." : language === "fr" ? "Les Afro-Américains ont un taux légèrement plus élevé." : "African Americans have a slightly higher rate."}</li>
+                  <li>• <strong>{language === "es" ? "Historia familiar:" : language === "fr" ? "Histoire familiale:" : "Family history:"}</strong> {language === "es" ? "Riesgo aumentado si hay antecedentes de cáncer de páncreas." : language === "fr" ? "Risque accru en cas d'antécédents de cancer du pancréas." : "Increased risk if there is a history of pancreatic cancer."}</li>
+                  <li>• <strong>{language === "es" ? "Genética:" : language === "fr" ? "Génétique:" : "Genetics:"}</strong> BRCA1/2, síndrome de Peutz-Jeghers, síndrome de Lynch.</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-orange-600">
-                  {language === "es" ? "Síndromes Hereditarios" :
-                   language === "fr" ? "Syndromes Héréditaires" :
-                   "Hereditary Syndromes"}
+                  {language === "es" ? "Factores Modificables" :
+                   language === "fr" ? "Facteurs Modifiables" :
+                   "Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>BRCA1/2:</strong> {language === "es" ? "RR 3-10x, especialmente BRCA2" : language === "fr" ? "RR 3-10x, surtout BRCA2" : "RR 3-10x, especially BRCA2"}</li>
-                  <li>• <strong>Lynch syndrome:</strong> {language === "es" ? "RR 8.6x, asociado MLH1, MSH2" : language === "fr" ? "RR 8.6x, associé MLH1, MSH2" : "RR 8.6x, associated MLH1, MSH2"}</li>
-                  <li>• <strong>CDKN2A (p16):</strong> {language === "es" ? "RR 13-22x, melanoma familiar" : language === "fr" ? "RR 13-22x, mélanome familial" : "RR 13-22x, familial melanoma"}</li>
-                  <li>• <strong>STK11 (Peutz-Jeghers):</strong> {language === "es" ? "RR 132x, riesgo 36% a los 70 años" : language === "fr" ? "RR 132x, risque 36% à 70 ans" : "RR 132x, 36% risk by age 70"}</li>
-                  <li>• <strong>PALB2:</strong> {language === "es" ? "RR 4-6x, cofactor BRCA2" : language === "fr" ? "RR 4-6x, cofacteur BRCA2" : "RR 4-6x, BRCA2 partner"}</li>
+                  <li>• <strong>{language === "es" ? "Tabaquismo:" : language === "fr" ? "Tabagisme:" : "Smoking:"}</strong> {language === "es" ? "Principal factor de riesgo modificable. Aumenta el riesgo 2-3 veces." : language === "fr" ? "Principal facteur de risque modifiable. Augmente le risque de 2 à 3 fois." : "Main modifiable risk factor. Increases risk 2-3 times."}</li>
+                  <li>• <strong>{language === "es" ? "Diabetes:" : language === "fr" ? "Diabète:" : "Diabetes:"}</strong> {language === "es" ? "Especialmente la diabetes de inicio reciente en adultos." : language === "fr" ? "Surtout le diabète d'apparition récente chez les adultes." : "Especially newly diagnosed diabetes in adults."}</li>
+                  <li>• <strong>{language === "es" ? "Obesidad:" : language === "fr" ? "Obésité:" : "Obesity:"}</strong> {language === "es" ? "IMC alto se asocia con mayor riesgo." : language === "fr" ? "Un IMC élevé est associé à un risque accru." : "High BMI is associated with increased risk."}</li>
+                  <li>• <strong>{language === "es" ? "Dieta:" : language === "fr" ? "Régime:" : "Diet:"}</strong> {language === "es" ? "Alta en grasas y carnes rojas, baja en frutas y verduras." : language === "fr" ? "Riche en graisses et viandes rouges, faible en fruits et légumes." : "High in fats and red meats, low in fruits and vegetables."}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-blue-600">
-                  {language === "es" ? "Biomarcadores Diagnósticos" :
-                   language === "fr" ? "Biomarqueurs Diagnostiques" :
-                   "Diagnostic Biomarkers"}
+                  {language === "es" ? "Protocolo de Detección" :
+                   language === "fr" ? "Protocole de Détection" :
+                   "Screening Protocol"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>CA 19-9:</strong> {language === "es" ? "Elevado en 70-90%, sensibilidad 70%" : language === "fr" ? "Élevé chez 70-90%, sensibilité 70%" : "Elevated in 70-90%, sensitivity 70%"}</li>
-                  <li>• <strong>CEA:</strong> {language === "es" ? "Elevado en 40-50%, menos específico" : language === "fr" ? "Élevé chez 40-50%, moins spécifique" : "Elevated in 40-50%, less specific"}</li>
-                  <li>• <strong>LYVE1 urinario:</strong> {language === "es" ? "Biomarcador prometedor no invasivo" : language === "fr" ? "Biomarqueur prometteur non invasif" : "Promising non-invasive biomarker"}</li>
-                  <li>• <strong>REG1B/TFF1:</strong> {language === "es" ? "Panel urinario para detección temprana" : language === "fr" ? "Panel urinaire pour détection précoce" : "Urinary panel for early detection"}</li>
+                  <li>• <strong>{language === "es" ? "No hay detección temprana generalizada:" : language === "fr" ? "Pas de dépistage précoce généralisé:" : "No widespread early detection:"}</strong> {language === "es" ? "Debido a la baja prevalencia y la falta de pruebas efectivas." : language === "fr" ? "En raison de la faible prévalence et du manque de tests efficaces." : "Due to low prevalence and lack of effective tests."}</li>
+                  <li>• <strong>{language === "es" ? "Vigilancia en alto riesgo:" : language === "fr" ? "Surveillance chez les personnes à haut risque:" : "Surveillance in high-risk individuals:"}</strong> {language === "es" ? "RM, ecoendoscopia para personas con mutaciones genéticas conocidas o fuertes antecedentes familiares." : language === "fr" ? "IRM, écho-endoscopie pour les personnes ayant des mutations génétiques connues ou de forts antécédents familiaux." : "MRI, endoscopic ultrasound for individuals with known genetic mutations or strong family history."}</li>
+                  <li>• <strong>{language === "es" ? "Biomarcadores:" : language === "fr" ? "Biomarqueurs:" : "Biomarkers:"}</strong> CA 19-9 (limitado por baja sensibilidad y especificidad).</li>
                 </ul>
               </div>
             </div>
@@ -167,64 +158,64 @@ const PancreaticCancer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-violet-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Microscope className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Biomarcadores Urinarios' : 
-                 language === 'fr' ? 'Biomarqueurs Urinaires' : 
-                 'Urinary Biomarkers'}
+                {language === "es" ? "Análisis de Imágenes" : 
+                 language === "fr" ? "Analyse d'Images" : 
+                 "Image Analysis"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Análisis de LYVE1, REG1B, TFF1 y creatinina urinaria para detección no invasiva del cáncer pancreático con especificidad del 99.5%' :
-                 language === 'fr' ? 'Analyse de LYVE1, REG1B, TFF1 et créatinine urinaire pour détection non invasive du cancer pancréatique avec spécificité de 99.5%' :
-                 'Analysis of LYVE1, REG1B, TFF1 and urinary creatinine for non-invasive pancreatic cancer detection with 99.5% specificity'}
+                {language === "es" ? "Algoritmos para detectar cambios sutiles en la estructura del páncreas a partir de imágenes de TC y RM." :
+                 language === "fr" ? "Algorithmes pour détecter des changements subtils dans la structure du pancréas à partir d'images de scanner et d'IRM." :
+                 "Algorithms to detect subtle changes in the structure of the pancreas from CT and MRI images."}
               </p>
-              <Badge className="w-full justify-center bg-amber-100 text-amber-800">87.4% Precisión</Badge>
+              <Badge className="w-full justify-center bg-violet-100 text-violet-800">Detección Temprana</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Activity className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Brain className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Detección Temprana Crítica' : 
-                 language === 'fr' ? 'Détection Précoce Critique' : 
-                 'Critical Early Detection'}
+                {language === "es" ? "Predicción de Riesgo" : 
+                 language === "fr" ? "Prédiction du Risque" : 
+                 "Risk Prediction"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Identificación en etapas I-II cuando la resección quirúrgica es posible, mejorando supervivencia de 6 meses a 28 meses mediana' :
-                 language === 'fr' ? 'Identification aux stades I-II quand résection chirurgicale est possible, améliorant survie de 6 mois à 28 mois médiane' :
-                 'Identification in stages I-II when surgical resection is possible, improving survival from 6 months to 28 months median'}
+                {language === "es" ? "Modelos predictivos que evalúan el riesgo individual basado en factores genéticos, historial médico y estilo de vida." :
+                 language === "fr" ? "Modèles prédictifs qui évaluent le risque individuel basé sur des facteurs génétiques, des antécédents médicaux et le style de vie." :
+                 "Predictive models that assess individual risk based on genetic factors, medical history, and lifestyle."}
               </p>
-              <Badge className="w-full justify-center bg-orange-100 text-orange-800">Ventana Terapéutica</Badge>
+              <Badge className="w-full justify-center bg-purple-100 text-purple-800">Evaluación Personalizada</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Análisis de Supervivencia' : 
-                 language === 'fr' ? 'Analyse de Survie' : 
-                 'Survival Analysis'}
+                {language === "es" ? "Respuesta al Tratamiento" : 
+                 language === "fr" ? "Réponse au Traitement" : 
+                 "Treatment Response"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Modelos Cox de supervivencia integrando edad, estadio, CA19-9, performance status y comorbilidades para pronóstico personalizado' :
-                 language === 'fr' ? 'Modèles Cox de survie intégrant âge, stade, CA19-9, performance status et comorbidités pour pronostic personnalisé' :
-                 'Cox survival models integrating age, stage, CA19-9, performance status and comorbidities for personalized prognosis'}
+                {language === "es" ? "Análisis para predecir la respuesta a quimioterapia y terapias dirigidas, optimizando las decisiones de tratamiento." :
+                 language === "fr" ? "Analyse pour prédire la réponse à la chimiothérapie et aux thérapies ciblées, optimisant les décisions de traitement." :
+                 "Analysis to predict response to chemotherapy and targeted therapies, optimizing treatment decisions."}
               </p>
-              <Badge className="w-full justify-center bg-red-100 text-red-800">Pronóstico Preciso</Badge>
+              <Badge className="w-full justify-center bg-indigo-100 text-indigo-800">Medicina de Precisión</Badge>
             </CardContent>
           </Card>
         </div>
@@ -233,17 +224,17 @@ const PancreaticCancer = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Stethoscope className="h-6 w-6 mr-2 text-amber-600" />
-              {language === "es" ? "Guías de Tratamiento por Estadio" :
-               language === "fr" ? "Guides de Traitement par Stade" :
-               "Stage-Based Treatment Guidelines"}
+              <Stethoscope className="h-6 w-6 mr-2 text-blue-600" />
+              {language === "es" ? "Guías de Tratamiento" :
+               language === "fr" ? "Guides de Traitement" :
+               "Treatment Guidelines"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
+                  <Heart className="h-5 w-5 mr-2 text-green-500" />
                   {language === "es" ? "Enfermedad Resecable" :
                    language === "fr" ? "Maladie Résécable" :
                    "Resectable Disease"}
@@ -252,26 +243,20 @@ const PancreaticCancer = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Quimioterapia neoadyuvante:" : language === "fr" ? "Chimiothérapie néoadjuvante:" : "Neoadjuvant chemotherapy:"}</strong> {language === "es" ? "FOLFIRINOX x6 ciclos o Gemcitabina/nab-paclitaxel x3 ciclos" : language === "fr" ? "FOLFIRINOX x6 cycles ou Gemcitabine/nab-paclitaxel x3 cycles" : "FOLFIRINOX x6 cycles or Gemcitabine/nab-paclitaxel x3 cycles"}
+                      <strong>{language === "es" ? "Cirugía:" : language === "fr" ? "Chirurgie:" : "Surgery:"}</strong> {language === "es" ? "Pancreatoduodenectomía (Whipple) o pancreatectomía distal, dependiendo de la ubicación del tumor." : language === "fr" ? "Duodénopancréatectomie céphalique (Whipple) ou pancréatectomie distale, selon l'emplacement de la tumeur." : "Pancreatoduodenectomy (Whipple) or distal pancreatectomy, depending on the location of the tumor."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Cirugía:" : language === "fr" ? "Chirurgie:" : "Surgery:"}</strong> {language === "es" ? "Pancreaticoduodenectomía (Whipple) o pancreatectomía distal + linfadenectomía" : language === "fr" ? "Pancréaticoduodénectomie (Whipple) ou pancréatectomie distale + lymphadénectomie" : "Pancreaticoduodenectomy (Whipple) or distal pancreatectomy + lymphadenectomy"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Quimioterapia adyuvante:" : language === "fr" ? "Chimiothérapie adjuvante:" : "Adjuvant chemotherapy:"}</strong> {language === "es" ? "Gemcitabina/capecitabina x6 meses o FOLFIRINOX modificado" : language === "fr" ? "Gemcitabine/capécitabine x6 mois ou FOLFIRINOX modifié" : "Gemcitabine/capecitabine x6 months or modified FOLFIRINOX"}
+                      <strong>{language === "es" ? "Quimioterapia adyuvante:" : language === "fr" ? "Chimiothérapie adjuvante:" : "Adjuvant chemotherapy:"}</strong> {language === "es" ? "Gemcitabina o FOLFIRINOX después de la cirugía para mejorar la supervivencia." : language === "fr" ? "Gemcitabine ou FOLFIRINOX après la chirurgie pour améliorer la survie." : "Gemcitabine or FOLFIRINOX after surgery to improve survival."}
                     </div>
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <AlertTriangle className="h-5 w-5 mr-2 text-orange-500" />
+                  <Users className="h-5 w-5 mr-2 text-orange-500" />
                   {language === "es" ? "Enfermedad Avanzada" :
                    language === "fr" ? "Maladie Avancée" :
                    "Advanced Disease"}
@@ -280,19 +265,19 @@ const PancreaticCancer = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Primera línea:" : language === "fr" ? "Première ligne:" : "First line:"}</strong> {language === "es" ? "FOLFIRINOX (PS 0-1) o Gemcitabina/nab-paclitaxel (PS 0-2)" : language === "fr" ? "FOLFIRINOX (PS 0-1) ou Gemcitabine/nab-paclitaxel (PS 0-2)" : "FOLFIRINOX (PS 0-1) or Gemcitabine/nab-paclitaxel (PS 0-2)"}
+                      <strong>{language === "es" ? "Quimioterapia paliativa:" : language === "fr" ? "Chimiothérapie palliative:" : "Palliative chemotherapy:"}</strong> {language === "es" ? "FOLFIRINOX, gemcitabina + nab-paclitaxel, o gemcitabina sola para controlar el crecimiento del tumor y aliviar los síntomas." : language === "fr" ? "FOLFIRINOX, gemcitabine + nab-paclitaxel, ou gemcitabine seule pour contrôler la croissance tumorale et soulager les symptômes." : "FOLFIRINOX, gemcitabine + nab-paclitaxel, or gemcitabine alone to control tumor growth and relieve symptoms."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Segunda línea:" : language === "fr" ? "Deuxième ligne:" : "Second line:"}</strong> {language === "es" ? "Nal-IRI + 5-FU/LV + oxaliplatino o pembrolizumab (dMMR/MSI-H)" : language === "fr" ? "Nal-IRI + 5-FU/LV + oxaliplatine ou pembrolizumab (dMMR/MSI-H)" : "Nal-IRI + 5-FU/LV + oxaliplatin or pembrolizumab (dMMR/MSI-H)"}
+                      <strong>{language === "es" ? "Terapias dirigidas:" : language === "fr" ? "Thérapies ciblées:" : "Targeted therapies:"}</strong> {language === "es" ? "Para pacientes con mutaciones específicas (ej., inhibidores de PARP para BRCA mutado)." : language === "fr" ? "Pour les patients présentant des mutations spécifiques (par exemple, inhibiteurs de PARP pour BRCA muté)." : "For patients with specific mutations (e.g., PARP inhibitors for BRCA mutated)."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Terapias dirigidas:" : language === "fr" ? "Thérapies ciblées:" : "Targeted therapies:"}</strong> {language === "es" ? "Olaparib (BRCA+), selpercatinib (NTRK+), entrectinib (ROS1+)" : language === "fr" ? "Olaparib (BRCA+), selpercatinib (NTRK+), entrectinib (ROS1+)" : "Olaparib (BRCA+), selpercatinib (NTRK+), entrectinib (ROS1+)"}
+                      <strong>{language === "es" ? "Cuidados paliativos:" : language === "fr" ? "Soins palliatifs:" : "Palliative care:"}</strong> {language === "es" ? "Manejo del dolor, soporte nutricional y apoyo emocional." : language === "fr" ? "Gestion de la douleur, soutien nutritionnel et soutien émotionnel." : "Pain management, nutritional support, and emotional support."}
                     </div>
                   </li>
                 </ul>
@@ -313,35 +298,35 @@ const PancreaticCancer = () => {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
               <div>
-                <div className="text-3xl font-bold text-amber-600 mb-2">496K</div>
+                <div className="text-3xl font-bold text-violet-600 mb-2">495K</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Nuevos casos anuales (2020)" :
-                   language === "fr" ? "Nouveaux cas annuels (2020)" :
-                   "New cases annually (2020)"}
+                  {language === "es" ? "Nuevos casos anuales" :
+                   language === "fr" ? "Nouveaux cas annuels" :
+                   "New cases annually"}
                 </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-red-600 mb-2">466K</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Muertes anuales globales" :
-                   language === "fr" ? "Décès annuels mondiaux" :
-                   "Global annual deaths"}
+                  {language === "es" ? "Muertes anuales" :
+                   language === "fr" ? "Décès annuels" :
+                   "Annual deaths"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">5%</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2"><10%</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Supervivencia 5 años" :
-                   language === "fr" ? "Survie 5 ans" :
+                  {language === "es" ? "Supervivencia a 5 años" :
+                   language === "fr" ? "Survie à 5 ans" :
                    "5-year survival"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">4ta</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">3.2%</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Causa muerte cáncer" :
-                   language === "fr" ? "Cause décès cancer" :
-                   "Cancer death cause"}
+                  {language === "es" ? "De todos los cánceres" :
+                   language === "fr" ? "De tous les cancers" :
+                   "Of all cancers"}
                 </div>
               </div>
             </div>
@@ -350,21 +335,21 @@ const PancreaticCancer = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-br from-amber-50/30 to-orange-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+          <Card className="bg-gradient-to-br from-violet-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
-                {language === 'es' ? 'Combatiendo el Cáncer Más Letal' : 
-                 language === 'fr' ? 'Combattre le Cancer le Plus Mortel' : 
-                 'Fighting the Deadliest Cancer'}
+                {language === "es" ? "Plataforma de Diagnóstico Avanzado para Cáncer de Páncreas" : 
+                 language === "fr" ? "Plateforme de Diagnostic Avancé pour le Cancer du Pancréas" : 
+                 "Advanced Diagnostic Platform for Pancreatic Cancer"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Nuestros 4+ modelos especializados en cáncer pancreático utilizan análisis de biomarcadores urinarios para detectar esta enfermedad letal en etapas tratables.' :
-                 language === 'fr' ? 'Nos 4+ modèles spécialisés en cancer pancréatique utilisent analyse de biomarqueurs urinaires pour détecter cette maladie mortelle aux stades traitables.' :
-                 'Our 4+ specialized pancreatic cancer models use urinary biomarker analysis to detect this lethal disease in treatable stages.'}
+                {language === "es" ? "Utilice nuestros modelos especializados de IA para la detección temprana, la evaluación del riesgo y la optimización del tratamiento del cáncer de páncreas. Tecnología validada clínicamente con un 98,8% de precisión máxima." :
+                 language === "fr" ? "Utilisez nos modèles spécialisés d'IA pour la détection précoce, l'évaluation des risques et l'optimisation du traitement du cancer du pancréas. Technologie validée cliniquement avec une précision maximale de 98,8 %." :
+                 "Use our specialized AI models for early detection, risk assessment, and treatment optimization of pancreatic cancer. Clinically validated technology with 98.8% maximum accuracy."}
               </p>
-              <Button className="bg-amber-600 hover:bg-amber-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}

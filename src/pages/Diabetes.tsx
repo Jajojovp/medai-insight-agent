@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Droplets, Heart, Activity, AlertTriangle, CheckCircle, TrendingUp, Users, Shield, Brain, Stethoscope, FileText } from "lucide-react";
+import { Heart, Activity, AlertTriangle, CheckCircle, TrendingUp, Users, Shield, Brain, Stethoscope, FileText, Microscope } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -10,26 +10,26 @@ const Diabetes = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30">
+    <div className="min-h-screen bg-gradient-to-br from-green-50/30 to-white/30">
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
-          <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
-            {language === "es" ? "Diabetes Tipo 2" : 
-             language === "fr" ? "Diabète Type 2" : 
-             "Type 2 Diabetes"}
+          <Badge variant="secondary" className="bg-green-100/80 text-green-800 rounded-full">
+            {language === "es" ? "Diabetes" : 
+             language === "fr" ? "Diabète" : 
+             "Diabetes"}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            {language === "es" ? "Análisis Predictivo de Diabetes Tipo 2" : 
-             language === "fr" ? "Analyse Prédictive du Diabète Type 2" : 
-             "Type 2 Diabetes Predictive Analysis"}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Diabetes" : 
+             language === "fr" ? "Analyse Prédictive du Diabète" : 
+             "Diabetes Predictive Analysis"}
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            {language === "es" ? "Plataforma médica con 62+ modelos especializados de machine learning para detección temprana y manejo clínico de diabetes tipo 2 con 98.8% de precisión máxima" :
-             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés de machine learning pour détection précoce et gestion clinique du diabète type 2 avec 98.8% de précision maximale" :
-             "Medical platform with 62+ specialized machine learning models for early detection and clinical management of type 2 diabetes with 98.8% maximum accuracy"}
+            {language === "es" ? "Plataforma médica con 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado de la diabetes con 98.8% de precisión máxima" :
+             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée du diabète avec 98.8% de précision maximale" :
+             "Medical platform with 62+ specialized AI models for early detection, risk stratification and personalized management of diabetes with 98.8% maximum accuracy"}
           </p>
         </div>
 
@@ -37,68 +37,62 @@ const Diabetes = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <FileText className="h-6 w-6 mr-2 text-blue-600" />
-              {language === "es" ? "Información Clave - Diabetes Tipo 2" :
-               language === "fr" ? "Information Clé - Diabète Type 2" :
-               "Key Information - Type 2 Diabetes"}
+              <FileText className="h-6 w-6 mr-2 text-green-600" />
+              {language === "es" ? "Información Clave - Diabetes" :
+               language === "fr" ? "Information Clé - Diabète" :
+               "Key Information - Diabetes"}
             </CardTitle>
           </CardHeader>
           <CardContent className="prose max-w-none">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-blue-700">
-                  {language === "es" ? "Definición Médica" :
-                   language === "fr" ? "Définition Médicale" :
-                   "Medical Definition"}
+                <h3 className="text-xl font-semibold mb-4 text-green-700">
+                  {language === "es" ? "Definición y Epidemiología" :
+                   language === "fr" ? "Définition et Épidémiologie" :
+                   "Definition and Epidemiology"}
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  {language === "es" ? "La diabetes tipo 2 es una enfermedad crónica que afecta la forma en que el cuerpo procesa el azúcar (glucosa) en la sangre. Se caracteriza por resistencia a la insulina o producción insuficiente de insulina por parte del páncreas." :
-                   language === "fr" ? "Le diabète type 2 est une maladie chronique qui affecte la façon dont le corps traite le sucre (glucose) dans le sang. Il se caractérise par une résistance à l'insuline ou une production insuffisante d'insuline par le pancréas." :
-                   "Type 2 diabetes is a chronic disease that affects how the body processes sugar (glucose) in the blood. It is characterized by insulin resistance or insufficient insulin production by the pancreas."}
+                  {language === "es" ? "La diabetes es una enfermedad crónica que se produce cuando el páncreas no produce suficiente insulina o cuando el organismo no puede utilizar eficazmente la insulina que produce. La insulina es una hormona que regula el azúcar en la sangre." :
+                   language === "fr" ? "Le diabète est une maladie chronique qui survient lorsque le pancréas ne produit pas suffisamment d'insuline ou lorsque l'organisme ne peut pas utiliser efficacement l'insuline qu'il produit. L'insuline est une hormone qui régule le sucre dans le sang." :
+                   "Diabetes is a chronic disease that occurs when the pancreas does not produce enough insulin or when the body cannot effectively use the insulin it produces. Insulin is a hormone that regulates blood sugar."}
                 </p>
-                <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
-                  <p className="text-sm text-red-800">
+                <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                  <p className="text-sm text-green-800">
                     <strong>
-                      {language === "es" ? "Impacto Global:" :
-                       language === "fr" ? "Impact Mondial:" :
-                       "Global Impact:"}
+                      {language === "es" ? "Incidencia Global:" :
+                       language === "fr" ? "Incidence Mondiale:" :
+                       "Global Incidence:"}
                     </strong>
-                    {language === "es" ? " Afecta a más de 537 millones de adultos mundialmente y es la séptima causa principal de muerte." :
-                     language === "fr" ? " Affecte plus de 537 millions d'adultes mondialement et est la septième cause principale de décès." :
-                     " Affects more than 537 million adults worldwide and is the seventh leading cause of death."}
+                    {language === "es" ? " 537 millones de adultos viven con diabetes en todo el mundo. Se espera que esta cifra aumente a 700 millones para 2045." :
+                     language === "fr" ? " 537 millions d'adultes vivent avec le diabète dans le monde. Ce chiffre devrait passer à 700 millions d'ici 2045." :
+                     " 537 million adults are living with diabetes worldwide. This number is expected to rise to 700 million by 2045."}
                   </p>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-green-700">
-                  {language === "es" ? "Fisiopatología" :
-                   language === "fr" ? "Physiopathologie" :
-                   "Pathophysiology"}
+                <h3 className="text-xl font-semibold mb-4 text-emerald-700">
+                  {language === "es" ? "Tipos de Diabetes" :
+                   language === "fr" ? "Types de Diabète" :
+                   "Types of Diabetes"}
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    {language === "es" ? "Resistencia periférica a la insulina en músculos y tejido adiposo" :
-                     language === "fr" ? "Résistance périphérique à l'insuline dans les muscles et le tissu adipeux" :
-                     "Peripheral insulin resistance in muscles and adipose tissue"}
+                    <div>
+                      <strong>{language === "es" ? "Diabetes Tipo 1:" : language === "fr" ? "Diabète de Type 1:" : "Type 1 Diabetes:"}</strong> {language === "es" ? "El cuerpo no produce insulina. Generalmente diagnosticada en niños y adultos jóvenes." : language === "fr" ? "Le corps ne produit pas d'insuline. Généralement diagnostiqué chez les enfants et les jeunes adultes." : "The body does not produce insulin. Usually diagnosed in children and young adults."}
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    {language === "es" ? "Disfunción progresiva de células beta pancreáticas" :
-                     language === "fr" ? "Dysfonction progressive des cellules bêta pancréatiques" :
-                     "Progressive dysfunction of pancreatic beta cells"}
+                    <div>
+                      <strong>{language === "es" ? "Diabetes Tipo 2:" : language === "fr" ? "Diabète de Type 2:" : "Type 2 Diabetes:"}</strong> {language === "es" ? "El cuerpo no utiliza la insulina de manera eficaz. Asociada con la obesidad, inactividad física y edad avanzada." : language === "fr" ? "Le corps n'utilise pas l'insuline efficacement. Associé à l'obésité, à l'inactivité physique et à l'âge avancé." : "The body does not use insulin effectively. Associated with obesity, physical inactivity, and older age."}
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    {language === "es" ? "Aumento de la producción hepática de glucosa" :
-                     language === "fr" ? "Augmentation de la production hépatique de glucose" :
-                     "Increased hepatic glucose production"}
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    {language === "es" ? "Alteraciones en la secreción de incretinas (GLP-1, GIP)" :
-                     language === "fr" ? "Altérations dans la sécrétion d'incrétines (GLP-1, GIP)" :
-                     "Alterations in incretin secretion (GLP-1, GIP)"}
+                    <div>
+                      <strong>{language === "es" ? "Diabetes Gestacional:" : language === "fr" ? "Diabète Gestationnel:" : "Gestational Diabetes:"}</strong> {language === "es" ? "Se desarrolla durante el embarazo. Generalmente desaparece después del parto, pero aumenta el riesgo de diabetes tipo 2." : language === "fr" ? "Se développe pendant la grossesse. Généralement disparaît après l'accouchement, mais augmente le risque de diabète de type 2." : "Develops during pregnancy. Usually disappears after childbirth but increases the risk of type 2 diabetes."}
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -111,9 +105,9 @@ const Diabetes = () => {
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
               <AlertTriangle className="h-6 w-6 mr-2 text-orange-500" />
-              {language === "es" ? "Factores de Riesgo y Detección Temprana" :
-               language === "fr" ? "Facteurs de Risque et Détection Précoce" :
-               "Risk Factors and Early Detection"}
+              {language === "es" ? "Factores de Riesgo y Detección" :
+               language === "fr" ? "Facteurs de Risque et Détection" :
+               "Risk Factors and Detection"}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -125,11 +119,10 @@ const Diabetes = () => {
                    "Non-Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• {language === "es" ? "Edad mayor o igual a 45 años" : language === "fr" ? "Âge supérieur ou égal à 45 ans" : "Age greater than or equal to 45 years"}</li>
-                  <li>• {language === "es" ? "Historia familiar de diabetes" : language === "fr" ? "Histoire familiale de diabète" : "Family history of diabetes"}</li>
-                  <li>• {language === "es" ? "Etnicidad (hispanos, afroamericanos, asiáticos)" : language === "fr" ? "Ethnicité (hispaniques, afro-américains, asiatiques)" : "Ethnicity (Hispanic, African American, Asian)"}</li>
-                  <li>• {language === "es" ? "Diabetes gestacional previa" : language === "fr" ? "Diabète gestationnel antérieur" : "Previous gestational diabetes"}</li>
-                  <li>• {language === "es" ? "Síndrome de ovario poliquístico" : language === "fr" ? "Syndrome des ovaires polykystiques" : "Polycystic ovary syndrome"}</li>
+                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "Mayor riesgo con la edad, especialmente después de los 45 años." : language === "fr" ? "Risque accru avec l'âge, surtout après 45 ans." : "Increased risk with age, especially after age 45."}</li>
+                  <li>• <strong>{language === "es" ? "Historia familiar:" : language === "fr" ? "Histoire familiale:" : "Family history:"}</strong> {language === "es" ? "Tener un padre, hermano o hermana con diabetes aumenta el riesgo." : language === "fr" ? "Avoir un parent, un frère ou une sœur atteint de diabète augmente le risque." : "Having a parent, brother, or sister with diabetes increases the risk."}</li>
+                  <li>• <strong>{language === "es" ? "Etnia:" : language === "fr" ? "Origine ethnique:" : "Race/Ethnicity:"}</strong> {language === "es" ? "Ciertas etnias tienen mayor riesgo, incluyendo afroamericanos, hispanos, nativos americanos, asiáticos americanos e isleños del Pacífico." : language === "fr" ? "Certaines ethnies présentent un risque plus élevé, notamment les Afro-Américains, les Hispaniques, les Amérindiens, les Asiatiques américains et les insulaires du Pacifique." : "Certain ethnicities have a higher risk, including African Americans, Hispanics, Native Americans, Asian Americans, and Pacific Islanders."}</li>
+                  <li>• <strong>{language === "es" ? "Diabetes gestacional previa:" : language === "fr" ? "Antécédents de diabète gestationnel:" : "Previous gestational diabetes:"}</strong> {language === "es" ? "Si tuvo diabetes gestacional, tiene un mayor riesgo de desarrollar diabetes tipo 2 más adelante." : language === "fr" ? "Si vous avez eu un diabète gestationnel, vous courez un risque accru de développer un diabète de type 2 plus tard." : "If you had gestational diabetes, you have a higher risk of developing type 2 diabetes later."}</li>
                 </ul>
               </div>
               <div>
@@ -139,25 +132,23 @@ const Diabetes = () => {
                    "Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• {language === "es" ? "IMC mayor o igual a 25 kg/m² (mayor o igual a 23 en asiáticos)" : language === "fr" ? "IMC supérieur ou égal à 25 kg/m² (supérieur ou égal à 23 chez les asiatiques)" : "BMI greater than or equal to 25 kg/m² (greater than or equal to 23 in Asians)"}</li>
-                  <li>• {language === "es" ? "Sedentarismo" : language === "fr" ? "Sédentarité" : "Physical inactivity"}</li>
-                  <li>• {language === "es" ? "Hipertensión arterial (mayor o igual a 140/90 mmHg)" : language === "fr" ? "Hypertension artérielle (supérieur ou égal à 140/90 mmHg)" : "Hypertension (greater than or equal to 140/90 mmHg)"}</li>
-                  <li>• {language === "es" ? "Dislipidemia (HDL menor de 35 mg/dL, TG mayor de 250 mg/dL)" : language === "fr" ? "Dyslipidémie (HDL moins de 35 mg/dL, TG supérieur à 250 mg/dL)" : "Dyslipidemia (HDL less than 35 mg/dL, TG greater than 250 mg/dL)"}</li>
-                  <li>• {language === "es" ? "Dieta rica en azúcares refinados" : language === "fr" ? "Régime riche en sucres raffinés" : "Diet high in refined sugars"}</li>
+                  <li>• <strong>{language === "es" ? "Sobrepeso u obesidad:" : language === "fr" ? "Surpoids ou obésité:" : "Overweight or obesity:"}</strong> {language === "es" ? "El exceso de peso, especialmente alrededor del abdomen, aumenta la resistencia a la insulina." : language === "fr" ? "L'excès de poids, surtout autour de l'abdomen, augmente la résistance à l'insuline." : "Excess weight, especially around the abdomen, increases insulin resistance."}</li>
+                  <li>• <strong>{language === "es" ? "Inactividad física:" : language === "fr" ? "Inactivité physique:" : "Physical inactivity:"}</strong> {language === "es" ? "Cuanto menos activo sea, mayor será su riesgo. La actividad física ayuda a controlar el peso, utiliza la glucosa como energía y hace que las células sean más sensibles a la insulina." : language === "fr" ? "Moins vous êtes actif, plus votre risque est élevé. L'activité physique aide à contrôler le poids, utilise le glucose comme énergie et rend les cellules plus sensibles à l'insuline." : "The less active you are, the greater your risk. Physical activity helps control weight, uses glucose for energy, and makes cells more sensitive to insulin."}</li>
+                  <li>• <strong>{language === "es" ? "Presión arterial alta:" : language === "fr" ? "Hypertension artérielle:" : "High blood pressure:"}</strong> {language === "es" ? "Tener presión arterial alta (140/90 mm Hg o superior) está relacionado con un mayor riesgo de diabetes tipo 2." : language === "fr" ? "Avoir une pression artérielle élevée (140/90 mm Hg ou plus) est lié à un risque accru de diabète de type 2." : "Having high blood pressure (140/90 mm Hg or higher) is linked to an increased risk of type 2 diabetes."}</li>
+                  <li>• <strong>{language === "es" ? "Niveles anormales de colesterol y triglicéridos:" : language === "fr" ? "Taux anormaux de cholestérol et de triglycérides:" : "Abnormal cholesterol and triglyceride levels:"}</strong> {language === "es" ? "Tener niveles bajos de colesterol HDL ("bueno") y niveles altos de triglicéridos aumenta el riesgo." : language === "fr" ? "Avoir de faibles taux de cholestérol HDL (« bon ») et des taux élevés de triglycérides augmente le risque." : "Having low levels of HDL cholesterol ("good") and high levels of triglycerides increases the risk."}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-blue-600">
-                  {language === "es" ? "Criterios de Cribado" :
-                   language === "fr" ? "Critères de Dépistage" :
-                   "Screening Criteria"}
+                  {language === "es" ? "Protocolo de Detección" :
+                   language === "fr" ? "Protocole de Détection" :
+                   "Screening Protocol"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• {language === "es" ? "Glucosa en ayunas mayor o igual a 126 mg/dL" : language === "fr" ? "Glucose à jeun supérieur ou égal à 126 mg/dL" : "Fasting glucose greater than or equal to 126 mg/dL"}</li>
-                  <li>• {language === "es" ? "HbA1c mayor o igual a 6.5%" : language === "fr" ? "HbA1c supérieur ou égal à 6.5%" : "HbA1c greater than or equal to 6.5%"}</li>
-                  <li>• {language === "es" ? "Glucosa 2h post-OGTT mayor o igual a 200 mg/dL" : language === "fr" ? "Glucose 2h post-OGTT supérieur ou égal à 200 mg/dL" : "2h post-OGTT glucose greater than or equal to 200 mg/dL"}</li>
-                  <li>• {language === "es" ? "Glucosa aleatoria mayor o igual a 200 mg/dL + síntomas" : language === "fr" ? "Glucose aléatoire supérieur ou égal à 200 mg/dL + symptômes" : "Random glucose greater than or equal to 200 mg/dL + symptoms"}</li>
-                  <li>• {language === "es" ? "Cribado cada 3 años si normal" : language === "fr" ? "Dépistage tous les 3 ans si normal" : "Screen every 3 years if normal"}</li>
+                  <li>• <strong>{language === "es" ? "Prueba de glucosa en plasma en ayunas (GPA):" : language === "fr" ? "Test de glycémie à jeun (GAJ):" : "Fasting plasma glucose (FPG) test:"}</strong> {language === "es" ? "Mide el nivel de glucosa en sangre después de un ayuno de al menos ocho horas." : language === "fr" ? "Mesure le taux de glucose dans le sang après un jeûne d'au moins huit heures." : "Measures blood glucose level after fasting for at least eight hours."}</li>
+                  <li>• <strong>{language === "es" ? "Prueba de tolerancia a la glucosa oral (PTGO):" : language === "fr" ? "Test de tolérance au glucose par voie orale (TTGO):" : "Oral glucose tolerance test (OGTT):"}</strong> {language === "es" ? "Mide el nivel de glucosa en sangre dos horas después de beber un líquido que contiene glucosa." : language === "fr" ? "Mesure le taux de glucose dans le sang deux heures après avoir bu un liquide contenant du glucose." : "Measures blood glucose level two hours after drinking a liquid containing glucose."}</li>
+                  <li>• <strong>{language === "es" ? "Prueba de hemoglobina A1c (HbA1c):" : language === "fr" ? "Test d'hémoglobine A1c (HbA1c):" : "Hemoglobin A1c (HbA1c) test:"}</strong> {language === "es" ? "Mide el nivel promedio de glucosa en sangre durante los últimos dos o tres meses." : language === "fr" ? "Mesure le taux moyen de glucose dans le sang au cours des deux ou trois derniers mois." : "Measures average blood glucose level over the past two to three months."}</li>
+                  <li>• <strong>{language === "es" ? "Prueba aleatoria de glucosa en plasma:" : language === "fr" ? "Test aléatoire de glycémie:" : "Random plasma glucose test:"}</strong> {language === "es" ? "Mide el nivel de glucosa en sangre en cualquier momento del día, sin tener en cuenta cuándo comió por última vez." : language === "fr" ? "Mesure le taux de glucose dans le sang à tout moment de la journée, sans tenir compte du moment où vous avez mangé pour la dernière fois." : "Measures blood glucose level at any time of day, regardless of when you last ate."}</li>
                 </ul>
               </div>
             </div>
@@ -168,266 +159,132 @@ const Diabetes = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Droplets className="h-8 w-8 text-white" />
-              </div>
-              <CardTitle className="text-lg font-semibold">
-                {language === "es" ? "Modelos de Clasificación" : 
-                 language === "fr" ? "Modèles de Classification" : 
-                 "Classification Models"}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-center text-gray-600 mb-4">
-                {language === "es" ? "Random Forest, XGBoost y redes neuronales profundas con precisión hasta 98.8% para clasificación binaria usando biomarcadores clínicos y genéticos" :
-                 language === "fr" ? "Random Forest, XGBoost et réseaux de neurones profonds avec précision jusqu'à 98.8% pour classification binaire utilisant des biomarqueurs cliniques et génétiques" :
-                 "Random Forest, XGBoost and deep neural networks with accuracy up to 98.8% for binary classification using clinical and genetic biomarkers"}
-              </p>
-              <Badge className="w-full justify-center bg-blue-100 text-blue-800">98.8% Precisión Máxima</Badge>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
-            <CardHeader className="text-center">
               <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Activity className="h-8 w-8 text-white" />
+                <Microscope className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === "es" ? "Análisis de Riesgo" : 
-                 language === "fr" ? "Analyse de Risque" : 
-                 "Risk Analysis"}
+                {language === "es" ? "Análisis de Glucosa" : 
+                 language === "fr" ? "Analyse de Glucose" : 
+                 "Glucose Analysis"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === "es" ? "Algoritmos de ensemble y deep learning para estratificación de riesgo multifactorial basada en 47+ variables clínicas, genéticas y de estilo de vida" :
-                 language === "fr" ? "Algorithmes d'ensemble et deep learning pour stratification du risque multifactoriel basée sur 47+ variables cliniques, génétiques et de style de vie" :
-                 "Ensemble algorithms and deep learning for multifactorial risk stratification based on 47+ clinical, genetic and lifestyle variables"}
+                {language === "es" ? "Algoritmos avanzados para interpretación de niveles de glucosa en sangre, incluyendo GPA, PTGO y HbA1c con análisis de tendencias temporales y 98.8% de precisión" :
+                 language === "fr" ? "Algorithmes avancés pour l'interprétation des taux de glucose dans le sang, y compris GPA, PTGO et HbA1c avec analyse des tendances temporelles et une précision de 98,8%" :
+                 "Advanced algorithms for interpretation of blood glucose levels, including FPG, OGTT, and HbA1c with temporal trend analysis and 98.8% accuracy"}
               </p>
-              <Badge className="w-full justify-center bg-green-100 text-green-800">Estratificación Avanzada</Badge>
+              <Badge className="w-full justify-center bg-green-100 text-green-800">98.8% Precisión</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Brain className="h-8 w-8 text-white" />
+              </div>
+              <CardTitle className="text-lg font-semibold">
+                {language === "es" ? "Estratificación de Riesgo" : 
+                 language === "fr" ? "Stratification du Risque" : 
+                 "Risk Stratification"}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-center text-gray-600 mb-4">
+                {language === "es" ? "Sistemas de clasificación automática en grupos de riesgo (bajo, moderado, alto) basados en niveles de glucosa, factores de riesgo y historial clínico" :
+                 language === "fr" ? "Systèmes de classification automatique en groupes de risque (faible, modéré, élevé) basés sur les taux de glucose, les facteurs de risque et les antécédents cliniques" :
+                 "Automatic classification systems into risk groups (low, moderate, high) based on glucose levels, risk factors, and clinical history"}
+              </p>
+              <Badge className="w-full justify-center bg-emerald-100 text-emerald-800">Clasificación Precisa</Badge>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
+            <CardHeader className="text-center">
+              <div className="w-16 h-16 bg-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === "es" ? "Predicción de Progresión" : 
-                 language === "fr" ? "Prédiction de Progression" : 
-                 "Progression Prediction"}
+                {language === "es" ? "Predicción de Complicaciones" : 
+                 language === "fr" ? "Prédiction des Complications" : 
+                 "Complications Prediction"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === "es" ? "Modelos LSTM, GRU y Transformer para predecir progresión de prediabetes a diabetes tipo 2 con ventana temporal de 5-10 años" :
-                 language === "fr" ? "Modèles LSTM, GRU et Transformer pour prédire la progression du prédiabète au diabète type 2 avec fenêtre temporelle de 5-10 ans" :
-                 "LSTM, GRU and Transformer models to predict progression from prediabetes to type 2 diabetes with 5-10 year time window"}
+                {language === "es" ? "Modelos predictivos de complicaciones diabéticas (enfermedad cardiovascular, nefropatía, retinopatía) utilizando análisis multivariado para optimizar decisiones de tratamiento" :
+                 language === "fr" ? "Modèles prédictifs des complications diabétiques (maladies cardiovasculaires, néphropathie, rétinopathie) utilisant une analyse multivariée pour optimiser les décisions de traitement" :
+                 "Predictive models of diabetic complications (cardiovascular disease, nephropathy, retinopathy) using multivariate analysis to optimize treatment decisions"}
               </p>
-              <Badge className="w-full justify-center bg-purple-100 text-purple-800">Predicción Temporal</Badge>
+              <Badge className="w-full justify-center bg-teal-100 text-teal-800">Tratamiento Optimo</Badge>
             </CardContent>
           </Card>
         </div>
 
-        {/* Clinical Recommendations Section */}
+        {/* Treatment Guidelines */}
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Stethoscope className="h-6 w-6 mr-2 text-blue-600" />
-              {language === "es" ? "Recomendaciones Clínicas Basadas en Evidencia" :
-               language === "fr" ? "Recommandations Cliniques Basées sur l'Évidence" :
-               "Evidence-Based Clinical Recommendations"}
+              <Stethoscope className="h-6 w-6 mr-2 text-green-600" />
+              {language === "es" ? "Guías de Tratamiento por Riesgo" :
+               language === "fr" ? "Guides de Traitement par Risque" :
+               "Risk-Based Treatment Guidelines"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <Heart className="h-5 w-5 mr-2 text-red-500" />
-                  {language === "es" ? "Monitoreo y Seguimiento" :
-                   language === "fr" ? "Surveillance et Suivi" :
-                   "Monitoring and Follow-up"}
+                  <Heart className="h-5 w-5 mr-2 text-green-500" />
+                  {language === "es" ? "Riesgo Bajo-Moderado" :
+                   language === "fr" ? "Risque Faible-Modéré" :
+                   "Low-Moderate Risk"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>HbA1c:</strong> {language === "es" ? "Cada 3 meses si HbA1c mayor de 7%, cada 6 meses si estable menor de 7%. Meta: menor de 7% (53 mmol/mol) en adultos sanos" : language === "fr" ? "Tous les 3 mois si HbA1c supérieur à 7%, tous les 6 mois si stable inférieur à 7%. Objectif: inférieur à 7% (53 mmol/mol) chez adultes sains" : "Every 3 months if HbA1c greater than 7%, every 6 months if stable less than 7%. Target: less than 7% (53 mmol/mol) in healthy adults"}
+                      <strong>{language === "es" ? "Cambios en el estilo de vida:" : language === "fr" ? "Changements de style de vie:" : "Lifestyle changes:"}</strong> {language === "es" ? "Dieta saludable, ejercicio regular y control del peso." : language === "fr" ? "Alimentation saine, exercice régulier et contrôle du poids." : "Healthy diet, regular exercise, and weight management."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Automonitoreo:" : language === "fr" ? "Auto-surveillance:" : "Self-monitoring:"}</strong> {language === "es" ? "CGM o glucómetros para pacientes en insulina. SMBG 1-2 veces/día en tratamiento oral" : language === "fr" ? "CGM ou glucomètres pour patients sous insuline. SMBG 1-2 fois/jour en traitement oral" : "CGM or glucometers for patients on insulin. SMBG 1-2 times/day on oral treatment"}
+                      <strong>{language === "es" ? "Monitoreo de glucosa:" : language === "fr" ? "Surveillance du glucose:" : "Glucose monitoring:"}</strong> {language === "es" ? "Medición regular de los niveles de glucosa en sangre." : language === "fr" ? "Mesure régulière des taux de glucose dans le sang." : "Regular measurement of blood glucose levels."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Perfil lipídico:" : language === "fr" ? "Profil lipidique:" : "Lipid profile:"}</strong> {language === "es" ? "Anual si controlado, cada 3-6 meses si no controlado. Meta LDL menor de 100 mg/dL (menor de 70 si riesgo CV alto)" : language === "fr" ? "Annuel si contrôlé, tous les 3-6 mois si non contrôlé. Objectif LDL inférieur à 100 mg/dL (inférieur à 70 si risque CV élevé)" : "Annual if controlled, every 3-6 months if uncontrolled. LDL target less than 100 mg/dL (less than 70 if high CV risk)"}
+                      <strong>{language === "es" ? "Medicamentos orales:" : language === "fr" ? "Médicaments oraux:" : "Oral medications:"}</strong> {language === "es" ? "Metformina, sulfonilureas, inhibidores de la DPP-4, etc." : language === "fr" ? "Metformine, sulfonylurées, inhibiteurs de la DPP-4, etc." : "Metformin, sulfonylureas, DPP-4 inhibitors, etc."}
                     </div>
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <Users className="h-5 w-5 mr-2 text-blue-500" />
-                  {language === "es" ? "Manejo Farmacológico" :
-                   language === "fr" ? "Gestion Pharmacologique" :
-                   "Pharmacological Management"}
+                  <Users className="h-5 w-5 mr-2 text-orange-500" />
+                  {language === "es" ? "Riesgo Alto" :
+                   language === "fr" ? "Risque Élevé" :
+                   "High Risk"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Primera línea:" : language === "fr" ? "Première ligne:" : "First line:"}</strong> {language === "es" ? "Metformina 500-2000 mg/día + cambios de estilo de vida. Contraindicada si eGFR menor de 30 mL/min/1.73m²" : language === "fr" ? "Metformine 500-2000 mg/jour + changements de style de vie. Contre-indiquée si eGFR inférieur à 30 mL/min/1.73m²" : "Metformin 500-2000 mg/day + lifestyle changes. Contraindicated if eGFR less than 30 mL/min/1.73m²"}
+                      <strong>{language === "es" ? "Terapia con insulina:" : language === "fr" ? "Insulinothérapie:" : "Insulin therapy:"}</strong> {language === "es" ? "Inyecciones de insulina o bomba de insulina para controlar los niveles de glucosa." : language === "fr" ? "Injections d'insuline ou pompe à insuline pour contrôler les taux de glucose." : "Insulin injections or insulin pump to control glucose levels."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Segunda línea:" : language === "fr" ? "Deuxième ligne:" : "Second line:"}</strong> {language === "es" ? "iSGLT2 (si enfermedad CV/renal), agonistas GLP-1 (si obesidad), sulfonilureas (si costo es factor)" : language === "fr" ? "iSGLT2 (si maladie CV/rénale), agonistes GLP-1 (si obésité), sulfamides (si coût est facteur)" : "SGLT2i (if CV/kidney disease), GLP-1 agonists (if obesity), sulfonylureas (if cost is factor)"}
+                      <strong>{language === "es" ? "Monitoreo continuo de glucosa (MCG):" : language === "fr" ? "Surveillance continue du glucose (SCG):" : "Continuous glucose monitoring (CGM):"}</strong> {language === "es" ? "Dispositivo que mide los niveles de glucosa en tiempo real." : language === "fr" ? "Dispositif qui mesure les taux de glucose en temps réel." : "Device that measures glucose levels in real-time."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Insulina:" : language === "fr" ? "Insuline:" : "Insulin:"}</strong> {language === "es" ? "Considerar si HbA1c mayor de 9%, síntomas de hiperglucemia severa, o falla a combinación oral tras 3-6 meses" : language === "fr" ? "Considérer si HbA1c supérieur à 9%, symptômes d'hyperglycémie sévère, ou échec à combinaison orale après 3-6 mois" : "Consider if HbA1c greater than 9%, severe hyperglycemia symptoms, or failure of oral combination after 3-6 months"}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Prevention of Complications */}
-        <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Shield className="h-6 w-6 mr-2 text-orange-500" />
-              {language === "es" ? "Prevención y Manejo de Complicaciones" :
-               language === "fr" ? "Prévention et Gestion des Complications" :
-               "Complication Prevention and Management"}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <AlertTriangle className="h-8 w-8 text-red-600" />
-                </div>
-                <h4 className="font-semibold mb-3 text-lg">
-                  {language === "es" ? "Retinopatía Diabética" :
-                   language === "fr" ? "Rétinopathie Diabétique" :
-                   "Diabetic Retinopathy"}
-                </h4>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• {language === "es" ? "Examen oftalmológico anual con dilatación" : language === "fr" ? "Examen ophtalmologique annuel avec dilatation" : "Annual dilated eye exam"}</li>
-                  <li>• {language === "es" ? "Más frecuente si retinopatía presente" : language === "fr" ? "Plus fréquent si rétinopathie présente" : "More frequent if retinopathy present"}</li>
-                  <li>• {language === "es" ? "Control estricto de glucosa y PA" : language === "fr" ? "Contrôle strict glucose et PA" : "Strict glucose and BP control"}</li>
-                  <li>• {language === "es" ? "Derivar a oftalmólogo si proliferativa" : language === "fr" ? "Référer à ophtalmologue si proliférative" : "Refer to ophthalmologist if proliferative"}</li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Droplets className="h-8 w-8 text-blue-600" />
-                </div>
-                <h4 className="font-semibold mb-3 text-lg">
-                  {language === "es" ? "Nefropatía Diabética" :
-                   language === "fr" ? "Néphropathie Diabétique" :
-                   "Diabetic Nephropathy"}
-                </h4>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• {language === "es" ? "eGFR y albuminuria anual" : language === "fr" ? "eGFR et albuminurie annuelle" : "Annual eGFR and albuminuria"}</li>
-                  <li>• {language === "es" ? "Meta PA menor de 130/80 mmHg" : language === "fr" ? "Objectif PA inférieur à 130/80 mmHg" : "BP target less than 130/80 mmHg"}</li>
-                  <li>• {language === "es" ? "IECA/ARA II si proteinuria" : language === "fr" ? "IECA/ARA II si protéinurie" : "ACEi/ARB if proteinuria"}</li>
-                  <li>• {language === "es" ? "iSGLT2 para protección renal" : language === "fr" ? "iSGLT2 pour protection rénale" : "SGLT2i for renal protection"}</li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Activity className="h-8 w-8 text-green-600" />
-                </div>
-                <h4 className="font-semibold mb-3 text-lg">
-                  {language === "es" ? "Neuropatía Diabética" :
-                   language === "fr" ? "Neuropathie Diabétique" :
-                   "Diabetic Neuropathy"}
-                </h4>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• {language === "es" ? "Examen de pies cada visita" : language === "fr" ? "Examen des pieds à chaque visite" : "Foot exam every visit"}</li>
-                  <li>• {language === "es" ? "Monofilamento 10g anual" : language === "fr" ? "Monofilament 10g annuel" : "Annual 10g monofilament"}</li>
-                  <li>• {language === "es" ? "Educación sobre cuidado de pies" : language === "fr" ? "Éducation sur soins des pieds" : "Foot care education"}</li>
-                  <li>• {language === "es" ? "Derivar podólogo si deformidades" : language === "fr" ? "Référer podologue si déformités" : "Refer podiatrist if deformities"}</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Lifestyle Management */}
-        <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Brain className="h-6 w-6 mr-2 text-purple-600" />
-              {language === "es" ? "Manejo Integral del Estilo de Vida" :
-               language === "fr" ? "Gestion Intégrale du Style de Vie" :
-               "Comprehensive Lifestyle Management"}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-green-600">
-                  {language === "es" ? "Intervención Nutricional" :
-                   language === "fr" ? "Intervention Nutritionnelle" :
-                   "Nutritional Intervention"}
-                </h3>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Patrón alimentario:" : language === "fr" ? "Modèle alimentaire:" : "Dietary pattern:"}</strong> {language === "es" ? "Dieta mediterránea, DASH o baja en carbohidratos (según preferencia del paciente)" : language === "fr" ? "Régime méditerranéen, DASH ou faible en glucides (selon préférence du patient)" : "Mediterranean, DASH or low-carb diet (based on patient preference)"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Control de porciones:" : language === "fr" ? "Contrôle des portions:" : "Portion control:"}</strong> {language === "es" ? "45-65g carbohidratos por comida (método del plato: 1/2 vegetales, 1/4 proteína, 1/4 carbohidratos)" : language === "fr" ? "45-65g glucides par repas (méthode de l'assiette: 1/2 légumes, 1/4 protéine, 1/4 glucides)" : "45-65g carbs per meal (plate method: 1/2 vegetables, 1/4 protein, 1/4 carbs)"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Pérdida de peso:" : language === "fr" ? "Perte de poids:" : "Weight loss:"}</strong> {language === "es" ? "5-10% del peso corporal inicial (déficit calórico 500-750 kcal/día)" : language === "fr" ? "5-10% du poids corporel initial (déficit calorique 500-750 kcal/jour)" : "5-10% of initial body weight (caloric deficit 500-750 kcal/day)"}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-blue-600">
-                  {language === "es" ? "Prescripción de Ejercicio" :
-                   language === "fr" ? "Prescription d'Exercice" :
-                   "Exercise Prescription"}
-                </h3>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Ejercicio aeróbico:" : language === "fr" ? "Exercice aérobique:" : "Aerobic exercise:"}</strong> {language === "es" ? "mayor o igual a 150 min/semana intensidad moderada (50-70% FC máx) o mayor o igual a 75 min intensidad vigorosa" : language === "fr" ? "supérieur ou égal à 150 min/semaine intensité modérée (50-70% FC max) ou supérieur ou égal à 75 min intensité vigoureuse" : "greater than or equal to 150 min/week moderate intensity (50-70% max HR) or greater than or equal to 75 min vigorous intensity"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Ejercicio de resistencia:" : language === "fr" ? "Exercice de résistance:" : "Resistance exercise:"}</strong> {language === "es" ? "mayor o igual a 2 sesiones/semana, trabajando grandes grupos musculares (8-10 ejercicios, 1-3 series, 8-15 repeticiones)" : language === "fr" ? "supérieur ou égal à 2 séances/semaine, travaillant grands groupes musculaires (8-10 exercices, 1-3 séries, 8-15 répétitions)" : "greater than or equal to 2 sessions/week, working major muscle groups (8-10 exercises, 1-3 sets, 8-15 reps)"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Precauciones:" : language === "fr" ? "Précautions:" : "Precautions:"}</strong> {language === "es" ? "Evaluación CV previa, evitar ejercicio si glucosa mayor de 300 mg/dL, vigilar hipoglucemias en insulina/secretagogos" : language === "fr" ? "Évaluation CV préalable, éviter exercice si glucose supérieur à 300 mg/dL, surveiller hypoglycémies sous insuline/sécrétagogues" : "Prior CV evaluation, avoid exercise if glucose greater than 300 mg/dL, monitor hypoglycemia on insulin/secretagogues"}
+                      <strong>{language === "es" ? "Medicamentos adicionales:" : language === "fr" ? "Médicaments supplémentaires:" : "Additional medications:"}</strong> {language === "es" ? "Inhibidores de SGLT2, agonistas del receptor GLP-1, etc." : language === "fr" ? "Inhibiteurs de SGLT2, agonistes des récepteurs GLP-1, etc." : "SGLT2 inhibitors, GLP-1 receptor agonists, etc."}
                     </div>
                   </li>
                 </ul>
@@ -440,61 +297,43 @@ const Diabetes = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
-              {language === "es" ? "Epidemiología y Estadísticas Clínicas" :
-               language === "fr" ? "Épidémiologie et Statistiques Cliniques" :
-               "Epidemiology and Clinical Statistics"}
+              {language === "es" ? "Epidemiología Global de la Diabetes" :
+               language === "fr" ? "Épidémiologie Mondiale du Diabète" :
+               "Global Diabetes Epidemiology"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
               <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">537M</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">537M</div>
                 <div className="text-sm text-gray-600">
                   {language === "es" ? "Adultos con diabetes (2021)" :
-                   language === "fr" ? "Adultes avec diabète (2021)" :
+                   language === "fr" ? "Adultes atteints de diabète (2021)" :
                    "Adults with diabetes (2021)"}
-                </div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">90%</div>
-                <div className="text-sm text-gray-600">
-                  {language === "es" ? "Casos son diabetes tipo 2" :
-                   language === "fr" ? "Cas sont diabète type 2" :
-                   "Cases are type 2 diabetes"}
                 </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-red-600 mb-2">6.7M</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Muertes relacionadas (2021)" :
-                   language === "fr" ? "Décès liés (2021)" :
-                   "Related deaths (2021)"}
+                  {language === "es" ? "Muertes relacionadas con la diabetes (2021)" :
+                   language === "fr" ? "Décès liés au diabète (2021)" :
+                   "Diabetes-related deaths (2021)"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">50%</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">46%</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Casos no diagnosticados" :
+                  {language === "es" ? "Casos sin diagnosticar" :
                    language === "fr" ? "Cas non diagnostiqués" :
                    "Undiagnosed cases"}
                 </div>
               </div>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-xl">
-              <h4 className="text-lg font-semibold mb-4 text-blue-800">
-                {language === "es" ? "Proyecciones Futuras (IDF Atlas 2021)" :
-                 language === "fr" ? "Projections Futures (Atlas IDF 2021)" :
-                 "Future Projections (IDF Atlas 2021)"}
-              </h4>
-              <div className="grid md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <strong>2030:</strong> {language === "es" ? "643 millones de adultos con diabetes" : language === "fr" ? "643 millions d'adultes avec diabète" : "643 million adults with diabetes"}
-                </div>
-                <div>
-                  <strong>2045:</strong> {language === "es" ? "783 millones de adultos con diabetes" : language === "fr" ? "783 millions d'adultes avec diabète" : "783 million adults with diabetes"}
-                </div>
-                <div>
-                  <strong>{language === "es" ? "Costo global:" : language === "fr" ? "Coût global:" : "Global cost:"}</strong> {language === "es" ? "$966 mil millones USD (2021)" : language === "fr" ? "$966 milliards USD (2021)" : "$966 billion USD (2021)"}
+              <div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">$966B</div>
+                <div className="text-sm text-gray-600">
+                  {language === "es" ? "Gasto mundial en diabetes (2021)" :
+                   language === "fr" ? "Dépenses mondiales pour le diabète (2021)" :
+                   "Worldwide spending on diabetes (2021)"}
                 </div>
               </div>
             </div>
@@ -503,21 +342,21 @@ const Diabetes = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-br from-blue-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+          <Card className="bg-gradient-to-br from-green-50/30 to-emerald-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
-                {language === 'es' ? 'Plataforma de Diagnóstico Predictivo Avanzado' : 
-                 language === 'fr' ? 'Plateforme de Diagnostic Prédictif Avancé' : 
-                 'Advanced Predictive Diagnostic Platform'}
+                {language === "es" ? "Plataforma de Diagnóstico Avanzado para Diabetes" : 
+                 language === "fr" ? "Plateforme de Diagnostic Avancé pour le Diabète" : 
+                 "Advanced Diabetes Diagnostic Platform"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Nuestros 8+ modelos especializados en diabetes combinan análisis bioquímico, factores de riesgo genético, historial clínico y biomarcadores avanzados para detectar diabetes tipo 2, gestacional y pre-diabetes con precisión superior al 95%.' :
-                 language === 'fr' ? 'Nos 8+ modèles spécialisés en diabète combinent analyse biochimique, facteurs de risque génétique, historique clinique et biomarqueurs avancés pour détecter diabète type 2, gestationnel et pré-diabète avec précision supérieure à 95%.' :
-                 'Our 8+ specialized diabetes models combine biochemical analysis, genetic risk factors, clinical history and advanced biomarkers to detect type 2, gestational and pre-diabetes with over 95% accuracy.'}
+                {language === "es" ? "Utilice nuestros 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y optimización de tratamiento en diabetes. Tecnología validada clínicamente con 98.8% de precisión máxima." :
+                 language === "fr" ? "Utilisez nos 62+ modèles spécialisés d'IA pour la détection précoce, la stratification des risques et l'optimisation du traitement du diabète. Technologie validée cliniquement avec une précision maximale de 98,8 %." :
+                 "Use our 62+ specialized AI models for early detection, risk stratification, and treatment optimization in diabetes. Clinically validated technology with 98.8% maximum accuracy."}
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-green-600 hover:bg-green-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}

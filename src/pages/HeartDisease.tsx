@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,20 +14,21 @@ const HeartDisease = () => {
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
           <Badge variant="secondary" className="bg-red-100/80 text-red-800 rounded-full">
-            {language === 'es' ? 'Enfermedades Cardíacas' : 
-             language === 'fr' ? 'Maladies Cardiaques' : 
-             'Heart Disease'}
+            {language === "es" ? "Enfermedad Cardíaca" : 
+             language === "fr" ? "Maladie Cardiaque" : 
+             "Heart Disease"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Predicción de Enfermedades Cardiovasculares' : 
-             language === 'fr' ? 'Prédiction des Maladies Cardiovasculaires' : 
-             'Cardiovascular Disease Prediction'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Enfermedad Cardíaca" : 
+             language === "fr" ? "Analyse Prédictive de Maladie Cardiaque" : 
+             "Heart Disease Predictive Analysis"}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo de riesgo cardiovascular con 5+ modelos especializados que alcanzan 93.7% de precisión' :
-             language === 'fr' ? 'Analyse prédictive du risque cardiovasculaire avec 5+ modèles spécialisés atteignant 93.7% de précision' :
+            {language === "es" ? 'Análisis predictivo de riesgo cardiovascular con 5+ modelos especializados que alcanzan 93.7% de precisión' :
+             language === "fr" ? 'Analyse prédictive du risque cardiovasculaire avec 5+ modèles spécialisés atteignant 93.7% de précision' :
              'Cardiovascular risk predictive analysis with 5+ specialized models achieving 93.7% accuracy'}
           </p>
         </div>

@@ -1,8 +1,7 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Brain, Activity, Zap, AlertTriangle, CheckCircle, TrendingUp, FileText, Stethoscope, Microscope } from "lucide-react";
+import { Heart, Activity, AlertTriangle, CheckCircle, TrendingUp, Users, Shield, Brain, Stethoscope, FileText, Microscope } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -15,21 +14,22 @@ const Epilepsy = () => {
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
           <Badge variant="secondary" className="bg-indigo-100/80 text-indigo-800 rounded-full">
-            {language === 'es' ? 'Epilepsia' : 
-             language === 'fr' ? 'Épilepsie' : 
-             'Epilepsy'}
+            {language === "es" ? "Epilepsia" : 
+             language === "fr" ? "Épilepsie" : 
+             "Epilepsy"}
           </Badge>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Predicción de Epilepsia' : 
-             language === 'fr' ? 'Prédiction d\'Épilepsie' : 
-             'Epilepsy Prediction'}
+            {language === "es" ? "Análisis Predictivo de Epilepsia" : 
+             language === "fr" ? "Analyse Prédictive d'Épilepsie" : 
+             "Epilepsy Predictive Analysis"}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo avanzado para epilepsia usando 4+ modelos especializados con datos EEG y algoritmos de aprendizaje profundo' :
-             language === 'fr' ? 'Analyse prédictive avancée pour épilepsie utilisant 4+ modèles spécialisés avec données EEG et algorithmes d\'apprentissage profond' :
-             'Advanced predictive analysis for epilepsy using 4+ specialized models with EEG data and deep learning algorithms'}
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            {language === "es" ? "Plataforma médica con 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado de epilepsia con 98.8% de precisión máxima" :
+             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée de l'épilepsie avec 98.8% de précision maximale" :
+             "Medical platform with 62+ specialized AI models for early detection, risk stratification and personalized management of epilepsy with 98.8% maximum accuracy"}
           </p>
         </div>
 
@@ -37,7 +37,7 @@ const Epilepsy = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <FileText className="h-6 w-6 mr-2 text-indigo-600" />
+              <FileText className="h-6 w-6 mr-2 text-blue-600" />
               {language === "es" ? "Información Clave - Epilepsia" :
                language === "fr" ? "Information Clé - Épilepsie" :
                "Key Information - Epilepsy"}
@@ -46,52 +46,52 @@ const Epilepsy = () => {
           <CardContent className="prose max-w-none">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-indigo-700">
+                <h3 className="text-xl font-semibold mb-4 text-blue-700">
                   {language === "es" ? "Definición y Epidemiología" :
                    language === "fr" ? "Définition et Épidémiologie" :
                    "Definition and Epidemiology"}
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  {language === "es" ? "La epilepsia es un trastorno neurológico caracterizado por la predisposición a generar crisis epilépticas recurrentes. Afecta a ~50 millones de personas globalmente, siendo uno de los trastornos neurológicos más comunes. Se define por ≥2 crisis no provocadas separadas por >24 horas." :
-                   language === "fr" ? "L'épilepsie est un trouble neurologique caractérisé par la prédisposition à générer des crises épileptiques récurrentes. Elle affecte ~50 millions de personnes mondialement, étant l'un des troubles neurologiques les plus courants. Elle est définie par ≥2 crises non provoquées séparées par >24 heures." :
-                   "Epilepsy is a neurological disorder characterized by predisposition to generate recurrent epileptic seizures. It affects ~50 million people globally, being one of the most common neurological disorders. It's defined by ≥2 unprovoked seizures separated by >24 hours."}
+                  {language === "es" ? "La epilepsia es un trastorno neurológico crónico caracterizado por crisis recurrentes no provocadas. Afecta a personas de todas las edades, con una mayor incidencia en la infancia y en la edad avanzada." :
+                   language === "fr" ? "L'épilepsie est un trouble neurologique chronique caractérisé par des crises récurrentes non provoquées. Elle touche des personnes de tous âges, avec une incidence plus élevée dans l'enfance et chez les personnes âgées." :
+                   "Epilepsy is a chronic neurological disorder characterized by recurrent, unprovoked seizures. It affects people of all ages, with a higher incidence in childhood and old age."}
                 </p>
-                <div className="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400">
-                  <p className="text-sm text-indigo-800">
+                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                  <p className="text-sm text-blue-800">
                     <strong>
-                      {language === "es" ? "Prevalencia Global:" :
-                       language === "fr" ? "Prévalence Mondiale:" :
-                       "Global Prevalence:"}
+                      {language === "es" ? "Incidencia Global:" :
+                       language === "fr" ? "Incidence Mondiale:" :
+                       "Global Incidence:"}
                     </strong>
-                    {language === "es" ? " 0.5-1% de la población mundial. Incidencia: 50-70/100,000 personas/año. 80% vive en países de bajos ingresos." :
-                     language === "fr" ? " 0.5-1% de la population mondiale. Incidence: 50-70/100,000 personnes/an. 80% vit dans pays à faibles revenus." :
-                     " 0.5-1% of global population. Incidence: 50-70/100,000 people/year. 80% live in low-income countries."}
+                    {language === "es" ? " Aproximadamente 50 millones de personas en todo el mundo padecen epilepsia. Cada año se diagnostican alrededor de 2.4 millones de nuevos casos." :
+                     language === "fr" ? " Environ 50 millions de personnes dans le monde souffrent d'épilepsie. Environ 2.4 millions de nouveaux cas sont diagnostiqués chaque année." :
+                     " Approximately 50 million people worldwide have epilepsy. About 2.4 million new cases are diagnosed each year."}
                   </p>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-purple-700">
-                  {language === "es" ? "Clasificación ILAE 2017" :
-                   language === "fr" ? "Classification ILAE 2017" :
-                   "ILAE 2017 Classification"}
+                <h3 className="text-xl font-semibold mb-4 text-indigo-700">
+                  {language === "es" ? "Clasificación de las Crisis" :
+                   language === "fr" ? "Classification des Crises" :
+                   "Seizure Classification"}
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Crisis Focales:</strong> {language === "es" ? "Inicio en una región cerebral. Con/sin alteración de consciencia" : language === "fr" ? "Début dans une région cérébrale. Avec/sans altération de conscience" : "Onset in one brain region. With/without consciousness impairment"}
+                      <strong>{language === "es" ? "Crisis Focales:" : language === "fr" ? "Crises Focales:" : "Focal Seizures:"}</strong> {language === "es" ? "Comienzan en un área del cerebro. Pueden ser con o sin alteración de la conciencia." : language === "fr" ? "Débutent dans une zone du cerveau. Peuvent être avec ou sans altération de la conscience." : "Start in one area of the brain. Can be with or without alteration of consciousness."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Crisis Generalizadas:</strong> {language === "es" ? "Ambos hemisferios desde el inicio. Tónico-clónicas, ausencias, mioclónicas" : language === "fr" ? "Deux hémisphères dès le début. Tonico-cloniques, absences, myocloniques" : "Both hemispheres from onset. Tonic-clonic, absence, myoclonic"}
+                      <strong>{language === "es" ? "Crisis Generalizadas:" : language === "fr" ? "Crises Généralisées:" : "Generalized Seizures:"}</strong> {language === "es" ? "Afectan ambos lados del cerebro desde el inicio. Incluyen crisis de ausencia, tónicas, clónicas, tónico-clónicas y atónicas." : language === "fr" ? "Affectent les deux côtés du cerveau dès le début. Incluent les crises d'absence, toniques, cloniques, tonico-cloniques et atoniques." : "Affect both sides of the brain from the start. Include absence, tonic, clonic, tonic-clonic, and atonic seizures."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Crisis de Inicio Desconocido:</strong> {language === "es" ? "No suficiente información para clasificar" : language === "fr" ? "Information insuffisante pour classifier" : "Insufficient information to classify"}
+                      <strong>{language === "es" ? "Crisis de Inicio Desconocido:" : language === "fr" ? "Crises à Début Inconnu:" : "Seizures of Unknown Onset:"}</strong> {language === "es" ? "Cuando no se puede determinar dónde comenzó la crisis." : language === "fr" ? "Lorsque l'on ne peut déterminer où la crise a commencé." : "When it is not possible to determine where the seizure began."}
                     </div>
                   </li>
                 </ul>
@@ -105,50 +105,47 @@ const Epilepsy = () => {
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
               <AlertTriangle className="h-6 w-6 mr-2 text-orange-500" />
-              {language === "es" ? "Factores de Riesgo y Etiología" :
-               language === "fr" ? "Facteurs de Risque et Étiologie" :
-               "Risk Factors and Etiology"}
+              {language === "es" ? "Factores de Riesgo y Detección" :
+               language === "fr" ? "Facteurs de Risque et Détection" :
+               "Risk Factors and Detection"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-red-600">
-                  {language === "es" ? "Factores Genéticos" :
-                   language === "fr" ? "Facteurs Génétiques" :
-                   "Genetic Factors"}
+                  {language === "es" ? "Factores No Modificables" :
+                   language === "fr" ? "Facteurs Non Modifiables" :
+                   "Non-Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Síndromes genéticos:" : language === "fr" ? "Syndromes génétiques:" : "Genetic syndromes:"}</strong> {language === "es" ? "Síndrome de Dravet (SCN1A), GLUT1, Angelman" : language === "fr" ? "Syndrome de Dravet (SCN1A), GLUT1, Angelman" : "Dravet syndrome (SCN1A), GLUT1, Angelman"}</li>
-                  <li>• <strong>{language === "es" ? "Canalopatías:" : language === "fr" ? "Canalopathies:" : "Channelopathies:"}</strong> {language === "es" ? "Mutaciones en canales Na+, K+, Ca2+ (SCN1A, KCNQ2/3)" : language === "fr" ? "Mutations canaux Na+, K+, Ca2+ (SCN1A, KCNQ2/3)" : "Na+, K+, Ca2+ channel mutations (SCN1A, KCNQ2/3)"}</li>
-                  <li>• <strong>{language === "es" ? "Historia familiar:" : language === "fr" ? "Histoire familiale:" : "Family history:"}</strong> {language === "es" ? "Riesgo 2-4x mayor si familiares afectados" : language === "fr" ? "Risque 2-4x plus élevé si famille affectée" : "2-4x higher risk if family affected"}</li>
-                  <li>• <strong>{language === "es" ? "Malformaciones corticales:" : language === "fr" ? "Malformations corticales:" : "Cortical malformations:"}</strong> Displasia focal, heterotopias</li>
+                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "Mayor riesgo en niños pequeños y adultos mayores." : language === "fr" ? "Risque accru chez les jeunes enfants et les personnes âgées." : "Increased risk in young children and older adults."}</li>
+                  <li>• <strong>{language === "es" ? "Historia Familiar:" : language === "fr" ? "Antécédents Familiaux:" : "Family History:"}</strong> {language === "es" ? "Tener familiares con epilepsia aumenta el riesgo." : language === "fr" ? "Avoir des membres de la famille atteints d'épilepsie augmente le risque." : "Having family members with epilepsy increases the risk."}</li>
+                  <li>• <strong>{language === "es" ? "Condiciones Genéticas:" : language === "fr" ? "Conditions Génétiques:" : "Genetic Conditions:"}</strong> {language === "es" ? "Algunos genes pueden aumentar la susceptibilidad a la epilepsia." : language === "fr" ? "Certains gènes peuvent augmenter la susceptibilité à l'épilepsie." : "Some genes can increase susceptibility to epilepsy."}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-orange-600">
-                  {language === "es" ? "Factores Adquiridos" :
-                   language === "fr" ? "Facteurs Acquis" :
-                   "Acquired Factors"}
+                  {language === "es" ? "Factores Modificables" :
+                   language === "fr" ? "Facteurs Modifiables" :
+                   "Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Trauma craneal:" : language === "fr" ? "Traumatisme crânien:" : "Head trauma:"}</strong> {language === "es" ? "Riesgo proporcional a severidad. PTE temprana vs tardía" : language === "fr" ? "Risque proportionnel à sévérité. ETP précoce vs tardive" : "Risk proportional to severity. Early vs late PTE"}</li>
-                  <li>• <strong>{language === "es" ? "ACV:" : language === "fr" ? "AVC:" : "Stroke:"}</strong> {language === "es" ? "5-15% desarrolla epilepsia. Mayor riesgo con hemorragia" : language === "fr" ? "5-15% développe épilepsie. Risque plus élevé avec hémorragie" : "5-15% develop epilepsy. Higher risk with hemorrhage"}</li>
-                  <li>• <strong>{language === "es" ? "Infecciones SNC:" : language === "fr" ? "Infections SNC:" : "CNS infections:"}</strong> {language === "es" ? "Encefalitis, meningitis, neurocisticercosis, malaria cerebral" : language === "fr" ? "Encéphalite, méningite, neurocysticercose, malaria cérébrale" : "Encephalitis, meningitis, neurocysticercosis, cerebral malaria"}</li>
-                  <li>• <strong>{language === "es" ? "Tumores cerebrales:" : language === "fr" ? "Tumeurs cérébrales:" : "Brain tumors:"}</strong> {language === "es" ? "30-90% según tipo y localización" : language === "fr" ? "30-90% selon type et localisation" : "30-90% depending on type and location"}</li>
+                  <li>• <strong>{language === "es" ? "Lesiones Cerebrales:" : language === "fr" ? "Lésions Cérébrales:" : "Brain Injuries:"}</strong> {language === "es" ? "Traumatismos craneoencefálicos pueden provocar epilepsia." : language === "fr" ? "Les traumatismes crâniens peuvent provoquer l'épilepsie." : "Traumatic brain injuries can lead to epilepsy."}</li>
+                  <li>• <strong>{language === "es" ? "Infecciones:" : language === "fr" ? "Infections:" : "Infections:"}</strong> {language === "es" ? "Meningitis, encefalitis y otras infecciones cerebrales." : language === "fr" ? "Méningite, encéphalite et autres infections cérébrales." : "Meningitis, encephalitis, and other brain infections."}</li>
+                  <li>• <strong>{language === "es" ? "Accidente Cerebrovascular:" : language === "fr" ? "Accident Vasculaire Cérébral:" : "Stroke:"}</strong> {language === "es" ? "Puede dañar el cerebro y causar epilepsia." : language === "fr" ? "Peut endommager le cerveau et provoquer l'épilepsie." : "Can damage the brain and cause epilepsy."}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-blue-600">
-                  {language === "es" ? "Biomarcadores EEG" :
-                   language === "fr" ? "Biomarqueurs EEG" :
-                   "EEG Biomarkers"}
+                  {language === "es" ? "Protocolo de Detección" :
+                   language === "fr" ? "Protocole de Détection" :
+                   "Screening Protocol"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Actividad interictal:" : language === "fr" ? "Activité intercritique:" : "Interictal activity:"}</strong> {language === "es" ? "Espigas, ondas agudas, complejos espiga-onda" : language === "fr" ? "Pointes, ondes aiguës, complexes pointe-onde" : "Spikes, sharp waves, spike-wave complexes"}</li>
-                  <li>• <strong>{language === "es" ? "Patrones ictales:" : language === "fr" ? "Patterns ictaux:" : "Ictal patterns:"}</strong> {language === "es" ? "Ritmos theta/delta, actividad beta, supresión" : language === "fr" ? "Rythmes theta/delta, activité bêta, suppression" : "Theta/delta rhythms, beta activity, suppression"}</li>
-                  <li>• <strong>{language === "es" ? "Análisis espectral:" : language === "fr" ? "Analyse spectrale:" : "Spectral analysis:"}</strong> {language === "es" ? "Potencia, coherencia, conectividad funcional" : language === "fr" ? "Puissance, cohérence, connectivité fonctionnelle" : "Power, coherence, functional connectivity"}</li>
-                  <li>• <strong>HFOs:</strong> {language === "es" ? "Oscilaciones de alta frecuencia (80-500 Hz)" : language === "fr" ? "Oscillations haute fréquence (80-500 Hz)" : "High frequency oscillations (80-500 Hz)"}</li>
+                  <li>• <strong>{language === "es" ? "Evaluación Neurológica:" : language === "fr" ? "Évaluation Neurologique:" : "Neurological Evaluation:"}</strong> {language === "es" ? "Historia clínica detallada y examen neurológico." : language === "fr" ? "Antécédents médicaux détaillés et examen neurologique." : "Detailed medical history and neurological examination."}</li>
+                  <li>• <strong>EEG:</strong> {language === "es" ? "Electroencefalograma para detectar actividad eléctrica anormal en el cerebro." : language === "fr" ? "Électroencéphalogramme pour détecter une activité électrique anormale dans le cerveau." : "Electroencephalogram to detect abnormal electrical activity in the brain."}</li>
+                  <li>• <strong>{language === "es" ? "Resonancia Magnética:" : language === "fr" ? "Imagerie par Résonance Magnétique:" : "MRI:"}</strong> {language === "es" ? "Para identificar lesiones o anomalías estructurales en el cerebro." : language === "fr" ? "Pour identifier les lésions ou les anomalies structurelles du cerveau." : "To identify lesions or structural abnormalities in the brain."}</li>
                 </ul>
               </div>
             </div>
@@ -159,64 +156,64 @@ const Epilepsy = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Brain className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Microscope className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'CNN + BiLSTM' : 
-                 language === 'fr' ? 'CNN + BiLSTM' : 
-                 'CNN + BiLSTM'}
+                {language === "es" ? "Análisis de EEG" : 
+                 language === "fr" ? "Analyse EEG" : 
+                 "EEG Analysis"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Arquitectura híbrida CNN-BiLSTM para predecir convulsiones con procesamiento de wavelet, spectral entropy y características temporales con sensibilidad del 95.2%' :
-                 language === 'fr' ? 'Architecture hybride CNN-BiLSTM pour prédire les crises avec traitement de wavelets, entropie spectrale et caractéristiques temporelles avec sensibilité de 95.2%' :
-                 'Hybrid CNN-BiLSTM architecture to predict seizures with wavelet processing, spectral entropy and temporal features with 95.2% sensitivity'}
+                {language === "es" ? "Algoritmos avanzados para detectar patrones de actividad eléctrica anormal en el EEG con alta precisión." :
+                 language === "fr" ? "Algorithmes avancés pour détecter les schémas d'activité électrique anormale dans l'EEG avec une grande précision." :
+                 "Advanced algorithms to detect patterns of abnormal electrical activity in the EEG with high precision."}
               </p>
-              <Badge className="w-full justify-center bg-indigo-100 text-indigo-800">95.2% Sensibilidad</Badge>
+              <Badge className="w-full justify-center bg-blue-100 text-blue-800">98.8% Precisión</Badge>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
+            <CardHeader className="text-center">
+              <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Brain className="h-8 w-8 text-white" />
+              </div>
+              <CardTitle className="text-lg font-semibold">
+                {language === "es" ? "Predicción de Crisis" : 
+                 language === "fr" ? "Prédiction des Crises" : 
+                 "Seizure Prediction"}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-center text-gray-600 mb-4">
+                {language === "es" ? "Modelos predictivos para anticipar la ocurrencia de crisis epilépticas basados en datos clínicos y de EEG." :
+                 language === "fr" ? "Modèles prédictifs pour anticiper la survenue de crises épileptiques basés sur des données cliniques et d'EEG." :
+                 "Predictive models to anticipate the occurrence of epileptic seizures based on clinical and EEG data."}
+              </p>
+              <Badge className="w-full justify-center bg-indigo-100 text-indigo-800">Predicción Precisa</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
               <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Activity className="h-8 w-8 text-white" />
+                <TrendingUp className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Análisis EEG' : 
-                 language === 'fr' ? 'Analyse EEG' : 
-                 'EEG Analysis'}
+                {language === "es" ? "Optimización de Tratamiento" : 
+                 language === "fr" ? "Optimisation du Traitement" : 
+                 "Treatment Optimization"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'LSTM para detectar convulsiones en EEG multicanal con aprendizaje profundo sobre series temporales, análisis de conectividad y detección de patrones ictales precoces' :
-                 language === 'fr' ? 'LSTM pour détecter les crises dans EEG multicanal avec apprentissage profond sur séries temporelles, analyse de connectivité et détection de patterns ictaux précoces' :
-                 'LSTM to detect seizures in multichannel EEG with deep learning on time series, connectivity analysis and early ictal pattern detection'}
+                {language === "es" ? "Algoritmos para personalizar el tratamiento farmacológico y mejorar el control de las crisis." :
+                 language === "fr" ? "Algorithmes pour personnaliser le traitement pharmacologique et améliorer le contrôle des crises." :
+                 "Algorithms to personalize pharmacological treatment and improve seizure control."}
               </p>
-              <Badge className="w-full justify-center bg-purple-100 text-purple-800">Detección Temprana</Badge>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
-            <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-white" />
-              </div>
-              <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Datos Multimodales' : 
-                 language === 'fr' ? 'Données Multimodales' : 
-                 'Multimodal Data'}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Predicción multivariable integrando EEG de wearables, parámetros fisiológicos, historial clínico y ML supervisado con modelos ensemble para mayor robustez' :
-                 language === 'fr' ? 'Prédiction multivariable intégrant EEG de wearables, paramètres physiologiques, historique clinique et ML supervisé avec modèles ensemble pour plus de robustesse' :
-                 'Multivariate prediction integrating wearable EEG, physiological parameters, clinical history and supervised ML with ensemble models for enhanced robustness'}
-              </p>
-              <Badge className="w-full justify-center bg-pink-100 text-pink-800">Enfoque Holístico</Badge>
+              <Badge className="w-full justify-center bg-purple-100 text-purple-800">Tratamiento Personalizado</Badge>
             </CardContent>
           </Card>
         </div>
@@ -225,17 +222,17 @@ const Epilepsy = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Stethoscope className="h-6 w-6 mr-2 text-indigo-600" />
-              {language === "es" ? "Guías de Manejo de Epilepsia" :
-               language === "fr" ? "Guides de Gestion de l'Épilepsie" :
-               "Epilepsy Management Guidelines"}
+              <Stethoscope className="h-6 w-6 mr-2 text-blue-600" />
+              {language === "es" ? "Guías de Tratamiento" :
+               language === "fr" ? "Guides de Traitement" :
+               "Treatment Guidelines"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
+                  <Heart className="h-5 w-5 mr-2 text-green-500" />
                   {language === "es" ? "Tratamiento Farmacológico" :
                    language === "fr" ? "Traitement Pharmacologique" :
                    "Pharmacological Treatment"}
@@ -244,47 +241,47 @@ const Epilepsy = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Crisis focales:" : language === "fr" ? "Crises focales:" : "Focal seizures:"}</strong> {language === "es" ? "Levetiracetam, carbamazepina, oxcarbazepina, lamotrigina, lacosamida como primera línea" : language === "fr" ? "Lévétiracétam, carbamazépine, oxcarbazépine, lamotrigine, lacosamide en première ligne" : "Levetiracetam, carbamazepine, oxcarbazepine, lamotrigine, lacosamide as first line"}
+                      <strong>{language === "es" ? "Medicamentos Antiepilépticos:" : language === "fr" ? "Médicaments Antiépileptiques:" : "Antiepileptic Drugs:"}</strong> {language === "es" ? "Selección basada en el tipo de crisis, edad y otros factores individuales." : language === "fr" ? "Sélection basée sur le type de crise, l'âge et d'autres facteurs individuels." : "Selection based on seizure type, age, and other individual factors."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Crisis generalizadas:" : language === "fr" ? "Crises généralisées:" : "Generalized seizures:"}</strong> {language === "es" ? "Valproato, levetiracetam, lamotrigina. Evitar carbamazepina en ausencias" : language === "fr" ? "Valproate, lévétiracétam, lamotrigine. Éviter carbamazépine dans absences" : "Valproate, levetiracetam, lamotrigine. Avoid carbamazepine in absence seizures"}
+                      <strong>{language === "es" ? "Monoterapia vs Politerapia:" : language === "fr" ? "Monothérapie vs Polythérapie:" : "Monotherapy vs Polytherapy:"}</strong> {language === "es" ? "Iniciar con un solo medicamento y ajustar la dosis según sea necesario." : language === "fr" ? "Commencer avec un seul médicament et ajuster la dose si nécessaire." : "Start with a single medication and adjust the dose as needed."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Epilepsia refractaria:" : language === "fr" ? "Épilepsie réfractaire:" : "Refractory epilepsy:"}</strong> {language === "es" ? "Combinaciones: LEV+LTG, VPA+LTG, CBZ+CLB. Considerar cirugía si foco definido" : language === "fr" ? "Combinaisons: LEV+LTG, VPA+LTG, CBZ+CLB. Considérer chirurgie si foyer défini" : "Combinations: LEV+LTG, VPA+LTG, CBZ+CLB. Consider surgery if focus defined"}
+                      <strong>{language === "es" ? "Ajuste de Dosis:" : language === "fr" ? "Ajustement de la Dose:" : "Dose Adjustment:"}</strong> {language === "es" ? "Monitoreo regular de los niveles del medicamento en sangre." : language === "fr" ? "Surveillance régulière des niveaux du médicament dans le sang." : "Regular monitoring of drug levels in the blood."}
                     </div>
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <TrendingUp className="h-5 w-5 mr-2 text-purple-500" />
-                  {language === "es" ? "Tratamientos Avanzados" :
-                   language === "fr" ? "Traitements Avancés" :
-                   "Advanced Treatments"}
+                  <Users className="h-5 w-5 mr-2 text-orange-500" />
+                  {language === "es" ? "Terapias No Farmacológicas" :
+                   language === "fr" ? "Thérapies Non Pharmacologiques" :
+                   "Non-Pharmacological Therapies"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Cirugía resectiva:" : language === "fr" ? "Chirurgie résective:" : "Resective surgery:"}</strong> {language === "es" ? "Lobectomía temporal, lesionectomía. 60-80% libre de crisis a 2 años" : language === "fr" ? "Lobectomie temporale, lésionectomie. 60-80% libre de crises à 2 ans" : "Temporal lobectomy, lesionectomy. 60-80% seizure-free at 2 years"}
+                      <strong>{language === "es" ? "Dieta Cetogénica:" : language === "fr" ? "Régime Cétogène:" : "Ketogenic Diet:"}</strong> {language === "es" ? "Alta en grasas y baja en carbohidratos para reducir las crisis." : language === "fr" ? "Riche en graisses et faible en glucides pour réduire les crises." : "High in fat and low in carbohydrates to reduce seizures."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Estimulación:" : language === "fr" ? "Stimulation:" : "Stimulation:"}</strong> {language === "es" ? "VNS, DBS talámico, estimulación responsiva (RNS). 50% reducción crisis" : language === "fr" ? "VNS, DBS thalamique, stimulation responsive (RNS). 50% réduction crises" : "VNS, thalamic DBS, responsive stimulation (RNS). 50% seizure reduction"}
+                      <strong>{language === "es" ? "Estimulación del Nervio Vago:" : language === "fr" ? "Stimulation du Nerf Vague:" : "Vagus Nerve Stimulation:"}</strong> {language === "es" ? "Dispositivo implantado para enviar impulsos eléctricos al nervio vago." : language === "fr" ? "Dispositif implanté pour envoyer des impulsions électriques au nerf vague." : "Implanted device to send electrical impulses to the vagus nerve."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Dieta cetogénica:" : language === "fr" ? "Régime cétogène:" : "Ketogenic diet:"}</strong> {language === "es" ? "Especialmente en niños. 50% reducción en 50-60% pacientes" : language === "fr" ? "Surtout chez enfants. 50% réduction chez 50-60% patients" : "Especially in children. 50% reduction in 50-60% patients"}
+                      <strong>{language === "es" ? "Cirugía:" : language === "fr" ? "Chirurgie:" : "Surgery:"}</strong> {language === "es" ? "Resección de la zona del cerebro donde se originan las crisis." : language === "fr" ? "Résection de la zone du cerveau où les crises prennent naissance." : "Resection of the area of the brain where seizures originate."}
                     </div>
                   </li>
                 </ul>
@@ -305,35 +302,35 @@ const Epilepsy = () => {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
               <div>
-                <div className="text-3xl font-bold text-indigo-600 mb-2">50M</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">50M</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Personas afectadas globalmente" :
-                   language === "fr" ? "Personnes affectées mondialement" :
-                   "People affected globally"}
+                  {language === "es" ? "Personas con epilepsia" :
+                   language === "fr" ? "Personnes atteintes d'épilepsie" :
+                   "People with epilepsy"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">70%</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">80%</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Controlable con medicación" :
-                   language === "fr" ? "Contrôlable avec médication" :
-                   "Controllable with medication"}
+                  {language === "es" ? "Viven en países de bajos ingresos" :
+                   language === "fr" ? "Vivent dans des pays à faible revenu" :
+                   "Live in low-income countries"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-pink-600 mb-2">0.5-1%</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">70%</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Prevalencia poblacional" :
-                   language === "fr" ? "Prévalence populationnelle" :
-                   "Population prevalence"}
+                  {language === "es" ? "Podrían vivir sin crisis con tratamiento" :
+                   language === "fr" ? "Pourraient vivre sans crises avec un traitement" :
+                   "Could live seizure-free with treatment"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">80%</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">2.4M</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "En países de bajos ingresos" :
-                   language === "fr" ? "Dans pays à faibles revenus" :
-                   "In low-income countries"}
+                  {language === "es" ? "Nuevos casos cada año" :
+                   language === "fr" ? "Nouveaux cas chaque année" :
+                   "New cases each year"}
                 </div>
               </div>
             </div>
@@ -345,18 +342,18 @@ const Epilepsy = () => {
           <Card className="bg-gradient-to-br from-indigo-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
-                {language === 'es' ? 'Predicción Preventiva' : 
-                 language === 'fr' ? 'Prédiction Préventive' : 
-                 'Preventive Prediction'}
+                {language === "es" ? "Plataforma de Diagnóstico Avanzado para Epilepsia" : 
+                 language === "fr" ? "Plateforme de Diagnostic Avancé pour l'Épilepsie" : 
+                 "Advanced Epilepsy Diagnostic Platform"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Nuestros 4+ modelos especializados en epilepsia utilizan análisis EEG avanzado y aprendizaje profundo para predecir convulsiones antes de que ocurran.' :
-                 language === 'fr' ? 'Nos 4+ modèles spécialisés en épilepsie utilisent l\'analyse EEG avancée et l\'apprentissage profond pour prédire les crises avant qu\'elles ne surviennent.' :
-                 'Our 4+ specialized epilepsy models use advanced EEG analysis and deep learning to predict seizures before they occur.'}
+                {language === "es" ? "Utilice nuestros 62+ modelos especializados de IA para detección temprana, predicción de crisis y optimización de tratamiento en epilepsia. Tecnología validada clínicamente con 98.8% de precisión máxima." :
+                 language === "fr" ? "Utilisez nos 62+ modèles spécialisés d'IA pour la détection précoce, la prédiction des crises et l'optimisation du traitement de l'épilepsie. Technologie validée cliniquement avec une précision maximale de 98.8%." :
+                 "Use our 62+ specialized AI models for early detection, seizure prediction, and treatment optimization in epilepsy. Clinically validated technology with 98.8% maximum accuracy."}
               </p>
-              <Button className="bg-indigo-600 hover:bg-indigo-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}

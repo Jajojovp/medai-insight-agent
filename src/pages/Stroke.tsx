@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Brain, Activity, Zap, AlertTriangle, CheckCircle, TrendingUp, FileText, Stethoscope, Microscope } from "lucide-react";
+import { Heart, Activity, AlertTriangle, CheckCircle, TrendingUp, Users, Shield, Brain, Stethoscope, FileText, Microscope } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,21 +14,22 @@ const Stroke = () => {
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
           <Badge variant="secondary" className="bg-purple-100/80 text-purple-800 rounded-full">
-            {language === 'es' ? 'Accidente Cerebrovascular' : 
-             language === 'fr' ? 'Accident Vasculaire Cérébral' : 
-             'Stroke'}
+            {language === "es" ? "Accidente Cerebrovascular" : 
+             language === "fr" ? "Accident Vasculaire Cérébral" : 
+             "Stroke"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Predicción de Accidente Cerebrovascular' : 
-             language === 'fr' ? 'Prédiction d\'Accident Vasculaire Cérébral' : 
-             'Stroke Prediction'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Accidente Cerebrovascular" : 
+             language === "fr" ? "Analyse Prédictive d'Accident Vasculaire Cérébral" : 
+             "Stroke Predictive Analysis"}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo avanzado para ACV usando 5+ modelos especializados con datos clínicos, biomarcadores y algoritmos de aprendizaje automático' :
-             language === 'fr' ? 'Analyse prédictive avancée pour AVC utilisant 5+ modèles spécialisés avec données cliniques, biomarqueurs et algorithmes d\'apprentissage automatique' :
-             'Advanced predictive analysis for stroke using 5+ specialized models with clinical data, biomarkers and machine learning algorithms'}
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            {language === "es" ? "Plataforma médica con 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado del accidente cerebrovascular con 98.8% de precisión máxima" :
+             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée de l\\'accident vasculaire cérébral avec 98.8% de précision maximale" :
+             "Medical platform with 62+ specialized AI models for early detection, risk stratification and personalized management of stroke with 98.8% maximum accuracy"}
           </p>
         </div>
 
@@ -36,7 +37,7 @@ const Stroke = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <FileText className="h-6 w-6 mr-2 text-purple-600" />
+              <FileText className="h-6 w-6 mr-2 text-blue-600" />
               {language === "es" ? "Información Clave - Accidente Cerebrovascular" :
                language === "fr" ? "Information Clé - Accident Vasculaire Cérébral" :
                "Key Information - Stroke"}
@@ -45,58 +46,52 @@ const Stroke = () => {
           <CardContent className="prose max-w-none">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-purple-700">
+                <h3 className="text-xl font-semibold mb-4 text-blue-700">
                   {language === "es" ? "Definición y Epidemiología" :
                    language === "fr" ? "Définition et Épidémiologie" :
                    "Definition and Epidemiology"}
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  {language === "es" ? "El ACV es una disfunción neurológica causada por isquemia o hemorragia cerebral. Es la 5ta causa de muerte y principal causa de discapacidad a largo plazo en EE.UU. Cada 40 segundos alguien sufre un ACV." :
-                   language === "fr" ? "L'AVC est une dysfonction neurologique causée par ischémie ou hémorragie cérébrale. C'est la 5ème cause de décès et principale cause d'invalidité à long terme aux États-Unis. Toutes les 40 secondes, quelqu'un subit un AVC." :
-                   "Stroke is a neurological dysfunction caused by cerebral ischemia or hemorrhage. It is the 5th leading cause of death and leading cause of long-term disability in the US. Every 40 seconds someone has a stroke."}
+                  {language === "es" ? "El accidente cerebrovascular (ACV), también conocido como ictus, ocurre cuando se interrumpe el flujo sanguíneo al cerebro, ya sea por un bloqueo (isquémico) o por la ruptura de un vaso sanguíneo (hemorrágico). Es una emergencia médica que requiere atención inmediata." :
+                   language === "fr" ? "L\\'accident vasculaire cérébral (AVC), également connu sous le nom d\\'ictus, se produit lorsque le flux sanguin vers le cerveau est interrompu, soit par un blocage (ischémique), soit par la rupture d\\'un vaisseau sanguin (hémorragique). C\\'est une urgence médicale qui nécessite une attention immédiate." :
+                   "Stroke, also known as cerebrovascular accident (CVA), occurs when blood flow to the brain is interrupted, either by a blockage (ischemic) or by the rupture of a blood vessel (hemorrhagic). It is a medical emergency that requires immediate attention."}
                 </p>
-                <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
-                  <p className="text-sm text-purple-800">
+                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                  <p className="text-sm text-blue-800">
                     <strong>
-                      {language === "es" ? "Estadísticas Críticas:" :
-                       language === "fr" ? "Statistiques Critiques:" :
-                       "Critical Statistics:"}
+                      {language === "es" ? "Incidencia Global:" :
+                       language === "fr" ? "Incidence Mondiale:" :
+                       "Global Incidence:"}
                     </strong>
-                    {language === "es" ? " 87% son isquémicos, 10% hemorrágicos, 3% HSA. Costo anual: $50 billones (EE.UU.). 34% recurren en 5 años." :
-                     language === "fr" ? " 87% sont ischémiques, 10% hémorragiques, 3% HSA. Coût annuel: $50 milliards (USA). 34% récidivent en 5 ans." :
-                     " 87% are ischemic, 10% hemorrhagic, 3% SAH. Annual cost: $50 billion (USA). 34% recur within 5 years."}
+                    {language === "es" ? " Aproximadamente 15 millones de personas sufren un ACV cada año en todo el mundo. Es la segunda causa principal de muerte y una de las principales causas de discapacidad a largo plazo." :
+                     language === "fr" ? " Environ 15 millions de personnes sont victimes d\\'un AVC chaque année dans le monde. C\\'est la deuxième cause principale de décès et l\\'une des principales causes d\\'invalidité à long terme." :
+                     " Approximately 15 million people worldwide suffer a stroke each year. It is the second leading cause of death and a leading cause of long-term disability."}
                   </p>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-pink-700">
-                  {language === "es" ? "Clasificación TOAST" :
-                   language === "fr" ? "Classification TOAST" :
-                   "TOAST Classification"}
+                <h3 className="text-xl font-semibold mb-4 text-indigo-700">
+                  {language === "es" ? "Tipos de ACV" :
+                   language === "fr" ? "Types d'AVC" :
+                   "Types of Stroke"}
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Aterotrombótico:</strong> {language === "es" ? "Placa ateromatosa >50% en arteria grande" : language === "fr" ? "Plaque athéromateuse >50% dans grande artère" : "Atheromatous plaque >50% in large artery"}
+                      <strong>{language === "es" ? "ACV Isquémico:" : language === "fr" ? "AVC Ischémique:" : "Ischemic Stroke:"}</strong> {language === "es" ? " Ocurre cuando un vaso sanguíneo que irriga el cerebro se bloquea, a menudo por un coágulo de sangre." : language === "fr" ? " Se produit lorsqu\\'un vaisseau sanguin qui irrigue le cerveau est bloqué, souvent par un caillot sanguin." : " Occurs when a blood vessel supplying the brain is blocked, often by a blood clot."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Cardioembólico:</strong> {language === "es" ? "Fibrilación auricular, trombo ventricular, foramen oval permeable" : language === "fr" ? "Fibrillation auriculaire, thrombus ventriculaire, foramen ovale perméable" : "Atrial fibrillation, ventricular thrombus, patent foramen ovale"}
+                      <strong>{language === "es" ? "ACV Hemorrágico:" : language === "fr" ? "AVC Hémorragique:" : "Hemorrhagic Stroke:"}</strong> {language === "es" ? " Ocurre cuando un vaso sanguíneo en el cerebro se rompe y sangra en el tejido circundante." : language === "fr" ? " Se produit lorsqu\\'un vaisseau sanguin dans le cerveau se rompt et saigne dans les tissus environnants." : " Occurs when a blood vessel in the brain ruptures and bleeds into the surrounding tissue."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Lacunar:</strong> {language === "es" ? "Oclusión de pequeña arteria perforante" : language === "fr" ? "Occlusion de petite artère perforante" : "Occlusion of small perforating artery"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>Causa inusual:</strong> {language === "es" ? "Disección arterial, vasculitis, hipercoagulabilidad" : language === "fr" ? "Dissection artérielle, vascularite, hypercoagulabilité" : "Arterial dissection, vasculitis, hypercoagulability"}
+                      <strong>{language === "es" ? "Ataque Isquémico Transitorio (AIT):" : language === "fr" ? "Accident Ischémique Transitoire (AIT):" : "Transient Ischemic Attack (TIA):"}</strong> {language === "es" ? " A menudo llamado 'mini-ACV', es una interrupción temporal del flujo sanguíneo al cerebro. Sirve como una señal de advertencia de un posible ACV futuro." : language === "fr" ? " Souvent appelé 'mini-AVC', il s\\'agit d\\'une interruption temporaire du flux sanguin vers le cerveau. Il sert de signal d\\'alarme pour un éventuel AVC futur." : " Often called a 'mini-stroke', it is a temporary disruption of blood flow to the brain. It serves as a warning sign of a potential future stroke."}
                     </div>
                   </li>
                 </ul>
@@ -110,9 +105,9 @@ const Stroke = () => {
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
               <AlertTriangle className="h-6 w-6 mr-2 text-orange-500" />
-              {language === "es" ? "Factores de Riesgo y Prevención" :
-               language === "fr" ? "Facteurs de Risque et Prévention" :
-               "Risk Factors and Prevention"}
+              {language === "es" ? "Factores de Riesgo y Detección" :
+               language === "fr" ? "Facteurs de Risque et Détection" :
+               "Risk Factors and Detection"}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -124,11 +119,10 @@ const Stroke = () => {
                    "Non-Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "Riesgo se duplica cada década después de los 55 años" : language === "fr" ? "Risque double chaque décennie après 55 ans" : "Risk doubles each decade after age 55"}</li>
-                  <li>• <strong>{language === "es" ? "Sexo:" : language === "fr" ? "Sexe:" : "Gender:"}</strong> {language === "es" ? "Hombres tienen mayor riesgo hasta los 75 años" : language === "fr" ? "Hommes ont risque plus élevé jusqu'à 75 ans" : "Men have higher risk until age 75"}</li>
-                  <li>• <strong>{language === "es" ? "Etnia:" : language === "fr" ? "Ethnie:" : "Ethnicity:"}</strong> {language === "es" ? "Afroamericanos tienen riesgo 2x mayor" : language === "fr" ? "Afro-américains ont risque 2x plus élevé" : "African Americans have 2x higher risk"}</li>
-                  <li>• <strong>{language === "es" ? "Historia familiar:" : language === "fr" ? "Antécédents familiaux:" : "Family history:"}</strong> {language === "es" ? "Riesgo aumentado si ACV en familiares de 1er grado" : language === "fr" ? "Risque augmenté si AVC chez famille 1er degré" : "Increased risk if stroke in 1st degree relatives"}</li>
-                  <li>• <strong>{language === "es" ? "Genética:" : language === "fr" ? "Génétique:" : "Genetics:"}</strong> CADASIL, Fabry, sickle cell</li>
+                  <li>• <strong>{language === "es" ? "Edad:" : language === "fr" ? "Âge:" : "Age:"}</strong> {language === "es" ? "El riesgo de ACV aumenta con la edad, especialmente después de los 55 años." : language === "fr" ? "Le risque d\\'AVC augmente avec l\\'âge, surtout après 55 ans." : "The risk of stroke increases with age, especially after age 55."}</li>
+                  <li>• <strong>{language === "es" ? "Historia familiar:" : language === "fr" ? "Antécédents familiaux:" : "Family History:"}</strong> {language === "es" ? "Tener un familiar cercano que haya sufrido un ACV aumenta el riesgo." : language === "fr" ? "Avoir un parent proche qui a subi un AVC augmente le risque." : "Having a close relative who has had a stroke increases your risk."}</li>
+                  <li>• <strong>{language === "es" ? "Etnia:" : language === "fr" ? "Origine ethnique:" : "Race/Ethnicity:"}</strong> {language === "es" ? "Ciertas etnias, como los afroamericanos, tienen un mayor riesgo de ACV." : language === "fr" ? "Certaines ethnies, comme les Afro-Américains, ont un risque plus élevé d\\'AVC." : "Certain ethnicities, such as African Americans, have a higher risk of stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Género:" : language === "fr" ? "Sexe:" : "Gender:"}</strong> {language === "es" ? "Los hombres tienen un mayor riesgo de ACV que las mujeres, pero las mujeres tienen más probabilidades de morir a causa de un ACV." : language === "fr" ? "Les hommes ont un risque plus élevé d\\'AVC que les femmes, mais les femmes sont plus susceptibles de mourir d\\'un AVC." : "Men have a higher risk of stroke than women, but women are more likely to die from a stroke."}</li>
                 </ul>
               </div>
               <div>
@@ -138,25 +132,27 @@ const Stroke = () => {
                    "Modifiable Factors"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Hipertensión:" : language === "fr" ? "Hypertension:" : "Hypertension:"}</strong> {language === "es" ? "Principal factor, control <130/80 mmHg" : language === "fr" ? "Principal facteur, contrôle <130/80 mmHg" : "Leading factor, control <130/80 mmHg"}</li>
-                  <li>• <strong>{language === "es" ? "Fibrilación auricular:" : language === "fr" ? "Fibrillation auriculaire:" : "Atrial fibrillation:"}</strong> {language === "es" ? "Anticoagulación reduce riesgo 70%" : language === "fr" ? "Anticoagulation réduit risque 70%" : "Anticoagulation reduces risk 70%"}</li>
-                  <li>• <strong>{language === "es" ? "Dislipidemia:" : language === "fr" ? "Dyslipidémie:" : "Dyslipidemia:"}</strong> {language === "es" ? "Estatinas reducen riesgo aterotrombótico" : language === "fr" ? "Statines réduisent risque athérothrombotique" : "Statins reduce atherothrombotic risk"}</li>
-                  <li>• <strong>{language === "es" ? "Diabetes:" : language === "fr" ? "Diabète:" : "Diabetes:"}</strong> {language === "es" ? "Control glucémico reduce riesgo" : language === "fr" ? "Contrôle glycémique réduit risque" : "Glycemic control reduces risk"}</li>
-                  <li>• <strong>{language === "es" ? "Tabaquismo:" : language === "fr" ? "Tabagisme:" : "Smoking:"}</strong> {language === "es" ? "Cesa tabaquismo reduce riesgo 50% en 5 años" : language === "fr" ? "Cesser tabagisme réduit risque 50% en 5 ans" : "Smoking cessation reduces risk 50% in 5 years"}</li>
+                  <li>• <strong>{language === "es" ? "Hipertensión:" : language === "fr" ? "Hypertension:" : "Hypertension:"}</strong> {language === "es" ? "La presión arterial alta es el factor de riesgo más importante para el ACV." : language === "fr" ? "L\\'hypertension artérielle est le facteur de risque le plus important pour l\\'AVC." : "High blood pressure is the most important risk factor for stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Colesterol alto:" : language === "fr" ? "Cholestérol élevé:" : "High Cholesterol:"}</strong> {language === "es" ? "Los niveles altos de colesterol pueden provocar la acumulación de placa en las arterias, lo que aumenta el riesgo de ACV." : language === "fr" ? "Un taux de cholestérol élevé peut entraîner une accumulation de plaque dans les artères, ce qui augmente le risque d\\'AVC." : "High cholesterol levels can lead to plaque buildup in the arteries, increasing the risk of stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Tabaquismo:" : language === "fr" ? "Tabagisme:" : "Smoking:"}</strong> {language === "es" ? "Fumar daña los vasos sanguíneos y aumenta el riesgo de ACV." : language === "fr" ? "Fumer endommage les vaisseaux sanguins et augmente le risque d\\'AVC." : "Smoking damages blood vessels and increases the risk of stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Diabetes:" : language === "fr" ? "Diabète:" : "Diabetes:"}</strong> {language === "es" ? "La diabetes aumenta el riesgo de ACV." : language === "fr" ? "Le diabète augmente le risque d\\'AVC." : "Diabetes increases the risk of stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Enfermedad cardíaca:" : language === "fr" ? "Maladie cardiaque:" : "Heart Disease:"}</strong> {language === "es" ? "Las enfermedades cardíacas, como la fibrilación auricular, aumentan el riesgo de ACV." : language === "fr" ? "Les maladies cardiaques, telles que la fibrillation auriculaire, augmentent le risque d\\'AVC." : "Heart conditions, such as atrial fibrillation, increase the risk of stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Obesidad:" : language === "fr" ? "Obésité:" : "Obesity:"}</strong> {language === "es" ? "La obesidad aumenta el riesgo de ACV." : language === "fr" ? "L\\'obésité augmente le risque d\\'AVC." : "Obesity increases the risk of stroke."}</li>
+                  <li>• <strong>{language === "es" ? "Estilo de vida sedentario:" : language === "fr" ? "Mode de vie sédentaire:" : "Sedentary Lifestyle:"}</strong> {language === "es" ? "La falta de actividad física aumenta el riesgo de ACV." : language === "fr" ? "Le manque d\\'activité physique augmente le risque d\\'AVC." : "Lack of physical activity increases the risk of stroke."}</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4 text-blue-600">
-                  {language === "es" ? "Biomarcadores" :
-                   language === "fr" ? "Biomarqueurs" :
-                   "Biomarkers"}
+                  {language === "es" ? "Protocolo de Detección" :
+                   language === "fr" ? "Protocole de Détection" :
+                   "Screening Protocol"}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === "es" ? "Troponina:" : language === "fr" ? "Troponine:" : "Troponin:"}</strong> {language === "es" ? "Elevada en ACV agudo, predice mortalidad" : language === "fr" ? "Élevée dans AVC aigu, prédit mortalité" : "Elevated in acute stroke, predicts mortality"}</li>
-                  <li>• <strong>{language === "es" ? "NT-proBNP:" : language === "fr" ? "NT-proBNP:" : "NT-proBNP:"}</strong> {language === "es" ? "Disfunción cardiaca asociada a ACV" : language === "fr" ? "Dysfonction cardiaque associée à AVC" : "Cardiac dysfunction associated with stroke"}</li>
-                  <li>• <strong>{language === "es" ? "PCR ultrasensible:" : language === "fr" ? "CRP ultrasensible:" : "hs-CRP:"}</strong> {language === "es" ? "Inflamación y riesgo cardiovascular" : language === "fr" ? "Inflammation et risque cardiovasculaire" : "Inflammation and cardiovascular risk"}</li>
-                  <li>• <strong>{language === "es" ? "D-dímero:" : language === "fr" ? "D-dimère:" : "D-dimer:"}</strong> {language === "es" ? "Trombosis y riesgo de recurrencia" : language === "fr" ? "Thrombose et risque de récidive" : "Thrombosis and recurrence risk"}</li>
-                  <li>• <strong>{language === "es" ? "Lipoproteína (a):" : language === "fr" ? "Lipoprotéine (a):" : "Lipoprotein (a):"}</strong> {language === "es" ? "Riesgo aterotrombótico" : language === "fr" ? "Risque athérothrombotique" : "Atherothrombotic risk"}</li>
+                  <li>• <strong>{language === "es" ? "Examen físico y neurológico:" : language === "fr" ? "Examen physique et neurologique:" : "Physical and Neurological Exam:"}</strong> {language === "es" ? "Evaluación de la presión arterial, frecuencia cardíaca y función neurológica." : language === "fr" ? "Évaluation de la pression artérielle, de la fréquence cardiaque et de la fonction neurologique." : "Assessment of blood pressure, heart rate, and neurological function."}</li>
+                  <li>• <strong>{language === "es" ? "Análisis de sangre:" : language === "fr" ? "Analyses sanguines:" : "Blood Tests:"}</strong> {language === "es" ? "Medición de los niveles de colesterol, glucosa en sangre y otros factores de riesgo." : language === "fr" ? "Mesure des taux de cholestérol, de glucose sanguin et d\\'autres facteurs de risque." : "Measurement of cholesterol levels, blood glucose, and other risk factors."}</li>
+                  <li>• <strong>{language === "es" ? "Electrocardiograma (ECG):" : language === "fr" ? "Électrocardiogramme (ECG):" : "Electrocardiogram (ECG):"}</strong> {language === "es" ? "Detección de ritmos cardíacos irregulares, como la fibrilación auricular." : language === "fr" ? "Détection des rythmes cardiaques irréguliers, tels que la fibrillation auriculaire." : "Detection of irregular heart rhythms, such as atrial fibrillation."}</li>
+                  <li>• <strong>{language === "es" ? "Imágenes cerebrales:" : language === "fr" ? "Imagerie cérébrale:" : "Brain Imaging:"}</strong> {language === "es" ? "Tomografía computarizada (TC) o resonancia magnética (RM) para identificar signos de ACV o daño cerebral." : language === "fr" ? "Tomodensitométrie (TDM) ou imagerie par résonance magnétique (IRM) pour identifier les signes d\\'AVC ou de lésions cérébrales." : "Computed tomography (CT) or magnetic resonance imaging (MRI) to identify signs of stroke or brain damage."}</li>
+                  <li>• <strong>{language === "es" ? "Ecografía Doppler carotídea:" : language === "fr" ? "Échographie Doppler carotidienne:" : "Carotid Doppler Ultrasound:"}</strong> {language === "es" ? "Evaluación del flujo sanguíneo en las arterias carótidas para detectar estenosis." : language === "fr" ? "Évaluation du flux sanguin dans les artères carotides pour détecter un rétrécissement." : "Assessment of blood flow in the carotid arteries to detect narrowing."}</li>
                 </ul>
               </div>
             </div>
@@ -171,60 +167,60 @@ const Stroke = () => {
                 <Brain className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Análisis Clínico Avanzado' : 
-                 language === 'fr' ? 'Analyse Clinique Avancée' : 
-                 'Advanced Clinical Analysis'}
+                {language === "es" ? "Predicción de Riesgo de ACV" :
+                 language === "fr" ? "Prédiction du Risque d'AVC" :
+                 "Stroke Risk Prediction"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Modelos de ML para predecir riesgo de ACV basado en historial, examen físico, factores de riesgo y biomarcadores con 96.8% de precisión' :
-                 language === 'fr' ? 'Modèles de ML pour prédire risque d\'AVC basé sur historique, examen physique, facteurs de risque et biomarqueurs avec 96.8% de précision' :
-                 'ML models to predict stroke risk based on history, physical exam, risk factors and biomarkers with 96.8% accuracy'}
+                {language === "es" ? "Modelos de IA para predecir el riesgo de ACV basados en factores de riesgo individuales y datos clínicos." :
+                 language === "fr" ? "Modèles d'IA pour prédire le risque d'AVC basés sur des facteurs de risque individuels et des données cliniques." :
+                 "AI models to predict stroke risk based on individual risk factors and clinical data."}
               </p>
-              <Badge className="w-full justify-center bg-purple-100 text-purple-800">96.8% Precisión</Badge>
+              <Badge className="w-full justify-center bg-purple-100 text-purple-800">{language === "es" ? "Precisión Mejorada" : language === "fr" ? "Précision Améliorée" : "Improved Accuracy"}</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-violet-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Activity className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Predicción de Recurrencia' : 
-                 language === 'fr' ? 'Prédiction de Récidive' : 
-                 'Recurrence Prediction'}
+                {language === "es" ? "Detección Temprana de ACV" :
+                 language === "fr" ? "Détection Précoce d'AVC" :
+                 "Early Stroke Detection"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Algoritmos para predecir recurrencia de ACV en 5 años basado en factores de riesgo persistentes, adherencia a tratamiento y rehabilitación' :
-                 language === 'fr' ? 'Algorithmes pour prédire récidive d\'AVC en 5 ans basé sur facteurs de risque persistants, adhérence au traitement et réadaptation' :
-                 'Algorithms to predict stroke recurrence in 5 years based on persistent risk factors, treatment adherence and rehabilitation'}
+                {language === "es" ? "Algoritmos para analizar imágenes cerebrales y detectar signos tempranos de ACV." :
+                 language === "fr" ? "Algorithmes pour analyser les images cérébrales et détecter les signes précoces d'AVC." :
+                 "Algorithms to analyze brain images and detect early signs of stroke."}
               </p>
-              <Badge className="w-full justify-center bg-pink-100 text-pink-800">Prevención Secundaria</Badge>
+              <Badge className="w-full justify-center bg-violet-100 text-violet-800">{language === "es" ? "Resultados Rápidos" : language === "fr" ? "Résultats Rapides" : "Fast Results"}</Badge>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Microscope className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Subtipificación de ACV' : 
-                 language === 'fr' ? 'Sous-typage d\'AVC' : 
-                 'Stroke Subtyping'}
+                {language === "es" ? "Subtipificación de ACV" :
+                 language === "fr" ? "Sous-typage d'AVC" :
+                 "Stroke Subtyping"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Modelos para clasificar subtipo de ACV (aterotrombótico, cardioembólico, lacunar) basado en datos clínicos e imagenológicos para tratamiento dirigido' :
-                 language === 'fr' ? 'Modèles pour classifier sous-type d\'AVC (athérothrombotique, cardioembolique, lacunaire) basé sur données cliniques et d\'imagerie pour traitement ciblé' :
-                 'Models to classify stroke subtype (atherothrombotic, cardioembolic, lacunar) based on clinical and imaging data for targeted treatment'}
+                {language === "es" ? "Modelos para clasificar el tipo de ACV (isquémico, hemorrágico) para guiar el tratamiento." :
+                 language === "fr" ? "Modèles pour classer le type d'AVC (ischémique, hémorragique) pour guider le traitement." :
+                 "Models to classify the type of stroke (ischemic, hemorrhagic) to guide treatment."}
               </p>
-              <Badge className="w-full justify-center bg-orange-100 text-orange-800">Tratamiento Dirigido</Badge>
+              <Badge className="w-full justify-center bg-indigo-100 text-indigo-800">{language === "es" ? "Diagnóstico Preciso" : language === "fr" ? "Diagnostic Précis" : "Accurate Diagnosis"}</Badge>
             </CardContent>
           </Card>
         </div>
@@ -233,7 +229,7 @@ const Stroke = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Stethoscope className="h-6 w-6 mr-2 text-purple-600" />
+              <Stethoscope className="h-6 w-6 mr-2 text-blue-600" />
               {language === "es" ? "Guías de Tratamiento" :
                language === "fr" ? "Guides de Traitement" :
                "Treatment Guidelines"}
@@ -243,56 +239,56 @@ const Stroke = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
-                  {language === "es" ? "ACV Isquémico Agudo" :
-                   language === "fr" ? "AVC Ischémique Aigu" :
-                   "Acute Ischemic Stroke"}
+                  <Heart className="h-5 w-5 mr-2 text-green-500" />
+                  {language === "es" ? "Tratamiento Agudo" :
+                   language === "fr" ? "Traitement Aigu" :
+                   "Acute Treatment"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Trombolisis IV:" : language === "fr" ? "Thrombolyse IV:" : "IV Thrombolysis:"}</strong> {language === "es" ? "Alteplasa <4.5 horas desde inicio de síntomas" : language === "fr" ? "Altéplase <4.5 heures depuis début des symptômes" : "Alteplase <4.5 hours from symptom onset"}
+                      <strong>{language === "es" ? "ACV Isquémico:" : language === "fr" ? "AVC Ischémique:" : "Ischemic Stroke:"}</strong> {language === "es" ? "Administración de activador tisular del plasminógeno (tPA) dentro de las primeras 4.5 horas del inicio de los síntomas." : language === "fr" ? "Administration d'activateur tissulaire du plasminogène (tPA) dans les 4,5 premières heures suivant l'apparition des symptômes." : "Administration of tissue plasminogen activator (tPA) within the first 4.5 hours of symptom onset."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Trombectomía mecánica:" : language === "fr" ? "Thrombectomie mécanique:" : "Mechanical thrombectomy:"}</strong> {language === "es" ? "Oclusión de gran vaso <24 horas desde inicio" : language === "fr" ? "Occlusion de grand vaisseau <24 heures depuis début" : "Large vessel occlusion <24 hours from onset"}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === "es" ? "Antiagregación:" : language === "fr" ? "Antiagrégation:" : "Antiplatelet therapy:"}</strong> {language === "es" ? "Aspirina 300mg STAT, luego clopidogrel 75mg" : language === "fr" ? "Aspirine 300mg STAT, puis clopidogrel 75mg" : "Aspirin 300mg STAT, then clopidogrel 75mg"}
+                      <strong>{language === "es" ? "ACV Hemorrágico:" : language === "fr" ? "AVC Hémorragique:" : "Hemorrhagic Stroke:"}</strong> {language === "es" ? "Control de la presión arterial, reversión de anticoagulantes y posible intervención quirúrgica para evacuar la sangre." : language === "fr" ? "Contrôle de la pression artérielle, inversion des anticoagulants et éventuelle intervention chirurgicale pour évacuer le sang." : "Blood pressure control, reversal of anticoagulants, and possible surgical intervention to evacuate blood."}
                     </div>
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <AlertTriangle className="h-5 w-5 mr-2 text-orange-500" />
-                  {language === "es" ? "ACV Hemorrágico" :
-                   language === "fr" ? "AVC Hémorragique" :
-                   "Hemorrhagic Stroke"}
+                  <Users className="h-5 w-5 mr-2 text-orange-500" />
+                  {language === "es" ? "Prevención Secundaria" :
+                   language === "fr" ? "Prévention Secondaire" :
+                   "Secondary Prevention"}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Control tensional:" : language === "fr" ? "Contrôle tensionnel:" : "Blood pressure control:"}</strong> {language === "es" ? "PAS <140 mmHg" : language === "fr" ? "PAS <140 mmHg" : "SBP <140 mmHg"}
+                      <strong>{language === "es" ? "Antiplaquetarios:" : language === "fr" ? "Antiplaquettaires:" : "Antiplatelet Agents:"}</strong> {language === "es" ? "Aspirina, clopidogrel o ticagrelor para prevenir la formación de coágulos." : language === "fr" ? "Aspirine, clopidogrel ou ticagrelor pour prévenir la formation de caillots." : "Aspirin, clopidogrel, or ticagrelor to prevent clot formation."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Reversión anticoagulación:" : language === "fr" ? "Reversion anticoagulation:" : "Anticoagulation reversal:"}</strong> {language === "es" ? "Idarucizumab (dabigatran), andexanet alfa (FXa)" : language === "fr" ? "Idarucizumab (dabigatran), andexanet alfa (FXa)" : "Idarucizumab (dabigatran), andexanet alfa (FXa)"}
+                      <strong>{language === "es" ? "Anticoagulantes:" : language === "fr" ? "Anticoagulants:" : "Anticoagulants:"}</strong> {language === "es" ? "Warfarina o anticoagulantes orales directos (ACOD) para pacientes con fibrilación auricular." : language === "fr" ? "Warfarine ou anticoagulants oraux directs (AOD) pour les patients atteints de fibrillation auriculaire." : "Warfarin or direct oral anticoagulants (DOACs) for patients with atrial fibrillation."}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Neurocirugía:" : language === "fr" ? "Neurochirurgie:" : "Neurosurgery:"}</strong> {language === "es" ? "Evacuación hematoma si >3cm, HSA con aneurisma roto" : language === "fr" ? "Évacuation hématome si >3cm, HSA avec anévrisme rompu" : "Hematoma evacuation if >3cm, SAH with ruptured aneurysm"}
+                      <strong>{language === "es" ? "Control de factores de riesgo:" : language === "fr" ? "Contrôle des facteurs de risque:" : "Risk Factor Management:"}</strong> {language === "es" ? "Control de la presión arterial, colesterol y glucosa en sangre." : language === "fr" ? "Contrôle de la pression artérielle, du cholestérol et de la glycémie." : "Control of blood pressure, cholesterol, and blood glucose."}
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <strong>{language === "es" ? "Modificación del estilo de vida:" : language === "fr" ? "Modification du style de vie:" : "Lifestyle Modification:"}</strong> {language === "es" ? "Dieta saludable, ejercicio regular, dejar de fumar y limitar el consumo de alcohol." : language === "fr" ? "Alimentation saine, exercice régulier, arrêt du tabac et limitation de la consommation d'alcool." : "Healthy diet, regular exercise, smoking cessation, and limiting alcohol consumption."}
                     </div>
                   </li>
                 </ul>
@@ -305,39 +301,39 @@ const Stroke = () => {
         <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
-              {language === "es" ? "Epidemiología Global del Accidente Cerebrovascular" :
-               language === "fr" ? "Épidémiologie Mondiale de l'Accident Vasculaire Cérébral" :
+              {language === "es" ? "Epidemiología Global del ACV" :
+               language === "fr" ? "Épidémiologie Mondiale de l'AVC" :
                "Global Stroke Epidemiology"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
               <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">13.7M</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">15M</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Nuevos ACV anuales" :
-                   language === "fr" ? "Nouveaux AVC annuels" :
-                   "New strokes annually"}
+                  {language === "es" ? "Casos anuales" :
+                   language === "fr" ? "Cas annuels" :
+                   "Annual Cases"}
                 </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-red-600 mb-2">5.5M</div>
                 <div className="text-sm text-gray-600">
-                  {language === "es" ? "Muertes anuales por ACV" :
-                   language === "fr" ? "Décès annuels par AVC" :
-                   "Annual stroke deaths"}
+                  {language === "es" ? "Muertes anuales" :
+                   language === "fr" ? "Décès annuels" :
+                   "Annual Deaths"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-pink-600 mb-2">50%</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">50%</div>
                 <div className="text-sm text-gray-600">
                   {language === "es" ? "Discapacidad a largo plazo" :
                    language === "fr" ? "Invalidité à long terme" :
-                   "Long-term disability"}
+                   "Long-term Disability"}
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">34%</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">1/4</div>
                 <div className="text-sm text-gray-600">
                   {language === "es" ? "Recurrencia en 5 años" :
                    language === "fr" ? "Récidive en 5 ans" :
@@ -350,21 +346,21 @@ const Stroke = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-br from-purple-50/30 to-pink-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+          <Card className="bg-gradient-to-br from-purple-50/30 to-violet-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
-                {language === 'es' ? 'Prevención y Predicción del ACV' : 
-                 language === 'fr' ? 'Prévention et Prédiction de l\'AVC' : 
-                 'Stroke Prevention and Prediction'}
+                {language === "es" ? "Plataforma de Diagnóstico Avanzado para ACV" :
+                 language === "fr" ? "Plateforme de Diagnostic Avancé pour AVC" :
+                 "Advanced Stroke Diagnostic Platform"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Nuestros 5+ modelos especializados en ACV utilizan análisis avanzado de datos clínicos y biomarcadores para predecir y prevenir esta devastadora enfermedad.' :
-                 language === 'fr' ? 'Nos 5+ modèles spécialisés en AVC utilisent l\'analyse avancée de données cliniques et de biomarqueurs pour prédire et prévenir cette maladie dévastatrice.' :
-                 'Our 5+ specialized stroke models use advanced analysis of clinical data and biomarkers to predict and prevent this devastating disease.'}
+                {language === "es" ? "Utilice nuestros modelos especializados de IA para la predicción de riesgos, la detección temprana y la subtipificación de ACV. Mejore la atención al paciente y reduzca la discapacidad a largo plazo." :
+                 language === "fr" ? "Utilisez nos modèles spécialisés d'IA pour la prédiction des risques, la détection précoce et le sous-typage d'AVC. Améliorez les soins aux patients et réduisez l'invalidité à long terme." :
+                 "Use our specialized AI models for risk prediction, early detection, and stroke subtyping. Improve patient care and reduce long-term disability."}
               </p>
-              <Button className="bg-purple-600 hover:bg-purple-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}

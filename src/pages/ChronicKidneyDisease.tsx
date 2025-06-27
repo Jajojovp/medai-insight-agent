@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,24 +10,25 @@ const ChronicKidneyDisease = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50/30 to-white/30">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50/30 to-white/30">
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-6 mb-12">
-          <Badge variant="secondary" className="bg-teal-100/80 text-teal-800 rounded-full">
-            {language === 'es' ? 'Enfermedad Renal Crónica' : 
-             language === 'fr' ? 'Maladie Rénale Chronique' : 
-             'Chronic Kidney Disease'}
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge variant="secondary" className="bg-orange-100/80 text-orange-800 rounded-full">
+            {language === "es" ? "Enfermedad Renal Crónica" : 
+             language === "fr" ? "Maladie Rénale Chronique" : 
+             "Chronic Kidney Disease"}
           </Badge>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Detección Temprana de Enfermedad Renal' : 
-             language === 'fr' ? 'Détection Précoce de Maladie Rénale' : 
-             'Early Kidney Disease Detection'}
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+            {language === "es" ? "Análisis Predictivo de Enfermedad Renal Crónica" : 
+             language === "fr" ? "Analyse Prédictive de Maladie Rénale Chronique" : 
+             "Chronic Kidney Disease Predictive Analysis"}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Análisis predictivo de enfermedad renal crónica con 5+ modelos especializados que alcanzan 97.5% de precisión usando biomarcadores séricos y urinarios' :
-             language === 'fr' ? 'Analyse prédictive de maladie rénale chronique avec 5+ modèles spécialisés atteignant 97.5% de précision utilisant biomarqueurs sériques et urinaires' :
+            {language === "es" ? 'Análisis predictivo de enfermedad renal crónica con 5+ modelos especializados que alcanzan 97.5% de precisión usando biomarcadores séricos y urinarios' :
+             language === "fr" ? 'Analyse prédictive de maladie rénale chronique avec 5+ modèles spécialisés atteignant 97.5% de précision utilisant biomarqueurs sériques et urinaires' :
              'Chronic kidney disease predictive analysis with 5+ specialized models achieving 97.5% accuracy using serum and urinary biomarkers'}
           </p>
         </div>
