@@ -323,7 +323,7 @@ const Landing = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30">
       <PublicNavigation />
       
-      {/* Hero Section */}
+      {/* Hero Section - Fixed title size and button colors */}
       <section className="relative py-20 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-8">
@@ -335,11 +335,11 @@ const Landing = () => {
                  'Medical AI'}
               </Badge>
               
-              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 MedAI Pro
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 {language === 'es' ? 'Diagnóstico IA para 12 enfermedades críticas. Detección temprana y resultados confiables.' :
                  language === 'fr' ? 'Diagnostic IA pour 12 maladies critiques. Détection précoce et résultats fiables.' :
                  'AI diagnosis for 12 critical diseases. Early detection and reliable results.'}
@@ -390,7 +390,7 @@ const Landing = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               {language === 'es' ? 'Tecnología IA' :
                language === 'fr' ? 'Technologie IA' :
                'AI Technology'}
@@ -483,7 +483,7 @@ const Landing = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               {language === 'es' ? 'Beneficios Clínicos' :
                language === 'fr' ? 'Bénéfices Cliniques' :
                'Clinical Benefits'}
@@ -515,11 +515,11 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Fixed button colors */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               {language === 'es' ? '¿Listo para mejorar diagnósticos?' :
                language === 'fr' ? 'Prêt à améliorer diagnostics?' :
                'Ready to improve diagnostics?'}

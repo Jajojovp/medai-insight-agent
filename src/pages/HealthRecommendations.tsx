@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,10 @@ import {
   Users,
   Droplets,
   Scan,
-  TrendingUp
+  TrendingUp,
+  Microscope,
+  Stethoscope,
+  Zap
 } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
@@ -94,6 +96,41 @@ const HealthRecommendations = () => {
     },
     {
       category: {
+        es: 'Cáncer de Próstata',
+        en: 'Prostate Cancer',
+        fr: 'Cancer de la Prostate'
+      },
+      icon: Users,
+      color: 'indigo',
+      recommendations: {
+        es: [
+          'Screening PSA anual para hombres >50 años (>45 si alto riesgo)',
+          'Examen digital rectal anual junto con PSA',
+          'Biopsia dirigida por resonancia magnética si PSA elevado',
+          'Vigilancia activa para cánceres de bajo riesgo',
+          'Evaluación genética en casos familiares o metastásicos',
+          'Seguimiento post-tratamiento con PSA cada 3-6 meses'
+        ],
+        en: [
+          'Annual PSA screening for men >50 years (>45 if high risk)',
+          'Annual digital rectal exam along with PSA',
+          'MRI-guided biopsy if elevated PSA',
+          'Active surveillance for low-risk cancers',
+          'Genetic evaluation in familial or metastatic cases',
+          'Post-treatment follow-up with PSA every 3-6 months'
+        ],
+        fr: [
+          'Dépistage PSA annuel pour hommes >50 ans (>45 si haut risque)',
+          'Examen rectal digital annuel avec PSA',
+          'Biopsie guidée par IRM si PSA élevé',
+          'Surveillance active pour cancers bas risque',
+          'Évaluation génétique dans cas familiaux ou métastatiques',
+          'Suivi post-traitement avec PSA tous les 3-6 mois'
+        ]
+      }
+    },
+    {
+      category: {
         es: 'Enfermedades Cardíacas',
         en: 'Heart Disease',
         fr: 'Maladies Cardiaques'
@@ -161,6 +198,251 @@ const HealthRecommendations = () => {
           'Reconnaissance précoce des symptômes: protocole FAST'
         ]
       }
+    },
+    {
+      category: {
+        es: 'Enfermedad Renal Crónica',
+        en: 'Chronic Kidney Disease',
+        fr: 'Maladie Rénale Chronique'
+      },
+      icon: Scan,
+      color: 'teal',
+      recommendations: {
+        es: [
+          'Monitoreo regular de creatinina sérica y filtrado glomerular',
+          'Control estricto de diabetes e hipertensión (principales causas)',
+          'Restricción proteica moderada: 0.8-1.0 g/kg/día en estadios avanzados',
+          'Manejo de anemia con hierro y agentes estimulantes eritropoyesis',
+          'Control de fósforo y calcio, suplemento vitamina D',
+          'Derivación temprana a nefrología en estadio 4-5'
+        ],
+        en: [
+          'Regular monitoring of serum creatinine and glomerular filtration',
+          'Strict control of diabetes and hypertension (main causes)',
+          'Moderate protein restriction: 0.8-1.0 g/kg/day in advanced stages',
+          'Anemia management with iron and erythropoiesis-stimulating agents',
+          'Phosphorus and calcium control, vitamin D supplementation',
+          'Early nephrology referral in stage 4-5'
+        ],
+        fr: [
+          'Surveillance régulière créatinine sérique et filtration glomérulaire',
+          'Contrôle strict diabète et hypertension (causes principales)',
+          'Restriction protéique modérée: 0,8-1,0 g/kg/jour stades avancés',
+          'Gestion anémie avec fer et agents stimulants érythropoïèse',
+          'Contrôle phosphore et calcium, supplémentation vitamine D',
+          'Référence néphrologie précoce au stade 4-5'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Cáncer Pancreático',
+        en: 'Pancreatic Cancer',
+        fr: 'Cancer Pancréatique'
+      },
+      icon: AlertTriangle,
+      color: 'orange',
+      recommendations: {
+        es: [
+          'Screening en pacientes con diabetes de inicio tardío súbito',
+          'Vigilancia estrecha en síndromes genéticos hereditarios',
+          'Evaluación inmediata de ictericia obstructiva sin dolor',
+          'TC abdominal urgente ante pérdida de peso inexplicada >60 años',
+          'Biopsia guiada por ecoendoscopia para confirmación diagnóstica',
+          'Evaluación multidisciplinaria oncológica inmediata si confirmado'
+        ],
+        en: [
+          'Screening in patients with sudden late-onset diabetes',
+          'Close surveillance in hereditary genetic syndromes',
+          'Immediate evaluation of painless obstructive jaundice',
+          'Urgent abdominal CT for unexplained weight loss >60 years',
+          'Endoscopic ultrasound-guided biopsy for diagnostic confirmation',
+          'Immediate multidisciplinary oncology evaluation if confirmed'
+        ],
+        fr: [
+          'Dépistage chez patients avec diabète tardif subit',
+          'Surveillance étroite syndromes génétiques héréditaires',
+          'Évaluation immédiate ictère obstructif sans douleur',
+          'TC abdominal urgent pour perte poids inexpliquée >60 ans',
+          'Biopsie écho-endoscopique pour confirmation diagnostique',
+          'Évaluation oncologique multidisciplinaire immédiate si confirmé'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Cáncer de Estómago',
+        en: 'Stomach Cancer',
+        fr: 'Cancer de l\'Estomac'
+      },
+      icon: Stethoscope,
+      color: 'emerald',
+      recommendations: {
+        es: [
+          'Screening H. pylori y erradicación si positivo',
+          'Endoscopia digestiva alta en síntomas persistentes >40 años',
+          'Vigilancia endoscópica en gastritis atrófica y metaplasia intestinal',
+          'Evaluación genética en cáncer gástrico hereditario difuso',
+          'Biopsia múltiple sistemática de lesiones sospechosas',
+          'Estadificación completa con TC y laparoscopia si resecable'
+        ],
+        en: [
+          'H. pylori screening and eradication if positive',
+          'Upper endoscopy for persistent symptoms >40 years',
+          'Endoscopic surveillance in atrophic gastritis and intestinal metaplasia',
+          'Genetic evaluation in hereditary diffuse gastric cancer',
+          'Systematic multiple biopsy of suspicious lesions',
+          'Complete staging with CT and laparoscopy if resectable'
+        ],
+        fr: [
+          'Dépistage H. pylori et éradication si positif',
+          'Endoscopie digestive haute symptômes persistants >40 ans',
+          'Surveillance endoscopique gastrite atrophique et métaplasie intestinale',
+          'Évaluation génétique cancer gastrique héréditaire diffus',
+          'Biopsie multiple systématique lésions suspectes',
+          'Stadification complète avec TC et laparoscopie si résécable'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Leucemia',
+        en: 'Leukemia',
+        fr: 'Leucémie'
+      },
+      icon: Microscope,
+      color: 'yellow',
+      recommendations: {
+        es: [
+          'Hemograma completo ante fatiga persistente inexplicada',
+          'Evaluación hematológica urgente si blastos en sangre periférica',
+          'Biopsia de médula ósea para clasificación y pronóstico',
+          'Citogenética y estudios moleculares para estratificación de riesgo',
+          'Profilaxis infecciosa en neutropenia severa',
+          'Seguimiento de enfermedad mínima residual post-tratamiento'
+        ],
+        en: [
+          'Complete blood count for persistent unexplained fatigue',
+          'Urgent hematology evaluation if blasts in peripheral blood',
+          'Bone marrow biopsy for classification and prognosis',
+          'Cytogenetics and molecular studies for risk stratification',
+          'Infection prophylaxis in severe neutropenia',
+          'Minimal residual disease monitoring post-treatment'
+        ],
+        fr: [
+          'Hémogramme complet pour fatigue persistante inexpliquée',
+          'Évaluation hématologique urgente si blastes sang périphérique',
+          'Biopsie moelle osseuse pour classification et pronostic',
+          'Cytogénétique et études moléculaires pour stratification risque',
+          'Prophylaxie infectieuse en neutropénie sévère',
+          'Suivi maladie résiduelle minimale post-traitement'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Cáncer de Hígado',
+        en: 'Liver Cancer',
+        fr: 'Cancer du Foie'
+      },
+      icon: TrendingUp,
+      color: 'amber',
+      recommendations: {
+        es: [
+          'Screening con alfafetoproteína y ecografía cada 6 meses en cirrosis',
+          'Resonancia magnética si lesión sospechosa en ecografía',
+          'Evaluación de trasplante hepático en hepatocarcinoma temprano',
+          'Control de hepatitis B/C con antivirales según guías',
+          'Abstinencia completa de alcohol en enfermedad hepática',
+          'Vigilancia estrecha de pacientes con hemocromatosis'
+        ],
+        en: [
+          'Screening with alpha-fetoprotein and ultrasound every 6 months in cirrhosis',
+          'MRI if suspicious lesion on ultrasound',
+          'Liver transplant evaluation in early hepatocellular carcinoma',
+          'Hepatitis B/C control with antivirals per guidelines',
+          'Complete alcohol abstinence in liver disease',
+          'Close surveillance of patients with hemochromatosis'
+        ],
+        fr: [
+          'Dépistage avec alpha-fœtoprotéine et échographie tous les 6 mois en cirrhose',
+          'IRM si lésion suspecte à l\'échographie',
+          'Évaluation transplantation hépatique carcinome hépatocellulaire précoce',
+          'Contrôle hépatite B/C avec antiviraux selon guides',
+          'Abstinence alcoolique complète en maladie hépatique',
+          'Surveillance étroite patients avec hémochromatose'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Cáncer de Pulmón',
+        en: 'Lung Cancer',
+        fr: 'Cancer du Poumon'
+      },
+      icon: Heart,
+      color: 'slate',
+      recommendations: {
+        es: [
+          'TC de tórax baja dosis anual en fumadores 50-80 años (>20 paquetes-año)',
+          'Cesación tabáquica inmediata con apoyo farmacológico y psicológico',
+          'Evaluación inmediata de hemoptisis o nódulo pulmonar',
+          'Biopsia guiada por TC o broncoscopia para diagnóstico tisular',
+          'Estadificación completa con PET-TC y resonancia cerebral',
+          'Pruebas moleculares para terapias dirigidas en adenocarcinoma'
+        ],
+        en: [
+          'Annual low-dose chest CT in smokers 50-80 years (>20 pack-years)',
+          'Immediate smoking cessation with pharmacological and psychological support',
+          'Immediate evaluation of hemoptysis or pulmonary nodule',
+          'CT-guided biopsy or bronchoscopy for tissue diagnosis',
+          'Complete staging with PET-CT and brain MRI',
+          'Molecular testing for targeted therapies in adenocarcinoma'
+        ],
+        fr: [
+          'TC thorax faible dose annuel fumeurs 50-80 ans (>20 paquets-année)',
+          'Arrêt tabagique immédiat avec soutien pharmacologique et psychologique',
+          'Évaluation immédiate hémoptysie ou nodule pulmonaire',
+          'Biopsie guidée TC ou bronchoscopie pour diagnostic tissulaire',
+          'Stadification complète avec PET-TC et IRM cérébrale',
+          'Tests moléculaires pour thérapies ciblées en adénocarcinome'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Epilepsia',
+        en: 'Epilepsy',
+        fr: 'Épilepsie'
+      },
+      icon: Zap,
+      color: 'violet',
+      recommendations: {
+        es: [
+          'EEG inmediato después de primera crisis convulsiva',
+          'Resonancia magnética cerebral para identificar lesiones estructurales',
+          'Monoterapia inicial con fármaco antiepiléptico apropiado',
+          'Monitoreo de niveles séricos y efectos adversos',
+          'Educación sobre factores desencadenantes y primeros auxilios',
+          'Evaluación para cirugía en epilepsia refractaria'
+        ],
+        en: [
+          'Immediate EEG after first seizure episode',
+          'Brain MRI to identify structural lesions',
+          'Initial monotherapy with appropriate antiepileptic drug',
+          'Monitoring of serum levels and adverse effects',
+          'Education about triggers and first aid',
+          'Evaluation for surgery in refractory epilepsy'
+        ],
+        fr: [
+          'EEG immédiat après premier épisode convulsif',
+          'IRM cérébrale pour identifier lésions structurelles',
+          'Monothérapie initiale avec antiépileptique approprié',
+          'Surveillance niveaux sériques et effets adverses',
+          'Éducation sur facteurs déclenchants et premiers secours',
+          'Évaluation pour chirurgie en épilepsie réfractaire'
+        ]
+      }
     }
   ];
 
@@ -171,7 +453,14 @@ const HealthRecommendations = () => {
       red: 'bg-red-100 text-red-800 border-red-200',
       purple: 'bg-purple-100 text-purple-800 border-purple-200',
       green: 'bg-green-100 text-green-800 border-green-200',
-      orange: 'bg-orange-100 text-orange-800 border-orange-200'
+      orange: 'bg-orange-100 text-orange-800 border-orange-200',
+      indigo: 'bg-indigo-100 text-indigo-800 border-indigo-200',
+      teal: 'bg-teal-100 text-teal-800 border-teal-200',
+      emerald: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+      yellow: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      amber: 'bg-amber-100 text-amber-800 border-amber-200',
+      slate: 'bg-slate-100 text-slate-800 border-slate-200',
+      violet: 'bg-violet-100 text-violet-800 border-violet-200'
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
@@ -183,7 +472,14 @@ const HealthRecommendations = () => {
       red: 'bg-red-500',
       purple: 'bg-purple-500',
       green: 'bg-green-500',
-      orange: 'bg-orange-500'
+      orange: 'bg-orange-500',
+      indigo: 'bg-indigo-500',
+      teal: 'bg-teal-500',
+      emerald: 'bg-emerald-500',
+      yellow: 'bg-yellow-500',
+      amber: 'bg-amber-500',
+      slate: 'bg-slate-500',
+      violet: 'bg-violet-500'
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
@@ -193,22 +489,22 @@ const HealthRecommendations = () => {
       <PublicNavigation />
       
       <main className="container mx-auto px-4 py-12">
-        {/* Header Section */}
+        {/* Header Section - Shortened title */}
         <div className="text-center space-y-6 mb-16">
           <Badge variant="secondary" className="bg-green-100/80 text-green-800 rounded-full">
             {language === 'es' ? 'Consejos Médicos Profesionales' : 
              language === 'fr' ? 'Conseils Médicaux Professionnels' : 
              'Professional Medical Advice'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Recomendaciones Clínicas Basadas en Evidencia' : 
-             language === 'fr' ? 'Recommandations Cliniques Basées sur l\'Évidence' : 
-             'Evidence-Based Clinical Recommendations'}
+          <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+            {language === 'es' ? 'Guías Clínicas Médicas' : 
+             language === 'fr' ? 'Guides Cliniques Médicaux' : 
+             'Medical Clinical Guidelines'}
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            {language === 'es' ? 'Guías clínicas actualizadas para profesionales de la salud basadas en evidencia científica y buenas prácticas médicas para 12+ enfermedades críticas' :
-             language === 'fr' ? 'Guides cliniques mis à jour pour professionnels de santé basés sur évidence scientifique et bonnes pratiques médicales pour 12+ maladies critiques' :
-             'Updated clinical guidelines for healthcare professionals based on scientific evidence and medical best practices for 12+ critical diseases'}
+            {language === 'es' ? 'Recomendaciones basadas en evidencia científica para 12 enfermedades críticas' :
+             language === 'fr' ? 'Recommandations basées sur évidence scientifique pour 12 maladies critiques' :
+             'Evidence-based recommendations for 12 critical diseases'}
           </p>
         </div>
 
@@ -259,7 +555,7 @@ const HealthRecommendations = () => {
           </CardContent>
         </Card>
 
-        {/* Medical Recommendations by Disease */}
+        {/* Medical Recommendations for All 12 Diseases */}
         <div className="space-y-12">
           {medicalRecommendations.map((disease, index) => {
             const Icon = disease.icon;
