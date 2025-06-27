@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -357,7 +356,7 @@ const Landing = () => {
                 </div>
                 
                 <blockquote className="text-xl italic text-gray-700 leading-relaxed">
-                  "{testimonials[currentTestimonial].content[language as keyof typeof testimonials[currentTestimonial]['content']]}"
+                  "{testimonials[currentTestimonial].content[language as keyof typeof testimonials[0]['content']]}"
                 </blockquote>
                 
                 <div className="space-y-2">
@@ -365,7 +364,7 @@ const Landing = () => {
                     {testimonials[currentTestimonial].name}
                   </div>
                   <div className="text-gray-600">
-                    {testimonials[currentTestimonial].role[language as keyof typeof testimonials[currentTestimonial]['role']]}
+                    {testimonials[currentTestimonial].role[language as keyof typeof testimonials[0]['role']]}
                   </div>
                 </div>
               </CardContent>
