@@ -51,24 +51,24 @@ const Blog = () => {
 
   if (!featuredPost) {
     return (
-      <div className="min-h-screen bg-blog-background flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-blog-text mb-4">Error cargando artículos</h2>
-          <p className="text-blog-text-light">Por favor, intenta recargar la página</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Error cargando artículos</h2>
+          <p className="text-gray-600">Por favor, intenta recargar la página</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-blog-background">
+    <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-blog-text mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Blog MedAI
           </h1>
-          <p className="text-xl text-blog-text-light max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Descubre las últimas tendencias en medicina digital, inteligencia artificial médica y 
             avances en diagnóstico y tratamiento de enfermedades.
           </p>
@@ -76,7 +76,7 @@ const Blog = () => {
 
         {/* Featured Article */}
         <div className="mb-12">
-          <Card className="blog-card overflow-hidden">
+          <Card className="bg-white border border-gray-200 overflow-hidden">
             <div className="md:flex">
               <div className="md:w-1/2">
                 <img
@@ -89,13 +89,13 @@ const Blog = () => {
                 <Badge className="mb-4 bg-blue-100 text-blue-800">
                   Artículo Destacado
                 </Badge>
-                <h2 className="text-2xl md:text-3xl font-bold text-blog-text mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                   {featuredPost.title}
                 </h2>
-                <p className="text-blog-text-light mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
-                <div className="flex items-center gap-4 mb-6 text-sm text-blog-text-light">
+                <div className="flex items-center gap-4 mb-6 text-sm text-gray-500">
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
                     {featuredPost.author}
@@ -162,7 +162,7 @@ const Blog = () => {
 
         {/* Results count */}
         <div className="mb-6">
-          <p className="text-blog-text-light">
+          <p className="text-gray-600">
             {filteredAndSortedPosts.length === 1 
               ? `1 artículo encontrado` 
               : `${filteredAndSortedPosts.length} artículos encontrados`}
@@ -172,7 +172,7 @@ const Blog = () => {
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {filteredAndSortedPosts.map((post) => (
-            <Card key={post.id} className="blog-card hover:shadow-lg transition-shadow">
+            <Card key={post.id} className="bg-white border border-gray-200 hover:shadow-lg transition-shadow">
               <CardHeader className="p-0">
                 <img
                   src={post.image}
@@ -185,7 +185,7 @@ const Blog = () => {
                   <Badge variant="secondary" className="text-xs">
                     {post.category}
                   </Badge>
-                  <div className="flex items-center text-xs text-blog-text-light">
+                  <div className="flex items-center text-xs text-gray-500">
                     <Eye className="h-3 w-3 mr-1" />
                     {post.views.toLocaleString()}
                   </div>
@@ -193,10 +193,10 @@ const Blog = () => {
                 <CardTitle className="text-lg mb-2 line-clamp-2">
                   {post.title}
                 </CardTitle>
-                <CardDescription className="text-blog-text-light mb-4 line-clamp-3">
+                <CardDescription className="text-gray-600 mb-4 line-clamp-3">
                   {post.excerpt}
                 </CardDescription>
-                <div className="flex items-center justify-between text-sm text-blog-text-light mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
                     {post.author}
@@ -207,7 +207,7 @@ const Blog = () => {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-blog-text-light">
+                  <span className="text-xs text-gray-500">
                     {new Date(post.date).toLocaleDateString('es-ES', {
                       year: 'numeric',
                       month: 'short',
@@ -228,10 +228,10 @@ const Blog = () => {
         {/* No results */}
         {filteredAndSortedPosts.length === 0 && (
           <div className="text-center py-12">
-            <h3 className="text-xl font-semibold text-blog-text mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
               No se encontraron artículos
             </h3>
-            <p className="text-blog-text-light">
+            <p className="text-gray-600">
               Intenta modificar tu búsqueda o filtros
             </p>
           </div>
@@ -239,7 +239,7 @@ const Blog = () => {
 
         {/* Categories Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-blog-text mb-8 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Explora por Categorías
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -250,7 +250,7 @@ const Blog = () => {
               return (
                 <Card 
                   key={category} 
-                  className="blog-card hover:shadow-lg transition-shadow cursor-pointer"
+                  className="bg-white border border-gray-200 hover:shadow-lg transition-shadow cursor-pointer"
                   onClick={() => setSelectedCategory(category)}
                 >
                   <CardHeader className="text-center">
@@ -260,7 +260,7 @@ const Blog = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="text-center">
-                    <div className="flex items-center justify-center text-sm text-blog-text-light">
+                    <div className="flex items-center justify-center text-sm text-gray-500">
                       <Eye className="h-4 w-4 mr-1" />
                       {totalViews.toLocaleString()} vistas totales
                     </div>
