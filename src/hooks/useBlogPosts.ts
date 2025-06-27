@@ -25,7 +25,7 @@ export const useBlogPosts = () => {
       readTime: 8,
       category: 'IA Médica',
       tags: ['IA', 'Diagnóstico', 'Tecnología'],
-      image: '/api/placeholder/800/400',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
       views: 1250,
       content: `# Inteligencia Artificial en el Diagnóstico Médico
 
@@ -80,7 +80,7 @@ La integración de la IA en la práctica médica no reemplazará a los médicos,
       readTime: 10,
       category: 'IA Médica',
       tags: ['Medicina Digital', 'Futuro', 'Tecnología', 'Telemedicina'],
-      image: '/api/placeholder/800/400',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
       views: 980,
       content: `# El Futuro de la Medicina Digital
 
@@ -124,7 +124,7 @@ El futuro de la medicina digital promete una atención más personalizada, acces
       readTime: 12,
       category: 'IA Médica',
       tags: ['IA', 'Casos de Éxito', 'Medicina', 'Innovación'],
-      image: '/api/placeholder/800/400',
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
       views: 1560,
       content: `# Casos de Éxito en IA Médica
 
@@ -162,7 +162,7 @@ Estos casos demuestran que la IA en medicina no es solo una promesa futura, sino
       readTime: 12,
       category: 'Oncología',
       tags: ['Cáncer', 'Mama', 'Detección', 'Prevención'],
-      image: '/api/placeholder/800/400',
+      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
       views: 2100,
       content: `# Detección Temprana del Cáncer de Mama
 
@@ -203,7 +203,7 @@ La detección temprana del cáncer de mama es responsabilidad compartida entre e
       readTime: 14,
       category: 'Cardiología',
       tags: ['Cardiovascular', 'Prevención', 'Factores de Riesgo', 'Corazón'],
-      image: '/api/placeholder/800/400',
+      image: 'https://images.unsplash.com/photo-1559757164-f57a36e40a14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
       views: 2250,
       content: `# Prevención de Enfermedades Cardiovasculares
 
@@ -214,7 +214,7 @@ Las enfermedades cardiovasculares son la principal causa de muerte a nivel mundi
 ### Factores No Modificables
 - Edad del paciente
 - Género y hormonas
-- Genética y historia familiar
+- Genética e historia familiar
 
 ### Factores Modificables Mayores
 - Hipertensión arterial
@@ -247,7 +247,7 @@ La prevención cardiovascular requiere un enfoque integral, personalizado y basa
       readTime: 10,
       category: 'Endocrinología',
       tags: ['Diabetes', 'Glucemia', 'Control', 'Tratamiento'],
-      image: '/api/placeholder/800/400',
+      image: 'https://images.unsplash.com/photo-1559757164-83d4ea5df6eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
       views: 1800,
       content: `# Control de Glucemia en Diabetes
 
