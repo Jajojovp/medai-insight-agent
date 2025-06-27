@@ -1,275 +1,398 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Apple, Dumbbell, Moon, Brain, Droplets } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from "@/components/ui/button";
+import { 
+  Heart, 
+  Brain, 
+  Activity, 
+  Shield, 
+  AlertTriangle, 
+  CheckCircle, 
+  Users,
+  Droplets,
+  Scan,
+  TrendingUp
+} from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HealthRecommendations = () => {
   const { language } = useLanguage();
 
-  const recommendations = [
+  const medicalRecommendations = [
     {
-      id: 1,
-      icon: Apple,
-      title: language === 'en' ? "Balanced Nutrition" : 
-             language === 'fr' ? "Nutrition Équilibrée" : 
-             "Nutrición Equilibrada",
-      description: language === 'en' ? 
-        "A balanced diet is fundamental for optimal health. Include fruits, vegetables, lean proteins, and whole grains in your daily meals." :
-        language === 'fr' ?
-        "Une alimentation équilibrée est fondamentale pour une santé optimale. Incluez des fruits, légumes, protéines maigres et céréales complètes dans vos repas quotidiens." :
-        "Una dieta equilibrada es fundamental para una salud óptima. Incluye frutas, verduras, proteínas magras y cereales integrales en tus comidas diarias.",
-      tips: language === 'en' ? [
-        "Eat 5 servings of fruits and vegetables daily",
-        "Choose whole grains over refined grains",
-        "Include lean proteins like fish, chicken, and legumes",
-        "Limit processed foods and added sugars"
-      ] : language === 'fr' ? [
-        "Mangez 5 portions de fruits et légumes par jour",
-        "Choisissez des céréales complètes plutôt que raffinées",
-        "Incluez des protéines maigres comme le poisson, le poulet et les légumineuses",
-        "Limitez les aliments transformés et les sucres ajoutés"
-      ] : [
-        "Come 5 porciones de frutas y verduras al día",
-        "Elige granos enteros sobre granos refinados",
-        "Incluye proteínas magras como pescado, pollo y legumbres",
-        "Limita los alimentos procesados y azúcares añadidos"
-      ],
-      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061"
-    },
-    {
-      id: 2,
-      icon: Dumbbell,
-      title: language === 'en' ? "Regular Exercise" : 
-             language === 'fr' ? "Exercice Régulier" : 
-             "Ejercicio Regular",
-      description: language === 'en' ? 
-        "Physical activity is essential for maintaining cardiovascular health, muscle strength, and mental well-being." :
-        language === 'fr' ?
-        "L'activité physique est essentielle pour maintenir la santé cardiovasculaire, la force musculaire et le bien-être mental." :
-        "La actividad física es esencial para mantener la salud cardiovascular, la fuerza muscular y el bienestar mental.",
-      tips: language === 'en' ? [
-        "Aim for 150 minutes of moderate exercise weekly",
-        "Include both cardio and strength training",
-        "Start with 10-minute sessions if you're a beginner",
-        "Find activities you enjoy to stay motivated"
-      ] : language === 'fr' ? [
-        "Visez 150 minutes d'exercice modéré par semaine",
-        "Incluez à la fois cardio et musculation",
-        "Commencez par des sessions de 10 minutes si vous êtes débutant",
-        "Trouvez des activités que vous aimez pour rester motivé"
-      ] : [
-        "Apunta a 150 minutos de ejercicio moderado semanal",
-        "Incluye tanto cardio como entrenamiento de fuerza",
-        "Comienza con sesiones de 10 minutos si eres principiante",
-        "Encuentra actividades que disfrutes para mantenerte motivado"
-      ],
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b"
-    },
-    {
-      id: 3,
-      icon: Moon,
-      title: language === 'en' ? "Quality Sleep" : 
-             language === 'fr' ? "Sommeil de Qualité" : 
-             "Sueño de Calidad",
-      description: language === 'en' ? 
-        "Adequate sleep is crucial for physical recovery, mental health, and immune system function." :
-        language === 'fr' ?
-        "Un sommeil adéquat est crucial pour la récupération physique, la santé mentale et le fonctionnement du système immunitaire." :
-        "El sueño adecuado es crucial para la recuperación física, la salud mental y el funcionamiento del sistema inmunológico.",
-      tips: language === 'en' ? [
-        "Aim for 7-9 hours of sleep per night",
-        "Maintain a consistent sleep schedule",
-        "Create a relaxing bedtime routine",
-        "Avoid screens 1 hour before bedtime"
-      ] : language === 'fr' ? [
-        "Visez 7-9 heures de sommeil par nuit",
-        "Maintenez un horaire de sommeil cohérent",
-        "Créez une routine relaxante avant le coucher",
-        "Évitez les écrans 1 heure avant le coucher"
-      ] : [
-        "Apunta a 7-9 horas de sueño por noche",
-        "Mantén un horario de sueño consistente",
-        "Crea una rutina relajante antes de dormir",
-        "Evita las pantallas 1 hora antes de acostarte"
-      ],
-      image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55"
-    },
-    {
-      id: 4,
-      icon: Brain,
-      title: language === 'en' ? "Mental Health" : 
-             language === 'fr' ? "Santé Mentale" : 
-             "Salud Mental",
-      description: language === 'en' ? 
-        "Mental wellness is as important as physical health. Practice stress management and mindfulness techniques." :
-        language === 'fr' ?
-        "Le bien-être mental est aussi important que la santé physique. Pratiquez la gestion du stress et les techniques de pleine conscience." :
-        "El bienestar mental es tan importante como la salud física. Practica técnicas de manejo del estrés y mindfulness.",
-      tips: language === 'en' ? [
-        "Practice meditation or deep breathing daily",
-        "Stay connected with friends and family",
-        "Engage in hobbies you enjoy",
-        "Seek professional help when needed"
-      ] : language === 'fr' ? [
-        "Pratiquez la méditation ou la respiration profonde quotidiennement",
-        "Restez connecté avec vos amis et votre famille",
-        "Engagez-vous dans des passe-temps que vous aimez",
-        "Cherchez de l'aide professionnelle si nécessaire"
-      ] : [
-        "Practica meditación o respiración profunda diariamente",
-        "Mantente conectado con amigos y familia",
-        "Participa en pasatiempos que disfrutes",
-        "Busca ayuda profesional cuando sea necesario"
-      ],
-      image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773"
-    },
-    {
-      id: 5,
+      category: {
+        es: 'Diabetes Tipo 2',
+        en: 'Type 2 Diabetes',
+        fr: 'Diabète Type 2'
+      },
       icon: Droplets,
-      title: language === 'en' ? "Proper Hydration" : 
-             language === 'fr' ? "Hydratation Appropriée" : 
-             "Hidratación Adecuada",
-      description: language === 'en' ? 
-        "Staying properly hydrated is essential for all bodily functions and overall health maintenance." :
-        language === 'fr' ?
-        "Rester bien hydraté est essentiel pour toutes les fonctions corporelles et le maintien de la santé globale." :
-        "Mantenerse adecuadamente hidratado es esencial para todas las funciones corporales y el mantenimiento de la salud general.",
-      tips: language === 'en' ? [
-        "Drink 8 glasses of water daily",
-        "Increase intake during exercise or hot weather",
-        "Monitor urine color as a hydration indicator",
-        "Include water-rich foods like fruits and vegetables"
-      ] : language === 'fr' ? [
-        "Buvez 8 verres d'eau par jour",
-        "Augmentez l'apport pendant l'exercice ou par temps chaud",
-        "Surveillez la couleur de l'urine comme indicateur d'hydratation",
-        "Incluez des aliments riches en eau comme les fruits et légumes"
-      ] : [
-        "Bebe 8 vasos de agua al día",
-        "Aumenta la ingesta durante el ejercicio o clima caluroso",
-        "Monitorea el color de la orina como indicador de hidratación",
-        "Incluye alimentos ricos en agua como frutas y verduras"
-      ],
-      image: "https://images.unsplash.com/photo-1550572017-04903b8ec4e9"
+      color: 'blue',
+      recommendations: {
+        es: [
+          'Monitoreo continuo de glucosa en sangre con glucómetros o CGM',
+          'Control de HbA1c cada 3-6 meses (objetivo <7% para la mayoría)',
+          'Derivación a nutricionista para plan alimentario personalizado',
+          'Ejercicio regular: 150 minutos semanales de actividad moderada',
+          'Exámenes regulares: ojos, riñones, pies para prevenir complicaciones',
+          'Educación continua del paciente sobre autocuidado y medicamentos'
+        ],
+        en: [
+          'Continuous blood glucose monitoring with glucometers or CGM',
+          'HbA1c control every 3-6 months (target <7% for most)',
+          'Nutritionist referral for personalized meal plan',
+          'Regular exercise: 150 minutes weekly of moderate activity', 
+          'Regular exams: eyes, kidneys, feet to prevent complications',
+          'Continuous patient education on self-care and medications'
+        ],
+        fr: [
+          'Surveillance continue du glucose sanguin avec glucomètres ou CGM',
+          'Contrôle HbA1c tous les 3-6 mois (objectif <7% pour la plupart)',
+          'Référence à nutritionniste pour plan alimentaire personnalisé',
+          'Exercice régulier: 150 minutes hebdomadaires d\'activité modérée',
+          'Examens réguliers: yeux, reins, pieds pour prévenir complications',
+          'Éducation continue du patient sur auto-soins et médicaments'
+        ]
+      }
     },
     {
-      id: 6,
+      category: {
+        es: 'Cáncer de Mama',
+        en: 'Breast Cancer', 
+        fr: 'Cancer du Sein'
+      },
       icon: Heart,
-      title: language === 'en' ? "Preventive Care" : 
-             language === 'fr' ? "Soins Préventifs" : 
-             "Cuidado Preventivo",
-      description: language === 'en' ? 
-        "Regular medical check-ups and preventive screenings are crucial for early detection and treatment of health issues." :
-        language === 'fr' ?
-        "Les examens médicaux réguliers et les dépistages préventifs sont cruciaux pour la détection précoce et le traitement des problèmes de santé." :
-        "Los chequeos médicos regulares y los exámenes preventivos son cruciales para la detección temprana y el tratamiento de problemas de salud.",
-      tips: language === 'en' ? [
-        "Schedule annual physical examinations",
-        "Keep up with recommended screenings",
-        "Monitor blood pressure and cholesterol",
-        "Stay current with vaccinations"
-      ] : language === 'fr' ? [
-        "Planifiez des examens physiques annuels",
-        "Tenez-vous au courant des dépistages recommandés",
-        "Surveillez la pression artérielle et le cholestérol",
-        "Restez à jour avec les vaccinations"
-      ] : [
-        "Programa exámenes físicos anuales",
-        "Mantente al día con los exámenes recomendados",
-        "Monitorea la presión arterial y el colesterol",
-        "Mantente al día con las vacunas"
-      ],
-      image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063"
+      color: 'pink',
+      recommendations: {
+        es: [
+          'Mamografías anuales a partir de los 40-50 años según factores de riesgo',
+          'Autoexamen mamario mensual para detectar cambios tempranos',
+          'Evaluación genética para mutaciones BRCA1/BRCA2 en casos familiares',
+          'Examen clínico de mama semestral por profesional capacitado',
+          'Resonancia magnética anual para pacientes de muy alto riesgo',
+          'Seguimiento multidisciplinario post-tratamiento durante 5+ años'
+        ],
+        en: [
+          'Annual mammograms starting at 40-50 years based on risk factors',
+          'Monthly breast self-examination to detect early changes',
+          'Genetic evaluation for BRCA1/BRCA2 mutations in familial cases',
+          'Semi-annual clinical breast exam by trained professional',
+          'Annual MRI for very high-risk patients',
+          'Multidisciplinary post-treatment follow-up for 5+ years'
+        ],
+        fr: [
+          'Mammographies annuelles à partir de 40-50 ans selon facteurs de risque',
+          'Auto-examen mammaire mensuel pour détecter changements précoces',
+          'Évaluation génétique pour mutations BRCA1/BRCA2 dans cas familiaux',
+          'Examen clinique mammaire semestriel par professionnel formé',
+          'IRM annuelle pour patientes à très haut risque',
+          'Suivi multidisciplinaire post-traitement pendant 5+ ans'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Enfermedades Cardíacas',
+        en: 'Heart Disease',
+        fr: 'Maladies Cardiaques'
+      },
+      icon: Activity,
+      color: 'red',
+      recommendations: {
+        es: [
+          'Control estricto de presión arterial (<130/80 mmHg para la mayoría)',
+          'Manejo de colesterol con estatinas según guías clínicas',
+          'Cesación completa del tabaquismo con apoyo médico si necesario',
+          'Dieta mediterránea rica en omega-3 y fibra, baja en sodio',
+          'Ejercicio cardiovascular regular: 30 minutos, 5 días/semana',
+          'Evaluación de riesgo cardiovascular cada 2-3 años'
+        ],
+        en: [
+          'Strict blood pressure control (<130/80 mmHg for most)',
+          'Cholesterol management with statins per clinical guidelines',
+          'Complete smoking cessation with medical support if needed',
+          'Mediterranean diet rich in omega-3 and fiber, low sodium',
+          'Regular cardiovascular exercise: 30 minutes, 5 days/week',
+          'Cardiovascular risk assessment every 2-3 years'
+        ],
+        fr: [
+          'Contrôle strict de la pression artérielle (<130/80 mmHg pour la plupart)',
+          'Gestion du cholestérol avec statines selon directives cliniques',
+          'Arrêt complet du tabagisme avec soutien médical si nécessaire',
+          'Régime méditerranéen riche en oméga-3 et fibres, faible en sodium',
+          'Exercice cardiovasculaire régulier: 30 minutes, 5 jours/semaine',
+          'Évaluation du risque cardiovasculaire tous les 2-3 ans'
+        ]
+      }
+    },
+    {
+      category: {
+        es: 'Prevención de ACV',
+        en: 'Stroke Prevention',
+        fr: 'Prévention AVC'
+      },
+      icon: Brain,
+      color: 'purple',
+      recommendations: {
+        es: [
+          'Control óptimo de presión arterial (principal factor de riesgo)',
+          'Anticoagulación en fibrilación auricular según CHA2DS2-VASc',
+          'Control glucémico estricto en pacientes diabéticos',
+          'Manejo de lípidos con objetivos LDL <70 mg/dL en alto riesgo',
+          'Actividad física regular para mejorar circulación cerebral',
+          'Reconocimiento temprano de síntomas: protocolo FAST'
+        ],
+        en: [
+          'Optimal blood pressure control (main risk factor)',
+          'Anticoagulation in atrial fibrillation per CHA2DS2-VASc',
+          'Strict glycemic control in diabetic patients',
+          'Lipid management with LDL targets <70 mg/dL in high risk',
+          'Regular physical activity to improve cerebral circulation',
+          'Early symptom recognition: FAST protocol'
+        ],
+        fr: [
+          'Contrôle optimal de la pression artérielle (principal facteur de risque)',
+          'Anticoagulation en fibrillation auriculaire selon CHA2DS2-VASc',
+          'Contrôle glycémique strict chez patients diabétiques',
+          'Gestion lipidique avec objectifs LDL <70 mg/dL en haut risque',
+          'Activité physique régulière pour améliorer circulation cérébrale',
+          'Reconnaissance précoce des symptômes: protocole FAST'
+        ]
+      }
     }
   ];
 
+  const getColorClasses = (color: string) => {
+    const colors = {
+      blue: 'bg-blue-100 text-blue-800 border-blue-200',
+      pink: 'bg-pink-100 text-pink-800 border-pink-200',
+      red: 'bg-red-100 text-red-800 border-red-200',
+      purple: 'bg-purple-100 text-purple-800 border-purple-200',
+      green: 'bg-green-100 text-green-800 border-green-200',
+      orange: 'bg-orange-100 text-orange-800 border-orange-200'
+    };
+    return colors[color as keyof typeof colors] || colors.blue;
+  };
+
+  const getIconBgColor = (color: string) => {
+    const colors = {
+      blue: 'bg-blue-500',
+      pink: 'bg-pink-500', 
+      red: 'bg-red-500',
+      purple: 'bg-purple-500',
+      green: 'bg-green-500',
+      orange: 'bg-orange-500'
+    };
+    return colors[color as keyof typeof colors] || colors.blue;
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-green-50/30 to-white/30">
       <PublicNavigation />
       
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {language === 'en' ? "Health Recommendations" : 
-             language === 'fr' ? "Recommandations de Santé" : 
-             "Recomendaciones de Salud"}
+      <main className="container mx-auto px-4 py-12">
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge variant="secondary" className="bg-green-100/80 text-green-800 rounded-full">
+            {language === 'es' ? 'Consejos Médicos Profesionales' : 
+             language === 'fr' ? 'Conseils Médicaux Professionnels' : 
+             'Professional Medical Advice'}
+          </Badge>
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+            {language === 'es' ? 'Recomendaciones Clínicas Basadas en Evidencia' : 
+             language === 'fr' ? 'Recommandations Cliniques Basées sur l\'Évidence' : 
+             'Evidence-Based Clinical Recommendations'}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'en' ? "Evidence-based recommendations to help you maintain optimal health and prevent disease" :
-             language === 'fr' ? "Recommandations basées sur des preuves pour vous aider à maintenir une santé optimale et prévenir les maladies" :
-             "Recomendaciones basadas en evidencia para ayudarte a mantener una salud óptima y prevenir enfermedades"}
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            {language === 'es' ? 'Guías clínicas actualizadas para profesionales de la salud basadas en evidencia científica y buenas prácticas médicas para 12+ enfermedades críticas' :
+             language === 'fr' ? 'Guides cliniques mis à jour pour professionnels de santé basés sur évidence scientifique et bonnes pratiques médicales pour 12+ maladies critiques' :
+             'Updated clinical guidelines for healthcare professionals based on scientific evidence and medical best practices for 12+ critical diseases'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recommendations.map((rec) => {
-            const Icon = rec.icon;
-            return (
-              <Card key={rec.id} className="hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-gray-200 rounded-t-lg overflow-hidden">
-                  <img 
-                    src={rec.image} 
-                    alt={rec.title}
-                    className="w-full h-full object-cover"
-                  />
+        {/* Medical Statistics */}
+        <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center">
+              {language === 'es' ? 'Impacto Global de Enfermedades Crónicas' :
+               language === 'fr' ? 'Impact Global des Maladies Chroniques' :
+               'Global Impact of Chronic Diseases'}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold text-red-600 mb-2">41M</div>
+                <div className="text-sm text-gray-600">
+                  {language === 'es' ? 'Muertes anuales por enfermedades crónicas' :
+                   language === 'fr' ? 'Décès annuels par maladies chroniques' :
+                   'Annual deaths from chronic diseases'}
                 </div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">71%</div>
+                <div className="text-sm text-gray-600">
+                  {language === 'es' ? 'De todas las muertes globales' :
+                   language === 'fr' ? 'De tous les décès mondiaux' :
+                   'Of all global deaths'}
+                </div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-green-600 mb-2">80%</div>
+                <div className="text-sm text-gray-600">
+                  {language === 'es' ? 'Prevenibles con detección temprana' :
+                   language === 'fr' ? 'Évitables avec détection précoce' :
+                   'Preventable with early detection'}
+                </div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">62+</div>
+                <div className="text-sm text-gray-600">
+                  {language === 'es' ? 'Modelos de IA especializados' :
+                   language === 'fr' ? 'Modèles d\'IA spécialisés' :
+                   'Specialized AI models'}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Medical Recommendations by Disease */}
+        <div className="space-y-12">
+          {medicalRecommendations.map((disease, index) => {
+            const Icon = disease.icon;
+            return (
+              <Card key={index} className="backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl hover:shadow-xl transition-all duration-300">
                 <CardHeader>
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="p-2 bg-green-100 rounded-lg">
-                      <Icon className="h-6 w-6 text-green-600" />
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-16 h-16 ${getIconBgColor(disease.color)} rounded-2xl flex items-center justify-center`}>
+                      <Icon className="h-8 w-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl">{rec.title}</CardTitle>
+                    <div>
+                      <CardTitle className="text-2xl font-bold">
+                        {disease.category[language as keyof typeof disease.category]}
+                      </CardTitle>
+                      <Badge className={getColorClasses(disease.color)}>
+                        {language === 'es' ? 'Recomendaciones Clínicas' :
+                         language === 'fr' ? 'Recommandations Cliniques' :
+                         'Clinical Recommendations'}
+                      </Badge>
+                    </div>
                   </div>
-                  <p className="text-gray-600">{rec.description}</p>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-gray-900 mb-3">
-                      {language === 'en' ? "Key Tips:" : 
-                       language === 'fr' ? "Conseils Clés :" : 
-                       "Consejos Clave:"}
-                    </h4>
-                    <ul className="space-y-2">
-                      {rec.tips.map((tip, index) => (
-                        <li key={index} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm text-gray-700">{tip}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="space-y-3">
+                    {disease.recommendations[language as keyof typeof disease.recommendations].map((rec, recIndex) => (
+                      <li key={recIndex} className="flex items-start">
+                        <CheckCircle className="h-5 w-5 mr-3 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{rec}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             );
           })}
         </div>
 
+        {/* Professional Sources Section */}
+        <Card className="mt-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
+              <Shield className="h-6 w-6 mr-2 text-blue-500" />
+              {language === 'es' ? 'Fuentes Certificadas' :
+               language === 'fr' ? 'Sources Certifiées' :
+               'Certified Sources'}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="text-center">
+                <h4 className="font-semibold mb-2">American Diabetes Association (ADA)</h4>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Guías de práctica clínica para diabetes' :
+                   language === 'fr' ? 'Guides de pratique clinique pour diabète' :
+                   'Clinical practice guidelines for diabetes'}
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold mb-2">National Cancer Institute (NCI)</h4>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Protocolos de detección y tratamiento oncológico' :
+                   language === 'fr' ? 'Protocoles de détection et traitement oncologique' :
+                   'Cancer detection and treatment protocols'}
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold mb-2">American Heart Association (AHA)</h4>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Directrices para enfermedades cardiovasculares' :
+                   language === 'fr' ? 'Directives pour maladies cardiovasculaires' :
+                   'Cardiovascular disease guidelines'}
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold mb-2">World Health Organization (WHO)</h4>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Estándares globales de salud pública' :
+                   language === 'fr' ? 'Standards globaux de santé publique' :
+                   'Global public health standards'}
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold mb-2">Mayo Clinic</h4>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Protocolos de práctica médica basada en evidencia' :
+                   language === 'fr' ? 'Protocoles de pratique médicale basée sur évidence' :
+                   'Evidence-based medical practice protocols'}
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold mb-2">CDC - Centers for Disease Control</h4>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Recomendaciones de prevención y salud pública' :
+                   language === 'fr' ? 'Recommandations de prévention et santé publique' :
+                   'Prevention and public health recommendations'}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <Card className="bg-green-600 text-white">
-            <CardContent className="p-8">
-              <h2 className="text-2xl font-bold mb-4">
-                {language === 'en' ? "Ready to improve your health?" :
-                 language === 'fr' ? "Prêt à améliorer votre santé ?" :
-                 "¿Listo para mejorar tu salud?"}
-              </h2>
-              <p className="text-lg mb-6 opacity-90">
-                {language === 'en' ? "Get personalized health recommendations with our AI-powered analysis for 12 critical diseases" :
-                 language === 'fr' ? "Obtenez des recommandations de santé personnalisées avec notre analyse alimentée par l'IA pour 12 maladies critiques" :
-                 "Obtén recomendaciones de salud personalizadas con nuestro análisis impulsado por IA para 12 enfermedades críticas"}
+        <div className="text-center mt-16">
+          <Card className="bg-gradient-to-br from-green-50/30 to-blue-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+            <CardHeader>
+              <CardTitle className="text-3xl font-bold">
+                {language === 'es' ? 'Medicina Predictiva Basada en IA' : 
+                 language === 'fr' ? 'Médecine Prédictive Basée sur IA' : 
+                 'AI-Based Predictive Medicine'}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
+                {language === 'es' ? 'Implemente estas recomendaciones clínicas junto con nuestros 62+ modelos de IA especializados para optimizar la detección temprana y el manejo de 12 enfermedades críticas.' :
+                 language === 'fr' ? 'Implémentez ces recommandations cliniques avec nos 62+ modèles d\'IA spécialisés pour optimiser la détection précoce et la gestion de 12 maladies critiques.' :
+                 'Implement these clinical recommendations alongside our 62+ specialized AI models to optimize early detection and management of 12 critical diseases.'}
               </p>
-              <button className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                {language === 'en' ? "Start Health Analysis" :
-                 language === 'fr' ? "Commencer l'Analyse de Santé" :
-                 "Comenzar Análisis de Salud"}
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button className="bg-green-600 hover:bg-green-700 rounded-2xl text-lg px-8 py-3">
+                  {language === 'es' ? 'Acceder a Herramientas Médicas' : 
+                   language === 'fr' ? 'Accéder aux Outils Médicaux' : 
+                   'Access Medical Tools'}
+                </Button>
+                <Button variant="outline" className="rounded-2xl text-lg px-8 py-3 border-green-200 hover:bg-green-50">
+                  {language === 'es' ? 'Descargar Guías PDF' : 
+                   language === 'fr' ? 'Télécharger Guides PDF' : 
+                   'Download PDF Guidelines'}
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
-      </div>
+      </main>
       
       <Footer />
     </div>
