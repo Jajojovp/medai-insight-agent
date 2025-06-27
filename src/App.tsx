@@ -19,11 +19,21 @@ import Resources from "./pages/Resources";
 import Documentation from "./pages/Documentation";
 import Sales from "./pages/Sales";
 import Support from "./pages/Support";
+
+// Disease Pages - All 12 diseases
+import Diabetes from "./pages/Diabetes";
+import BreastCancer from "./pages/BreastCancer";
+import ProstateCancer from "./pages/ProstateCancer";
+import HeartDisease from "./pages/HeartDisease";
+import Stroke from "./pages/Stroke";
+import ChronicKidneyDisease from "./pages/ChronicKidneyDisease";
+import PancreaticCancer from "./pages/PancreaticCancer";
 import StomachCancer from "./pages/StomachCancer";
 import Leukemia from "./pages/Leukemia";
 import LiverCancer from "./pages/LiverCancer";
 import LungCancer from "./pages/LungCancer";
 import Epilepsy from "./pages/Epilepsy";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -50,11 +60,21 @@ const App = () => (
               <Route path="/documentation" element={<Documentation />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/support" element={<Support />} />
+              
+              {/* Disease Pages - All 12 diseases */}
+              <Route path="/diabetes" element={<Diabetes />} />
+              <Route path="/breast-cancer" element={<BreastCancer />} />
+              <Route path="/prostate-cancer" element={<ProstateCancer />} />
+              <Route path="/heart-disease" element={<HeartDisease />} />
+              <Route path="/stroke" element={<Stroke />} />
+              <Route path="/chronic-kidney-disease" element={<ChronicKidneyDisease />} />
+              <Route path="/pancreatic-cancer" element={<PancreaticCancer />} />
               <Route path="/stomach-cancer" element={<StomachCancer />} />
               <Route path="/leukemia" element={<Leukemia />} />
               <Route path="/liver-cancer" element={<LiverCancer />} />
               <Route path="/lung-cancer" element={<LungCancer />} />
               <Route path="/epilepsy" element={<Epilepsy />} />
+              
               <Route 
                 path="/dashboard" 
                 element={

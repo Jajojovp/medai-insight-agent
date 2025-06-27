@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-5 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -17,9 +17,9 @@ const Footer = () => {
               <span className="text-xl font-bold">MedAI</span>
             </div>
             <p className="text-gray-400 text-sm">
-              {language === 'es' ? 'Plataforma profesional de análisis médico con inteligencia artificial y 53+ modelos especializados para 12 enfermedades críticas.' :
-               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec intelligence artificielle et 53+ modèles spécialisés pour 12 maladies critiques.' :
-               'Professional medical analysis platform with artificial intelligence and 53+ specialized models for 12 critical diseases.'}
+              {language === 'es' ? 'Plataforma profesional de análisis médico con inteligencia artificial y 62+ modelos especializados para 12 enfermedades críticas.' :
+               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec intelligence artificielle et 62+ modèles spécialisés pour 12 maladies critiques.' :
+               'Professional medical analysis platform with artificial intelligence and 62+ specialized models for 12 critical diseases.'}
             </p>
           </div>
 
@@ -55,30 +55,6 @@ const Footer = () => {
               </Link>
               <Link to="/resources" className="block text-gray-400 hover:text-white transition-colors">
                 {language === 'es' ? 'Recursos' : language === 'fr' ? 'Ressources' : 'Resources'}
-              </Link>
-            </div>
-          </div>
-
-          {/* Diseases */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-lg">
-              {language === 'es' ? 'Enfermedades' : language === 'fr' ? 'Maladies' : 'Diseases'}
-            </h4>
-            <div className="space-y-2">
-              <Link to="/stomach-cancer" className="block text-gray-400 hover:text-white transition-colors">
-                {language === 'es' ? 'Cáncer de Estómago' : language === 'fr' ? 'Cancer de l\'Estomac' : 'Stomach Cancer'}
-              </Link>
-              <Link to="/leukemia" className="block text-gray-400 hover:text-white transition-colors">
-                {language === 'es' ? 'Leucemia' : language === 'fr' ? 'Leucémie' : 'Leukemia'}
-              </Link>
-              <Link to="/liver-cancer" className="block text-gray-400 hover:text-white transition-colors">
-                {language === 'es' ? 'Cáncer de Hígado' : language === 'fr' ? 'Cancer du Foie' : 'Liver Cancer'}
-              </Link>
-              <Link to="/lung-cancer" className="block text-gray-400 hover:text-white transition-colors">
-                {language === 'es' ? 'Cáncer de Pulmón' : language === 'fr' ? 'Cancer du Poumon' : 'Lung Cancer'}
-              </Link>
-              <Link to="/epilepsy" className="block text-gray-400 hover:text-white transition-colors">
-                {language === 'es' ? 'Epilepsia' : language === 'fr' ? 'Épilepsie' : 'Epilepsy'}
               </Link>
             </div>
           </div>
