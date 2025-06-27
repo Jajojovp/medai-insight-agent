@@ -190,11 +190,15 @@ const Blog = () => {
                     {post.views.toLocaleString()}
                   </div>
                 </div>
-                <CardTitle className="text-lg mb-2 line-clamp-2">
-                  {post.title}
+                <CardTitle className="text-lg mb-2 h-14 overflow-hidden">
+                  <span className="block leading-5">
+                    {post.title.length > 60 ? `${post.title.substring(0, 60)}...` : post.title}
+                  </span>
                 </CardTitle>
-                <CardDescription className="text-gray-600 mb-4 line-clamp-3">
-                  {post.excerpt}
+                <CardDescription className="text-gray-600 mb-4 h-16 overflow-hidden">
+                  <span className="block leading-5">
+                    {post.excerpt.length > 100 ? `${post.excerpt.substring(0, 100)}...` : post.excerpt}
+                  </span>
                 </CardDescription>
                 <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <div className="flex items-center">
