@@ -28,9 +28,9 @@ const BreastCancer = () => {
              'Breast Cancer Predictive Analysis'}
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            {language === 'es' ? 'Plataforma médica con 62+ modelos especializados de IA para detección temprana, clasificación molecular y manejo personalizado del cáncer de mama con 97.2% de precisión máxima' :
-             language === 'fr' ? 'Plateforme médicale avec 62+ modèles spécialisés d\'IA pour détection précoce, classification moléculaire et gestion personnalisée du cancer du sein avec 97.2% de précision maximale' :
-             'Medical platform with 62+ specialized AI models for early detection, molecular classification and personalized management of breast cancer with 97.2% maximum accuracy'}
+            {language === 'es' ? 'Plataforma médica con 62+ modelos especializados de IA para detección temprana, clasificación molecular y manejo personalizado del cáncer de mama con 98.8% de precisión máxima' :
+             language === 'fr' ? 'Plateforme médicale avec 62+ modèles spécialisés d\'IA pour détection précoce, classification moléculaire et gestion personnalisée du cancer du sein avec 98.8% de précision maximale' :
+             'Medical platform with 62+ specialized AI models for early detection, molecular classification and personalized management of breast cancer with 98.8% maximum accuracy'}
           </p>
         </div>
 
@@ -80,13 +80,13 @@ const BreastCancer = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Luminal A:</strong> {language === 'es' ? 'RE+/RP+, HER2-, Ki67 <14%. Mejor pronóstico (70% casos)' : 'RE+/RP+, HER2-, Ki67 <14%. Meilleur pronostic (70% cas)' : 'ER+/PR+, HER2-, Ki67 <14%. Best prognosis (70% cases)'}
+                      <strong>Luminal A:</strong> {language === 'es' ? 'RE+/RP+, HER2-, Ki67 menor de 14%. Mejor pronóstico (70% casos)' : 'RE+/RP+, HER2-, Ki67 moins de 14%. Meilleur pronostic (70% cas)' : 'ER+/PR+, HER2-, Ki67 less than 14%. Best prognosis (70% cases)'}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>Luminal B:</strong> {language === 'es' ? 'RE+, HER2- o HER2+, Ki67 ≥14%. Pronóstico intermedio (20% casos)' : 'RE+, HER2- ou HER2+, Ki67 ≥14%. Pronostic intermédiaire (20% cas)' : 'ER+, HER2- or HER2+, Ki67 ≥14%. Intermediate prognosis (20% cases)'}
+                      <strong>Luminal B:</strong> {language === 'es' ? 'RE+, HER2- o HER2+, Ki67 mayor o igual a 14%. Pronóstico intermedio (20% casos)' : 'RE+, HER2- ou HER2+, Ki67 supérieur ou égal à 14%. Pronostic intermédiaire (20% cas)' : 'ER+, HER2- or HER2+, Ki67 greater than or equal to 14%. Intermediate prognosis (20% cases)'}
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -127,7 +127,7 @@ const BreastCancer = () => {
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li>• <strong>BRCA1/BRCA2:</strong> {language === 'es' ? 'Riesgo 45-85% (iniciar cribado a los 25-30 años)' : 'Risque 45-85% (commencer dépistage à 25-30 ans)' : '45-85% risk (start screening at 25-30 years)'}</li>
-                  <li>• <strong>{language === 'es' ? 'Historia familiar:' : 'Histoire familiale:' : 'Family history:'}</strong> {language === 'es' ? '≥2 familiares de primer grado con cáncer de mama/ovario' : '≥2 parents de premier degré avec cancer sein/ovaire' : '≥2 first-degree relatives with breast/ovarian cancer'}</li>
+                  <li>• <strong>{language === 'es' ? 'Historia familiar:' : 'Histoire familiale:' : 'Family history:'}</strong> {language === 'es' ? '2 o más familiares de primer grado con cáncer de mama/ovario' : '2 ou plus parents de premier degré avec cancer sein/ovaire' : '2 or more first-degree relatives with breast/ovarian cancer'}</li>
                   <li>• <strong>{language === 'es' ? 'Radioterapia torácica:' : 'Radiothérapie thoracique:' : 'Chest radiation:'}</strong> {language === 'es' ? 'Antes de los 30 años (ej. linfoma Hodgkin)' : 'Avant 30 ans (ex. lymphome Hodgkin)' : 'Before age 30 (e.g., Hodgkin lymphoma)'}</li>
                   <li>• <strong>{language === 'es' ? 'Síndromes genéticos:' : 'Syndromes génétiques:' : 'Genetic syndromes:'}</strong> Li-Fraumeni, Cowden, Peutz-Jeghers</li>
                 </ul>
@@ -139,12 +139,12 @@ const BreastCancer = () => {
                    'Hormonal Factors'}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>{language === 'es' ? 'Edad:' : 'Âge:' : 'Age:'}</strong> {language === 'es' ? 'Riesgo aumenta con la edad (77% casos >50 años)' : 'Risque augmente avec l\'âge (77% cas >50 ans)' : 'Risk increases with age (77% cases >50 years)'}</li>
-                  <li>• <strong>{language === 'es' ? 'Menarquia precoz:' : 'Ménarche précoce:' : 'Early menarche:'}</strong> {language === 'es' ? '<12 años' : '<12 ans' : '<12 years'}</li>
-                  <li>• <strong>{language === 'es' ? 'Menopausia tardía:' : 'Ménopause tardive:' : 'Late menopause:'}</strong> {language === 'es' ? '>55 años' : '>55 ans' : '>55 years'}</li>
+                  <li>• <strong>{language === 'es' ? 'Edad:' : 'Âge:' : 'Age:'}</strong> {language === 'es' ? 'Riesgo aumenta con la edad (77% casos mayor de 50 años)' : 'Risque augmente avec l\'âge (77% cas supérieur à 50 ans)' : 'Risk increases with age (77% cases over 50 years)'}</li>
+                  <li>• <strong>{language === 'es' ? 'Menarquia precoz:' : 'Ménarche précoce:' : 'Early menarche:'}</strong> {language === 'es' ? 'menor de 12 años' : 'moins de 12 ans' : 'less than 12 years'}</li>
+                  <li>• <strong>{language === 'es' ? 'Menopausia tardía:' : 'Ménopause tardive:' : 'Late menopause:'}</strong> {language === 'es' ? 'mayor de 55 años' : 'supérieur à 55 ans' : 'over 55 years'}</li>
                   <li>• <strong>{language === 'es' ? 'Nuliparidad:' : 'Nulliparité:' : 'Nulliparity:'}</strong> {language === 'es' ? 'No haber tenido hijos' : 'Ne pas avoir eu d\'enfants' : 'Never having children'}</li>
-                  <li>• <strong>{language === 'es' ? 'Primer embarazo tardío:' : 'Première grossesse tardive:' : 'Late first pregnancy:'}</strong> {language === 'es' ? '>30 años' : '>30 ans' : '>30 years'}</li>
-                  <li>• <strong>{language === 'es' ? 'Terapia hormonal:' : 'Thérapie hormonale:' : 'Hormone therapy:'}</strong> {language === 'es' ? '>5 años (especialmente estrógeno + progestina)' : '>5 ans (surtout œstrogène + progestine)' : '>5 years (especially estrogen + progestin)'}</li>
+                  <li>• <strong>{language === 'es' ? 'Primer embarazo tardío:' : 'Première grossesse tardive:' : 'Late first pregnancy:'}</strong> {language === 'es' ? 'mayor de 30 años' : 'supérieur à 30 ans' : 'over 30 years'}</li>
+                  <li>• <strong>{language === 'es' ? 'Terapia hormonal:' : 'Thérapie hormonale:' : 'Hormone therapy:'}</strong> {language === 'es' ? 'mayor de 5 años (especialmente estrógeno + progestina)' : 'supérieur à 5 ans (surtout œstrogène + progestine)' : 'over 5 years (especially estrogen + progestin)'}</li>
                 </ul>
               </div>
               <div>
@@ -155,7 +155,7 @@ const BreastCancer = () => {
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li>• <strong>{language === 'es' ? 'Mamografía bilateral:' : 'Mammographie bilatérale:' : 'Bilateral mammography:'}</strong> {language === 'es' ? 'Anual 40-49 años, cada 1-2 años 50-74 años' : 'Annuelle 40-49 ans, tous les 1-2 ans 50-74 ans' : 'Annual 40-49 years, every 1-2 years 50-74 years'}</li>
-                  <li>• <strong>{language === 'es' ? 'Resonancia magnética:' : 'Résonance magnétique:' : 'MRI:'}</strong> {language === 'es' ? 'Anual para riesgo alto (BRCA+, score ≥20%)' : 'Annuelle pour haut risque (BRCA+, score ≥20%)' : 'Annual for high risk (BRCA+, score ≥20%)'}</li>
+                  <li>• <strong>{language === 'es' ? 'Resonancia magnética:' : 'Résonance magnétique:' : 'MRI:'}</strong> {language === 'es' ? 'Anual para riesgo alto (BRCA+, score mayor o igual a 20%)' : 'Annuelle pour haut risque (BRCA+, score supérieur ou égal à 20%)' : 'Annual for high risk (BRCA+, score greater than or equal to 20%)'}</li>
                   <li>• <strong>{language === 'es' ? 'Ecografía mamaria:' : 'Échographie mammaire:' : 'Breast ultrasound:'}</strong> {language === 'es' ? 'Complemento en mamas densas' : 'Complément dans seins denses' : 'Complement in dense breasts'}</li>
                   <li>• <strong>{language === 'es' ? 'Tomosíntesis (3D):' : 'Tomosynthèse (3D):' : 'Tomosynthesis (3D):'}</strong> {language === 'es' ? 'Mejora detección en mamas densas' : 'Améliore détection dans seins denses' : 'Improves detection in dense breasts'}</li>
                 </ul>
@@ -179,11 +179,11 @@ const BreastCancer = () => {
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'CNNs y Vision Transformers para análisis automatizado de mamografías, ecografías y resonancias magnéticas con 97.2% de precisión en detección' :
-                 language === 'fr' ? 'CNNs et Vision Transformers pour analyse automatisée de mammographies, échographies et IRM avec 97.2% de précision en détection' :
-                 'CNNs and Vision Transformers for automated analysis of mammograms, ultrasounds and MRIs with 97.2% detection accuracy'}
+                {language === 'es' ? 'Algoritmos avanzados de visión computacional para análisis automatizado de mamografías, ecografías y resonancias magnéticas con 98.8% de precisión en detección' :
+                 language === 'fr' ? 'Algorithmes avancés de vision par ordinateur pour analyse automatisée de mammographies, échographies et IRM avec 98.8% de précision en détection' :
+                 'Advanced computer vision algorithms for automated analysis of mammograms, ultrasounds and MRIs with 98.8% detection accuracy'}
               </p>
-              <Badge className="w-full justify-center bg-pink-100 text-pink-800">97.2% Precisión</Badge>
+              <Badge className="w-full justify-center bg-pink-100 text-pink-800">98.8% Precisión</Badge>
             </CardContent>
           </Card>
 
@@ -200,9 +200,9 @@ const BreastCancer = () => {
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Algoritmos de ML para clasificación automática en subtipos moleculares (Luminal A/B, HER2+, Triple Negativo) basada en expresión génica' :
-                 language === 'fr' ? 'Algorithmes de ML pour classification automatique en sous-types moléculaires (Luminal A/B, HER2+, Triple Négatif) basée sur expression génique' :
-                 'ML algorithms for automatic classification into molecular subtypes (Luminal A/B, HER2+, Triple Negative) based on gene expression'}
+                {language === 'es' ? 'Sistemas de clasificación automática en subtipos moleculares (Luminal A/B, HER2+, Triple Negativo) basada en expresión génica y biomarcadores' :
+                 language === 'fr' ? 'Systèmes de classification automatique en sous-types moléculaires (Luminal A/B, HER2+, Triple Négatif) basée sur expression génique et biomarqueurs' :
+                 'Automatic classification systems into molecular subtypes (Luminal A/B, HER2+, Triple Negative) based on gene expression and biomarkers'}
               </p>
               <Badge className="w-full justify-center bg-rose-100 text-rose-800">Subtipificación Precisa</Badge>
             </CardContent>
@@ -221,9 +221,9 @@ const BreastCancer = () => {
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600 mb-4">
-                {language === 'es' ? 'Modelos de supervivencia y recurrencia utilizando Cox regression, Random Survival Forest y redes neuronales para predicción a 5-10 años' :
-                 language === 'fr' ? 'Modèles de survie et récurrence utilisant régression Cox, Random Survival Forest et réseaux de neurones pour prédiction à 5-10 ans' :
-                 'Survival and recurrence models using Cox regression, Random Survival Forest and neural networks for 5-10 year prediction'}
+                {language === 'es' ? 'Modelos predictivos de supervivencia y recurrencia utilizando análisis multivariado y redes neuronales para predicción a 5-10 años' :
+                 language === 'fr' ? 'Modèles prédictifs de survie et récurrence utilisant analyse multivariée et réseaux de neurones pour prédiction à 5-10 ans' :
+                 'Predictive survival and recurrence models using multivariate analysis and neural networks for 5-10 year prediction'}
               </p>
               <Badge className="w-full justify-center bg-purple-100 text-purple-800">Predicción Longitudinal</Badge>
             </CardContent>
@@ -287,138 +287,13 @@ const BreastCancer = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Quimioterapia:' : 'Chimiothérapie:' : 'Chemotherapy:'}</strong> {language === 'es' ? 'Adyuvante: AC-T, TC, AC-TH (HER2+). Neoadyuvante: indicada si T3-T4, N2-N3, o triple negativo >2cm' : 'Adjuvante: AC-T, TC, AC-TH (HER2+). Néoadjuvante: indiquée si T3-T4, N2-N3, ou triple négatif >2cm' : 'Adjuvant: AC-T, TC, AC-TH (HER2+). Neoadjuvant: indicated if T3-T4, N2-N3, or triple negative >2cm'}
+                      <strong>{language === 'es' ? 'Quimioterapia:' : 'Chimiothérapie:' : 'Chemotherapy:'}</strong> {language === 'es' ? 'Adyuvante: AC-T, TC, AC-TH (HER2+). Neoadyuvante: indicada si T3-T4, N2-N3, o triple negativo mayor de 2cm' : 'Adjuvante: AC-T, TC, AC-TH (HER2+). Néoadjuvante: indiquée si T3-T4, N2-N3, ou triple négatif supérieur à 2cm' : 'Adjuvant: AC-T, TC, AC-TH (HER2+). Neoadjuvant: indicated if T3-T4, N2-N3, or triple negative over 2cm'}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <strong>{language === 'es' ? 'Hormonoterapia:' : 'Hormonothérapie:' : 'Hormone therapy:'}</strong> {language === 'es' ? 'Tamoxifeno 5-10 años (premenopáusicas), inhibidores aromatasa 5-10 años (postmenopáusicas)' : 'Tamoxifène 5-10 ans (préménopausées), inhibiteurs aromatase 5-10 ans (postménopausées)' : 'Tamoxifen 5-10 years (premenopausal), aromatase inhibitors 5-10 years (postmenopausal)'}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Targeted Therapies Section */}
-        <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Shield className="h-6 w-6 mr-2 text-green-500" />
-              {language === 'es' ? 'Terapias Dirigidas y Personalizadas' :
-               language === 'fr' ? 'Thérapies Ciblées et Personnalisées' :
-               'Targeted and Personalized Therapies'}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-blue-600">
-                  {language === 'es' ? 'Anti-HER2' :
-                   language === 'fr' ? 'Anti-HER2' :
-                   'Anti-HER2'}
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>Trastuzumab:</strong> {language === 'es' ? 'Estándar 12 meses adyuvante' : 'Standard 12 mois adjuvant' : 'Standard 12 months adjuvant'}</li>
-                  <li>• <strong>Pertuzumab:</strong> {language === 'es' ? 'Combinado con trastuzumab (estadio II-III)' : 'Combiné avec trastuzumab (stade II-III)' : 'Combined with trastuzumab (stage II-III)'}</li>
-                  <li>• <strong>T-DM1:</strong> {language === 'es' ? 'Segunda línea metastásico, adyuvante si enfermedad residual' : 'Deuxième ligne métastatique, adjuvant si maladie résiduelle' : 'Second line metastatic, adjuvant if residual disease'}</li>
-                  <li>• <strong>Trastuzumab deruxtecan:</strong> {language === 'es' ? 'Tercera línea metastásico HER2+' : 'Troisième ligne métastatique HER2+' : 'Third line metastatic HER2+'}</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-purple-600">
-                  {language === 'es' ? 'Inhibidores CDK4/6' :
-                   language === 'fr' ? 'Inhibiteurs CDK4/6' :
-                   'CDK4/6 Inhibitors'}
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>Palbociclib:</strong> {language === 'es' ? 'Primera línea RE+/HER2- metastásico' : 'Première ligne RE+/HER2- métastatique' : 'First line ER+/HER2- metastatic'}</li>
-                  <li>• <strong>Ribociclib:</strong> {language === 'es' ? 'Primera línea, beneficio supervivencia demostrado' : 'Première ligne, bénéfice survie démontré' : 'First line, survival benefit demonstrated'}</li>
-                  <li>• <strong>Abemaciclib:</strong> {language === 'es' ? 'Monoterapia segunda línea, adyuvante alto riesgo' : 'Monothérapie deuxième ligne, adjuvant haut risque' : 'Monotherapy second line, adjuvant high risk'}</li>
-                  <li>• <strong>{language === 'es' ? 'Monitoreo:' : 'Surveillance:' : 'Monitoring:'}</strong> {language === 'es' ? 'Hemograma cada 2 semanas inicial' : 'Hémogramme tous les 15 jours initial' : 'CBC every 2 weeks initially'}</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-red-600">
-                  {language === 'es' ? 'Inmunoterapia' :
-                   language === 'fr' ? 'Immunothérapie' :
-                   'Immunotherapy'}
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• <strong>Pembrolizumab:</strong> {language === 'es' ? 'Triple negativo PD-L1+ (CPS ≥10)' : 'Triple négatif PD-L1+ (CPS ≥10)' : 'Triple negative PD-L1+ (CPS ≥10)'}</li>
-                  <li>• <strong>{language === 'es' ? 'Indicaciones:' : 'Indications:' : 'Indications:'}</strong> {language === 'es' ? 'Neoadyuvante T1c-T2 o cualquier T si N+' : 'Néoadjuvant T1c-T2 ou tout T si N+' : 'Neoadjuvant T1c-T2 or any T if N+'}</li>
-                  <li>• <strong>{language === 'es' ? 'Toxicidades:' : 'Toxicités:' : 'Toxicities:'}</strong> {language === 'es' ? 'Vigilar neumonitis, hepatitis, colitis' : 'Surveiller pneumonite, hépatite, colite' : 'Monitor pneumonitis, hepatitis, colitis'}</li>
-                  <li>• <strong>{language === 'es' ? 'Biomarcadores:' : 'Biomarqueurs:' : 'Biomarkers:'}</strong> {language === 'es' ? 'PD-L1, TMB, TILs, MSI' : 'PD-L1, TMB, TILs, MSI' : 'PD-L1, TMB, TILs, MSI'}</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Follow-up Protocol */}
-        <Card className="mb-16 backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
-              <Activity className="h-6 w-6 mr-2 text-blue-600" />
-              {language === 'es' ? 'Protocolo de Seguimiento Post-Tratamiento' :
-               language === 'fr' ? 'Protocole de Suivi Post-Traitement' :
-               'Post-Treatment Follow-up Protocol'}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-green-600">
-                  {language === 'es' ? 'Seguimiento Oncológico' :
-                   language === 'fr' ? 'Suivi Oncologique' :
-                   'Oncological Follow-up'}
-                </h3>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === 'es' ? 'Años 1-3:' : 'Années 1-3:' : 'Years 1-3:'}</strong> {language === 'es' ? 'Visitas cada 3-6 meses con examen físico completo, anamnesis dirigida y educación' : 'Visites tous les 3-6 mois avec examen physique complet, anamnèse dirigée et éducation' : 'Visits every 3-6 months with complete physical exam, directed history and education'}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === 'es' ? 'Años 4-5:' : 'Années 4-5:' : 'Years 4-5:'}</strong> {language === 'es' ? 'Visitas cada 6-12 meses. Mamografía anual bilateral (cada 6 meses si cirugía conservadora)' : 'Visites tous les 6-12 mois. Mammographie annuelle bilatérale (tous les 6 mois si chirurgie conservatrice)' : 'Visits every 6-12 months. Annual bilateral mammography (every 6 months if breast-conserving surgery)'}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === 'es' ? 'Año 5+:' : 'Année 5+:' : 'Year 5+:'}</strong> {language === 'es' ? 'Visitas anuales. No se recomiendan marcadores tumorales ni estudios de imagen rutinarios en pacientes asintomáticas' : 'Visites annuelles. Marqueurs tumoraux ou imageries de routine non recommandés chez patientes asymptomatiques' : 'Annual visits. Tumor markers or routine imaging not recommended in asymptomatic patients'}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-orange-600">
-                  {language === 'es' ? 'Vigilancia de Toxicidades' :
-                   language === 'fr' ? 'Surveillance des Toxicités' :
-                   'Toxicity Surveillance'}
-                </h3>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === 'es' ? 'Cardiotoxicidad:' : 'Cardiotoxicité:' : 'Cardiotoxicity:'}</strong> {language === 'es' ? 'FEVI basal y cada 3 meses durante trastuzumab. ECG y troponinas si síntomas' : 'FEVG basale et tous les 3 mois pendant trastuzumab. ECG et troponines si symptômes' : 'Baseline LVEF and every 3 months during trastuzumab. ECG and troponins if symptoms'}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === 'es' ? 'Salud ósea:' : 'Santé osseuse:' : 'Bone health:'}</strong> {language === 'es' ? 'DEXA basal si inhibidores aromatasa. Suplementación calcio 1200mg/día + vitamina D 800-1000 UI' : 'DEXA basale si inhibiteurs aromatase. Supplémentation calcium 1200mg/jour + vitamine D 800-1000 UI' : 'Baseline DEXA if aromatase inhibitors. Calcium 1200mg/day + vitamin D 800-1000 IU supplementation'}
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <strong>{language === 'es' ? 'Segundos primarios:' : 'Seconds primaires:' : 'Second primaries:'}</strong> {language === 'es' ? 'Cáncer endometrial (tamoxifeno), cáncer colorrectal, melanoma. Educar sobre síntomas de alarma' : 'Cancer endométrial (tamoxifène), cancer colorectal, mélanome. Éduquer sur symptômes d\'alarme' : 'Endometrial cancer (tamoxifen), colorectal cancer, melanoma. Educate about warning symptoms'}
                     </div>
                   </li>
                 </ul>
@@ -471,24 +346,6 @@ const BreastCancer = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-pink-50 p-6 rounded-xl">
-              <h4 className="text-lg font-semibold mb-4 text-pink-800">
-                {language === 'es' ? 'Tendencias y Proyecciones (GLOBOCAN 2020)' :
-                 language === 'fr' ? 'Tendances et Projections (GLOBOCAN 2020)' :
-                 'Trends and Projections (GLOBOCAN 2020)'}
-              </h4>
-              <div className="grid md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <strong>{language === 'es' ? 'Regiones más afectadas:' : 'Régions les plus touchées:' : 'Most affected regions:'}</strong> {language === 'es' ? 'Europa Occidental, América del Norte, Australia/Nueva Zelanda' : 'Europe Occidentale, Amérique du Nord, Australie/Nouvelle-Zélande' : 'Western Europe, North America, Australia/New Zealand'}
-                </div>
-                <div>
-                  <strong>{language === 'es' ? 'Factores de riesgo emergentes:' : 'Facteurs de risque émergents:' : 'Emerging risk factors:'}</strong> {language === 'es' ? 'Urbanización, cambios dietéticos, retraso reproductivo' : 'Urbanisation, changements diététiques, retard reproductif' : 'Urbanization, dietary changes, reproductive delay'}
-                </div>
-                <div>
-                  <strong>{language === 'es' ? 'Mejoras terapéuticas:' : 'Améliorations thérapeutiques:' : 'Therapeutic improvements:'}</strong> {language === 'es' ? '20% reducción mortalidad (2000-2017) en países desarrollados' : '20% réduction mortalité (2000-2017) dans pays développés' : '20% mortality reduction (2000-2017) in developed countries'}
-                </div>
-              </div>
-            </div>
           </CardContent>
         </Card>
 
@@ -504,9 +361,9 @@ const BreastCancer = () => {
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Utilice nuestros 62+ modelos especializados de IA para detección temprana, clasificación molecular y predicción de pronóstico en cáncer de mama. Tecnología validada clínicamente con 97.2% de precisión máxima para optimizar decisiones terapéuticas.' :
-                 language === 'fr' ? 'Utilisez nos 62+ modèles spécialisés d\'IA pour détection précoce, classification moléculaire et prédiction de pronostic du cancer du sein. Technologie validée cliniquement avec 97.2% de précision maximale pour optimiser les décisions thérapeutiques.' :
-                 'Use our 62+ specialized AI models for early detection, molecular classification and prognosis prediction in breast cancer. Clinically validated technology with 97.2% maximum accuracy to optimize therapeutic decisions.'}
+                {language === 'es' ? 'Utilice nuestros 62+ modelos especializados de IA para detección temprana, clasificación molecular y predicción de pronóstico en cáncer de mama. Tecnología validada clínicamente con 98.8% de precisión máxima para optimizar decisiones terapéuticas.' :
+                 language === 'fr' ? 'Utilisez nos 62+ modèles spécialisés d\'IA pour détection précoce, classification moléculaire et prédiction de pronostic du cancer du sein. Technologie validée cliniquement avec 98.8% de précision maximale pour optimiser les décisions thérapeutiques.' :
+                 'Use our 62+ specialized AI models for early detection, molecular classification and prognosis prediction in breast cancer. Clinically validated technology with 98.8% maximum accuracy to optimize therapeutic decisions.'}
               </p>
               <Button className="bg-pink-600 hover:bg-pink-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar Análisis Oncológico' : 
