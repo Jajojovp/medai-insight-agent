@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,20 +38,21 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Blog specific colors */
+    --blog-background: 0 0% 99%;
+    --blog-card: 0 0% 100%;
+    --blog-text: 215 20% 15%;
+    --blog-text-light: 215 15% 40%;
+    --blog-border: 215 20% 90%;
+    --blog-accent: 215 85% 55%;
   }
 
   .dark {
@@ -89,6 +91,14 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Blog specific colors - dark mode */
+    --blog-background: 222.2 84% 5%;
+    --blog-card: 222.2 84% 8%;
+    --blog-text: 210 40% 95%;
+    --blog-text-light: 210 30% 70%;
+    --blog-border: 217.2 32.6% 20%;
+    --blog-accent: 215 85% 65%;
   }
 }
 
@@ -99,5 +109,66 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Blog specific styles */
+  .blog-container {
+    background-color: hsl(var(--blog-background));
+    color: hsl(var(--blog-text));
+  }
+
+  .blog-card {
+    background-color: hsl(var(--blog-card));
+    border: 1px solid hsl(var(--blog-border));
+    color: hsl(var(--blog-text));
+  }
+
+  .blog-text-light {
+    color: hsl(var(--blog-text-light));
+  }
+
+  /* Reading progress bar */
+  .reading-progress {
+    height: 4px;
+    background: linear-gradient(90deg, hsl(var(--blog-accent)) 0%, hsl(var(--primary)) 100%);
+    transition: width 0.3s ease;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Article typography */
+  .article-content h1 {
+    @apply text-3xl md:text-4xl font-bold mb-6 text-blog-text;
+  }
+
+  .article-content h2 {
+    @apply text-2xl md:text-3xl font-semibold mb-4 mt-8 text-blog-text;
+  }
+
+  .article-content h3 {
+    @apply text-xl md:text-2xl font-medium mb-3 mt-6 text-blog-text;
+  }
+
+  .article-content p {
+    @apply mb-4 leading-relaxed text-blog-text;
+  }
+
+  .article-content ul, .article-content ol {
+    @apply mb-4 pl-6 space-y-2;
+  }
+
+  .article-content li {
+    @apply text-blog-text leading-relaxed;
+  }
+
+  .article-content blockquote {
+    @apply border-l-4 border-blog-accent pl-4 py-2 mb-4 italic bg-blog-card rounded-r;
+  }
+
+  .article-content img {
+    @apply rounded-lg shadow-lg mb-6 w-full;
   }
 }
