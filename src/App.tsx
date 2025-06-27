@@ -9,7 +9,21 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
+import BlogPostPage from "./pages/BlogPostPage";
+import HealthRecommendations from "./pages/HealthRecommendations";
 import Contact from "./pages/Contact";
+import Features from "./pages/Features";
+import Pricing from "./pages/Pricing";
+import API from "./pages/API";
+import Resources from "./pages/Resources";
+import Documentation from "./pages/Documentation";
+import Sales from "./pages/Sales";
+import Support from "./pages/Support";
+import StomachCancer from "./pages/StomachCancer";
+import Leukemia from "./pages/Leukemia";
+import LiverCancer from "./pages/LiverCancer";
+import LungCancer from "./pages/LungCancer";
+import Epilepsy from "./pages/Epilepsy";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -26,7 +40,21 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPostPage />} />
+              <Route path="/health-recommendations" element={<HealthRecommendations />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/api" element={<API />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/documentation" element={<Documentation />} />
+              <Route path="/sales" element={<Sales />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/stomach-cancer" element={<StomachCancer />} />
+              <Route path="/leukemia" element={<Leukemia />} />
+              <Route path="/liver-cancer" element={<LiverCancer />} />
+              <Route path="/lung-cancer" element={<LungCancer />} />
+              <Route path="/epilepsy" element={<Epilepsy />} />
               <Route 
                 path="/dashboard" 
                 element={

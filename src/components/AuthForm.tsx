@@ -4,15 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { 
   Brain, 
   Mail, 
   Lock, 
-  User, 
-  Stethoscope,
-  Shield,
-  Activity,
   Loader2
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -23,38 +18,29 @@ interface AuthFormProps {
 }
 
 const AuthForm = ({ onSuccess }: AuthFormProps) => {
-  const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
-    password: '',
-    specialization: ''
+    password: ''
   });
-  const { login, register, isLoading } = useAuth();
+  const { login, isLoading } = useAuth();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {
-      let success = false;
-      
-      if (isLogin) {
-        success = await login(formData.email, formData.password);
-      } else {
-        success = await register(formData.name, formData.email, formData.password, formData.specialization);
-      }
+      const success = await login(formData.email, formData.password);
       
       if (success) {
         toast({
           title: "Éxito",
-          description: isLogin ? "Sesión iniciada correctamente" : "Cuenta creada exitosamente",
+          description: "Sesión iniciada correctamente",
         });
         onSuccess?.();
       } else {
         toast({
           title: "Error",
-          description: isLogin ? "Credenciales inválidas" : "Error al crear la cuenta",
+          description: "Credenciales inválidas. Contacta al administrador para obtener acceso.",
           variant: "destructive",
         });
       }
@@ -83,36 +69,14 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
           </div>
         </div>
         <CardTitle className="text-2xl font-bold">
-          {isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}
+          Acceso Profesional
         </CardTitle>
         <p className="text-gray-600">
-          {isLogin 
-            ? 'Accede a tu cuenta profesional de MedAI' 
-            : 'Únete a la plataforma de análisis médico con IA'
-          }
+          Ingresa con tus credenciales autorizadas para acceder a MedAI
         </p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {!isLogin && (
-            <div className="space-y-2">
-              <Label htmlFor="name">Nombre Completo</Label>
-              <div className="relative">
-                <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Dr. Juan Pérez"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="pl-10"
-                  required
-                />
-              </div>
-            </div>
-          )}
-          
           <div className="space-y-2">
             <Label htmlFor="email">Correo Electrónico</Label>
             <div className="relative">
@@ -148,24 +112,6 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
             </div>
           </div>
           
-          {!isLogin && (
-            <div className="space-y-2">
-              <Label htmlFor="specialization">Especialización (Opcional)</Label>
-              <div className="relative">
-                <Stethoscope className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                <Input
-                  id="specialization"
-                  name="specialization"
-                  type="text"
-                  placeholder="Medicina Interna, Endocrinología, etc."
-                  value={formData.specialization}
-                  onChange={handleInputChange}
-                  className="pl-10"
-                />
-              </div>
-            </div>
-          )}
-          
           <Button 
             type="submit" 
             className="w-full bg-blue-600 hover:bg-blue-700" 
@@ -177,23 +123,18 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
                 Procesando...
               </>
             ) : (
-              isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'
+              'Ingresar'
             )}
           </Button>
         </form>
         
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
-            {isLogin ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}
+            ¿No tienes acceso autorizado?
           </p>
-          <Button
-            variant="ghost"
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-blue-600 hover:text-blue-700"
-            disabled={isLoading}
-          >
-            {isLogin ? 'Crear nueva cuenta' : 'Iniciar sesión'}
-          </Button>
+          <p className="text-sm text-blue-600 mt-2">
+            Contacta al administrador o solicita una demo
+          </p>
         </div>
       </CardContent>
     </Card>

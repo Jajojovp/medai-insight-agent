@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,10 +7,11 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Brain, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Message, PatientData, ChatStep } from "@/types/chat";
+import { Message, PatientData, ChatStep, DiseaseType } from "@/types/chat";
 import MessageComponent from "@/components/chat/MessageComponent";
 import ProgressIndicator from "@/components/chat/ProgressIndicator";
 import WebhookConfig from "@/components/chat/WebhookConfig";
+import DiseaseSelector from "@/components/chat/DiseaseSelector";
 import { generateMockAnalysis, generateEmailReport, parseDemographics } from "@/utils/analysisUtils";
 
 const ChatInterface = () => {
@@ -20,7 +20,9 @@ const ChatInterface = () => {
     {
       id: '1',
       type: 'bot',
-      content: t('chat.greeting'),
+      content: language === 'es' ? 'Bienvenido al Sistema de Análisis Predictivo MedAI. Selecciona el tipo de análisis que deseas realizar.' :
+               language === 'fr' ? 'Bienvenue dans le Système d\'Analyse Prédictive MedAI. Sélectionnez le type d\'analyse que vous souhaitez effectuer.' :
+               'Welcome to MedAI Predictive Analysis System. Select the type of analysis you want to perform.',
       timestamp: new Date()
     }
   ]);
@@ -31,7 +33,8 @@ const ChatInterface = () => {
     labResults: [],
     demographics: {}
   });
-  const [currentStep, setCurrentStep] = useState<ChatStep>('symptoms');
+  const [currentStep, setCurrentStep] = useState<ChatStep>('diseaseSelection');
+  const [selectedDisease, setSelectedDisease] = useState<DiseaseType | null>(null);
   const [n8nWebhook, setN8nWebhook] = useState('');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -53,6 +56,37 @@ const ChatInterface = () => {
     setMessages(prev => [...prev, newMessage]);
   };
 
+  const handleDiseaseSelection = (disease: DiseaseType) => {
+    setSelectedDisease(disease);
+    setPatientData(prev => ({ ...prev, diseaseType: disease }));
+    
+    const diseaseNames = {
+      'diabetes': { es: 'Diabetes Tipo 2', en: 'Type 2 Diabetes', fr: 'Diabète Type 2' },
+      'breast-cancer': { es: 'Cáncer de Mama', en: 'Breast Cancer', fr: 'Cancer du Sein' },
+      'prostate-cancer': { es: 'Cáncer de Próstata', en: 'Prostate Cancer', fr: 'Cancer de la Prostate' },
+      'heart-disease': { es: 'Enfermedad Cardíaca', en: 'Heart Disease', fr: 'Maladie Cardiaque' },
+      'stroke': { es: 'Accidente Cerebrovascular', en: 'Stroke', fr: 'AVC' },
+      'kidney-disease': { es: 'Enfermedad Renal', en: 'Kidney Disease', fr: 'Maladie Rénale' },
+      'pancreatic-cancer': { es: 'Cáncer de Páncreas', en: 'Pancreatic Cancer', fr: 'Cancer du Pancréas' }
+    };
+
+    const diseaseName = diseaseNames[disease][language as keyof typeof diseaseNames[typeof disease]];
+    
+    addMessage('system', 
+      language === 'es' ? `Análisis seleccionado: ${diseaseName}` :
+      language === 'fr' ? `Analyse sélectionnée: ${diseaseName}` :
+      `Selected analysis: ${diseaseName}`
+    );
+    
+    addMessage('bot', 
+      language === 'es' ? 'Perfecto. Ahora describe los síntomas del paciente (separados por comas):' :
+      language === 'fr' ? 'Parfait. Maintenant décrivez les symptômes du patient (séparés par des virgules) :' :
+      'Perfect. Now describe the patient symptoms (separated by commas):'
+    );
+    
+    setCurrentStep('symptoms');
+  };
+
   const handleSendMessage = async () => {
     if (!input.trim()) return;
 
@@ -68,14 +102,22 @@ const ChatInterface = () => {
       case 'symptoms':
         const symptoms = userInput.split(',').map(s => s.trim()).filter(s => s);
         setPatientData(prev => ({ ...prev, symptoms }));
-        addMessage('bot', t('chat.symptoms.recorded').replace('{symptoms}', symptoms.join(', ')));
+        addMessage('bot', 
+          language === 'es' ? `Síntomas registrados: ${symptoms.join(', ')}. Ahora proporciona los resultados de laboratorio:` :
+          language === 'fr' ? `Symptômes enregistrés: ${symptoms.join(', ')}. Maintenant fournissez les résultats de laboratoire :` :
+          `Symptoms recorded: ${symptoms.join(', ')}. Now provide laboratory results:`
+        );
         setCurrentStep('labResults');
         break;
 
       case 'labResults':
         const labResults = userInput.split(',').map(s => s.trim()).filter(s => s);
         setPatientData(prev => ({ ...prev, labResults }));
-        addMessage('bot', t('chat.labResults.recorded').replace('{labResults}', labResults.join(', ')));
+        addMessage('bot', 
+          language === 'es' ? `Resultados registrados: ${labResults.join(', ')}. Datos demográficos del paciente (edad, género, peso) o escribe "saltar":` :
+          language === 'fr' ? `Résultats enregistrés: ${labResults.join(', ')}. Données démographiques du patient (âge, sexe, poids) ou écrivez "ignorer" :` :
+          `Results recorded: ${labResults.join(', ')}. Patient demographics (age, gender, weight) or type "skip":`
+        );
         setCurrentStep('demographics');
         break;
 
@@ -85,13 +127,21 @@ const ChatInterface = () => {
           const demographics = parseDemographics(userInput);
           setPatientData(prev => ({ ...prev, demographics }));
         }
-        addMessage('bot', t('chat.analysis.complete'));
+        addMessage('bot', 
+          language === 'es' ? 'Información completa. Iniciando análisis predictivo...' :
+          language === 'fr' ? 'Informations complètes. Début de l\'analyse prédictive...' :
+          'Complete information. Starting predictive analysis...'
+        );
         setCurrentStep('analysis');
         await performAnalysis();
         break;
 
       default:
-        addMessage('bot', t('chat.newConsultation'));
+        addMessage('bot', 
+          language === 'es' ? 'Puedes iniciar una nueva consulta.' :
+          language === 'fr' ? 'Vous pouvez commencer une nouvelle consultation.' :
+          'You can start a new consultation.'
+        );
     }
   };
 
@@ -169,56 +219,49 @@ const ChatInterface = () => {
       {
         id: Date.now().toString(),
         type: 'bot',
-        content: t('chat.newConsultation'),
+        content: language === 'es' ? 'Nueva consulta iniciada. Selecciona el tipo de análisis:' :
+                 language === 'fr' ? 'Nouvelle consultation commencée. Sélectionnez le type d\'analyse :' :
+                 'New consultation started. Select the analysis type:',
         timestamp: new Date()
       }
     ]);
     setPatientData({ symptoms: [], labResults: [], demographics: {} });
-    setCurrentStep('symptoms');
+    setSelectedDisease(null);
+    setCurrentStep('diseaseSelection');
   };
 
   const performAnalysis = async () => {
+    if (!selectedDisease) return;
+    
     setIsAnalyzing(true);
     
     const analysisMessages = {
       es: [
         'Inicializando análisis de IA...',
-        'Ejecutando Modelo 1: Evaluación de Riesgo de Diabetes...',
-        'Ejecutando Modelo 2: Análisis Cardiovascular...',
-        'Ejecutando Modelo 3: Detección de Síndrome Metabólico...',
-        'Ejecutando Modelo 4: Reconocimiento de Patrones de Síntomas...',
-        'Ejecutando Modelo 5: Perfilado Integral de Riesgo...',
-        'Ejecutando Modelo 6: Análisis ML Avanzado...',
-        'Ejecutando Modelo 7: Modelo ML Optimizado...',
-        'Ejecutando Modelo 8: Implementación PyCaret...',
-        'Ejecutando Modelo 9: Modelo de Aprendizaje Profundo...',
-        'Realizando meta-análisis con OpenAI...'
+        'Ejecutando Modelo 1: Análisis de Riesgo Predictivo...',
+        'Ejecutando Modelo 2: Evaluación de Patrones Clínicos...',
+        'Ejecutando Modelo 3: Análisis de Machine Learning Avanzado...',
+        'Ejecutando Modelo 4: Modelo de Deep Learning...',
+        'Ejecutando Modelo 5: Meta-análisis y Validación...',
+        'Compilando resultados finales...'
       ],
       en: [
         'Initializing AI analysis...',
-        'Running Model 1: Diabetes Risk Assessment...',
-        'Running Model 2: Cardiovascular Analysis...',
-        'Running Model 3: Metabolic Syndrome Detection...',
-        'Running Model 4: Symptom Pattern Recognition...',
-        'Running Model 5: Comprehensive Risk Profiling...',
-        'Running Model 6: Advanced ML Analysis...',
-        'Running Model 7: Optimized ML Model...',
-        'Running Model 8: PyCaret Implementation...',
-        'Running Model 9: Deep Learning Model...',
-        'Performing meta-analysis with OpenAI...'
+        'Running Model 1: Predictive Risk Analysis...',
+        'Running Model 2: Clinical Pattern Evaluation...',
+        'Running Model 3: Advanced Machine Learning Analysis...',
+        'Running Model 4: Deep Learning Model...',
+        'Running Model 5: Meta-analysis and Validation...',
+        'Compiling final results...'
       ],
       fr: [
         'Initialisation de l\'analyse IA...',
-        'Exécution du Modèle 1: Évaluation du Risque de Diabète...',
-        'Exécution du Modèle 2: Analyse Cardiovasculaire...',
-        'Exécution du Modèle 3: Détection du Syndrome Métabolique...',
-        'Exécution du Modèle 4: Reconnaissance des Patterns de Symptômes...',
-        'Exécution du Modèle 5: Profilage de Risque Complet...',
-        'Exécution du Modèle 6: Analyse ML Avancée...',
-        'Exécution du Modèle 7: Modèle ML Optimisé...',
-        'Exécution du Modèle 8: Implémentation PyCaret...',
-        'Exécution du Modèle 9: Modèle d\'Apprentissage Profond...',
-        'Réalisation de méta-analyse avec OpenAI...'
+        'Exécution du Modèle 1: Analyse Prédictive des Risques...',
+        'Exécution du Modèle 2: Évaluation des Patterns Cliniques...',
+        'Exécution du Modèle 3: Analyse ML Avancée...',
+        'Exécution du Modèle 4: Modèle d\'Apprentissage Profond...',
+        'Exécution du Modèle 5: Méta-analyse et Validation...',
+        'Compilation des résultats finaux...'
       ]
     };
     
@@ -228,9 +271,14 @@ const ChatInterface = () => {
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
 
-      const analysisResults = generateMockAnalysis(language);
+      const analysisResults = generateMockAnalysis(language, selectedDisease);
       
-      addMessage('bot', t('chat.analysis.result'), analysisResults);
+      addMessage('bot', 
+        language === 'es' ? 'Análisis completado. Aquí están los resultados:' :
+        language === 'fr' ? 'Analyse terminée. Voici les résultats :' :
+        'Analysis completed. Here are the results:', 
+        analysisResults
+      );
       
       if (n8nWebhook) {
         await sendToN8n(analysisResults);
@@ -257,11 +305,15 @@ const ChatInterface = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Brain className="h-5 w-5 text-blue-600" />
-            <span>{t('chat.title')}</span>
+            <span>
+              {language === 'es' ? 'Análisis Predictivo Multi-enfermedad' :
+               language === 'fr' ? 'Analyse Prédictive Multi-maladies' :
+               'Multi-Disease Predictive Analysis'}
+            </span>
             {isAnalyzing && (
               <Badge variant="default" className="bg-blue-600 animate-pulse">
                 <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-                {t('chat.analyzing')}
+                {language === 'es' ? 'Analizando' : language === 'fr' ? 'Analyse' : 'Analyzing'}
               </Badge>
             )}
           </CardTitle>
@@ -269,51 +321,73 @@ const ChatInterface = () => {
         <CardContent>
           <WebhookConfig n8nWebhook={n8nWebhook} setN8nWebhook={setN8nWebhook} />
 
-          <ScrollArea className="h-96 w-full border rounded-lg p-4" ref={scrollAreaRef}>
+          {currentStep === 'diseaseSelection' && (
+            <DiseaseSelector onSelectDisease={handleDiseaseSelection} />
+          )}
+
+          <ScrollArea className="h-96 w-full border rounded-lg p-4 mt-4" ref={scrollAreaRef}>
             {messages.map(message => (
               <MessageComponent key={message.id} message={message} />
             ))}
           </ScrollArea>
 
-          <div className="flex space-x-2 mt-4">
-            <Textarea
-              placeholder={
-                currentStep === 'symptoms' ? t('chat.placeholder.symptoms') :
-                currentStep === 'labResults' ? t('chat.placeholder.labResults') :
-                currentStep === 'demographics' ? t('chat.placeholder.demographics') :
-                t('chat.placeholder.complete')
-              }
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSendMessage();
+          {currentStep !== 'diseaseSelection' && (
+            <div className="flex space-x-2 mt-4">
+              <Textarea
+                placeholder={
+                  currentStep === 'symptoms' ? (
+                    language === 'es' ? 'Describe los síntomas (ej: fatiga, sed excesiva, visión borrosa)' :
+                    language === 'fr' ? 'Décrivez les symptômes (ex: fatigue, soif excessive, vision floue)' :
+                    'Describe symptoms (e.g: fatigue, excessive thirst, blurred vision)'
+                  ) :
+                  currentStep === 'labResults' ? (
+                    language === 'es' ? 'Resultados de laboratorio (ej: glucosa 180 mg/dl, HbA1c 8.5%)' :
+                    language === 'fr' ? 'Résultats de laboratoire (ex: glucose 180 mg/dl, HbA1c 8.5%)' :
+                    'Laboratory results (e.g: glucose 180 mg/dl, HbA1c 8.5%)'
+                  ) :
+                  currentStep === 'demographics' ? (
+                    language === 'es' ? 'Datos del paciente (ej: 45 años, mujer, 70 kg) o "saltar"' :
+                    language === 'fr' ? 'Données patient (ex: 45 ans, femme, 70 kg) ou "ignorer"' :
+                    'Patient data (e.g: 45 years, female, 70 kg) or "skip"'
+                  ) :
+                  language === 'es' ? 'Consulta completada' :
+                  language === 'fr' ? 'Consultation terminée' :
+                  'Consultation completed'
                 }
-              }}
-              disabled={isAnalyzing || currentStep === 'complete'}
-              className="flex-1"
-              rows={2}
-            />
-            <div className="flex flex-col space-y-2">
-              <Button 
-                onClick={handleSendMessage}
-                disabled={!input.trim() || isAnalyzing || currentStep === 'complete'}
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
-              {currentStep === 'complete' && (
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage();
+                  }
+                }}
+                disabled={isAnalyzing || currentStep === 'complete'}
+                className="flex-1"
+                rows={2}
+              />
+              <div className="flex flex-col space-y-2">
                 <Button 
-                  onClick={startNewConsultation}
-                  variant="outline"
-                  className="text-xs"
+                  onClick={handleSendMessage}
+                  disabled={!input.trim() || isAnalyzing || currentStep === 'complete'}
+                  className="bg-blue-600 hover:bg-blue-700"
                 >
-                  {t('chat.newCase')}
+                  <Send className="h-4 w-4" />
                 </Button>
-              )}
+                {currentStep === 'complete' && (
+                  <Button 
+                    onClick={startNewConsultation}
+                    variant="outline"
+                    className="text-xs"
+                  >
+                    {language === 'es' ? 'Nuevo Caso' :
+                     language === 'fr' ? 'Nouveau Cas' :
+                     'New Case'}
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           <ProgressIndicator currentStep={currentStep} />
         </CardContent>
