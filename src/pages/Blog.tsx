@@ -49,6 +49,17 @@ const Blog = () => {
 
   const featuredPost = allPosts.find(post => post.id === 'ai-diagnostico-medico') || allPosts[0];
 
+  if (!featuredPost) {
+    return (
+      <div className="min-h-screen bg-blog-background flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-blog-text mb-4">Error cargando artículos</h2>
+          <p className="text-blog-text-light">Por favor, intenta recargar la página</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-blog-background">
       <div className="container mx-auto px-4 py-12">
