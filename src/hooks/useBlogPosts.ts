@@ -14,6 +14,8 @@ export interface BlogPostData {
 }
 
 export const useBlogPosts = () => {
+  console.log('🔍 Hook useBlogPosts iniciando...');
+  
   const blogPosts: Record<string, BlogPostData> = {
     // IA Médica
     'ai-diagnostico-medico': {
@@ -193,7 +195,6 @@ La mamografía es el método de detección más efectivo para mujeres mayores de
 La detección temprana del cáncer de mama es responsabilidad compartida entre el paciente y el sistema de salud. La educación, la prevención y el acceso a tecnologías de detección son clave para reducir la mortalidad por esta enfermedad.`
     },
 
-    // Cardiología
     'enfermedad-cardiovascular-prevencion': {
       id: 'enfermedad-cardiovascular-prevencion',
       title: 'Prevención de Enfermedades Cardiovasculares: Estrategias Basadas en Evidencia',
@@ -237,7 +238,6 @@ Las enfermedades cardiovasculares son la principal causa de muerte a nivel mundi
 La prevención cardiovascular requiere un enfoque integral, personalizado y basado en evidencia que combine intervenciones farmacológicas y no farmacológicas.`
     },
 
-    // Endocrinología
     'diabetes-control-glucemia': {
       id: 'diabetes-control-glucemia',
       title: 'Control de Glucemia en Diabetes: Estrategias Modernas y Efectivas',
@@ -277,17 +277,25 @@ El control efectivo de la glucemia requiere un enfoque integral que combine tecn
   };
 
   const getAllPosts = () => {
-    return Object.values(blogPosts);
+    const posts = Object.values(blogPosts);
+    console.log('🔍 getAllPosts retornando:', posts.length, 'posts');
+    return posts;
   };
 
   const getPostById = (id: string) => {
-    return blogPosts[id] || null;
+    const post = blogPosts[id] || null;
+    console.log('🔍 getPostById para:', id, 'encontrado:', !!post);
+    return post;
   };
 
   const getPostsByCategory = (category: string) => {
-    return Object.values(blogPosts).filter(post => post.category === category);
+    const posts = Object.values(blogPosts).filter(post => post.category === category);
+    console.log('🔍 getPostsByCategory para:', category, 'encontrados:', posts.length);
+    return posts;
   };
 
+  console.log('🔍 Hook useBlogPosts completado');
+  
   return {
     getAllPosts,
     getPostById,

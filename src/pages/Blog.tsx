@@ -10,16 +10,23 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 
 const Blog = () => {
+  console.log('🔍 Blog component iniciando...');
+  
   const { getAllPosts } = useBlogPosts();
+  console.log('🔍 Hook useBlogPosts obtenido');
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('date');
 
   const allPosts = getAllPosts();
+  console.log('🔍 Todos los posts obtenidos:', allPosts?.length || 0, allPosts);
   
   const categories = Array.from(new Set(allPosts.map(post => post.category)));
+  console.log('🔍 Categorías encontradas:', categories);
 
   const filteredAndSortedPosts = useMemo(() => {
+    console.log('🔍 Filtrando posts...');
     let filtered = allPosts.filter(post => {
       const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -44,21 +51,41 @@ const Blog = () => {
       }
     });
 
+    console.log('🔍 Posts filtrados:', filtered.length);
     return filtered;
   }, [allPosts, searchTerm, selectedCategory, sortBy]);
 
   const featuredPost = allPosts.find(post => post.id === 'ai-diagnostico-medico') || allPosts[0];
+  console.log('🔍 Post destacado:', featuredPost?.title || 'No encontrado');
 
-  if (!featuredPost) {
+  // Verificación de errores básicos
+  if (!allPosts || allPosts.length === 0) {
+    console.error('❌ No se encontraron posts');
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Error cargando artículos</h2>
-          <p className="text-gray-600">Por favor, intenta recargar la página</p>
+        <div className="text-center p-8 bg-white rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Error de Datos</h2>
+          <p className="text-gray-600 mb-4">No se pudieron cargar los artículos del blog</p>
+          <p className="text-sm text-gray-500">Revisa la consola para más detalles</p>
         </div>
       </div>
     );
   }
+
+  if (!featuredPost) {
+    console.error('❌ No se encontró post destacado');
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center p-8 bg-white rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Error de Configuración</h2>
+          <p className="text-gray-600 mb-4">No se pudo determinar el artículo destacado</p>
+          <p className="text-sm text-gray-500">Posts disponibles: {allPosts.length}</p>
+        </div>
+      </div>
+    );
+  }
+
+  console.log('🔍 Renderizando componente Blog completo...');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -74,21 +101,25 @@ const Blog = () => {
           </p>
         </div>
 
-        {/* Featured Article */}
+        {/* Featured Article - Simplificado para debugging */}
         <div className="mb-12">
-          <Card className="bg-white border border-gray-200 overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
             <div className="md:flex">
               <div className="md:w-1/2">
                 <img
                   src={featuredPost.image}
                   alt={featuredPost.title}
                   className="w-full h-64 md:h-full object-cover"
+                  onError={(e) => {
+                    console.error('❌ Error cargando imagen destacada:', featuredPost.image);
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
+                  }}
                 />
               </div>
               <div className="md:w-1/2 p-8">
-                <Badge className="mb-4 bg-blue-100 text-blue-800">
+                <div className="mb-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium inline-block">
                   Artículo Destacado
-                </Badge>
+                </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                   {featuredPost.title}
                 </h2>
@@ -110,53 +141,51 @@ const Blog = () => {
                   </div>
                 </div>
                 <Link to={`/blog/${featuredPost.id}`}>
-                  <Button className="flex items-center">
+                  <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
                     Leer Artículo
                     <ArrowRight className="h-4 w-4 ml-2" />
-                  </Button>
+                  </button>
                 </Link>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
 
-        {/* Search and Filters */}
+        {/* Search and Filters - Simplificado */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input
+              <input
+                type="text"
                 placeholder="Buscar artículos..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-full md:w-48">
-                <Filter className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="Todas las categorías" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="">Todas las categorías</SelectItem>
-                {categories.map((category) => (
-                  <SelectItem key={category} value={category}>
-                    {category}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="Ordenar por" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="date">Más recientes</SelectItem>
-                <SelectItem value="title">Título A-Z</SelectItem>
-                <SelectItem value="readTime">Tiempo de lectura</SelectItem>
-                <SelectItem value="views">Más populares</SelectItem>
-              </SelectContent>
-            </Select>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Todas las categorías</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="date">Más recientes</option>
+              <option value="title">Título A-Z</option>
+              <option value="readTime">Tiempo de lectura</option>
+              <option value="views">Más populares</option>
+            </select>
           </div>
         </div>
 
@@ -169,37 +198,35 @@ const Blog = () => {
           </p>
         </div>
 
-        {/* Articles Grid */}
+        {/* Articles Grid - Simplificado */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {filteredAndSortedPosts.map((post) => (
-            <Card key={post.id} className="bg-white border border-gray-200 hover:shadow-lg transition-shadow">
-              <CardHeader className="p-0">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-              </CardHeader>
-              <CardContent className="p-6">
+            <div key={post.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-48 object-cover"
+                onError={(e) => {
+                  console.error('❌ Error cargando imagen del post:', post.id, post.image);
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
+                }}
+              />
+              <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="secondary" className="text-xs">
+                  <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
                     {post.category}
-                  </Badge>
+                  </span>
                   <div className="flex items-center text-xs text-gray-500">
                     <Eye className="h-3 w-3 mr-1" />
                     {post.views.toLocaleString()}
                   </div>
                 </div>
-                <CardTitle className="text-lg mb-2 h-14 overflow-hidden">
-                  <span className="block leading-5">
-                    {post.title.length > 60 ? `${post.title.substring(0, 60)}...` : post.title}
-                  </span>
-                </CardTitle>
-                <CardDescription className="text-gray-600 mb-4 h-16 overflow-hidden">
-                  <span className="block leading-5">
-                    {post.excerpt.length > 100 ? `${post.excerpt.substring(0, 100)}...` : post.excerpt}
-                  </span>
-                </CardDescription>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900 line-clamp-2">
+                  {post.title.length > 60 ? `${post.title.substring(0, 60)}...` : post.title}
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm line-clamp-3">
+                  {post.excerpt.length > 100 ? `${post.excerpt.substring(0, 100)}...` : post.excerpt}
+                </p>
                 <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
@@ -219,13 +246,13 @@ const Blog = () => {
                     })}
                   </span>
                   <Link to={`/blog/${post.id}`}>
-                    <Button variant="outline" size="sm">
+                    <button className="border border-gray-300 text-gray-700 px-4 py-1 rounded-lg hover:bg-gray-50 transition-colors text-sm">
                       Leer más
-                    </Button>
+                    </button>
                   </Link>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
@@ -241,7 +268,7 @@ const Blog = () => {
           </div>
         )}
 
-        {/* Categories Section */}
+        {/* Categories Section - Simplificado */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Explora por Categorías
@@ -252,24 +279,22 @@ const Blog = () => {
               const totalViews = categoryPosts.reduce((sum, post) => sum + post.views, 0);
               
               return (
-                <Card 
+                <div 
                   key={category} 
-                  className="bg-white border border-gray-200 hover:shadow-lg transition-shadow cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
                   onClick={() => setSelectedCategory(category)}
                 >
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-lg">{category}</CardTitle>
-                    <CardDescription>
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{category}</h3>
+                    <p className="text-gray-600 mb-4">
                       {categoryPosts.length} artículos
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="text-center">
+                    </p>
                     <div className="flex items-center justify-center text-sm text-gray-500">
                       <Eye className="h-4 w-4 mr-1" />
                       {totalViews.toLocaleString()} vistas totales
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               );
             })}
           </div>

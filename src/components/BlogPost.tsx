@@ -75,13 +75,17 @@ const TableOfContents = ({ content }: TableOfContentsProps) => {
 };
 
 const BlogPost = ({ id }: { id: string }) => {
+  console.log('🔍 BlogPost component iniciando para ID:', id);
+  
   const navigate = useNavigate();
   const { getPostById, getPostsByCategory } = useBlogPosts();
   const [post, setPost] = useState<BlogPostData | null>(null);
   const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {
+    console.log('🔍 Buscando post con ID:', id);
     const foundPost = getPostById(id);
+    console.log('🔍 Post encontrado:', foundPost?.title || 'No encontrado');
     if (foundPost) {
       setPost(foundPost);
     }
@@ -159,10 +163,12 @@ const BlogPost = ({ id }: { id: string }) => {
   };
 
   if (!post) {
+    console.log('❌ Post no encontrado, mostrando error');
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Artículo no encontrado</h2>
+          <p className="text-gray-600 mb-4">ID buscado: {id}</p>
           <Button onClick={() => navigate('/blog')} className="flex items-center">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Volver al Blog
@@ -171,6 +177,8 @@ const BlogPost = ({ id }: { id: string }) => {
       </div>
     );
   }
+
+  console.log('🔍 Renderizando BlogPost para:', post.title);
 
   const relatedPosts = getPostsByCategory(post.category)
     .filter(relatedPost => relatedPost.id !== post.id)
@@ -220,10 +228,14 @@ const BlogPost = ({ id }: { id: string }) => {
         {/* Hero Image */}
         <div className="mb-8">
           <img
-            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80"
+            src={post.image}
             alt={post.title}
             className="w-full h-64 md:h-96 object-cover rounded-xl shadow-2xl"
             loading="lazy"
+            onError={(e) => {
+              console.error('❌ Error cargando imagen del artículo:', post.image);
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
+            }}
           />
         </div>
 
