@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -314,7 +315,7 @@ const PancreaticCancer = () => {
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2"><10%</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">&lt;10%</div>
                 <div className="text-sm text-gray-600">
                   {language === "es" ? "Supervivencia a 5 años" :
                    language === "fr" ? "Survie à 5 ans" :
