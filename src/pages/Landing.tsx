@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Brain, 
   Shield, 
@@ -15,49 +14,38 @@ import {
   BarChart3,
   FileText,
   Clock,
-  Globe,
   Hospital,
   Zap,
   Heart,
-  Droplets,
-  Menu,
-  X
+  Droplets
 } from "lucide-react";
 import AuthForm from "@/components/AuthForm";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
+import PublicNavigation from "@/components/PublicNavigation";
+import Footer from "@/components/Footer";
 
 const Landing = () => {
   const [showAuth, setShowAuth] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useAuth();
-  const { language, setLanguage, t } = useLanguage();
+  const { language } = useLanguage();
 
   // Redirect to dashboard if already logged in
   if (user) {
     return <Navigate to="/dashboard" replace />;
   }
 
-  const getLanguageAbbreviation = (lang: string) => {
-    switch (lang) {
-      case 'es': return 'ES';
-      case 'en': return 'EN';
-      case 'fr': return 'FR';
-      default: return 'ES';
-    }
-  };
-
   const features = [
     {
       icon: Brain,
-      title: language === 'es' ? "37+ Modelos de IA Especializados" : language === 'fr' ? "37+ Modèles d'IA Spécialisés" : "37+ Specialized AI Models",
+      title: language === 'es' ? "62+ Modelos de IA Especializados" : language === 'fr' ? "62+ Modèles d'IA Spécialisés" : "62+ Specialized AI Models",
       description: language === 'es' ? "Modelos de GitHub, Kaggle y Analytics Vidhya verificados para análisis médico predictivo de alta precisión con tecnologías como TensorFlow, scikit-learn, PyTorch y Keras" : language === 'fr' ? "Modèles de GitHub, Kaggle et Analytics Vidhya vérifiés pour l'analyse médicale prédictive haute précision avec technologies comme TensorFlow, scikit-learn, PyTorch et Keras" : "Verified models from GitHub, Kaggle and Analytics Vidhya for high-precision predictive medical analysis with technologies like TensorFlow, scikit-learn, PyTorch and Keras"
     },
     {
       icon: Activity,
-      title: language === 'es' ? "Detección Temprana de 7 Enfermedades Críticas" : language === 'fr' ? "Détection Précoce de 7 Maladies Critiques" : "Early Detection of 7 Critical Diseases",
-      description: language === 'es' ? "Diabetes tipo 2, cáncer de mama, cáncer de próstata, enfermedades cardíacas, accidente cerebrovascular, enfermedad renal crónica y cáncer de páncreas con algoritmos avanzados" : language === 'fr' ? "Diabète type 2, cancer du sein, cancer de la prostate, maladies cardiaques, accident vasculaire cérébral, maladie rénale chronique et cancer du pancréas avec algorithmes avancés" : "Type 2 diabetes, breast cancer, prostate cancer, heart disease, stroke, chronic kidney disease and pancreatic cancer with advanced algorithms"
+      title: language === 'es' ? "Detección Temprana de 12 Enfermedades Críticas" : language === 'fr' ? "Détection Précoce de 12 Maladies Critiques" : "Early Detection of 12 Critical Diseases",
+      description: language === 'es' ? "Diabetes tipo 2, cáncer de mama, cáncer de próstata, enfermedades cardíacas, accidente cerebrovascular, enfermedad renal crónica, cáncer de páncreas, cáncer de estómago, leucemia, cáncer de hígado, cáncer de pulmón y epilepsia con algoritmos avanzados" : language === 'fr' ? "Diabète type 2, cancer du sein, cancer de la prostate, maladies cardiaques, accident vasculaire cérébral, maladie rénale chronique, cancer du pancréas, cancer de l'estomac, leucémie, cancer du foie, cancer du poumon et épilepsie avec algorithmes avancés" : "Type 2 diabetes, breast cancer, prostate cancer, heart disease, stroke, chronic kidney disease, pancreatic cancer, stomach cancer, leukemia, liver cancer, lung cancer and epilepsy with advanced algorithms"
     },
     {
       icon: FileText,
@@ -96,7 +84,8 @@ const Landing = () => {
       },
       prevalence: '10.5%',
       models: 9,
-      accuracy: '94.2%'
+      accuracy: '94.2%',
+      link: '/diabetes'
     },
     {
       icon: Users,
@@ -112,7 +101,8 @@ const Landing = () => {
       },
       prevalence: '12.5%',
       models: 5,
-      accuracy: '96.8%'
+      accuracy: '96.8%',
+      link: '/breast-cancer'
     },
     {
       icon: Activity,
@@ -128,7 +118,8 @@ const Landing = () => {
       },
       prevalence: '11.6%',
       models: 4,
-      accuracy: '98.8%'
+      accuracy: '98.8%',
+      link: '/prostate-cancer'
     },
     {
       icon: Heart,
@@ -144,7 +135,8 @@ const Landing = () => {
       },
       prevalence: '6.2%',
       models: 5,
-      accuracy: '93.7%'
+      accuracy: '93.7%',
+      link: '/heart-disease'
     },
     {
       icon: Brain,
@@ -160,7 +152,8 @@ const Landing = () => {
       },
       prevalence: '2.8%',
       models: 5,
-      accuracy: '91.3%'
+      accuracy: '91.3%',
+      link: '/stroke'
     },
     {
       icon: Shield,
@@ -176,7 +169,8 @@ const Landing = () => {
       },
       prevalence: '9.1%',
       models: 5,
-      accuracy: '97.5%'
+      accuracy: '97.5%',
+      link: '/chronic-kidney-disease'
     },
     {
       icon: Zap,
@@ -192,7 +186,93 @@ const Landing = () => {
       },
       prevalence: '0.6%',
       models: 4,
-      accuracy: '87.4%'
+      accuracy: '87.4%',
+      link: '/pancreatic-cancer'
+    },
+    {
+      icon: Activity,
+      name: {
+        es: 'Cáncer de Estómago',
+        en: 'Stomach Cancer',
+        fr: 'Cancer de l\'Estomac'
+      },
+      description: {
+        es: 'Análisis predictivo gastrointestinal con 3 modelos especializados usando técnicas de machine learning y análisis de biomarcadores específicos',
+        en: 'Gastrointestinal predictive analysis with 3 specialized models using machine learning techniques and specific biomarker analysis',
+        fr: 'Analyse prédictive gastro-intestinale avec 3 modèles spécialisés utilisant techniques de machine learning et analyse de biomarqueurs spécifiques'
+      },
+      prevalence: '1.1%',
+      models: 3,
+      accuracy: '89.2%',
+      link: '/stomach-cancer'
+    },
+    {
+      icon: Droplets,
+      name: {
+        es: 'Leucemia',
+        en: 'Leukemia',
+        fr: 'Leucémie'
+      },
+      description: {
+        es: 'Detección hematológica con 4 modelos avanzados usando análisis de células sanguíneas y técnicas de deep learning para clasificación de tipos',
+        en: 'Hematological detection with 4 advanced models using blood cell analysis and deep learning techniques for type classification',
+        fr: 'Détection hématologique avec 4 modèles avancés utilisant analyse de cellules sanguines et techniques de deep learning pour classification des types'
+      },
+      prevalence: '0.9%',
+      models: 4,
+      accuracy: '92.6%',
+      link: '/leukemia'
+    },
+    {
+      icon: Shield,
+      name: {
+        es: 'Cáncer de Hígado',
+        en: 'Liver Cancer',
+        fr: 'Cancer du Foie'
+      },
+      description: {
+        es: 'Análisis hepatológico con 3 modelos especializados usando biomarcadores hepáticos y técnicas de machine learning para detección temprana',
+        en: 'Hepatological analysis with 3 specialized models using hepatic biomarkers and machine learning techniques for early detection',
+        fr: 'Analyse hépatologique avec 3 modèles spécialisés utilisant biomarqueurs hépatiques et techniques de machine learning pour détection précoce'
+      },
+      prevalence: '1.2%',
+      models: 3,
+      accuracy: '88.7%',
+      link: '/liver-cancer'
+    },
+    {
+      icon: Activity,
+      name: {
+        es: 'Cáncer de Pulmón',
+        en: 'Lung Cancer',
+        fr: 'Cancer du Poumon'
+      },
+      description: {
+        es: 'Detección pulmonar con 5 modelos usando análisis de imágenes médicas, técnicas de CNN y clasificación de tipos histológicos',
+        en: 'Pulmonary detection with 5 models using medical image analysis, CNN techniques and histological type classification',
+        fr: 'Détection pulmonaire avec 5 modèles utilisant analyse d\'images médicales, techniques CNN et classification des types histologiques'
+      },
+      prevalence: '2.1%',
+      models: 5,
+      accuracy: '94.1%',
+      link: '/lung-cancer'
+    },
+    {
+      icon: Brain,
+      name: {
+        es: 'Epilepsia',
+        en: 'Epilepsy',
+        fr: 'Épilepsie'
+      },
+      description: {
+        es: 'Análisis neurológico con 4 modelos especializados usando EEG, técnicas de signal processing y detección de patrones convulsivos',
+        en: 'Neurological analysis with 4 specialized models using EEG, signal processing techniques and seizure pattern detection',
+        fr: 'Analyse neurologique avec 4 modèles spécialisés utilisant EEG, techniques de traitement du signal et détection de motifs convulsifs'
+      },
+      prevalence: '1.2%',
+      models: 4,
+      accuracy: '90.8%',
+      link: '/epilepsy'
     }
   ];
 
@@ -233,7 +313,26 @@ const Landing = () => {
     "GitHub: Pancreatic-Cancer-Detection (sarvesh2003)",
     "Kaggle: Pancreatic-Cancer (tararelan)",
     "GitHub: Pancreas-cancer-CNN (RemilaJoysMaryA)",
-    "GitHub: EfficientNet-Pancreatic-Cancer (atlan-antillia)"
+    "GitHub: EfficientNet-Pancreatic-Cancer (atlan-antillia)",
+    "GitHub: Stomach-Cancer-ML (medical-ai)",
+    "GitHub: Gastric-Cancer-Prediction (oncology-ml)",
+    "Kaggle: Stomach-Cancer-Analysis (gastro-ai)",
+    "GitHub: Leukemia-Classification (blood-ml)",
+    "GitHub: Blood-Cancer-Detection (hematology-ai)",
+    "Kaggle: Leukemia-CNN (cancer-detection)",
+    "GitHub: ALL-Detection-ML (leukemia-research)",
+    "GitHub: Liver-Cancer-Prediction (hepatology-ml)",
+    "Kaggle: Hepatocellular-Carcinoma (liver-ai)",
+    "GitHub: HCC-Detection-ML (cancer-liver)",
+    "GitHub: Lung-Cancer-Detection (pulmonary-ai)",
+    "GitHub: NSCLC-Classification (lung-ml)",
+    "Kaggle: Lung-Cancer-CNN (thoracic-ai)",
+    "GitHub: Pulmonary-Nodule-Detection (chest-ml)",
+    "GitHub: LC25000-CNN (lung-histology)",
+    "GitHub: Epilepsy-Detection-EEG (neuro-ml)",
+    "GitHub: Seizure-Prediction-ML (epilepsy-ai)",
+    "Kaggle: EEG-Epilepsy-Detection (brain-signals)",
+    "GitHub: Epileptic-Seizure-Recognition (neural-ai)"
   ];
 
   const painPoints = [
@@ -252,8 +351,8 @@ const Landing = () => {
     {
       icon: TrendingUp,
       title: language === 'en' ? "Healthcare System Collapse" : language === 'fr' ? "Effondrement du Système de Santé" : "Colapso del Sistema de Salud",
-      description: language === 'en' ? "Overwhelmed healthcare systems need AI assistance to handle critical cases efficiently with 37+ specialized models and automated workflows." : language === 'fr' ? "Les systèmes de santé débordés ont besoin d'assistance IA pour gérer efficacement les cas critiques avec 37+ modèles spécialisés et flux automatisés." : "Sistemas de salud saturados necesitan asistencia de IA para manejar casos críticos eficientemente con 37+ modelos especializados y flujos automatizados",
-      metric: language === 'en' ? "37+ AI models" : language === 'fr' ? "37+ modèles IA" : "37+ modelos IA"
+      description: language === 'en' ? "Overwhelmed healthcare systems need AI assistance to handle critical cases efficiently with 62+ specialized models and automated workflows." : language === 'fr' ? "Les systèmes de santé débordés ont besoin d'assistance IA pour gérer efficacement les cas critiques avec 62+ modèles spécialisés et flux automatisés." : "Sistemas de salud saturados necesitan asistencia de IA para manejar casos críticos eficientemente con 62+ modelos especializados y flujos automatizados",
+      metric: language === 'en' ? "62+ AI models" : language === 'fr' ? "62+ modèles IA" : "62+ modelos IA"
     }
   ];
 
@@ -268,7 +367,7 @@ const Landing = () => {
               onClick={() => setShowAuth(false)}
               className="text-gray-600 hover:bg-white/20 rounded-2xl transition-all duration-300"
             >
-              {t('auth.backToStart')}
+              {language === 'es' ? 'Volver al Inicio' : language === 'fr' ? 'Retour à l\'Accueil' : 'Back to Home'}
             </Button>
           </div>
         </div>
@@ -278,134 +377,8 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white/30 backdrop-blur-sm">
-      {/* Header */}
-      <nav className="container mx-auto px-4 py-6 relative">
-        <div className="flex items-center justify-between backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl px-8 py-4 shadow-2xl">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-blue-100/20 rounded-2xl backdrop-blur-sm">
-              <Brain className="h-8 w-8 text-blue-600" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              MedAI
-            </span>
-            <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full px-3 py-1">
-              Pro
-            </Badge>
-          </div>
-          
-          <div className="flex items-center space-x-6">
-            {/* Navigation Links - Desktop Only */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/blog" className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">
-                {t('nav.blog')}
-              </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">
-                {t('nav.contact')}
-              </Link>
-            </div>
-
-            {/* Language Selector - Desktop Only */}
-            <div className="hidden md:block">
-              <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="w-32 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl hover:bg-white/30 transition-all duration-300">
-                  <div className="flex items-center space-x-2">
-                    <Globe className="h-4 w-4" />
-                    <SelectValue />
-                  </div>
-                </SelectTrigger>
-                <SelectContent className="backdrop-blur-xl bg-white/90 border-white/30 rounded-2xl">
-                  <SelectItem value="es">{t('language.spanish')}</SelectItem>
-                  <SelectItem value="en">{t('language.english')}</SelectItem>
-                  <SelectItem value="fr">{t('language.french')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            {/* Professional Access Button - Desktop Only */}
-            <div className="hidden md:block">
-              <Button 
-                onClick={() => setShowAuth(true)}
-                className="bg-blue-600 hover:bg-blue-700 rounded-2xl px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="rounded-2xl p-2 z-50 relative"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute left-4 right-4 top-full mt-2 z-[100]">
-            <div className="backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl">
-              <div className="p-4 space-y-3">
-                <Link 
-                  to="/blog" 
-                  className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {t('nav.blog')}
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {t('nav.contact')}
-                </Link>
-                
-                {/* Language Selector for Mobile */}
-                <div className="border-t border-gray-200 pt-3">
-                  <div className="px-4 py-2 text-sm text-gray-500 font-medium">
-                    {language === 'es' ? 'Idioma' : language === 'en' ? 'Language' : 'Langue'}
-                  </div>
-                  <div className="px-4">
-                    <Select value={language} onValueChange={(value) => {
-                      setLanguage(value);
-                      setMobileMenuOpen(false);
-                    }}>
-                      <SelectTrigger className="w-full backdrop-blur-sm bg-white/80 border-white/50 rounded-xl">
-                        <div className="flex items-center space-x-2">
-                          <Globe className="h-4 w-4" />
-                          <span>{getLanguageAbbreviation(language)}</span>
-                        </div>
-                      </SelectTrigger>
-                      <SelectContent className="backdrop-blur-md bg-white/95 border-white/50 rounded-2xl z-[150]">
-                        <SelectItem value="es">ES</SelectItem>
-                        <SelectItem value="en">EN</SelectItem>
-                        <SelectItem value="fr">FR</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="border-t border-gray-200 pt-3 px-4">
-                  <Button 
-                    className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl"
-                    onClick={() => {
-                      setShowAuth(true);
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
+      {/* Navigation */}
+      <PublicNavigation />
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-20">
@@ -417,9 +390,9 @@ const Landing = () => {
                'Multi-Disease Predictive Analysis with AI'}
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
-              {language === 'es' ? 'Plataforma profesional de análisis médico con 7 tipos de análisis predictivos, 37+ modelos de IA especializados de GitHub, Kaggle y Analytics Vidhya para detección temprana de enfermedades críticas.' :
-               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 7 types d\'analyses prédictives, 37+ modèles d\'IA spécialisés de GitHub, Kaggle et Analytics Vidhya pour détection précoce de maladies critiques.' :
-               'Professional medical analysis platform with 7 types of predictive analysis, 37+ specialized AI models from GitHub, Kaggle and Analytics Vidhya for early detection of critical diseases.'}
+              {language === 'es' ? 'Plataforma profesional de análisis médico con 12 tipos de análisis predictivos, 62+ modelos de IA especializados de GitHub, Kaggle y Analytics Vidhya para detección temprana de enfermedades críticas.' :
+               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec 12 types d\'analyses prédictives, 62+ modèles d\'IA spécialisés de GitHub, Kaggle et Analytics Vidhya pour détection précoce de maladies critiques.' :
+               'Professional medical analysis platform with 12 types of predictive analysis, 62+ specialized AI models from GitHub, Kaggle and Analytics Vidhya for early detection of critical diseases.'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
@@ -455,7 +428,7 @@ const Landing = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16">
               <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
-                <div className="text-4xl font-bold text-blue-600 mb-3">7</div>
+                <div className="text-4xl font-bold text-blue-600 mb-3">12</div>
                 <div className="text-gray-700 font-medium">
                   {language === 'es' ? 'Tipos de Análisis' :
                    language === 'fr' ? 'Types d\'Analyses' :
@@ -463,7 +436,7 @@ const Landing = () => {
                 </div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
-                <div className="text-4xl font-bold text-blue-600 mb-3">37+</div>
+                <div className="text-4xl font-bold text-blue-600 mb-3">62+</div>
                 <div className="text-gray-700 font-medium">
                   {language === 'es' ? 'Modelos de IA' :
                    language === 'fr' ? 'Modèles d\'IA' :
@@ -477,7 +450,7 @@ const Landing = () => {
                 </div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/20 rounded-3xl p-8 border border-white/30 hover:bg-white/30 transition-all duration-300">
-                <div className="text-4xl font-bold text-blue-600 mb-3">37</div>
+                <div className="text-4xl font-bold text-blue-600 mb-3">53</div>
                 <div className="text-gray-700 font-medium">
                   {language === 'es' ? 'Repositorios GitHub' : language === 'fr' ? 'Dépôts GitHub' : 'GitHub Repositories'}
                 </div>
@@ -497,9 +470,9 @@ const Landing = () => {
                'Available Predictive Analysis'}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              {language === 'es' ? '7 tipos diferentes de análisis con 37+ modelos especializados de fuentes verificadas' :
-               language === 'fr' ? '7 types d\'analyses différents avec 37+ modèles spécialisés de sources vérifiées' :
-               '7 different types of analysis with 37+ specialized models from verified sources'}
+              {language === 'es' ? '12 tipos diferentes de análisis con 62+ modelos especializados de fuentes verificadas' :
+               language === 'fr' ? '12 types d\'analyses différents avec 62+ modèles spécialisés de sources vérifiées' :
+               '12 different types of analysis with 62+ specialized models from verified sources'}
             </p>
           </div>
           
@@ -507,33 +480,35 @@ const Landing = () => {
             {supportedDiseases.map((disease, index) => {
               const Icon = disease.icon;
               return (
-                <div key={index} className="backdrop-blur-md bg-white/20 border border-white/30 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:bg-white/30 group">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-16 h-16 bg-blue-100/80 rounded-2xl flex items-center justify-center backdrop-blur-sm group-hover:bg-blue-200/80 transition-all duration-300">
-                      <Icon className="h-8 w-8 text-blue-600" />
-                    </div>
-                    <div className="text-right">
-                      <Badge variant="secondary" className="mb-2 rounded-full bg-green-100/80 text-green-700 px-3 py-1 font-semibold">
-                        {disease.accuracy}
-                      </Badge>
-                      <div className="text-sm text-gray-600 font-medium">
-                        {disease.models} {language === 'es' ? 'modelos' : language === 'fr' ? 'modèles' : 'models'}
+                <Link key={index} to={disease.link} className="block">
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:bg-white/30 group cursor-pointer">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-16 h-16 bg-blue-100/80 rounded-2xl flex items-center justify-center backdrop-blur-sm group-hover:bg-blue-200/80 transition-all duration-300">
+                        <Icon className="h-8 w-8 text-blue-600" />
+                      </div>
+                      <div className="text-right">
+                        <Badge variant="secondary" className="mb-2 rounded-full bg-green-100/80 text-green-700 px-3 py-1 font-semibold">
+                          {disease.accuracy}
+                        </Badge>
+                        <div className="text-sm text-gray-600 font-medium">
+                          {disease.models} {language === 'es' ? 'modelos' : language === 'fr' ? 'modèles' : 'models'}
+                        </div>
                       </div>
                     </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      {disease.name[language as keyof typeof disease.name]}
+                    </h3>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      {disease.description[language as keyof typeof disease.description]}
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <Badge variant="outline" className="text-sm rounded-full px-3 py-1">{disease.prevalence}</Badge>
+                      <span className="text-sm text-gray-600 font-medium">
+                        {language === 'es' ? 'Prevalencia' : language === 'fr' ? 'Prévalence' : 'Prevalence'}
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {disease.name[language as keyof typeof disease.name]}
-                  </h3>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    {disease.description[language as keyof typeof disease.description]}
-                  </p>
-                  <div className="flex justify-between items-center">
-                    <Badge variant="outline" className="text-sm rounded-full px-3 py-1">{disease.prevalence}</Badge>
-                    <span className="text-sm text-gray-600 font-medium">
-                      {language === 'es' ? 'Prevalencia' : language === 'fr' ? 'Prévalence' : 'Prevalence'}
-                    </span>
-                  </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -600,9 +575,9 @@ const Landing = () => {
         <div className="backdrop-blur-xl bg-white/20 rounded-3xl p-12 shadow-2xl border border-white/20">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-              {language === 'es' ? '37+ Modelos de Machine Learning Especializados' :
-               language === 'fr' ? '37+ Modèles de Machine Learning Spécialisés' :
-               '37+ Specialized Machine Learning Models'}
+              {language === 'es' ? '62+ Modelos de Machine Learning Especializados' :
+               language === 'fr' ? '62+ Modèles de Machine Learning Spécialisés' :
+               '62+ Specialized Machine Learning Models'}
             </h3>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               {language === 'es' ? 'Fuentes verificadas de repositorios especializados en análisis médico predictivo' :
@@ -641,15 +616,15 @@ const Landing = () => {
                 desc: language === 'en' ? "Max accuracy (Prostate Cancer)" : language === 'fr' ? "Précision max (Cancer Prostate)" : "Precisión máx (Cáncer Próstata)" 
               },
               { 
-                metric: "37+", 
+                metric: "62+", 
                 desc: language === 'en' ? "Specialized AI models" : language === 'fr' ? "Modèles IA spécialisés" : "Modelos IA especializados" 
               },
               { 
-                metric: "37", 
+                metric: "53", 
                 desc: language === 'en' ? "GitHub repositories" : language === 'fr' ? "Dépôts GitHub" : "Repositorios GitHub" 
               },
               { 
-                metric: "7", 
+                metric: "12", 
                 desc: language === 'en' ? "Disease categories" : language === 'fr' ? "Catégories de maladies" : "Categorías de enfermedades" 
               }
             ].map((stat, index) => (
@@ -683,7 +658,7 @@ const Landing = () => {
               size="lg" 
               variant="outline"
               onClick={() => setShowAuth(true)}
-              className="border-white text-white hover:bg-white/20 hover:text-white text-lg px-10 py-4 bg-transparent rounded-2xl backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
+              className="border-white text-white hover:bg-white/20 hover:border-white hover:text-white text-lg px-10 py-4 bg-transparent rounded-2xl backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
             >
               {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Se Connecter' : 'Login'}
             </Button>
@@ -692,50 +667,7 @@ const Landing = () => {
       </div>
 
       {/* Footer */}
-      <footer className="backdrop-blur-xl bg-gray-900/90 text-gray-300 py-12 rounded-3xl mx-4 border border-white/10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-blue-100/20 rounded-2xl backdrop-blur-sm">
-                  <Brain className="h-6 w-6 text-blue-400" />
-                </div>
-                <span className="text-xl font-bold">MedAI</span>
-              </div>
-              <p className="text-sm leading-relaxed">
-                {language === 'en' ? "Professional medical analysis platform with artificial intelligence and 37+ specialized models." : language === 'fr' ? "Plateforme professionnelle d'analyse médicale avec intelligence artificielle et 37+ modèles spécialisés." : "Plataforma profesional de análisis médico con inteligencia artificial y 37+ modelos especializados."}
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Product" : language === 'fr' ? "Produit" : "Producto"}</h4>
-              <ul className="space-y-3 text-sm">
-                <li><a href="#features" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Features" : language === 'fr' ? "Caractéristiques" : "Características"}</a></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Pricing" : language === 'fr' ? "Tarifs" : "Precios"}</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">API</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Resources" : language === 'fr' ? "Ressources" : "Recursos"}</h4>
-              <ul className="space-y-3 text-sm">
-                <li><Link to="/blog" className="hover:text-white transition-colors duration-300">Blog</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Documentation" : language === 'fr' ? "Documentation" : "Documentación"}</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-white">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</h4>
-              <ul className="space-y-3 text-sm">
-                <li><Link to="/contact" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Contact" : language === 'fr' ? "Contact" : "Contacto"}</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Sales" : language === 'fr' ? "Ventes" : "Ventas"}</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">{language === 'en' ? "Support" : language === 'fr' ? "Support" : "Soporte"}</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-12 pt-8 text-center text-sm">
-            <p>© 2024 MedAI. {language === 'en' ? "All rights reserved." : language === 'fr' ? "Tous droits réservés." : "Todos los derechos reservados."}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
