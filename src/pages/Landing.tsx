@@ -216,18 +216,18 @@ const Landing = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/dashboard">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-2xl text-lg font-semibold shadow-xl">
-                  {language === 'es' ? 'Comenzar Análisis' :
-                   language === 'fr' ? 'Commencer Analyse' :
-                   'Start Analysis'}
+                  {language === 'es' ? 'Comenzar' :
+                   language === 'fr' ? 'Commencer' :
+                   'Start'}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               
               <Link to="/features">
                 <Button variant="outline" size="lg" className="px-8 py-6 rounded-2xl text-lg font-semibold border-2 hover:bg-gray-50">
-                  {language === 'es' ? 'Ver Características' :
-                   language === 'fr' ? 'Voir Fonctionnalités' :
-                   'View Features'}
+                  {language === 'es' ? 'Ver Más' :
+                   language === 'fr' ? 'Voir Plus' :
+                   'View More'}
                 </Button>
               </Link>
             </div>
@@ -341,9 +341,9 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'Testimonio de Profesionales' :
-               language === 'fr' ? 'Témoignages de Professionnels' :
-               'Professional Testimonials'}
+              {language === 'es' ? 'Testimonios Médicos' :
+               language === 'fr' ? 'Témoignages Médicaux' :
+               'Medical Testimonials'}
             </h2>
           </div>
           
@@ -379,31 +379,31 @@ const Landing = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold text-white">
-              {language === 'es' ? '¿Listo para mejorar sus diagnósticos?' :
-               language === 'fr' ? 'Prêt à améliorer vos diagnostics ?' :
-               'Ready to improve your diagnostics?'}
+              {language === 'es' ? '¿Listo para mejorar diagnósticos?' :
+               language === 'fr' ? 'Prêt à améliorer diagnostics?' :
+               'Ready to improve diagnostics?'}
             </h2>
             
             <p className="text-xl text-blue-100 max-w-2xl mx-auto">
               {language === 'es' ? 'Únase a cientos de profesionales que ya confían en MedAI para diagnósticos precisos' :
-               language === 'fr' ? 'Rejoignez des centaines de professionnels qui font déjà confiance à MedAI pour des diagnostics précis' :
-               'Join hundreds of professionals who already trust MedAI for accurate diagnostics'}
+               language === 'fr' ? 'Rejoignez des centaines de professionnels qui font confiance à MedAI' :
+               'Join hundreds of professionals who trust MedAI for accurate diagnostics'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 rounded-2xl text-lg font-semibold">
-                  {language === 'es' ? 'Comenzar Gratis' :
-                   language === 'fr' ? 'Commencer Gratuitement' :
-                   'Start Free'}
+                  {language === 'es' ? 'Comenzar' :
+                   language === 'fr' ? 'Commencer' :
+                   'Start'}
                 </Button>
               </Link>
               
               <Link to="/contact">
                 <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-6 rounded-2xl text-lg font-semibold">
-                  {language === 'es' ? 'Contactar Ventas' :
-                   language === 'fr' ? 'Contacter Ventes' :
-                   'Contact Sales'}
+                  {language === 'es' ? 'Contactar' :
+                   language === 'fr' ? 'Contacter' :
+                   'Contact'}
                 </Button>
               </Link>
             </div>
