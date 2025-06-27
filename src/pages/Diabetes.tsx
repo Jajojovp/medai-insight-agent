@@ -503,24 +503,24 @@ const Diabetes = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-br from-blue-50/30 to-cyan-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
+          <Card className="bg-gradient-to-br from-blue-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
               <CardTitle className="text-3xl font-bold">
-                {language === "es" ? "Plataforma de Diagnóstico Predictivo Avanzado" : 
-                 language === "fr" ? "Plateforme de Diagnostic Prédictif Avancé" : 
-                 "Advanced Predictive Diagnostic Platform"}
+                {language === 'es' ? 'Plataforma de Diagnóstico Predictivo Avanzado' : 
+                 language === 'fr' ? 'Plateforme de Diagnostic Prédictif Avancé' : 
+                 'Advanced Predictive Diagnostic Platform'}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === "es" ? "Utilice nuestros 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado de diabetes tipo 2. Tecnología validada clínicamente con 98.8% de precisión máxima para profesionales de la salud." :
-                 language === "fr" ? "Utilisez nos 62+ modèles spécialisés d'IA pour détection précoce, stratification du risque et gestion personnalisée du diabète type 2. Technologie validée cliniquement avec 98.8% de précision maximale pour professionnels de santé." :
-                 "Use our 62+ specialized AI models for early detection, risk stratification and personalized management of type 2 diabetes. Clinically validated technology with 98.8% maximum accuracy for healthcare professionals."}
+                {language === 'es' ? 'Nuestros 8+ modelos especializados en diabetes combinan análisis bioquímico, factores de riesgo genético, historial clínico y biomarcadores avanzados para detectar diabetes tipo 2, gestacional y pre-diabetes con precisión superior al 95%.' :
+                 language === 'fr' ? 'Nos 8+ modèles spécialisés en diabète combinent analyse biochimique, facteurs de risque génétique, historique clinique et biomarqueurs avancés pour détecter diabète type 2, gestationnel et pré-diabète avec précision supérieure à 95%.' :
+                 'Our 8+ specialized diabetes models combine biochemical analysis, genetic risk factors, clinical history and advanced biomarkers to detect type 2, gestational and pre-diabetes with over 95% accuracy.'}
               </p>
               <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
-                {language === "es" ? "Iniciar Análisis Clínico Avanzado" : 
-                 language === "fr" ? "Commencer l'Analyse Clinique Avancée" : 
-                 "Start Advanced Clinical Analysis"}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>
