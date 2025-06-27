@@ -1,5 +1,6 @@
 
 import PublicNavigation from "@/components/PublicNavigation";
+import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -198,9 +199,9 @@ const Blog = () => {
              'MedAI Blog - Medical Predictive Analysis'}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Últimas noticias, casos de estudio e investigaciones sobre IA médica predictiva para 7 tipos de enfermedades críticas.' :
-             language === 'fr' ? 'Dernières nouvelles, études de cas et recherches sur l\'IA médicale prédictive pour 7 types de maladies critiques.' :
-             'Latest news, case studies and research on predictive medical AI for 7 types of critical diseases.'}
+            {language === 'es' ? 'Últimas noticias, casos de estudio e investigaciones sobre IA médica predictiva para 12 tipos de enfermedades críticas.' :
+             language === 'fr' ? 'Dernières nouvelles, études de cas et recherches sur l\'IA médicale prédictive pour 12 types de maladies critiques.' :
+             'Latest news, case studies and research on predictive medical AI for 12 types of critical diseases.'}
           </p>
         </div>
 
@@ -320,7 +321,7 @@ const Blog = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">7</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">12</div>
               <div className="text-gray-600 text-sm">
                 {language === 'es' ? 'Tipos de Análisis' :
                  language === 'fr' ? 'Types d\'Analyses' :
@@ -328,7 +329,7 @@ const Blog = () => {
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">47+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">53+</div>
               <div className="text-gray-600 text-sm">
                 {language === 'es' ? 'Modelos de IA' :
                  language === 'fr' ? 'Modèles d\'IA' :
@@ -336,15 +337,15 @@ const Blog = () => {
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">94%</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">98.8%</div>
               <div className="text-gray-600 text-sm">
-                {language === 'es' ? 'Precisión Promedio' :
-                 language === 'fr' ? 'Précision Moyenne' :
-                 'Average Accuracy'}
+                {language === 'es' ? 'Precisión Máxima' :
+                 language === 'fr' ? 'Précision Maximale' :
+                 'Maximum Accuracy'}
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">10000+</div>
               <div className="text-gray-600 text-sm">
                 {language === 'es' ? 'Casos Analizados' :
                  language === 'fr' ? 'Cas Analysés' :
@@ -354,6 +355,8 @@ const Blog = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

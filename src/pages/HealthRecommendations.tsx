@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Heart, Apple, Dumbbell, Moon, Brain, Droplets } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import PublicNavigation from "@/components/PublicNavigation";
+import Footer from "@/components/Footer";
 
 const HealthRecommendations = () => {
   const { language } = useLanguage();
@@ -256,9 +257,9 @@ const HealthRecommendations = () => {
                  "¿Listo para mejorar tu salud?"}
               </h2>
               <p className="text-lg mb-6 opacity-90">
-                {language === 'en' ? "Get personalized health recommendations with our AI-powered analysis" :
-                 language === 'fr' ? "Obtenez des recommandations de santé personnalisées avec notre analyse alimentée par l'IA" :
-                 "Obtén recomendaciones de salud personalizadas con nuestro análisis impulsado por IA"}
+                {language === 'en' ? "Get personalized health recommendations with our AI-powered analysis for 12 critical diseases" :
+                 language === 'fr' ? "Obtenez des recommandations de santé personnalisées avec notre analyse alimentée par l'IA pour 12 maladies critiques" :
+                 "Obtén recomendaciones de salud personalizadas con nuestro análisis impulsado por IA para 12 enfermedades críticas"}
               </p>
               <button className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 {language === 'en' ? "Start Health Analysis" :
@@ -269,6 +270,8 @@ const HealthRecommendations = () => {
           </Card>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

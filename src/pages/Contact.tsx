@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,6 +14,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import PublicNavigation from "@/components/PublicNavigation";
+import Footer from "@/components/Footer";
 
 const Contact = () => {
   const { t, language } = useLanguage();
@@ -107,9 +107,9 @@ const Contact = () => {
              "Contacto y Suscripciones"}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {language === 'en' ? "Request a personalized demo or subscribe to our medical AI analysis services with 53+ specialized models" :
-             language === 'fr' ? "Demandez une démo personnalisée ou abonnez-vous à nos services d'analyse médicale IA avec 53+ modèles spécialisés" :
-             "Solicita una demo personalizada o contrata nuestros servicios de análisis médico con IA con 53+ modelos especializados"}
+            {language === 'en' ? "Request a personalized demo or subscribe to our medical AI analysis services with 53+ specialized models for 12 critical diseases" :
+             language === 'fr' ? "Demandez une démo personnalisée ou abonnez-vous à nos services d'analyse médicale IA avec 53+ modèles spécialisés pour 12 maladies critiques" :
+             "Solicita una demo personalizada o contrata nuestros servicios de análisis médico con IA con 53+ modelos especializados para 12 enfermedades críticas"}
           </p>
         </div>
 
@@ -408,6 +408,8 @@ const Contact = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <Footer />
     </div>
   );
 };
