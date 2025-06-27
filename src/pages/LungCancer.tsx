@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -371,7 +370,7 @@ const LungCancer = () => {
                  language === 'fr' ? 'Nos 5+ modèles spécialisés en cancer pulmonaire intègrent analyse d\'images CT, histopathologie et biomarqueurs moléculaires pour détection précoce qui peut sauver des vies.' :
                  'Our 5+ specialized lung cancer models integrate CT image analysis, histopathology and molecular biomarkers for early detection that can save lives.'}
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-gray-600 hover:bg-gray-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}

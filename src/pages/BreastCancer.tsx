@@ -366,9 +366,9 @@ const BreastCancer = () => {
                  "Use our 62+ specialized AI models for early detection, molecular classification and prognosis prediction in breast cancer. Clinically validated technology with 98.8% maximum accuracy to optimize therapeutic decisions."}
               </p>
               <Button className="bg-pink-600 hover:bg-pink-700 rounded-2xl text-lg px-8 py-3">
-                {language === "es" ? "Iniciar Análisis Oncológico" : 
-                 language === "fr" ? "Commencer l'Analyse Oncologique" : 
-                 "Start Oncological Analysis"}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

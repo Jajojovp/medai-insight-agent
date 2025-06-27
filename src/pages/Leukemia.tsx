@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -371,7 +370,7 @@ const Leukemia = () => {
                  language === 'fr' ? 'Nos 5+ modèles spécialisés en leucémie intègrent analyse microscopique, cytométrie de flux et génétique moléculaire pour diagnostics précis qui guident thérapie ciblée.' :
                  'Our 5+ specialized leukemia models integrate microscopic analysis, flow cytometry, and molecular genetics for precise diagnoses that guide targeted therapy.'}
               </p>
-              <Button className="bg-purple-600 hover:bg-purple-700 rounded-2xl text-lg px-8 py-3">
+              <Button className="bg-red-600 hover:bg-red-700 rounded-2xl text-lg px-8 py-3">
                 {language === 'es' ? 'Iniciar IA' : 
                  language === 'fr' ? 'Commencer IA' : 
                  'Start AI'}
