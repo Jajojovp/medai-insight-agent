@@ -21,7 +21,7 @@ const Epilepsy = () => {
              language === 'fr' ? 'Épilepsie' : 
              'Epilepsy'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Predicción de Epilepsia' : 
              language === 'fr' ? 'Prédiction d\'Épilepsie' : 
              'Epilepsy Prediction'}
@@ -111,9 +111,9 @@ const Epilepsy = () => {
                  'Our 4+ specialized epilepsy models use advanced EEG analysis and deep learning to predict seizures before they occur.'}
               </p>
               <Button className="bg-indigo-600 hover:bg-indigo-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

@@ -21,7 +21,7 @@ const Leukemia = () => {
              language === 'fr' ? 'Leucémie' : 
              'Leukemia'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Detección de Leucemia' : 
              language === 'fr' ? 'Détection de Leucémie' : 
              'Leukemia Detection'}
@@ -111,9 +111,9 @@ const Leukemia = () => {
                  'Our 5+ specialized leukemia models combine microscopic analysis, flow cytometry, and genetic data for precise diagnoses that save lives.'}
               </p>
               <Button className="bg-purple-600 hover:bg-purple-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

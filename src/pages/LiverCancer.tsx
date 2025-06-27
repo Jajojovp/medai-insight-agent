@@ -21,7 +21,7 @@ const LiverCancer = () => {
              language === 'fr' ? 'Cancer du Foie' : 
              'Liver Cancer'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Detección de Cáncer Hepático' : 
              language === 'fr' ? 'Détection du Cancer Hépatique' : 
              'Liver Cancer Detection'}
@@ -111,9 +111,9 @@ const LiverCancer = () => {
                  'Our 5+ specialized liver cancer models combine CT image analysis with clinical data for early detection and precise classification.'}
               </p>
               <Button className="bg-orange-600 hover:bg-orange-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

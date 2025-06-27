@@ -21,7 +21,7 @@ const PancreaticCancer = () => {
              language === 'fr' ? 'Cancer du Pancréas' : 
              'Pancreatic Cancer'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Detección del "Asesino Silencioso"' : 
              language === 'fr' ? 'Détection du "Tueur Silencieux"' : 
              'Detection of the "Silent Killer"'}
@@ -129,9 +129,9 @@ const PancreaticCancer = () => {
                 </div>
               </div>
               <Button className="bg-amber-600 hover:bg-amber-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

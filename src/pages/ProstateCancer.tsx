@@ -22,7 +22,7 @@ const ProstateCancer = () => {
              language === "fr" ? "Cancer de la Prostate" : 
              "Prostate Cancer"}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             {language === "es" ? "Análisis Predictivo de Cáncer de Próstata" : 
              language === "fr" ? "Analyse Prédictive du Cancer de la Prostate" : 
              "Prostate Cancer Predictive Analysis"}
@@ -364,9 +364,9 @@ const ProstateCancer = () => {
                  "Use our 62+ specialized AI models for early detection, risk stratification and treatment optimization in prostate cancer. Clinically validated technology with 98.8% maximum accuracy."}
               </p>
               <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl text-lg px-8 py-3">
-                {language === "es" ? "Iniciar Análisis Prostático" : 
-                 language === "fr" ? "Commencer l\\'Analyse Prostatique" : 
-                 "Start Prostate Analysis"}
+                {language === "es" ? "Iniciar IA" : 
+                 language === "fr" ? "Commencer IA" : 
+                 "Start AI"}
               </Button>
             </CardContent>
           </Card>

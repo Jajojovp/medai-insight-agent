@@ -21,7 +21,7 @@ const ChronicKidneyDisease = () => {
              language === 'fr' ? 'Maladie Rénale Chronique' : 
              'Chronic Kidney Disease'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Detección Temprana de Enfermedad Renal' : 
              language === 'fr' ? 'Détection Précoce de Maladie Rénale' : 
              'Early Kidney Disease Detection'}
@@ -129,9 +129,9 @@ const ChronicKidneyDisease = () => {
                 </div>
               </div>
               <Button className="bg-teal-600 hover:bg-teal-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

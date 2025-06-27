@@ -21,7 +21,7 @@ const HeartDisease = () => {
              language === 'fr' ? 'Maladies Cardiaques' : 
              'Heart Disease'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Predicción de Enfermedades Cardiovasculares' : 
              language === 'fr' ? 'Prédiction des Maladies Cardiovasculaires' : 
              'Cardiovascular Disease Prediction'}
@@ -129,9 +129,9 @@ const HeartDisease = () => {
                 </div>
               </div>
               <Button className="bg-red-600 hover:bg-red-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>

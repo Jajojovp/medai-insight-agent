@@ -21,7 +21,7 @@ const StomachCancer = () => {
              language === 'fr' ? 'Cancer de l\'Estomac' : 
              'Stomach Cancer'}
           </Badge>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
             {language === 'es' ? 'Detección de Cáncer Gástrico' : 
              language === 'fr' ? 'Détection du Cancer Gastrique' : 
              'Gastric Cancer Detection'}
@@ -111,9 +111,9 @@ const StomachCancer = () => {
                  'Our 5+ specialized gastric cancer models combine histopathological image analysis with clinical data for life-saving early detection.'}
               </p>
               <Button className="bg-red-600 hover:bg-red-700 rounded-2xl">
-                {language === 'es' ? 'Iniciar Análisis' : 
-                 language === 'fr' ? 'Commencer l\'Analyse' : 
-                 'Start Analysis'}
+                {language === 'es' ? 'Iniciar IA' : 
+                 language === 'fr' ? 'Commencer IA' : 
+                 'Start AI'}
               </Button>
             </CardContent>
           </Card>
