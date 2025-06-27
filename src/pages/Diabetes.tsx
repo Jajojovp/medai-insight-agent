@@ -126,7 +126,7 @@ const Diabetes = () => {
                    'Non-Modifiable Factors'}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• {language === 'es' ? 'Edad ≥45 años' : 'Âge ≥45 ans' : 'Age ≥45 years'}</li>
+                  <li>• {language === 'es' ? 'Edad mayor o igual a 45 años' : 'Âge supérieur ou égal à 45 ans' : 'Age greater than or equal to 45 years'}</li>
                   <li>• {language === 'es' ? 'Historia familiar de diabetes' : 'Histoire familiale de diabète' : 'Family history of diabetes'}</li>
                   <li>• {language === 'es' ? 'Etnicidad (hispanos, afroamericanos, asiáticos)' : 'Ethnicité (hispaniques, afro-américains, asiatiques)' : 'Ethnicity (Hispanic, African American, Asian)'}</li>
                   <li>• {language === 'es' ? 'Diabetes gestacional previa' : 'Diabète gestationnel antérieur' : 'Previous gestational diabetes'}</li>
@@ -140,10 +140,10 @@ const Diabetes = () => {
                    'Modifiable Factors'}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• {language === 'es' ? 'IMC ≥25 kg/m² (≥23 en asiáticos)' : 'IMC ≥25 kg/m² (≥23 chez les asiatiques)' : 'BMI ≥25 kg/m² (≥23 in Asians)'}</li>
+                  <li>• {language === 'es' ? 'IMC mayor o igual a 25 kg/m² (mayor o igual a 23 en asiáticos)' : 'IMC supérieur ou égal à 25 kg/m² (supérieur ou égal à 23 chez les asiatiques)' : 'BMI greater than or equal to 25 kg/m² (greater than or equal to 23 in Asians)'}</li>
                   <li>• {language === 'es' ? 'Sedentarismo' : 'Sédentarité' : 'Physical inactivity'}</li>
-                  <li>• {language === 'es' ? 'Hipertensión arterial (≥140/90 mmHg)' : 'Hypertension artérielle (≥140/90 mmHg)' : 'Hypertension (≥140/90 mmHg)'}</li>
-                  <li>• {language === 'es' ? 'Dislipidemia (HDL <35 mg/dL, TG >250 mg/dL)' : 'Dyslipidémie (HDL <35 mg/dL, TG >250 mg/dL)' : 'Dyslipidemia (HDL <35 mg/dL, TG >250 mg/dL)'}</li>
+                  <li>• {language === 'es' ? 'Hipertensión arterial (mayor o igual a 140/90 mmHg)' : 'Hypertension artérielle (supérieur ou égal à 140/90 mmHg)' : 'Hypertension (greater than or equal to 140/90 mmHg)'}</li>
+                  <li>• {language === 'es' ? 'Dislipidemia (HDL menor de 35 mg/dL, TG mayor de 250 mg/dL)' : 'Dyslipidémie (HDL moins de 35 mg/dL, TG supérieur à 250 mg/dL)' : 'Dyslipidemia (HDL less than 35 mg/dL, TG greater than 250 mg/dL)'}</li>
                   <li>• {language === 'es' ? 'Dieta rica en azúcares refinados' : 'Régime riche en sucres raffinés' : 'Diet high in refined sugars'}</li>
                 </ul>
               </div>
@@ -154,10 +154,10 @@ const Diabetes = () => {
                    'Screening Criteria'}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• {language === 'es' ? 'Glucosa en ayunas ≥126 mg/dL' : 'Glucose à jeun ≥126 mg/dL' : 'Fasting glucose ≥126 mg/dL'}</li>
-                  <li>• {language === 'es' ? 'HbA1c ≥6.5%' : 'HbA1c ≥6.5%' : 'HbA1c ≥6.5%'}</li>
-                  <li>• {language === 'es' ? 'Glucosa 2h post-OGTT ≥200 mg/dL' : 'Glucose 2h post-OGTT ≥200 mg/dL' : '2h post-OGTT glucose ≥200 mg/dL'}</li>
-                  <li>• {language === 'es' ? 'Glucosa aleatoria ≥200 mg/dL + síntomas' : 'Glucose aléatoire ≥200 mg/dL + symptômes' : 'Random glucose ≥200 mg/dL + symptoms'}</li>
+                  <li>• {language === 'es' ? 'Glucosa en ayunas mayor o igual a 126 mg/dL' : 'Glucose à jeun supérieur ou égal à 126 mg/dL' : 'Fasting glucose greater than or equal to 126 mg/dL'}</li>
+                  <li>• {language === 'es' ? 'HbA1c mayor o igual a 6.5%' : 'HbA1c supérieur ou égal à 6.5%' : 'HbA1c greater than or equal to 6.5%'}</li>
+                  <li>• {language === 'es' ? 'Glucosa 2h post-OGTT mayor o igual a 200 mg/dL' : 'Glucose 2h post-OGTT supérieur ou égal à 200 mg/dL' : '2h post-OGTT glucose greater than or equal to 200 mg/dL'}</li>
+                  <li>• {language === 'es' ? 'Glucosa aleatoria mayor o igual a 200 mg/dL + síntomas' : 'Glucose aléatoire supérieur ou égal à 200 mg/dL + symptômes' : 'Random glucose greater than or equal to 200 mg/dL + symptoms'}</li>
                   <li>• {language === 'es' ? 'Cribado cada 3 años si normal' : 'Dépistage tous les 3 ans si normal' : 'Screen every 3 years if normal'}</li>
                 </ul>
               </div>
@@ -254,7 +254,7 @@ const Diabetes = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>HbA1c:</strong> {language === 'es' ? 'Cada 3 meses si HbA1c >7%, cada 6 meses si estable <7%. Meta: <7% (53 mmol/mol) en adultos sanos' : 'Tous les 3 mois si HbA1c >7%, tous les 6 mois si stable <7%. Objectif: <7% (53 mmol/mol) chez adultes sains' : 'Every 3 months if HbA1c >7%, every 6 months if stable <7%. Target: <7% (53 mmol/mol) in healthy adults'}
+                      <strong>HbA1c:</strong> {language === 'es' ? 'Cada 3 meses si HbA1c mayor de 7%, cada 6 meses si estable menor de 7%. Meta: menor de 7% (53 mmol/mol) en adultos sanos' : 'Tous les 3 mois si HbA1c supérieur à 7%, tous les 6 mois si stable inférieur à 7%. Objectif: inférieur à 7% (53 mmol/mol) chez adultes sains' : 'Every 3 months if HbA1c greater than 7%, every 6 months if stable less than 7%. Target: less than 7% (53 mmol/mol) in healthy adults'}
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -266,7 +266,7 @@ const Diabetes = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Perfil lipídico:' : 'Profil lipidique:' : 'Lipid profile:'}</strong> {language === 'es' ? 'Anual si controlado, cada 3-6 meses si no controlado. Meta LDL <100 mg/dL (<70 si riesgo CV alto)' : 'Annuel si contrôlé, tous les 3-6 mois si non contrôlé. Objectif LDL <100 mg/dL (<70 si risque CV élevé)' : 'Annual if controlled, every 3-6 months if uncontrolled. LDL target <100 mg/dL (<70 if high CV risk)'}
+                      <strong>{language === 'es' ? 'Perfil lipídico:' : 'Profil lipidique:' : 'Lipid profile:'}</strong> {language === 'es' ? 'Anual si controlado, cada 3-6 meses si no controlado. Meta LDL menor de 100 mg/dL (menor de 70 si riesgo CV alto)' : 'Annuel si contrôlé, tous les 3-6 mois si non contrôlé. Objectif LDL inférieur à 100 mg/dL (inférieur à 70 si risque CV élevé)' : 'Annual if controlled, every 3-6 months if uncontrolled. LDL target less than 100 mg/dL (less than 70 if high CV risk)'}
                     </div>
                   </li>
                 </ul>
@@ -282,7 +282,7 @@ const Diabetes = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Primera línea:' : 'Première ligne:' : 'First line:'}</strong> {language === 'es' ? 'Metformina 500-2000 mg/día + cambios de estilo de vida. Contraindicada si eGFR <30 mL/min/1.73m²' : 'Metformine 500-2000 mg/jour + changements de style de vie. Contre-indiquée si eGFR <30 mL/min/1.73m²' : 'Metformin 500-2000 mg/day + lifestyle changes. Contraindicated if eGFR <30 mL/min/1.73m²'}
+                      <strong>{language === 'es' ? 'Primera línea:' : 'Première ligne:' : 'First line:'}</strong> {language === 'es' ? 'Metformina 500-2000 mg/día + cambios de estilo de vida. Contraindicada si eGFR menor de 30 mL/min/1.73m²' : 'Metformine 500-2000 mg/jour + changements de style de vie. Contre-indiquée si eGFR inférieur à 30 mL/min/1.73m²' : 'Metformin 500-2000 mg/day + lifestyle changes. Contraindicated if eGFR less than 30 mL/min/1.73m²'}
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -294,7 +294,7 @@ const Diabetes = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Insulina:' : 'Insuline:' : 'Insulin:'}</strong> {language === 'es' ? 'Considerar si HbA1c >9%, síntomas de hiperglucemia severa, o falla a combinación oral tras 3-6 meses' : 'Considérer si HbA1c >9%, symptômes d\'hyperglycémie sévère, ou échec à combinaison orale après 3-6 mois' : 'Consider if HbA1c >9%, severe hyperglycemia symptoms, or failure of oral combination after 3-6 months'}
+                      <strong>{language === 'es' ? 'Insulina:' : 'Insuline:' : 'Insulin:'}</strong> {language === 'es' ? 'Considerar si HbA1c mayor de 9%, síntomas de hiperglucemia severa, o falla a combinación oral tras 3-6 meses' : 'Considérer si HbA1c supérieur à 9%, symptômes d\'hyperglycémie sévère, ou échec à combinaison orale après 3-6 mois' : 'Consider if HbA1c greater than 9%, severe hyperglycemia symptoms, or failure of oral combination after 3-6 months'}
                     </div>
                   </li>
                 </ul>
@@ -342,7 +342,7 @@ const Diabetes = () => {
                 </h4>
                 <ul className="text-sm text-gray-600 space-y-2">
                   <li>• {language === 'es' ? 'eGFR y albuminuria anual' : 'eGFR et albuminurie annuelle' : 'Annual eGFR and albuminuria'}</li>
-                  <li>• {language === 'es' ? 'Meta PA <130/80 mmHg' : 'Objectif PA <130/80 mmHg' : 'BP target <130/80 mmHg'}</li>
+                  <li>• {language === 'es' ? 'Meta PA menor de 130/80 mmHg' : 'Objectif PA inférieur à 130/80 mmHg' : 'BP target less than 130/80 mmHg'}</li>
                   <li>• {language === 'es' ? 'IECA/ARA II si proteinuria' : 'IECA/ARA II si protéinurie' : 'ACEi/ARB if proteinuria'}</li>
                   <li>• {language === 'es' ? 'iSGLT2 para protección renal' : 'iSGLT2 pour protection rénale' : 'SGLT2i for renal protection'}</li>
                 </ul>
@@ -416,19 +416,19 @@ const Diabetes = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Ejercicio aeróbico:' : 'Exercice aérobique:' : 'Aerobic exercise:'}</strong> {language === 'es' ? '≥150 min/semana intensidad moderada (50-70% FC máx) o ≥75 min intensidad vigorosa' : '≥150 min/semaine intensité modérée (50-70% FC max) ou ≥75 min intensité vigoureuse' : '≥150 min/week moderate intensity (50-70% max HR) or ≥75 min vigorous intensity'}
+                      <strong>{language === 'es' ? 'Ejercicio aeróbico:' : 'Exercice aérobique:' : 'Aerobic exercise:'}</strong> {language === 'es' ? 'mayor o igual a 150 min/semana intensidad moderada (50-70% FC máx) o mayor o igual a 75 min intensidad vigorosa' : 'supérieur ou égal à 150 min/semaine intensité modérée (50-70% FC max) ou supérieur ou égal à 75 min intensité vigoureuse' : 'greater than or equal to 150 min/week moderate intensity (50-70% max HR) or greater than or equal to 75 min vigorous intensity'}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Ejercicio de resistencia:' : 'Exercice de résistance:' : 'Resistance exercise:'}</strong> {language === 'es' ? '≥2 sesiones/semana, trabajando grandes grupos musculares (8-10 ejercicios, 1-3 series, 8-15 repeticiones)' : '≥2 séances/semaine, travaillant grands groupes musculaires (8-10 exercices, 1-3 séries, 8-15 répétitions)' : '≥2 sessions/week, working major muscle groups (8-10 exercises, 1-3 sets, 8-15 reps)'}
+                      <strong>{language === 'es' ? 'Ejercicio de resistencia:' : 'Exercice de résistance:' : 'Resistance exercise:'}</strong> {language === 'es' ? 'mayor o igual a 2 sesiones/semana, trabajando grandes grupos musculares (8-10 ejercicios, 1-3 series, 8-15 repeticiones)' : 'supérieur ou égal à 2 séances/semaine, travaillant grands groupes musculaires (8-10 exercices, 1-3 séries, 8-15 répétitions)' : 'greater than or equal to 2 sessions/week, working major muscle groups (8-10 exercises, 1-3 sets, 8-15 reps)'}
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === 'es' ? 'Precauciones:' : 'Précautions:' : 'Precautions:'}</strong> {language === 'es' ? 'Evaluación CV previa, evitar ejercicio si glucosa >300 mg/dL, vigilar hipoglucemias en insulina/secretagogos' : 'Évaluation CV préalable, éviter exercice si glucose >300 mg/dL, surveiller hypoglycémies sous insuline/sécrétagogues' : 'Prior CV evaluation, avoid exercise if glucose >300 mg/dL, monitor hypoglycemia on insulin/secretagogues'}
+                      <strong>{language === 'es' ? 'Precauciones:' : 'Précautions:' : 'Precautions:'}</strong> {language === 'es' ? 'Evaluación CV previa, evitar ejercicio si glucosa mayor de 300 mg/dL, vigilar hipoglucemias en insulina/secretagogos' : 'Évaluation CV préalable, éviter exercice si glucose supérieur à 300 mg/dL, surveiller hypoglycémies sous insuline/sécrétagogues' : 'Prior CV evaluation, avoid exercise if glucose greater than 300 mg/dL, monitor hypoglycemia on insulin/secretagogues'}
                     </div>
                   </li>
                 </ul>
