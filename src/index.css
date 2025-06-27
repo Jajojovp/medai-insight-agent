@@ -1,4 +1,5 @@
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,7 +47,7 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Blog specific colors */
+    /* Blog specific colors - Fixed contrast issues */
     --blog-background: 0 0% 99%;
     --blog-card: 0 0% 100%;
     --blog-text: 215 20% 15%;
@@ -92,7 +93,7 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Blog specific colors - dark mode */
+    /* Blog specific colors - dark mode - Fixed contrast issues */
     --blog-background: 222.2 84% 5%;
     --blog-card: 222.2 84% 8%;
     --blog-text: 210 40% 95%;
@@ -111,20 +112,24 @@
     @apply bg-background text-foreground;
   }
 
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
   /* Blog specific styles */
   .blog-container {
-    background-color: hsl(var(--blog-background));
-    color: hsl(var(--blog-text));
+    @apply bg-blog-background text-blog-text;
   }
 
   .blog-card {
-    background-color: hsl(var(--blog-card));
-    border: 1px solid hsl(var(--blog-border));
-    color: hsl(var(--blog-text));
+    @apply bg-blog-card border border-blog-border text-blog-text;
   }
 
   .blog-text-light {
-    color: hsl(var(--blog-text-light));
+    @apply text-blog-text-light;
   }
 
   /* Reading progress bar */
@@ -132,11 +137,6 @@
     height: 4px;
     background: linear-gradient(90deg, hsl(var(--blog-accent)) 0%, hsl(var(--primary)) 100%);
     transition: width 0.3s ease;
-  }
-
-  /* Smooth scrolling for anchor links */
-  html {
-    scroll-behavior: smooth;
   }
 
   /* Article typography */
