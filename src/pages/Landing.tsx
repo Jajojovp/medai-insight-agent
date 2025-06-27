@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,11 +14,8 @@ import {
   TrendingUp,
   CheckCircle,
   ArrowRight,
-  Star,
-  Hospital,
-  UserCheck,
-  Clock,
-  BarChart3
+  BarChart3,
+  Clock
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -26,46 +24,45 @@ import Footer from "@/components/Footer";
 
 const Landing = () => {
   const { language } = useLanguage();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const features = [
     {
       icon: Brain,
       title: {
-        es: 'IA Médica Avanzada',
-        en: 'Advanced Medical AI',
-        fr: 'IA Médicale Avancée'
+        es: 'IA Médica',
+        en: 'Medical AI',
+        fr: 'IA Médicale'
       },
       description: {
-        es: 'Algoritmos de inteligencia artificial entrenados específicamente para cada enfermedad crítica',
-        en: 'AI algorithms specifically trained for each critical disease',
-        fr: 'Algorithmes d\'IA spécifiquement entraînés pour chaque maladie critique'
+        es: 'Algoritmos especializados para cada enfermedad crítica',
+        en: 'Specialized algorithms for each critical disease',
+        fr: 'Algorithmes spécialisés pour chaque maladie critique'
       }
     },
     {
       icon: Shield,
       title: {
-        es: 'Seguridad Médica',
-        en: 'Medical Security',
-        fr: 'Sécurité Médicale'
+        es: 'Seguridad',
+        en: 'Security',
+        fr: 'Sécurité'
       },
       description: {
-        es: 'Cumplimiento total con estándares HIPAA y protección de datos médicos sensibles',
-        en: 'Full HIPAA compliance and sensitive medical data protection',
-        fr: 'Conformité HIPAA complète et protection des données médicales sensibles'
+        es: 'Cumplimiento HIPAA y protección de datos médicos',
+        en: 'HIPAA compliance and medical data protection',
+        fr: 'Conformité HIPAA et protection données médicales'
       }
     },
     {
       icon: Activity,
       title: {
-        es: 'Diagnóstico Preciso',
-        en: 'Accurate Diagnosis',
-        fr: 'Diagnostic Précis'
+        es: 'Precisión 98%',
+        en: '98% Accuracy',
+        fr: 'Précision 98%'
       },
       description: {
-        es: 'Precisión diagnóstica superior al 95% en la detección temprana de enfermedades',
-        en: 'Diagnostic accuracy above 95% in early disease detection',
-        fr: 'Précision diagnostique supérieure à 95% dans la détection précoce des maladies'
+        es: 'Detección temprana con alta precisión diagnóstica',
+        en: 'Early detection with high diagnostic accuracy',
+        fr: 'Détection précoce avec haute précision diagnostique'
       }
     },
     {
@@ -76,9 +73,9 @@ const Landing = () => {
         fr: 'Analyse Rapide'
       },
       description: {
-        es: 'Resultados médicos en tiempo real para toma de decisiones clínicas inmediatas',
-        en: 'Real-time medical results for immediate clinical decision-making',
-        fr: 'Résultats médicaux en temps réel pour prise de décisions cliniques immédiates'
+        es: 'Resultados en tiempo real para decisiones inmediatas',
+        en: 'Real-time results for immediate decisions',
+        fr: 'Résultats temps réel pour décisions immédiates'
       }
     }
   ];
@@ -91,62 +88,145 @@ const Landing = () => {
         fr: 'Oncologie'
       },
       items: [
-        { es: 'Cáncer de Mama', en: 'Breast Cancer', fr: 'Cancer du Sein' },
-        { es: 'Cáncer de Próstata', en: 'Prostate Cancer', fr: 'Cancer de la Prostate' },
-        { es: 'Leucemia', en: 'Leukemia', fr: 'Leucémie' },
-        { es: 'Cáncer de Pulmón', en: 'Lung Cancer', fr: 'Cancer du Poumon' }
+        { 
+          id: 'breast-cancer',
+          name: { es: 'Cáncer de Mama', en: 'Breast Cancer', fr: 'Cancer du Sein' },
+          description: { 
+            es: 'Detección temprana en mujeres 40-69 años. Factor de riesgo: historial familiar.',
+            en: 'Early detection in women 40-69 years. Risk factor: family history.',
+            fr: 'Détection précoce chez femmes 40-69 ans. Facteur risque: antécédents familiaux.'
+          },
+          prevalence: { es: '1 de cada 8 mujeres', en: '1 in 8 women', fr: '1 femme sur 8' }
+        },
+        { 
+          id: 'prostate-cancer',
+          name: { es: 'Cáncer de Próstata', en: 'Prostate Cancer', fr: 'Cancer Prostate' },
+          description: { 
+            es: 'Común en hombres >50 años. Screening PSA recomendado anualmente.',
+            en: 'Common in men >50 years. Annual PSA screening recommended.',
+            fr: 'Fréquent chez hommes >50 ans. Dépistage PSA annuel recommandé.'
+          },
+          prevalence: { es: '1 de cada 9 hombres', en: '1 in 9 men', fr: '1 homme sur 9' }
+        },
+        { 
+          id: 'lung-cancer',
+          name: { es: 'Cáncer de Pulmón', en: 'Lung Cancer', fr: 'Cancer Poumon' },
+          description: { 
+            es: 'Altamente letal. Fumadores tienen 15-30x más riesgo.',
+            en: 'Highly lethal. Smokers have 15-30x higher risk.',
+            fr: 'Très létal. Fumeurs ont risque 15-30x plus élevé.'
+          },
+          prevalence: { es: '2.2M casos/año', en: '2.2M cases/year', fr: '2.2M cas/an' }
+        },
+        { 
+          id: 'pancreatic-cancer',
+          name: { es: 'Cáncer Páncreas', en: 'Pancreatic Cancer', fr: 'Cancer Pancréas' },
+          description: { 
+            es: 'Difícil detección temprana. Diabetes de inicio tardío puede ser síntoma.',
+            en: 'Difficult early detection. Late-onset diabetes may be symptom.',
+            fr: 'Détection précoce difficile. Diabète tardif peut être symptôme.'
+          },
+          prevalence: { es: '495K casos/año', en: '495K cases/year', fr: '495K cas/an' }
+        },
+        { 
+          id: 'liver-cancer',
+          name: { es: 'Cáncer Hígado', en: 'Liver Cancer', fr: 'Cancer Foie' },
+          description: { 
+            es: 'Relacionado con hepatitis B/C y cirrosis. Más común en hombres.',
+            en: 'Related to hepatitis B/C and cirrhosis. More common in men.',
+            fr: 'Lié à hépatite B/C et cirrhose. Plus fréquent chez hommes.'
+          },
+          prevalence: { es: '906K casos/año', en: '906K cases/year', fr: '906K cas/an' }
+        },
+        { 
+          id: 'stomach-cancer',
+          name: { es: 'Cáncer Estómago', en: 'Stomach Cancer', fr: 'Cancer Estomac' },
+          description: { 
+            es: 'Infección H. pylori aumenta riesgo. Dieta rica en sal factor de riesgo.',
+            en: 'H. pylori infection increases risk. High-salt diet risk factor.',
+            fr: 'Infection H. pylori augmente risque. Régime salé facteur risque.'
+          },
+          prevalence: { es: '1.1M casos/año', en: '1.1M cases/year', fr: '1.1M cas/an' }
+        },
+        { 
+          id: 'leukemia',
+          name: { es: 'Leucemia', en: 'Leukemia', fr: 'Leucémie' },
+          description: { 
+            es: 'Cáncer de sangre. Síntomas: fatiga, fiebre, sangrado fácil.',
+            en: 'Blood cancer. Symptoms: fatigue, fever, easy bleeding.',
+            fr: 'Cancer du sang. Symptômes: fatigue, fièvre, saignements faciles.'
+          },
+          prevalence: { es: '474K casos/año', en: '474K cases/year', fr: '474K cas/an' }
+        }
       ]
     },
     {
       category: {
-        es: 'Cardiología',
-        en: 'Cardiology',
-        fr: 'Cardiologie'
+        es: 'Cardiovascular',
+        en: 'Cardiovascular',
+        fr: 'Cardiovasculaire'
       },
       items: [
-        { es: 'Enfermedad Cardíaca', en: 'Heart Disease', fr: 'Maladie Cardiaque' },
-        { es: 'Accidente Cerebrovascular', en: 'Stroke', fr: 'AVC' }
+        { 
+          id: 'heart-disease',
+          name: { es: 'Enfermedad Cardíaca', en: 'Heart Disease', fr: 'Maladie Cardiaque' },
+          description: { 
+            es: 'Principal causa de muerte. Colesterol alto, hipertensión factores clave.',
+            en: 'Leading cause of death. High cholesterol, hypertension key factors.',
+            fr: 'Principale cause de décès. Cholestérol élevé, hypertension facteurs clés.'
+          },
+          prevalence: { es: '18.6M muertes/año', en: '18.6M deaths/year', fr: '18.6M décès/an' }
+        },
+        { 
+          id: 'stroke',
+          name: { es: 'ACV', en: 'Stroke', fr: 'AVC' },
+          description: { 
+            es: 'Emergencia médica. Tiempo crítico: primeras 3-4 horas.',
+            en: 'Medical emergency. Critical time: first 3-4 hours.',
+            fr: 'Urgence médicale. Temps critique: premières 3-4 heures.'
+          },
+          prevalence: { es: '6.5M muertes/año', en: '6.5M deaths/year', fr: '6.5M décès/an' }
+        }
       ]
     },
     {
       category: {
-        es: 'Endocrinología',
-        en: 'Endocrinology',
-        fr: 'Endocrinologie'
+        es: 'Metabólicas',
+        en: 'Metabolic',
+        fr: 'Métaboliques'
       },
       items: [
-        { es: 'Diabetes', en: 'Diabetes', fr: 'Diabète' },
-        { es: 'Enfermedad Renal', en: 'Kidney Disease', fr: 'Maladie Rénale' }
+        { 
+          id: 'diabetes',
+          name: { es: 'Diabetes', en: 'Diabetes', fr: 'Diabète' },
+          description: { 
+            es: 'Tipo 2 prevenible con dieta y ejercicio. HbA1c <7% objetivo.',
+            en: 'Type 2 preventable with diet and exercise. HbA1c <7% target.',
+            fr: 'Type 2 prévenible avec régime et exercice. HbA1c <7% objectif.'
+          },
+          prevalence: { es: '537M adultos', en: '537M adults', fr: '537M adultes' }
+        },
+        { 
+          id: 'chronic-kidney-disease',
+          name: { es: 'Enfermedad Renal', en: 'Kidney Disease', fr: 'Maladie Rénale' },
+          description: { 
+            es: 'Progresa silenciosamente. Diabetes e hipertensión causas principales.',
+            en: 'Progresses silently. Diabetes and hypertension main causes.',
+            fr: 'Progresse silencieusement. Diabète et hypertension causes principales.'
+          },
+          prevalence: { es: '850M personas', en: '850M people', fr: '850M personnes' }
+        },
+        { 
+          id: 'epilepsy',
+          name: { es: 'Epilepsia', en: 'Epilepsy', fr: 'Épilepsie' },
+          description: { 
+            es: 'Trastorno neurológico. 70% puede controlarse con medicación.',
+            en: 'Neurological disorder. 70% can be controlled with medication.',
+            fr: 'Trouble neurologique. 70% peut être contrôlé avec médication.'
+          },
+          prevalence: { es: '50M personas', en: '50M people', fr: '50M personnes' }
+        }
       ]
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Dr. María González',
-      role: {
-        es: 'Oncóloga - Hospital Universitario',
-        en: 'Oncologist - University Hospital',
-        fr: 'Oncologue - Hôpital Universitaire'
-      },
-      content: {
-        es: 'MedAI ha revolucionado nuestro enfoque diagnóstico. La precisión en la detección temprana de cáncer de mama ha mejorado significativamente.',
-        en: 'MedAI has revolutionized our diagnostic approach. Accuracy in early breast cancer detection has improved significantly.',
-        fr: 'MedAI a révolutionné notre approche diagnostique. La précision dans la détection précoce du cancer du sein s\'est considérablement améliorée.'
-      }
-    },
-    {
-      name: 'Dr. Carlos Mendoza',
-      role: {
-        es: 'Cardiólogo - Clínica San Rafael',
-        en: 'Cardiologist - San Rafael Clinic',
-        fr: 'Cardiologue - Clinique San Rafael'
-      },
-      content: {
-        es: 'La plataforma nos permite identificar riesgos cardiovasculares que antes pasaban desapercibidos. Es una herramienta invaluable.',
-        en: 'The platform allows us to identify cardiovascular risks that previously went unnoticed. It\'s an invaluable tool.',
-        fr: 'La plateforme nous permet d\'identifier des risques cardiovasculaires qui passaient inaperçus auparavant. C\'est un outil inestimable.'
-      }
     }
   ];
 
@@ -154,33 +234,87 @@ const Landing = () => {
     {
       number: '98.5%',
       label: {
-        es: 'Precisión Diagnóstica',
-        en: 'Diagnostic Accuracy',
-        fr: 'Précision Diagnostique'
+        es: 'Precisión',
+        en: 'Accuracy',
+        fr: 'Précision'
       }
     },
     {
-      number: '50,000+',
+      number: '50K+',
       label: {
-        es: 'Pacientes Analizados',
-        en: 'Patients Analyzed',
-        fr: 'Patients Analysés'
+        es: 'Análisis',
+        en: 'Analysis',
+        fr: 'Analyses'
       }
     },
     {
       number: '200+',
       label: {
-        es: 'Hospitales Activos',
-        en: 'Active Hospitals',
-        fr: 'Hôpitaux Actifs'
+        es: 'Hospitales',
+        en: 'Hospitals',
+        fr: 'Hôpitaux'
       }
     },
     {
       number: '12',
       label: {
-        es: 'Enfermedades Críticas',
-        en: 'Critical Diseases',
-        fr: 'Maladies Critiques'
+        es: 'Enfermedades',
+        en: 'Diseases',
+        fr: 'Maladies'
+      }
+    }
+  ];
+
+  const medicalBenefits = [
+    {
+      title: {
+        es: 'Detección Temprana',
+        en: 'Early Detection',
+        fr: 'Détection Précoce'
+      },
+      stat: {
+        es: '40% mejor supervivencia',
+        en: '40% better survival',
+        fr: '40% meilleure survie'
+      },
+      description: {
+        es: 'La detección temprana mejora significativamente las tasas de supervivencia en cáncer',
+        en: 'Early detection significantly improves cancer survival rates',
+        fr: 'La détection précoce améliore significativement les taux de survie du cancer'
+      }
+    },
+    {
+      title: {
+        es: 'Reducción de Costos',
+        en: 'Cost Reduction',
+        fr: 'Réduction Coûts'
+      },
+      stat: {
+        es: '60% menos gastos',
+        en: '60% less expenses',
+        fr: '60% moins dépenses'
+      },
+      description: {
+        es: 'El diagnóstico temprano reduce costos de tratamiento y hospitalización',
+        en: 'Early diagnosis reduces treatment and hospitalization costs',
+        fr: 'Le diagnostic précoce réduit les coûts de traitement et hospitalisation'
+      }
+    },
+    {
+      title: {
+        es: 'Precisión Diagnóstica',
+        en: 'Diagnostic Precision',
+        fr: 'Précision Diagnostique'
+      },
+      stat: {
+        es: '95% de exactitud',
+        en: '95% accuracy',
+        fr: '95% précision'
+      },
+      description: {
+        es: 'IA médica supera precisión diagnóstica de métodos tradicionales',
+        en: 'Medical AI surpasses diagnostic accuracy of traditional methods',
+        fr: 'IA médicale dépasse précision diagnostique des méthodes traditionnelles'
       }
     }
   ];
@@ -196,9 +330,9 @@ const Landing = () => {
             <div className="space-y-4">
               <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full px-4 py-2">
                 <Stethoscope className="h-4 w-4 mr-2" />
-                {language === 'es' ? 'Medicina Predictiva con IA' : 
-                 language === 'fr' ? 'Médecine Prédictive avec IA' : 
-                 'Predictive Medicine with AI'}
+                {language === 'es' ? 'IA Médica' : 
+                 language === 'fr' ? 'IA Médicale' : 
+                 'Medical AI'}
               </Badge>
               
               <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -206,16 +340,16 @@ const Landing = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                {language === 'es' ? 'Diagnóstico médico inteligente para 12 enfermedades críticas. Detección temprana, precisión superior y resultados confiables para profesionales de la salud.' :
-                 language === 'fr' ? 'Diagnostic médical intelligent pour 12 maladies critiques. Détection précoce, précision supérieure et résultats fiables pour professionnels de santé.' :
-                 'Intelligent medical diagnosis for 12 critical diseases. Early detection, superior accuracy and reliable results for healthcare professionals.'}
+                {language === 'es' ? 'Diagnóstico IA para 12 enfermedades críticas. Detección temprana y resultados confiables.' :
+                 language === 'fr' ? 'Diagnostic IA pour 12 maladies critiques. Détection précoce et résultats fiables.' :
+                 'AI diagnosis for 12 critical diseases. Early detection and reliable results.'}
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/dashboard">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-2xl text-lg font-semibold shadow-xl">
-                  {language === 'es' ? 'Comenzar' :
+                  {language === 'es' ? 'Iniciar' :
                    language === 'fr' ? 'Commencer' :
                    'Start'}
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -223,10 +357,10 @@ const Landing = () => {
               </Link>
               
               <Link to="/features">
-                <Button variant="outline" size="lg" className="px-8 py-6 rounded-2xl text-lg font-semibold border-2 hover:bg-gray-50">
+                <Button variant="outline" size="lg" className="bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 px-8 py-6 rounded-2xl text-lg font-semibold">
                   {language === 'es' ? 'Ver Más' :
                    language === 'fr' ? 'Voir Plus' :
-                   'View More'}
+                   'Learn More'}
                 </Button>
               </Link>
             </div>
@@ -257,14 +391,14 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'Tecnología Médica Avanzada' :
-               language === 'fr' ? 'Technologie Médicale Avancée' :
-               'Advanced Medical Technology'}
+              {language === 'es' ? 'Tecnología IA' :
+               language === 'fr' ? 'Technologie IA' :
+               'AI Technology'}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {language === 'es' ? 'Herramientas de diagnóstico respaldadas por inteligencia artificial para mejorar la precisión médica' :
-               language === 'fr' ? 'Outils de diagnostic soutenus par intelligence artificielle pour améliorer la précision médicale' :
-               'AI-powered diagnostic tools to improve medical accuracy'}
+              {language === 'es' ? 'Herramientas diagnósticas avanzadas para mejorar precisión médica' :
+               language === 'fr' ? 'Outils diagnostiques avancés pour améliorer précision médicale' :
+               'Advanced diagnostic tools to improve medical accuracy'}
             </p>
           </div>
           
@@ -293,19 +427,19 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Diseases Section */}
+      {/* Diseases Section - Complete with 12 diseases */}
       <section className="py-20 bg-gradient-to-r from-blue-50/50 to-purple-50/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'Enfermedades Analizadas' :
-               language === 'fr' ? 'Maladies Analysées' :
-               'Analyzed Diseases'}
+              {language === 'es' ? '12 Enfermedades Analizadas' :
+               language === 'fr' ? '12 Maladies Analysées' :
+               '12 Analyzed Diseases'}
             </h2>
             <p className="text-xl text-gray-600">
-              {language === 'es' ? 'Diagnóstico especializado para las enfermedades más críticas' :
-               language === 'fr' ? 'Diagnostic spécialisé pour les maladies les plus critiques' :
-               'Specialized diagnosis for the most critical diseases'}
+              {language === 'es' ? 'Diagnóstico especializado con datos médicos actualizados' :
+               language === 'fr' ? 'Diagnostic spécialisé avec données médicales actualisées' :
+               'Specialized diagnosis with updated medical data'}
             </p>
           </div>
           
@@ -318,16 +452,26 @@ const Landing = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3">
+                  <div className="space-y-4">
                     {category.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700">
-                          {item[language as keyof typeof item]}
-                        </span>
-                      </li>
+                      <div key={itemIndex} className="border-l-4 border-l-blue-200 pl-4 py-2">
+                        <div className="flex items-start space-x-3">
+                          <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-gray-800 mb-1">
+                              {item.name[language as keyof typeof item.name]}
+                            </h4>
+                            <p className="text-sm text-gray-600 mb-2">
+                              {item.description[language as keyof typeof item.description]}
+                            </p>
+                            <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-800">
+                              {item.prevalence[language as keyof typeof item.prevalence]}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -335,40 +479,38 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Medical Benefits Section - Replacing fake testimonials */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'Testimonios Médicos' :
-               language === 'fr' ? 'Témoignages Médicaux' :
-               'Medical Testimonials'}
+              {language === 'es' ? 'Beneficios Clínicos' :
+               language === 'fr' ? 'Bénéfices Cliniques' :
+               'Clinical Benefits'}
             </h2>
+            <p className="text-xl text-gray-600">
+              {language === 'es' ? 'Evidencia científica del impacto de la IA médica' :
+               language === 'fr' ? 'Évidence scientifique de l\'impact de l\'IA médicale' :
+               'Scientific evidence of medical AI impact'}
+            </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <Card className="bg-white/70 backdrop-blur-sm border-0 rounded-3xl p-8">
-              <CardContent className="text-center space-y-6">
-                <div className="flex justify-center space-x-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                
-                <blockquote className="text-xl italic text-gray-700 leading-relaxed">
-                  "{testimonials[currentTestimonial].content[language as keyof typeof testimonials[0]['content']]}"
-                </blockquote>
-                
-                <div className="space-y-2">
-                  <div className="font-semibold text-gray-900">
-                    {testimonials[currentTestimonial].name}
+          <div className="grid md:grid-cols-3 gap-8">
+            {medicalBenefits.map((benefit, index) => (
+              <Card key={index} className="bg-white/70 backdrop-blur-sm border-0 rounded-3xl p-8 text-center">
+                <CardContent className="space-y-4">
+                  <div className="text-4xl font-bold text-blue-600">
+                    {benefit.stat[language as keyof typeof benefit.stat]}
                   </div>
-                  <div className="text-gray-600">
-                    {testimonials[currentTestimonial].role[language as keyof typeof testimonials[0]['role']]}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {benefit.title[language as keyof typeof benefit.title]}
+                  </h3>
+                  <p className="text-gray-600">
+                    {benefit.description[language as keyof typeof benefit.description]}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -384,15 +526,15 @@ const Landing = () => {
             </h2>
             
             <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              {language === 'es' ? 'Únase a cientos de profesionales que ya confían en MedAI para diagnósticos precisos' :
-               language === 'fr' ? 'Rejoignez des centaines de professionnels qui font confiance à MedAI' :
-               'Join hundreds of professionals who trust MedAI for accurate diagnostics'}
+              {language === 'es' ? 'Únase a profesionales que confían en MedAI para diagnósticos precisos' :
+               language === 'fr' ? 'Rejoignez professionnels qui font confiance à MedAI' :
+               'Join professionals who trust MedAI for accurate diagnostics'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 rounded-2xl text-lg font-semibold">
-                  {language === 'es' ? 'Comenzar' :
+                  {language === 'es' ? 'Iniciar' :
                    language === 'fr' ? 'Commencer' :
                    'Start'}
                 </Button>

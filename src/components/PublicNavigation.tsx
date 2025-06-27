@@ -10,7 +10,8 @@ import {
   X,
   Globe,
   Home,
-  ChevronDown
+  ChevronDown,
+  Stethoscope
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -24,7 +25,7 @@ import {
 
 const PublicNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedCategories, setExpandedCategories] = useState<{[key: string]: boolean}>({});
+  const [medicalAnalysisExpanded, setMedicalAnalysisExpanded] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   const getLanguageAbbreviation = (lang: string) => {
@@ -34,13 +35,6 @@ const PublicNavigation = () => {
       case 'fr': return 'FR';
       default: return 'ES';
     }
-  };
-
-  const toggleCategory = (categoryName: string) => {
-    setExpandedCategories(prev => ({
-      ...prev,
-      [categoryName]: !prev[categoryName]
-    }));
   };
 
   const diseaseCategories = [
@@ -194,7 +188,7 @@ const PublicNavigation = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-600 hover:text-blue-600 transition-colors bg-transparent hover:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
-                    {language === 'es' ? 'Enfermedades' : language === 'fr' ? 'Maladies' : 'Diseases'}
+                    {language === 'es' ? 'Análisis Médicos' : language === 'fr' ? 'Analyses Médicales' : 'Medical Analysis'}
                     <ChevronDown className="ml-1 h-3 w-3" />
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white/95 backdrop-blur-md border border-white/30 rounded-2xl shadow-xl p-6 w-96">
@@ -254,8 +248,8 @@ const PublicNavigation = () => {
             </Select>
             
             <Link to="/dashboard">
-              <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl">
-                {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Connexion' : 'Login'}
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-2xl">
+                {language === 'es' ? 'Iniciar' : language === 'fr' ? 'Commencer' : 'Start'}
               </Button>
             </Link>
           </div>
@@ -286,36 +280,38 @@ const PublicNavigation = () => {
                 <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
               </Link>
               
-              {/* Mobile Diseases Section - Collapsible Categories */}
-              {diseaseCategories.map((category, idx) => {
-                const categoryKey = category.name.en;
-                const isExpanded = expandedCategories[categoryKey];
-                
-                return (
-                  <Collapsible
-                    key={idx}
-                    open={isExpanded}
-                    onOpenChange={() => toggleCategory(categoryKey)}
-                  >
-                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-left text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium">
-                      <span>{category.name[language as keyof typeof category.name]}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="space-y-1 mt-2">
+              {/* Mobile Medical Analysis Section - Collapsible */}
+              <Collapsible
+                open={medicalAnalysisExpanded}
+                onOpenChange={setMedicalAnalysisExpanded}
+              >
+                <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-left text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium">
+                  <div className="flex items-center space-x-2">
+                    <Stethoscope className="h-4 w-4" />
+                    <span>{language === 'es' ? 'Análisis Médicos' : language === 'fr' ? 'Analyses Médicales' : 'Medical Analysis'}</span>
+                  </div>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${medicalAnalysisExpanded ? 'rotate-180' : ''}`} />
+                </CollapsibleTrigger>
+                <CollapsibleContent className="space-y-2 mt-2">
+                  {diseaseCategories.map((category, idx) => (
+                    <div key={idx} className="ml-4">
+                      <h4 className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        {category.name[language as keyof typeof category.name]}
+                      </h4>
                       {category.diseases.map((disease) => (
                         <Link 
                           key={disease.id}
                           to={`/${disease.id}`}
-                          className="block px-6 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg ml-4"
+                          className="block px-6 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg ml-2"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {disease.name[language as keyof typeof disease.name]}
                         </Link>
                       ))}
-                    </CollapsibleContent>
-                  </Collapsible>
-                );
-              })}
+                    </div>
+                  ))}
+                </CollapsibleContent>
+              </Collapsible>
 
               <Link 
                 to="/blog" 
@@ -367,8 +363,8 @@ const PublicNavigation = () => {
                   className="block w-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-xl">
-                    {language === 'es' ? 'Ingresar' : language === 'fr' ? 'Connexion' : 'Login'}
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl">
+                    {language === 'es' ? 'Iniciar' : language === 'fr' ? 'Commencer' : 'Start'}
                   </Button>
                 </Link>
               </div>
