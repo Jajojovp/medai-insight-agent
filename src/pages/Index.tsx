@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -33,26 +34,26 @@ const Index = () => {
                 </h1>
               </div>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                {language === 'es' ? 'Plataforma de medicina predictiva con IA para 12 enfermedades críticas utilizando 62+ modelos especializados' :
-                 language === 'fr' ? 'Plateforme de médecine prédictive avec IA pour 12 maladies critiques utilisant 62+ modèles spécialisés' :
-                 'Predictive medicine platform with AI for 12 critical diseases using 62+ specialized models'}
+                {language === 'es' ? 'Plataforma de medicina predictiva con IA para diagnóstico avanzado de enfermedades críticas' :
+                 language === 'fr' ? 'Plateforme de médecine prédictive avec IA pour diagnostic avancé de maladies critiques' :
+                 'Predictive medicine platform with AI for advanced diagnosis of critical diseases'}
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full backdrop-blur-sm">
                   <Droplets className="h-3 w-3 mr-1" />
-                  {language === 'es' ? '12 Enfermedades Críticas' : language === 'fr' ? '12 Maladies Critiques' : '12 Critical Diseases'}
+                  {language === 'es' ? '12 Enfermedades' : language === 'fr' ? '12 Maladies' : '12 Diseases'}
                 </Badge>
                 <Badge variant="secondary" className="bg-green-100/80 text-green-800 rounded-full backdrop-blur-sm">
                   <Activity className="h-3 w-3 mr-1" />
-                  {language === 'es' ? '62+ Modelos IA' : language === 'fr' ? '62+ Modèles IA' : '62+ AI Models'}
+                  {language === 'es' ? 'IA Avanzada' : language === 'fr' ? 'IA Avancée' : 'Advanced AI'}
                 </Badge>
                 <Badge variant="secondary" className="bg-purple-100/80 text-purple-800 rounded-full backdrop-blur-sm">
                   <Shield className="h-3 w-3 mr-1" />
-                  {language === 'es' ? 'Cumplimiento HIPAA' : language === 'fr' ? 'Conformité HIPAA' : 'HIPAA Compliant'}
+                  {language === 'es' ? 'Seguro HIPAA' : language === 'fr' ? 'Sécurisé HIPAA' : 'HIPAA Secure'}
                 </Badge>
                 <Badge variant="secondary" className="bg-red-100/80 text-red-800 rounded-full backdrop-blur-sm">
                   <Heart className="h-3 w-3 mr-1" />
-                  {language === 'es' ? '98.8% Precisión Máxima' : language === 'fr' ? '98.8% Précision Maximale' : '98.8% Maximum Accuracy'}
+                  {language === 'es' ? 'Alta Precisión' : language === 'fr' ? 'Haute Précision' : 'High Accuracy'}
                 </Badge>
               </div>
             </div>
@@ -66,22 +67,22 @@ const Index = () => {
                   <CardTitle className="flex items-center space-x-2">
                     <MessageSquare className="h-5 w-5 text-blue-600" />
                     <span>
-                      {language === 'es' ? 'Análisis Predictivo Médico' :
-                       language === 'fr' ? 'Analyse Prédictive Médicale' :
-                       'Medical Predictive Analysis'}
+                      {language === 'es' ? 'Análisis Predictivo' :
+                       language === 'fr' ? 'Analyse Prédictive' :
+                       'Predictive Analysis'}
                     </span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Análisis médico con IA para 12 enfermedades críticas: diabetes, cánceres, cardiovasculares, renales, neurológicas y hematológicas' :
-                     language === 'fr' ? 'Analyse médicale avec IA pour 12 maladies critiques: diabète, cancers, cardiovasculaires, rénales, neurologiques et hématologiques' :
-                     'Medical analysis with AI for 12 critical diseases: diabetes, cancers, cardiovascular, kidney, neurological and hematological'}
+                    {language === 'es' ? 'Diagnóstico inteligente para enfermedades críticas usando algoritmos médicos avanzados' :
+                     language === 'fr' ? 'Diagnostic intelligent pour maladies critiques utilisant algorithmes médicaux avancés' :
+                     'Intelligent diagnosis for critical diseases using advanced medical algorithms'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-2xl">
-                    {language === 'es' ? 'Iniciar Análisis Médico' :
-                     language === 'fr' ? 'Commencer l\'Analyse Médicale' :
-                     'Start Medical Analysis'}
+                    {language === 'es' ? 'Iniciar Análisis' :
+                     language === 'fr' ? 'Commencer' :
+                     'Start Analysis'}
                   </Button>
                 </CardContent>
               </Card>
@@ -92,20 +93,20 @@ const Index = () => {
                     <FileText className="h-5 w-5 text-green-600" />
                     <span>
                       {language === 'es' ? 'Historial Clínico' :
-                       language === 'fr' ? 'Historique Clinique' :
+                       language === 'fr' ? 'Historique' :
                        'Clinical History'}
                     </span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Historial completo de análisis predictivos realizados con modelos especializados para cada enfermedad crítica' :
-                     language === 'fr' ? 'Historique complet des analyses prédictives effectuées avec modèles spécialisés pour chaque maladie critique' :
-                     'Complete history of predictive analyses performed with specialized models for each critical disease'}
+                    {language === 'es' ? 'Registro completo de análisis realizados y resultados obtenidos para seguimiento médico' :
+                     language === 'fr' ? 'Registre complet des analyses effectuées et résultats obtenus pour suivi médical' :
+                     'Complete record of analyses performed and results obtained for medical follow-up'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full rounded-2xl backdrop-blur-sm border-green-200 hover:bg-green-50">
                     {language === 'es' ? 'Ver Historial' :
-                     language === 'fr' ? 'Voir l\'Historique' :
+                     language === 'fr' ? 'Voir Historique' :
                      'View History'}
                   </Button>
                 </CardContent>
@@ -116,22 +117,22 @@ const Index = () => {
                   <CardTitle className="flex items-center space-x-2">
                     <Users className="h-5 w-5 text-purple-600" />
                     <span>
-                      {language === 'es' ? 'Gestión de Pacientes' :
-                       language === 'fr' ? 'Gestion des Patients' :
+                      {language === 'es' ? 'Gestión Pacientes' :
+                       language === 'fr' ? 'Gestion Patients' :
                        'Patient Management'}
                     </span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Sistema integral de gestión de pacientes con análisis predictivos y seguimiento médico continuo' :
-                     language === 'fr' ? 'Système intégral de gestion des patients avec analyses prédictives et suivi médical continu' :
-                     'Comprehensive patient management system with predictive analyses and continuous medical monitoring'}
+                    {language === 'es' ? 'Sistema de gestión integral para el seguimiento y monitoreo continuo de pacientes' :
+                     language === 'fr' ? 'Système de gestion intégral pour suivi et surveillance continue des patients' :
+                     'Comprehensive management system for continuous patient monitoring and follow-up'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full rounded-2xl backdrop-blur-sm border-purple-200 hover:bg-purple-50">
-                    {language === 'es' ? 'Gestionar Pacientes' :
-                     language === 'fr' ? 'Gérer les Patients' :
-                     'Manage Patients'}
+                    {language === 'es' ? 'Gestionar' :
+                     language === 'fr' ? 'Gérer' :
+                     'Manage'}
                   </Button>
                 </CardContent>
               </Card>
@@ -140,9 +141,9 @@ const Index = () => {
             <Card className="bg-gradient-to-br from-blue-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl">
               <CardHeader>
                 <CardTitle className="text-center">
-                  {language === 'es' ? 'Medicina Predictiva con MedAI' :
-                   language === 'fr' ? 'Médecine Prédictive avec MedAI' :
-                   'Predictive Medicine with MedAI'}
+                  {language === 'es' ? 'Cómo Funciona MedAI' :
+                   language === 'fr' ? 'Comment Fonctionne MedAI' :
+                   'How MedAI Works'}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -153,13 +154,13 @@ const Index = () => {
                     </div>
                     <h3 className="font-semibold">
                       {language === 'es' ? 'Seleccionar Enfermedad' :
-                       language === 'fr' ? 'Sélectionner la Maladie' :
+                       language === 'fr' ? 'Sélectionner Maladie' :
                        'Select Disease'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Elija entre 12 enfermedades críticas con modelos especializados' :
-                       language === 'fr' ? 'Choisissez parmi 12 maladies critiques avec modèles spécialisés' :
-                       'Choose from 12 critical diseases with specialized models'}
+                      {language === 'es' ? 'Elija la enfermedad a analizar entre las 12 disponibles' :
+                       language === 'fr' ? 'Choisissez la maladie à analyser parmi les 12 disponibles' :
+                       'Choose the disease to analyze from the 12 available options'}
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -167,14 +168,14 @@ const Index = () => {
                       <span className="text-white font-bold">2</span>
                     </div>
                     <h3 className="font-semibold">
-                      {language === 'es' ? 'Datos Clínicos' :
-                       language === 'fr' ? 'Données Cliniques' :
-                       'Clinical Data'}
+                      {language === 'es' ? 'Ingresar Datos' :
+                       language === 'fr' ? 'Saisir Données' :
+                       'Enter Data'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Proporcione información médica del paciente según protocolo clínico' :
-                       language === 'fr' ? 'Fournir les informations médicales du patient selon protocole clinique' :
-                       'Provide patient medical information according to clinical protocol'}
+                      {language === 'es' ? 'Proporcione la información médica necesaria del paciente' :
+                       language === 'fr' ? 'Fournir les informations médicales nécessaires du patient' :
+                       'Provide the necessary medical information of the patient'}
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -187,9 +188,9 @@ const Index = () => {
                        'AI Analysis'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? '62+ modelos especializados procesan datos con algoritmos validados clínicamente' :
-                       language === 'fr' ? '62+ modèles spécialisés traitent les données avec algorithmes validés cliniquement' :
-                       '62+ specialized models process data with clinically validated algorithms'}
+                      {language === 'es' ? 'La inteligencia artificial procesa los datos médicos' :
+                       language === 'fr' ? 'L\'intelligence artificielle traite les données médicales' :
+                       'Artificial intelligence processes the medical data'}
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -197,14 +198,14 @@ const Index = () => {
                       <span className="text-white font-bold">4</span>
                     </div>
                     <h3 className="font-semibold">
-                      {language === 'es' ? 'Diagnóstico Predictivo' :
-                       language === 'fr' ? 'Diagnostic Prédictif' :
-                       'Predictive Diagnosis'}
+                      {language === 'es' ? 'Resultado Médico' :
+                       language === 'fr' ? 'Résultat Médical' :
+                       'Medical Result'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Reporte médico detallado con precisión hasta 98.8% y recomendaciones clínicas' :
-                       language === 'fr' ? 'Rapport médical détaillé avec précision jusqu\'à 98.8% et recommandations cliniques' :
-                       'Detailed medical report with up to 98.8% accuracy and clinical recommendations'}
+                      {language === 'es' ? 'Obtenga un reporte detallado con recomendaciones clínicas' :
+                       language === 'fr' ? 'Obtenez un rapport détaillé avec recommandations cliniques' :
+                       'Get a detailed report with clinical recommendations'}
                     </p>
                   </div>
                 </div>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { 
   Brain, 
   Menu,
@@ -23,6 +24,7 @@ import {
 
 const PublicNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState<{[key: string]: boolean}>({});
   const { language, setLanguage, t } = useLanguage();
 
   const getLanguageAbbreviation = (lang: string) => {
@@ -32,6 +34,13 @@ const PublicNavigation = () => {
       case 'fr': return 'FR';
       default: return 'ES';
     }
+  };
+
+  const toggleCategory = (categoryName: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryName]: !prev[categoryName]
+    }));
   };
 
   const diseaseCategories = [
@@ -62,7 +71,7 @@ const PublicNavigation = () => {
           id: 'pancreatic-cancer', 
           name: {
             es: 'Páncreas',
-            en: 'Pancreatic', 
+            en: 'Pancreas', 
             fr: 'Pancréas'
           }
         },
@@ -277,26 +286,36 @@ const PublicNavigation = () => {
                 <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
               </Link>
               
-              {/* Mobile Diseases Section - Categorized */}
-              {diseaseCategories.map((category, idx) => (
-                <div key={idx} className="border-t border-gray-200 pt-3">
-                  <div className="px-4 py-2 text-sm text-gray-500 font-medium">
-                    {category.name[language as keyof typeof category.name]}
-                  </div>
-                  <div className="space-y-1">
-                    {category.diseases.map((disease) => (
-                      <Link 
-                        key={disease.id}
-                        to={`/${disease.id}`}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {disease.name[language as keyof typeof disease.name]}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              {/* Mobile Diseases Section - Collapsible Categories */}
+              {diseaseCategories.map((category, idx) => {
+                const categoryKey = category.name.en;
+                const isExpanded = expandedCategories[categoryKey];
+                
+                return (
+                  <Collapsible
+                    key={idx}
+                    open={isExpanded}
+                    onOpenChange={() => toggleCategory(categoryKey)}
+                  >
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-left text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium">
+                      <span>{category.name[language as keyof typeof category.name]}</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="space-y-1 mt-2">
+                      {category.diseases.map((disease) => (
+                        <Link 
+                          key={disease.id}
+                          to={`/${disease.id}`}
+                          className="block px-6 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg ml-4"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {disease.name[language as keyof typeof disease.name]}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+                );
+              })}
 
               <Link 
                 to="/blog" 
