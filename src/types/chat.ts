@@ -16,7 +16,6 @@ export interface PatientData {
     weight?: number;
     height?: number;
   };
-  diseaseType?: DiseaseType;
 }
 
 export interface AnalysisResult {
@@ -25,7 +24,6 @@ export interface AnalysisResult {
   riskFactors: string[];
   recommendations: string[];
   modelResults: ModelResult[];
-  diseaseType: DiseaseType;
 }
 
 export interface ModelResult {
@@ -35,26 +33,4 @@ export interface ModelResult {
   prediction: string;
 }
 
-export type ChatStep = 'diseaseSelection' | 'symptoms' | 'labResults' | 'demographics' | 'analysis' | 'complete';
-
-export type DiseaseType = 'diabetes' | 'breast-cancer' | 'prostate-cancer' | 'heart-disease' | 'stroke' | 'kidney-disease' | 'pancreatic-cancer';
-
-export interface DiseaseInfo {
-  id: DiseaseType;
-  name: {
-    en: string;
-    es: string;
-    fr: string;
-  };
-  description: {
-    en: string;
-    es: string;
-    fr: string;
-  };
-  prevalence: string;
-  riskFactors: {
-    en: string[];
-    es: string[];
-    fr: string[];
-  };
-}
+export type ChatStep = 'symptoms' | 'labResults' | 'demographics' | 'analysis' | 'complete';
