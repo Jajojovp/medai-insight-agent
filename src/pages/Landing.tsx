@@ -357,7 +357,7 @@ const Landing = () => {
                 </div>
                 
                 <blockquote className="text-xl italic text-gray-700 leading-relaxed">
-                  "{testimonials[currentTestimonial].content[language as keyof typeof testimonials[currentTestimonial].content]}"
+                  "{testimonials[currentTestimonial].content[language as keyof typeof testimonials[currentTestimonial]['content']]}"
                 </blockquote>
                 
                 <div className="space-y-2">
@@ -365,7 +365,7 @@ const Landing = () => {
                     {testimonials[currentTestimonial].name}
                   </div>
                   <div className="text-gray-600">
-                    {testimonials[currentTestimonial].role[language as keyof typeof testimonials[currentTestimonial].role]}
+                    {testimonials[currentTestimonial].role[language as keyof typeof testimonials[currentTestimonial]['role']]}
                   </div>
                 </div>
               </CardContent>
