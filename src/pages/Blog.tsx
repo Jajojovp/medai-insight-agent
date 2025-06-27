@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, Heart, Brain, Activity, Shield, Users, Zap, Droplets, Stethoscope, Microscope, Dna, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Calendar, Clock, Heart, Brain, Activity, Shield, Users, Zap, Droplets, Stethoscope, Microscope, Dna, ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -13,6 +14,7 @@ const Blog = () => {
   const { language } = useLanguage();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
   const articlesPerPage = 12;
 
   const blogPosts = [
@@ -31,9 +33,11 @@ const Blog = () => {
       },
       date: '2024-12-25',
       readTime: '8 min',
-      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      category: 'endocrinologia',
+      categoryDisplay: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
       icon: Droplets,
-      featured: true
+      featured: true,
+      tags: ['diabetes', 'IA médica', 'prevención']
     },
     {
       id: 'diabetes-diagnosis',
@@ -49,8 +53,10 @@ const Blog = () => {
       },
       date: '2024-12-22',
       readTime: '12 min',
-      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
-      icon: Microscope
+      category: 'endocrinologia',
+      categoryDisplay: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      icon: Microscope,
+      tags: ['diabetes', 'diagnóstico', 'machine learning']
     },
     {
       id: 'diabetes-treatment',
@@ -66,8 +72,10 @@ const Blog = () => {
       },
       date: '2024-12-20',
       readTime: '10 min',
-      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
-      icon: Activity
+      category: 'endocrinologia',
+      categoryDisplay: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      icon: Activity,
+      tags: ['diabetes', 'tratamiento', 'monitoreo']
     },
     {
       id: 'diabetes-nutrition',
@@ -83,8 +91,10 @@ const Blog = () => {
       },
       date: '2024-12-18',
       readTime: '9 min',
-      category: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
-      icon: Droplets
+      category: 'endocrinologia',
+      categoryDisplay: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' },
+      icon: Droplets,
+      tags: ['diabetes', 'nutrición', 'personalización']
     },
 
     // Breast Cancer Articles (4 articles)
@@ -102,8 +112,10 @@ const Blog = () => {
       },
       date: '2024-12-15',
       readTime: '9 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Users
+      category: 'oncologia',
+      categoryDisplay: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
+      icon: Users,
+      tags: ['cáncer de mama', 'detección temprana', 'genética']
     },
     {
       id: 'breast-cancer-mammography',
@@ -119,8 +131,10 @@ const Blog = () => {
       },
       date: '2024-12-12',
       readTime: '11 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Brain
+      category: 'oncologia',
+      categoryDisplay: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
+      icon: Brain,
+      tags: ['mamografía', 'radiología', 'deep learning']
     },
     {
       id: 'breast-cancer-genetics',
@@ -136,8 +150,10 @@ const Blog = () => {
       },
       date: '2024-12-10',
       readTime: '13 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Dna
+      category: 'oncologia',
+      categoryDisplay: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
+      icon: Dna,
+      tags: ['BRCA', 'genética', 'prevención']
     },
     {
       id: 'breast-cancer-treatment',
@@ -153,8 +169,10 @@ const Blog = () => {
       },
       date: '2024-12-08',
       readTime: '15 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Shield
+      category: 'oncologia',
+      categoryDisplay: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
+      icon: Shield,
+      tags: ['terapia dirigida', 'inmunología', 'personalización']
     },
 
     // Heart Disease Articles (4 articles)
@@ -172,8 +190,10 @@ const Blog = () => {
       },
       date: '2024-12-06',
       readTime: '10 min',
-      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
-      icon: Heart
+      category: 'cardiologia',
+      categoryDisplay: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
+      icon: Heart,
+      tags: ['cardiología', 'prevención', 'factores de riesgo']
     },
     {
       id: 'heart-disease-ecg',
@@ -189,8 +209,10 @@ const Blog = () => {
       },
       date: '2024-12-04',
       readTime: '12 min',
-      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
-      icon: Activity
+      category: 'cardiologia',
+      categoryDisplay: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
+      icon: Activity,
+      tags: ['ECG', 'arritmias', 'diagnóstico automático']
     },
     {
       id: 'heart-disease-prevention',
@@ -206,8 +228,10 @@ const Blog = () => {
       },
       date: '2024-12-02',
       readTime: '11 min',
-      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
-      icon: Shield
+      category: 'cardiologia',
+      categoryDisplay: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
+      icon: Shield,
+      tags: ['prevención', 'wearables', 'monitoreo']
     },
     {
       id: 'heart-disease-surgery',
@@ -223,8 +247,10 @@ const Blog = () => {
       },
       date: '2024-11-30',
       readTime: '14 min',
-      category: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
-      icon: Stethoscope
+      category: 'cardiologia',
+      categoryDisplay: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' },
+      icon: Stethoscope,
+      tags: ['cirugía', 'robótica', 'planificación']
     },
 
     // Prostate Cancer Articles (3 articles)
@@ -242,8 +268,10 @@ const Blog = () => {
       },
       date: '2024-11-28',
       readTime: '9 min',
-      category: { es: 'Urología', en: 'Urology', fr: 'Urologie' },
-      icon: Users
+      category: 'urologia',
+      categoryDisplay: { es: 'Urología', en: 'Urology', fr: 'Urologie' },
+      icon: Users,
+      tags: ['próstata', 'screening', 'PSA']
     },
     {
       id: 'prostate-cancer-biopsy',
@@ -259,8 +287,10 @@ const Blog = () => {
       },
       date: '2024-11-26',
       readTime: '11 min',
-      category: { es: 'Urología', en: 'Urology', fr: 'Urologie' },
-      icon: Microscope
+      category: 'urologia',
+      categoryDisplay: { es: 'Urología', en: 'Urology', fr: 'Urologie' },
+      icon: Microscope,
+      tags: ['biopsia', 'resonancia', 'precisión']
     },
     {
       id: 'prostate-cancer-treatment',
@@ -276,8 +306,10 @@ const Blog = () => {
       },
       date: '2024-11-24',
       readTime: '13 min',
-      category: { es: 'Urología', en: 'Urology', fr: 'Urologie' },
-      icon: Dna
+      category: 'urologia',
+      categoryDisplay: { es: 'Urología', en: 'Urology', fr: 'Urologie' },
+      icon: Dna,
+      tags: ['terapia personalizada', 'genómica', 'molecular']
     },
 
     // Stroke Articles (3 articles)
@@ -295,8 +327,10 @@ const Blog = () => {
       },
       date: '2024-11-22',
       readTime: '10 min',
-      category: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
-      icon: Brain
+      category: 'neurologia',
+      categoryDisplay: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
+      icon: Brain,
+      tags: ['ACV', 'predicción', 'biomarcadores']
     },
     {
       id: 'stroke-emergency',
@@ -312,8 +346,10 @@ const Blog = () => {
       },
       date: '2024-11-20',
       readTime: '8 min',
-      category: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
-      icon: Zap
+      category: 'neurologia',
+      categoryDisplay: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
+      icon: Zap,
+      tags: ['protocolo FAST', 'emergencia', 'ACV agudo']
     },
     {
       id: 'stroke-rehabilitation',
@@ -329,11 +365,13 @@ const Blog = () => {
       },
       date: '2024-11-18',
       readTime: '12 min',
-      category: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
-      icon: Activity
+      category: 'neurologia',
+      categoryDisplay: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
+      icon: Activity,
+      tags: ['rehabilitación', 'terapia', 'seguimiento']
     },
 
-    // Additional Cancer Articles
+    // Additional specialized articles
     {
       id: 'lung-cancer-screening',
       title: {
@@ -348,45 +386,11 @@ const Blog = () => {
       },
       date: '2024-11-16',
       readTime: '10 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Heart
+      category: 'oncologia', 
+      categoryDisplay: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
+      icon: Heart,
+      tags: ['pulmón', 'nódulos', 'tomografía']
     },
-    {
-      id: 'pancreatic-cancer-biomarkers',
-      title: {
-        es: 'Biomarcadores en Cáncer Pancreático',
-        en: 'Pancreatic Cancer Biomarkers',
-        fr: 'Biomarqueurs Cancer Pancréatique'
-      },
-      excerpt: {
-        es: 'Identificación temprana usando CA 19-9 y nuevos biomarcadores.',
-        en: 'Early identification using CA 19-9 and novel biomarkers.',
-        fr: 'Identification précoce utilisant CA 19-9 et nouveaux biomarqueurs.'
-      },
-      date: '2024-11-14',
-      readTime: '11 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Microscope
-    },
-    {
-      id: 'liver-cancer-imaging',
-      title: {
-        es: 'Imagen Hepática Inteligente para Cáncer',
-        en: 'Smart Liver Imaging for Cancer',
-        fr: 'Imagerie Hépatique Intelligente pour Cancer'
-      },
-      excerpt: {
-        es: 'Diagnóstico de hepatocarcinoma con resonancia magnética y IA.',
-        en: 'Hepatocellular carcinoma diagnosis with MRI and AI.',
-        fr: 'Diagnostic carcinome hépatocellulaire avec IRM et IA.'
-      },
-      date: '2024-11-12',
-      readTime: '9 min',
-      category: { es: 'Oncología', en: 'Oncology', fr: 'Oncologie' },
-      icon: Shield
-    },
-
-    // Kidney Disease Articles
     {
       id: 'kidney-disease-prediction',
       title: {
@@ -401,28 +405,11 @@ const Blog = () => {
       },
       date: '2024-11-10',
       readTime: '10 min',
-      category: { es: 'Nefrología', en: 'Nephrology', fr: 'Néphrologie' },
-      icon: Activity
+      category: 'nefrologia',
+      categoryDisplay: { es: 'Nefrología', en: 'Nephrology', fr: 'Néphrologie' },
+      icon: Activity,
+      tags: ['riñón', 'función renal', 'predictivo']
     },
-    {
-      id: 'kidney-disease-dialysis',
-      title: {
-        es: 'Optimización de Diálisis con IA',
-        en: 'AI Dialysis Optimization',
-        fr: 'Optimisation Dialyse avec IA'
-      },
-      excerpt: {
-        es: 'Personalización de parámetros de diálisis usando machine learning.',
-        en: 'Dialysis parameter personalization using machine learning.',
-        fr: 'Personnalisation paramètres dialyse utilisant machine learning.'
-      },
-      date: '2024-11-08',
-      readTime: '12 min',
-      category: { es: 'Nefrología', en: 'Nephrology', fr: 'Néphrologie' },
-      icon: Stethoscope
-    },
-
-    // Epilepsy Articles
     {
       id: 'epilepsy-seizure-prediction',
       title: {
@@ -437,28 +424,11 @@ const Blog = () => {
       },
       date: '2024-11-06',
       readTime: '11 min',
-      category: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
-      icon: Zap
+      category: 'neurologia',
+      categoryDisplay: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
+      icon: Zap,
+      tags: ['epilepsia', 'EEG', 'crisis']
     },
-    {
-      id: 'epilepsy-medication',
-      title: {
-        es: 'Optimización de Medicación Antiepiléptica',
-        en: 'Antiepileptic Medication Optimization',
-        fr: 'Optimisation Médication Antiépileptique'
-      },
-      excerpt: {
-        es: 'Personalización de dosis usando farmacocinética y genómica.',
-        en: 'Dose personalization using pharmacokinetics and genomics.',
-        fr: 'Personnalisation doses utilisant pharmacocinétique et génomique.'
-      },
-      date: '2024-11-04',
-      readTime: '9 min',
-      category: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' },
-      icon: Brain
-    },
-
-    // Leukemia Articles
     {
       id: 'leukemia-diagnosis',
       title: {
@@ -473,64 +443,11 @@ const Blog = () => {
       },
       date: '2024-11-02',
       readTime: '13 min',
-      category: { es: 'Hematología', en: 'Hematology', fr: 'Hématologie' },
-      icon: Microscope
+      category: 'hematologia',
+      categoryDisplay: { es: 'Hematología', en: 'Hematology', fr: 'Hématologie' },
+      icon: Microscope,
+      tags: ['leucemia', 'células sanguíneas', 'médula ósea']
     },
-    {
-      id: 'leukemia-treatment-response',
-      title: {
-        es: 'Monitoreo de Respuesta en Leucemia',
-        en: 'Leukemia Treatment Response Monitoring',
-        fr: 'Surveillance Réponse Traitement Leucémie'
-      },
-      excerpt: {
-        es: 'Seguimiento de enfermedad mínima residual con PCR cuantitativa.',
-        en: 'Minimal residual disease monitoring with quantitative PCR.',
-        fr: 'Suivi maladie résiduelle minimale avec PCR quantitative.'
-      },
-      date: '2024-10-31',
-      readTime: '11 min',
-      category: { es: 'Hematología', en: 'Hematology', fr: 'Hématologie' },
-      icon: Activity
-    },
-
-    // Stomach Cancer Articles
-    {
-      id: 'stomach-cancer-helicobacter',
-      title: {
-        es: 'H. Pylori y Cáncer Gástrico: Prevención IA',
-        en: 'H. Pylori and Gastric Cancer: AI Prevention',
-        fr: 'H. Pylori et Cancer Gastrique: Prévention IA'
-      },
-      excerpt: {
-        es: 'Estrategias de erradicación personalizadas basadas en resistencias.',
-        en: 'Personalized eradication strategies based on resistance patterns.',
-        fr: 'Stratégies éradication personnalisées basées sur résistances.'
-      },
-      date: '2024-10-29',
-      readTime: '10 min',
-      category: { es: 'Gastroenterología', en: 'Gastroenterology', fr: 'Gastroentérologie' },
-      icon: Stethoscope
-    },
-    {
-      id: 'stomach-cancer-endoscopy',
-      title: {
-        es: 'Endoscopia Inteligente para Cáncer Gástrico',
-        en: 'Smart Endoscopy for Gastric Cancer',
-        fr: 'Endoscopie Intelligente pour Cancer Gastrique'
-      },
-      excerpt: {
-        es: 'Detección automática de lesiones precancerosas con IA.',
-        en: 'Automatic detection of precancerous lesions with AI.',
-        fr: 'Détection automatique lésions précancéreuses avec IA.'
-      },
-      date: '2024-10-27',
-      readTime: '12 min',
-      category: { es: 'Gastroenterología', en: 'Gastroenterology', fr: 'Gastroentérologie' },
-      icon: Microscope
-    },
-
-    // AI & Technology Articles
     {
       id: 'ai-revolution-medicine',
       title: {
@@ -545,8 +462,10 @@ const Blog = () => {
       },
       date: '2024-10-25',
       readTime: '15 min',
-      category: { es: 'IA Médica', en: 'Medical AI', fr: 'IA Médicale' },
-      icon: Brain
+      category: 'ia-medica',
+      categoryDisplay: { es: 'IA Médica', en: 'Medical AI', fr: 'IA Médicale' },
+      icon: Brain,
+      tags: ['IA médica', 'modelos', 'tecnología']
     },
     {
       id: 'hospital-success-stories',
@@ -562,42 +481,10 @@ const Blog = () => {
       },
       date: '2024-10-23',
       readTime: '13 min',
-      category: { es: 'Casos Estudio', en: 'Case Studies', fr: 'Études Cas' },
-      icon: Shield
-    },
-    {
-      id: 'future-ai-medicine',
-      title: {
-        es: 'Futuro de la IA en Medicina 2025-2030',
-        en: 'Future of AI in Medicine 2025-2030',
-        fr: 'Avenir IA en Médecine 2025-2030'
-      },
-      excerpt: {
-        es: 'Tendencias emergentes: medicina cuántica y diagnóstico molecular.',
-        en: 'Emerging trends: quantum medicine and molecular diagnostics.',
-        fr: 'Tendances émergentes: médecine quantique et diagnostic moléculaire.'
-      },
-      date: '2024-10-21',
-      readTime: '14 min',
-      category: { es: 'IA Médica', en: 'Medical AI', fr: 'IA Médicale' },
-      icon: Brain
-    },
-    {
-      id: 'precision-medicine-genomics',
-      title: {
-        es: 'Medicina de Precisión y Genómica',
-        en: 'Precision Medicine and Genomics',
-        fr: 'Médecine Précision et Génomique'
-      },
-      excerpt: {
-        es: 'Integración de datos genómicos para tratamientos personalizados.',
-        en: 'Genomic data integration for personalized treatments.',
-        fr: 'Intégration données génomiques pour traitements personnalisés.'
-      },
-      date: '2024-10-19',
-      readTime: '16 min',
-      category: { es: 'Genómica', en: 'Genomics', fr: 'Génomique' },
-      icon: Dna
+      category: 'ia-medica',
+      categoryDisplay: { es: 'IA Médica', en: 'Medical AI', fr: 'IA Médicale' },
+      icon: Shield,
+      tags: ['casos éxito', 'hospitales', 'implementación']
     }
   ];
 
@@ -607,44 +494,72 @@ const Blog = () => {
     { id: 'cardiologia', name: { es: 'Cardiología', en: 'Cardiology', fr: 'Cardiologie' } },
     { id: 'endocrinologia', name: { es: 'Endocrinología', en: 'Endocrinology', fr: 'Endocrinologie' } },
     { id: 'neurologia', name: { es: 'Neurología', en: 'Neurology', fr: 'Neurologie' } },
+    { id: 'urologia', name: { es: 'Urología', en: 'Urology', fr: 'Urologie' } },
+    { id: 'nefrologia', name: { es: 'Nefrología', en: 'Nephrology', fr: 'Néphrologie' } },
+    { id: 'hematologia', name: { es: 'Hematología', en: 'Hematology', fr: 'Hématologie' } },
     { id: 'ia-medica', name: { es: 'IA Médica', en: 'Medical AI', fr: 'IA Médicale' } }
   ];
 
-  const filteredPosts = selectedCategory === 'all' 
-    ? blogPosts 
-    : blogPosts.filter(post => {
-        const categoryKey = post.category[language as keyof typeof post.category].toLowerCase();
-        return categoryKey.includes(selectedCategory) || 
-               (selectedCategory === 'ia-medica' && (categoryKey.includes('ia') || categoryKey.includes('ai')));
-      });
+  // Fixed filtering logic
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
+    
+    const matchesSearch = searchTerm === '' || 
+      post.title[language as keyof typeof post.title].toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt[language as keyof typeof post.excerpt].toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    
+    return matchesCategory && matchesSearch;
+  });
 
   const totalPages = Math.ceil(filteredPosts.length / articlesPerPage);
   const startIndex = (currentPage - 1) * articlesPerPage;
   const paginatedPosts = filteredPosts.slice(startIndex, startIndex + articlesPerPage);
 
-  const featuredPost = blogPosts[0];
+  const featuredPost = blogPosts.find(post => post.featured) || blogPosts[0];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <PublicNavigation />
       
       <div className="container mx-auto px-4 py-8">
-        {/* Header - Shortened title */}
+        {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {language === 'es' ? 'Blog MedAI - Medicina IA' :
-             language === 'fr' ? 'Blog MedAI - Médecine IA' :
-             'MedAI Blog - AI Medicine'}
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            {language === 'es' ? 'Blog MedAI - Medicina Inteligente' :
+             language === 'fr' ? 'Blog MedAI - Médecine Intelligente' :
+             'MedAI Blog - Intelligent Medicine'}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Investigación médica con IA. 62+ modelos especializados.' :
-             language === 'fr' ? 'Recherche médicale avec IA. 62+ modèles spécialisés.' :
-             'Medical research with AI. 62+ specialized models.'}
+            {language === 'es' ? 'Investigación médica avanzada con IA. 62+ modelos especializados transformando la medicina.' :
+             language === 'fr' ? 'Recherche médicale avancée avec IA. 62+ modèles spécialisés transformant la médecine.' :
+             'Advanced medical research with AI. 62+ specialized models transforming medicine.'}
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="mb-8">
+        {/* Search and Filters */}
+        <div className="mb-8 space-y-4">
+          {/* Search Bar */}
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Input
+                placeholder={
+                  language === 'es' ? 'Buscar artículos...' :
+                  language === 'fr' ? 'Rechercher articles...' :
+                  'Search articles...'
+                }
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="pl-10"
+              />
+            </div>
+          </div>
+
+          {/* Category Filters */}
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.map((category) => (
               <Button
@@ -664,15 +579,24 @@ const Blog = () => {
           </div>
         </div>
 
+        {/* Results Count */}
+        <div className="mb-6 text-center">
+          <p className="text-gray-600">
+            {language === 'es' ? `${filteredPosts.length} artículos encontrados` :
+             language === 'fr' ? `${filteredPosts.length} articles trouvés` :
+             `${filteredPosts.length} articles found`}
+          </p>
+        </div>
+
         {/* Featured Post */}
-        {selectedCategory === 'all' && currentPage === 1 && (
+        {selectedCategory === 'all' && currentPage === 1 && searchTerm === '' && (
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               {language === 'es' ? 'Artículo Destacado' :
                language === 'fr' ? 'Article en Vedette' :
                'Featured Article'}
             </h2>
-            <Card className="overflow-hidden hover:shadow-xl transition-shadow">
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="md:flex">
                 <div className="md:w-1/3 bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex items-center justify-center">
                   <featuredPost.icon className="h-24 w-24 text-white" />
@@ -681,7 +605,7 @@ const Blog = () => {
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <Badge className="bg-blue-600">
-                        {featuredPost.category[language as keyof typeof featuredPost.category]}
+                        {featuredPost.categoryDisplay[language as keyof typeof featuredPost.categoryDisplay]}
                       </Badge>
                       <div className="flex items-center text-gray-500 text-sm space-x-4">
                         <div className="flex items-center">
@@ -702,11 +626,18 @@ const Blog = () => {
                     <p className="text-gray-600 mb-6">
                       {featuredPost.excerpt[language as keyof typeof featuredPost.excerpt]}
                     </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {featuredPost.tags.map((tag, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
                     <Link to={`/blog/${featuredPost.id}`}>
                       <Button className="bg-blue-600 hover:bg-blue-700">
-                        {language === 'es' ? 'Leer Artículo' :
-                         language === 'fr' ? 'Lire Article' :
-                         'Read Article'}
+                        {language === 'es' ? 'Leer Artículo Completo' :
+                         language === 'fr' ? 'Lire Article Complet' :
+                         'Read Full Article'}
                       </Button>
                     </Link>
                   </CardContent>
@@ -719,98 +650,129 @@ const Blog = () => {
         {/* Articles Grid */}
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            {language === 'es' ? 'Artículos Médicos' :
-             language === 'fr' ? 'Articles Médicaux' :
-             'Medical Articles'}
-            <span className="text-base font-normal text-gray-500 ml-2">
-              ({filteredPosts.length} {language === 'es' ? 'artículos' : language === 'fr' ? 'articles' : 'articles'})
-            </span>
+            {language === 'es' ? 'Artículos Médicos Especializados' :
+             language === 'fr' ? 'Articles Médicaux Spécialisés' :
+             'Specialized Medical Articles'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-            {paginatedPosts.map((post) => {
-              const Icon = post.icon;
-              return (
-                <Card key={post.id} className="hover:shadow-lg transition-shadow h-full flex flex-col">
-                  <CardHeader className="flex-shrink-0">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Icon className="h-5 w-5 text-blue-600" />
-                      </div>
-                      <Badge variant="secondary" className="text-xs">
-                        {post.category[language as keyof typeof post.category]}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-lg mb-2 line-clamp-2">
-                      {post.title[language as keyof typeof post.title]}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow flex flex-col justify-between">
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                      {post.excerpt[language as keyof typeof post.excerpt]}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-gray-500 text-xs space-x-3">
-                        <div className="flex items-center">
-                          <Calendar className="h-3 w-3 mr-1" />
-                          {new Date(post.date).toLocaleDateString()}
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">
+                {language === 'es' ? 'No se encontraron artículos que coincidan con tu búsqueda.' :
+                 language === 'fr' ? 'Aucun article trouvé correspondant à votre recherche.' :
+                 'No articles found matching your search.'}
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                {paginatedPosts.map((post) => {
+                  const Icon = post.icon;
+                  return (
+                    <Card key={post.id} className="hover:shadow-lg transition-all duration-300 h-full flex flex-col group">
+                      <CardHeader className="flex-shrink-0">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                            <Icon className="h-5 w-5 text-blue-600" />
+                          </div>
+                          <Badge variant="secondary" className="text-xs">
+                            {post.categoryDisplay[language as keyof typeof post.categoryDisplay]}
+                          </Badge>
                         </div>
-                        <div className="flex items-center">
-                          <Clock className="h-3 w-3 mr-1" />
-                          {post.readTime}
+                        <CardTitle className="text-lg mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                          {post.title[language as keyof typeof post.title]}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="flex-grow flex flex-col justify-between">
+                        <div>
+                          <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                            {post.excerpt[language as keyof typeof post.excerpt]}
+                          </p>
+                          <div className="flex flex-wrap gap-1 mb-4">
+                            {post.tags.slice(0, 2).map((tag, index) => (
+                              <Badge key={index} variant="outline" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                      <Link to={`/blog/${post.id}`}>
-                        <Button variant="outline" size="sm">
-                          {language === 'es' ? 'Leer' :
-                           language === 'fr' ? 'Lire' :
-                           'Read'}
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center space-x-2">
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-              >
-                <ChevronLeft className="h-4 w-4" />
-                {language === 'es' ? 'Anterior' : language === 'fr' ? 'Précédent' : 'Previous'}
-              </Button>
-              
-              <div className="flex items-center space-x-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <Button
-                    key={page}
-                    variant={currentPage === page ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setCurrentPage(page)}
-                    className="w-10 h-10"
-                  >
-                    {page}
-                  </Button>
-                ))}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-gray-500 text-xs space-x-3">
+                            <div className="flex items-center">
+                              <Calendar className="h-3 w-3 mr-1" />
+                              {new Date(post.date).toLocaleDateString()}
+                            </div>
+                            <div className="flex items-center">
+                              <Clock className="h-3 w-3 mr-1" />
+                              {post.readTime}
+                            </div>
+                          </div>
+                          <Link to={`/blog/${post.id}`}>
+                            <Button variant="outline" size="sm" className="group-hover:bg-blue-50">
+                              {language === 'es' ? 'Leer' :
+                               language === 'fr' ? 'Lire' :
+                               'Read'}
+                            </Button>
+                          </Link>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
 
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                disabled={currentPage === totalPages}
-              >
-                {language === 'es' ? 'Siguiente' : language === 'fr' ? 'Suivant' : 'Next'}
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center space-x-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                    {language === 'es' ? 'Anterior' : language === 'fr' ? 'Précédent' : 'Previous'}
+                  </Button>
+                  
+                  <div className="flex items-center space-x-1">
+                    {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                      let pageNum;
+                      if (totalPages <= 5) {
+                        pageNum = i + 1;
+                      } else if (currentPage <= 3) {
+                        pageNum = i + 1;
+                      } else if (currentPage >= totalPages - 2) {
+                        pageNum = totalPages - 4 + i;
+                      } else {
+                        pageNum = currentPage - 2 + i;
+                      }
+                      
+                      return (
+                        <Button
+                          key={pageNum}
+                          variant={currentPage === pageNum ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => setCurrentPage(pageNum)}
+                          className="w-10 h-10"
+                        >
+                          {pageNum}
+                        </Button>
+                      );
+                    })}
+                  </div>
+
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                  >
+                    {language === 'es' ? 'Siguiente' : language === 'fr' ? 'Suivant' : 'Next'}
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </div>
 
