@@ -2,26 +2,75 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Calendar, Clock, User, Eye, Filter, ArrowRight } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 
 const Blog = () => {
-  console.log('🔍 Blog component iniciando...');
+  console.log('🔍 === DIAGNÓSTICO BLOG INICIADO ===');
+  console.log('🔍 Blog component montándose...');
   
   const { getAllPosts } = useBlogPosts();
-  console.log('🔍 Hook useBlogPosts obtenido');
-  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('date');
 
-  const allPosts = getAllPosts();
-  console.log('🔍 Todos los posts obtenidos:', allPosts?.length || 0, allPosts);
+  console.log('🔍 Hook useBlogPosts ejecutado');
   
+  let allPosts;
+  try {
+    allPosts = getAllPosts();
+    console.log('🔍 getAllPosts() ejecutado exitosamente');
+    console.log('🔍 Número de posts obtenidos:', allPosts?.length || 0);
+    console.log('🔍 Primeros 2 posts:', allPosts?.slice(0, 2));
+  } catch (error) {
+    console.error('❌ Error en getAllPosts():', error);
+    return (
+      <div className="min-h-screen bg-red-100 p-8">
+        <h1 className="text-2xl font-bold text-red-800">Error en getAllPosts</h1>
+        <pre className="mt-4 text-sm">{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    );
+  }
+
+  console.log('🔍 Verificando estructura de datos...');
+  console.log('🔍 allPosts es array?', Array.isArray(allPosts));
+  console.log('🔍 allPosts existe?', !!allPosts);
+  console.log('🔍 allPosts length:', allPosts?.length);
+
+  // Verificación básica de datos
+  if (!allPosts) {
+    console.error('❌ allPosts es null/undefined');
+    return (
+      <div className="min-h-screen bg-yellow-100 p-8">
+        <h1 className="text-2xl font-bold text-yellow-800">Posts no disponibles</h1>
+        <p>allPosts es: {String(allPosts)}</p>
+      </div>
+    );
+  }
+
+  if (!Array.isArray(allPosts)) {
+    console.error('❌ allPosts no es un array:', typeof allPosts);
+    return (
+      <div className="min-h-screen bg-orange-100 p-8">
+        <h1 className="text-2xl font-bold text-orange-800">Formato de datos incorrecto</h1>
+        <p>Tipo de datos: {typeof allPosts}</p>
+        <pre className="mt-4 text-sm">{JSON.stringify(allPosts, null, 2)}</pre>
+      </div>
+    );
+  }
+
+  if (allPosts.length === 0) {
+    console.error('❌ Array de posts está vacío');
+    return (
+      <div className="min-h-screen bg-blue-100 p-8">
+        <h1 className="text-2xl font-bold text-blue-800">No hay posts disponibles</h1>
+        <p>El array de posts existe pero está vacío</p>
+      </div>
+    );
+  }
+
+  console.log('🔍 Datos básicos verificados correctamente');
+  console.log('🔍 Calculando categorías...');
+
   const categories = Array.from(new Set(allPosts.map(post => post.category)));
   console.log('🔍 Categorías encontradas:', categories);
 
@@ -35,7 +84,6 @@ const Blog = () => {
       return matchesSearch && matchesCategory;
     });
 
-    // Sort posts
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'date':
@@ -51,253 +99,130 @@ const Blog = () => {
       }
     });
 
-    console.log('🔍 Posts filtrados:', filtered.length);
+    console.log('🔍 Posts filtrados y ordenados:', filtered.length);
     return filtered;
   }, [allPosts, searchTerm, selectedCategory, sortBy]);
 
   const featuredPost = allPosts.find(post => post.id === 'ai-diagnostico-medico') || allPosts[0];
-  console.log('🔍 Post destacado:', featuredPost?.title || 'No encontrado');
+  console.log('🔍 Post destacado seleccionado:', featuredPost?.title);
 
-  // Verificación de errores básicos
-  if (!allPosts || allPosts.length === 0) {
-    console.error('❌ No se encontraron posts');
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center p-8 bg-white rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Error de Datos</h2>
-          <p className="text-gray-600 mb-4">No se pudieron cargar los artículos del blog</p>
-          <p className="text-sm text-gray-500">Revisa la consola para más detalles</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!featuredPost) {
-    console.error('❌ No se encontró post destacado');
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center p-8 bg-white rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Error de Configuración</h2>
-          <p className="text-gray-600 mb-4">No se pudo determinar el artículo destacado</p>
-          <p className="text-sm text-gray-500">Posts disponibles: {allPosts.length}</p>
-        </div>
-      </div>
-    );
-  }
-
-  console.log('🔍 Renderizando componente Blog completo...');
+  console.log('🔍 === INICIANDO RENDERIZADO ===');
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
-        {/* Header */}
+        {/* DEBUG INFO */}
+        <div className="mb-4 p-4 bg-green-100 border border-green-300 rounded">
+          <h2 className="font-bold text-green-800">🔍 Estado del Debug:</h2>
+          <p>Posts totales: {allPosts.length}</p>
+          <p>Posts filtrados: {filteredAndSortedPosts.length}</p>
+          <p>Categorías: {categories.length}</p>
+          <p>Post destacado: {featuredPost?.title || 'No encontrado'}</p>
+        </div>
+
+        {/* Header Simplificado */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Blog MedAI
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Descubre las últimas tendencias en medicina digital, inteligencia artificial médica y 
-            avances en diagnóstico y tratamiento de enfermedades.
+          <p className="text-xl text-gray-600">
+            Descubre las últimas tendencias en medicina digital e IA médica.
           </p>
         </div>
 
-        {/* Featured Article - Simplificado para debugging */}
-        <div className="mb-12">
-          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
-            <div className="md:flex">
-              <div className="md:w-1/2">
-                <img
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  className="w-full h-64 md:h-full object-cover"
-                  onError={(e) => {
-                    console.error('❌ Error cargando imagen destacada:', featuredPost.image);
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
-                  }}
-                />
-              </div>
-              <div className="md:w-1/2 p-8">
-                <div className="mb-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium inline-block">
-                  Artículo Destacado
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  {featuredPost.title}
-                </h2>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {featuredPost.excerpt}
-                </p>
-                <div className="flex items-center gap-4 mb-6 text-sm text-gray-500">
-                  <div className="flex items-center">
-                    <User className="h-4 w-4 mr-1" />
-                    {featuredPost.author}
-                  </div>
-                  <div className="flex items-center">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    {new Date(featuredPost.date).toLocaleDateString('es-ES')}
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {featuredPost.readTime} min
-                  </div>
-                </div>
-                <Link to={`/blog/${featuredPost.id}`}>
-                  <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
-                    Leer Artículo
-                    <ArrowRight className="h-4 w-4 ml-2" />
-                  </button>
-                </Link>
-              </div>
-            </div>
+        {/* Artículo Destacado Simplificado */}
+        <div className="mb-12 p-6 bg-white border rounded-lg shadow">
+          <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded text-sm font-medium inline-block mb-4">
+            Artículo Destacado
           </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            {featuredPost.title}
+          </h2>
+          <p className="text-gray-600 mb-4">
+            {featuredPost.excerpt}
+          </p>
+          <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+            <span>👤 {featuredPost.author}</span>
+            <span>📅 {new Date(featuredPost.date).toLocaleDateString('es-ES')}</span>
+            <span>⏱️ {featuredPost.readTime} min</span>
+          </div>
+          <Link to={`/blog/${featuredPost.id}`}>
+            <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+              Leer Artículo →
+            </button>
+          </Link>
         </div>
 
-        {/* Search and Filters - Simplificado */}
+        {/* Búsqueda Simplificada */}
         <div className="mb-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <input
-                type="text"
-                placeholder="Buscar artículos..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Todas las categorías</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="date">Más recientes</option>
-              <option value="title">Título A-Z</option>
-              <option value="readTime">Tiempo de lectura</option>
-              <option value="views">Más populares</option>
-            </select>
-          </div>
+          <input
+            type="text"
+            placeholder="Buscar artículos..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-lg"
+          />
         </div>
 
-        {/* Results count */}
+        {/* Contador de Resultados */}
         <div className="mb-6">
           <p className="text-gray-600">
-            {filteredAndSortedPosts.length === 1 
-              ? `1 artículo encontrado` 
-              : `${filteredAndSortedPosts.length} artículos encontrados`}
+            {filteredAndSortedPosts.length} artículos encontrados
           </p>
         </div>
 
-        {/* Articles Grid - Simplificado */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredAndSortedPosts.map((post) => (
-            <div key={post.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-48 object-cover"
-                onError={(e) => {
-                  console.error('❌ Error cargando imagen del post:', post.id, post.image);
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
-                }}
-              />
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+        {/* Grid de Artículos Simplificado */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {filteredAndSortedPosts.map((post, index) => {
+            console.log(`🔍 Renderizando post ${index + 1}:`, post.title);
+            return (
+              <div key={post.id} className="bg-white border rounded-lg overflow-hidden shadow">
+                <div className="h-48 bg-gray-200 flex items-center justify-center">
+                  <span className="text-gray-500">Imagen: {post.id}</span>
+                </div>
+                <div className="p-4">
+                  <div className="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs mb-2 inline-block">
                     {post.category}
-                  </span>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <Eye className="h-3 w-3 mr-1" />
-                    {post.views.toLocaleString()}
                   </div>
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-900 line-clamp-2">
-                  {post.title.length > 60 ? `${post.title.substring(0, 60)}...` : post.title}
-                </h3>
-                <p className="text-gray-600 mb-4 text-sm line-clamp-3">
-                  {post.excerpt.length > 100 ? `${post.excerpt.substring(0, 100)}...` : post.excerpt}
-                </p>
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                  <div className="flex items-center">
-                    <User className="h-4 w-4 mr-1" />
-                    {post.author}
+                  <h3 className="font-semibold mb-2 text-gray-900">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-3">
+                    {post.excerpt.substring(0, 100)}...
+                  </p>
+                  <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
+                    <span>👤 {post.author}</span>
+                    <span>⏱️ {post.readTime} min</span>
                   </div>
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {post.readTime} min
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-500">
-                    {new Date(post.date).toLocaleDateString('es-ES', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </span>
                   <Link to={`/blog/${post.id}`}>
-                    <button className="border border-gray-300 text-gray-700 px-4 py-1 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                    <button className="w-full border border-gray-300 text-gray-700 py-2 rounded hover:bg-gray-50">
                       Leer más
                     </button>
                   </Link>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* No results */}
+        {/* Sin Resultados */}
         {filteredAndSortedPosts.length === 0 && (
           <div className="text-center py-12">
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               No se encontraron artículos
             </h3>
             <p className="text-gray-600">
-              Intenta modificar tu búsqueda o filtros
+              Intenta modificar tu búsqueda
             </p>
           </div>
         )}
 
-        {/* Categories Section - Simplificado */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Explora por Categorías
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((category) => {
-              const categoryPosts = allPosts.filter(post => post.category === category);
-              const totalViews = categoryPosts.reduce((sum, post) => sum + post.views, 0);
-              
-              return (
-                <div 
-                  key={category} 
-                  className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  <div className="text-center">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{category}</h3>
-                    <p className="text-gray-600 mb-4">
-                      {categoryPosts.length} artículos
-                    </p>
-                    <div className="flex items-center justify-center text-sm text-gray-500">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {totalViews.toLocaleString()} vistas totales
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        {/* Footer de Debug */}
+        <div className="mt-12 p-4 bg-gray-100 border rounded">
+          <h3 className="font-bold mb-2">🔍 Info de Debug Final:</h3>
+          <p>Componente renderizado exitosamente</p>
+          <p>Posts procesados: {allPosts.length}</p>
+          <p>Hora: {new Date().toLocaleTimeString()}</p>
         </div>
       </div>
     </div>
