@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +14,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import AuthButton from "./AuthButton";
 
 interface NavigationProps {
   activeView: string;
@@ -88,13 +88,12 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
               </SelectContent>
             </Select>
 
-            <div className="text-sm text-gray-600">
-              {t('nav.welcome')}, <span className="font-medium">{user?.name}</span>
-            </div>
-            <Button variant="ghost" size="sm" onClick={handleLogout}>
-              <User className="h-4 w-4 mr-2" />
-              {t('nav.logout')}
-            </Button>
+            {user && (
+              <div className="text-sm text-gray-600">
+                {t('nav.welcome')}, <span className="font-medium">{user?.name}</span>
+              </div>
+            )}
+            <AuthButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -134,17 +133,14 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
                 );
               })}
               <div className="border-t pt-2 mt-2">
-                <div className="px-3 py-2 text-sm text-gray-600">
-                  {user?.name}
+                {user && (
+                  <div className="px-3 py-2 text-sm text-gray-600">
+                    {user?.name}
+                  </div>
+                )}
+                <div className="px-3">
+                  <AuthButton />
                 </div>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
-                  onClick={handleLogout}
-                >
-                  <User className="h-4 w-4 mr-2" />
-                  {t('nav.logout')}
-                </Button>
               </div>
             </div>
           </div>
