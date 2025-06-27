@@ -540,7 +540,7 @@ const Landing = () => {
               </Link>
               
               <Link to="/contact">
-                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-2xl text-lg font-semibold">
+                <Button variant="outline" size="lg" className="border-2 border-white bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-2xl text-lg font-semibold">
                   {language === 'es' ? 'Contacto' :
                    language === 'fr' ? 'Contact' :
                    'Contact'}
