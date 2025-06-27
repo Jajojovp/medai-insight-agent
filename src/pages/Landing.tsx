@@ -347,7 +347,7 @@ const Landing = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/dashboard">
+              <Link to="/login">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-2xl text-lg font-semibold shadow-xl">
                   {language === 'es' ? 'Iniciar' :
                    language === 'fr' ? 'Commencer' :
@@ -532,7 +532,7 @@ const Landing = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/dashboard">
+              <Link to="/login">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 rounded-2xl text-lg font-semibold">
                   {language === 'es' ? 'Iniciar' :
                    language === 'fr' ? 'Commencer' :
