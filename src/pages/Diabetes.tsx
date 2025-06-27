@@ -28,7 +28,7 @@ const Diabetes = () => {
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             {language === "es" ? "Plataforma médica con 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado de la diabetes con 98.8% de precisión máxima" :
-             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée du diabète avec 98.8% de précision maximale" :
+             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d'IA pour détection précoce, stratification du risque et gestion personnalisée du diabète avec 98.8% de précision maximale" :
              "Medical platform with 62+ specialized AI models for early detection, risk stratification and personalized management of diabetes with 98.8% maximum accuracy"}
           </p>
         </div>
@@ -135,7 +135,7 @@ const Diabetes = () => {
                   <li>• <strong>{language === "es" ? "Sobrepeso u obesidad:" : language === "fr" ? "Surpoids ou obésité:" : "Overweight or obesity:"}</strong> {language === "es" ? "El exceso de peso, especialmente alrededor del abdomen, aumenta la resistencia a la insulina." : language === "fr" ? "L'excès de poids, surtout autour de l'abdomen, augmente la résistance à l'insuline." : "Excess weight, especially around the abdomen, increases insulin resistance."}</li>
                   <li>• <strong>{language === "es" ? "Inactividad física:" : language === "fr" ? "Inactivité physique:" : "Physical inactivity:"}</strong> {language === "es" ? "Cuanto menos activo sea, mayor será su riesgo. La actividad física ayuda a controlar el peso, utiliza la glucosa como energía y hace que las células sean más sensibles a la insulina." : language === "fr" ? "Moins vous êtes actif, plus votre risque est élevé. L'activité physique aide à contrôler le poids, utilise le glucose comme énergie et rend les cellules plus sensibles à l'insuline." : "The less active you are, the greater your risk. Physical activity helps control weight, uses glucose for energy, and makes cells more sensitive to insulin."}</li>
                   <li>• <strong>{language === "es" ? "Presión arterial alta:" : language === "fr" ? "Hypertension artérielle:" : "High blood pressure:"}</strong> {language === "es" ? "Tener presión arterial alta (140/90 mm Hg o superior) está relacionado con un mayor riesgo de diabetes tipo 2." : language === "fr" ? "Avoir une pression artérielle élevée (140/90 mm Hg ou plus) est lié à un risque accru de diabète de type 2." : "Having high blood pressure (140/90 mm Hg or higher) is linked to an increased risk of type 2 diabetes."}</li>
-                  <li>• <strong>{language === "es" ? "Niveles anormales de colesterol y triglicéridos:" : language === "fr" ? "Taux anormaux de cholestérol et de triglycérides:" : "Abnormal cholesterol and triglyceride levels:"}</strong> {language === "es" ? "Tener niveles bajos de colesterol HDL ("bueno") y niveles altos de triglicéridos aumenta el riesgo." : language === "fr" ? "Avoir de faibles taux de cholestérol HDL (« bon ») et des taux élevés de triglycérides augmente le risque." : "Having low levels of HDL cholesterol ("good") and high levels of triglycerides increases the risk."}</li>
+                  <li>• <strong>{language === "es" ? "Niveles anormales de colesterol y triglicéridos:" : language === "fr" ? "Taux anormaux de cholestérol et de triglycérides:" : "Abnormal cholesterol and triglyceride levels:"}</strong> {language === "es" ? "Tener niveles bajos de colesterol HDL (\"bueno\") y niveles altos de triglicéridos aumenta el riesgo." : language === "fr" ? "Avoir de faibles taux de cholestérol HDL (« bon ») et des taux élevés de triglycérides augmente le risque." : "Having low levels of HDL cholesterol (\"good\") and high levels of triglycerides increases the risk."}</li>
                 </ul>
               </div>
               <div>
@@ -256,7 +256,7 @@ const Diabetes = () => {
                   <li className="flex items-start">
                     <CheckCircle className="h-4 w-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <strong>{language === "es" ? "Medicamentos orales:" : language === "fr" ? "Médicaments oraux:" : "Oral medications:"}</strong> {language === "es" ? "Metformina, sulfonilureas, inhibidores de la DPP-4, etc." : language === "fr" ? "Metformine, sulfonylurées, inhibiteurs de la DPP-4, etc." : "Metformin, sulfonylureas, DPP-4 inhibitors, etc."}
+                      <strong>{language === "es" ? "Medicamentos orales:" : language === "fr" ? "Médicaments oraux:" : "Oral medications:"}</strong> {language === "es" ? "Metformina, sulfonilureas, inhibidores de la DPP-4, etc." : language === "fr" ? "Metformine, sulfonylureas, inhibiteurs de la DPP-4, etc." : "Metformin, sulfonylureas, DPP-4 inhibitors, etc."}
                     </div>
                   </li>
                 </ul>

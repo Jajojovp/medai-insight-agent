@@ -28,7 +28,7 @@ const PancreaticCancer = () => {
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             {language === "es" ? "Plataforma médica con 62+ modelos especializados de IA para detección temprana, estratificación de riesgo y manejo personalizado del cáncer de páncreas con 98.8% de precisión máxima" :
-             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d\\'IA pour détection précoce, stratification du risque et gestion personnalisée du cancer du pancréas avec 98.8% de précision maximale" :
+             language === "fr" ? "Plateforme médicale avec 62+ modèles spécialisés d'IA pour détection précoce, stratification du risque et gestion personnalisée du cancer du pancréas avec 98.8% de précision maximale" :
              "Medical platform with 62+ specialized AI models for early detection, risk stratification and personalized management of pancreatic cancer with 98.8% maximum accuracy"}
           </p>
         </div>
