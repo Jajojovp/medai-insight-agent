@@ -9,10 +9,6 @@ interface LanguageContextProps {
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
-interface LanguageProviderProps {
-  children: React.ReactNode;
-}
-
 const translations = {
   es: {
     landing: {
@@ -147,35 +143,50 @@ const translations = {
   }
 };
 
-const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState('es');
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    console.log('🌐 LanguageProvider inicializando...');
-    try {
-      const storedLanguage = localStorage.getItem('language');
-      if (storedLanguage && ['es', 'en', 'fr'].includes(storedLanguage)) {
-        setLanguageState(storedLanguage);
-        console.log('✅ Idioma cargado desde localStorage:', storedLanguage);
+    console.log('🌐 LanguageProvider inicializando de forma segura...');
+    
+    const initializeLanguage = () => {
+      try {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          const storedLanguage = localStorage.getItem('language');
+          if (storedLanguage && ['es', 'en', 'fr'].includes(storedLanguage)) {
+            setLanguageState(storedLanguage);
+            console.log('✅ Idioma cargado:', storedLanguage);
+          }
+        }
+      } catch (error) {
+        console.log('⚠️ localStorage no disponible, usando idioma por defecto');
+      } finally {
+        setIsInitialized(true);
+        console.log('✅ LanguageProvider inicializado');
       }
-    } catch (error) {
-      console.error('❌ Error cargando idioma desde localStorage:', error);
-    }
-    console.log('✅ LanguageProvider inicializado correctamente');
+    };
+
+    // Delay initialization to avoid SSR issues
+    setTimeout(initializeLanguage, 0);
   }, []);
 
   const setLanguage = (newLanguage: string) => {
+    console.log('🌐 Cambiando idioma a:', newLanguage);
+    setLanguageState(newLanguage);
+    
     try {
-      console.log('🌐 Cambiando idioma a:', newLanguage);
-      setLanguageState(newLanguage);
-      localStorage.setItem('language', newLanguage);
-      console.log('✅ Idioma cambiado correctamente');
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('language', newLanguage);
+      }
     } catch (error) {
-      console.error('❌ Error guardando idioma:', error);
+      console.log('⚠️ No se pudo guardar idioma en localStorage');
     }
   };
 
   const t = (key: string): string => {
+    if (!isInitialized) return key;
+    
     try {
       const keys = key.split('.');
       let value: any = translations[language as keyof typeof translations];
@@ -184,14 +195,12 @@ const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
         if (value && typeof value === 'object' && k in value) {
           value = value[k as keyof typeof value];
         } else {
-          console.warn('⚠️ Traducción no encontrada:', key, 'para idioma:', language);
           return key;
         }
       }
       
       return typeof value === 'string' ? value : key;
     } catch (error) {
-      console.error('❌ Error en traducción:', error, 'key:', key);
       return key;
     }
   };
@@ -203,17 +212,18 @@ const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   );
 };
 
-const useLanguage = () => {
+const useLanguage = (): LanguageContextProps => {
   const context = useContext(LanguageContext);
+  
+  // Always return a safe object, never throw
   if (!context) {
-    console.error('🚨 useLanguage debe ser usado dentro de LanguageProvider');
-    // Return safe defaults instead of throwing
     return {
       language: 'es',
       setLanguage: () => {},
       t: (key: string) => key
     };
   }
+  
   return context;
 };
 
