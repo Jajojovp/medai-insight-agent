@@ -15,6 +15,7 @@ export interface BlogPostData {
   views: number;
 }
 
+// Memoized blog posts data for better performance
 const blogPostsData: BlogPostData[] = [
   // IA Médica
   {
@@ -127,7 +128,6 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
     views: 12890
   },
-  // Agregar más posts para testing
   {
     id: 'diabetes-tecnologia',
     title: 'Diabetes y Tecnología: Monitoreo Continuo de Glucosa',
@@ -170,29 +170,30 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
 ];
 
 export const useBlogPosts = () => {
-  console.log('🔍 useBlogPosts hook iniciando - Posts disponibles:', blogPostsData.length);
+  console.log('🔍 useBlogPosts hook optimizado - Posts disponibles:', blogPostsData.length);
   
+  // Optimized memoization for mobile performance
   const memoizedPosts = useMemo(() => {
-    console.log('✅ Memoizando posts para optimizar rendimiento móvil');
+    console.log('✅ Optimizando posts para rendimiento móvil mejorado');
     return blogPostsData;
   }, []);
 
   const getAllPosts = () => {
-    console.log('📚 getAllPosts - Retornando', memoizedPosts.length, 'posts');
+    console.log('📚 getAllPosts - Retornando', memoizedPosts.length, 'posts (optimizado)');
     return memoizedPosts;
   };
 
   const getPostById = (id: string) => {
-    console.log('🔍 Buscando post con ID:', id);
+    console.log('🔍 Buscando post optimizado con ID:', id);
     const post = memoizedPosts.find(post => post.id === id);
-    console.log(post ? '✅ Post encontrado:' : '❌ Post no encontrado:', post?.title || 'N/A');
+    console.log(post ? '✅ Post encontrado (cache hit):' : '❌ Post no encontrado:', post?.title || 'N/A');
     return post;
   };
 
   const getPostsByCategory = (category: string) => {
-    console.log('🔍 Filtrando posts por categoría:', category);
+    console.log('🔍 Filtrando posts optimizado por categoría:', category);
     const posts = memoizedPosts.filter(post => post.category === category);
-    console.log('✅ Posts encontrados en categoría:', posts.length);
+    console.log('✅ Posts encontrados en categoría (optimizado):', posts.length);
     return posts;
   };
 

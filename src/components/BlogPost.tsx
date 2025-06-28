@@ -5,7 +5,8 @@ import { Calendar, Clock, User, ArrowLeft, Share2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Footer from '@/components/Footer';
+import SimpleBlogNavigation from '@/components/SimpleBlogNavigation';
+import SimpleBlogFooter from '@/components/SimpleBlogFooter';
 import { useBlogPosts, BlogPostData } from '@/hooks/useBlogPosts';
 
 interface TableOfContentsProps {
@@ -165,15 +166,19 @@ const BlogPost = ({ id }: { id: string }) => {
   if (!post) {
     console.log('❌ Post no encontrado, mostrando error');
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Artículo no encontrado</h2>
-          <p className="text-gray-600 mb-4">ID buscado: {id}</p>
-          <Button onClick={() => navigate('/blog')} className="flex items-center">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver al Blog
-          </Button>
+      <div className="min-h-screen bg-gray-50">
+        <SimpleBlogNavigation />
+        <div className="flex items-center justify-center py-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Artículo no encontrado</h2>
+            <p className="text-gray-600 mb-4">ID buscado: {id}</p>
+            <Button onClick={() => navigate('/blog')} className="flex items-center">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Volver al Blog
+            </Button>
+          </div>
         </div>
+        <SimpleBlogFooter />
       </div>
     );
   }
@@ -186,6 +191,8 @@ const BlogPost = ({ id }: { id: string }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SimpleBlogNavigation />
+      
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
         <div 
@@ -328,8 +335,7 @@ const BlogPost = ({ id }: { id: string }) => {
         )}
       </article>
 
-      {/* Footer */}
-      <Footer />
+      <SimpleBlogFooter />
     </div>
   );
 };

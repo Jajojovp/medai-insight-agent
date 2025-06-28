@@ -3,22 +3,22 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Calendar, Clock, User, Eye, Filter, ArrowRight, Star, TrendingUp } from 'lucide-react';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
-import PublicNavigation from '@/components/PublicNavigation';
-import Footer from '@/components/Footer';
+import SimpleBlogNavigation from '@/components/SimpleBlogNavigation';
+import SimpleBlogFooter from '@/components/SimpleBlogFooter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Blog = () => {
-  console.log('🚀 Blog component iniciando...');
+  console.log('🚀 Blog component iniciando - Versión Minimalista...');
   
   const { getAllPosts } = useBlogPosts();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 9; // Reducido para mejor rendimiento móvil
+  const articlesPerPage = 6; // Optimizado para móvil
 
   // Obtener posts de forma segura
   let allPosts = [];
@@ -33,15 +33,15 @@ const Blog = () => {
   if (!allPosts || allPosts.length === 0) {
     console.log('⚠️ No hay posts disponibles, mostrando fallback');
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-white">
-        <PublicNavigation />
+      <div className="min-h-screen bg-gray-50">
+        <SimpleBlogNavigation />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center max-w-md mx-auto">
             <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <Star className="h-8 w-8 text-blue-600" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              Blog MedAI Pro
+              Blog MedAI
             </h1>
             <p className="text-gray-600 mb-6">
               Cargando contenido del blog...
@@ -51,7 +51,7 @@ const Blog = () => {
             </Button>
           </div>
         </div>
-        <Footer />
+        <SimpleBlogFooter />
       </div>
     );
   }
@@ -97,9 +97,8 @@ const Blog = () => {
   );
 
   const featuredPost = allPosts[0];
-  const trendingPosts = allPosts.slice(0, 3);
 
-  console.log('📊 Estadísticas finales:', {
+  console.log('📊 Blog minimalista cargado:', {
     totalPosts: allPosts.length,
     filteredPosts: filteredAndSortedPosts.length,
     currentPagePosts: currentPosts.length,
@@ -107,51 +106,45 @@ const Blog = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-white">
-      <PublicNavigation />
+    <div className="min-h-screen bg-gray-50">
+      <SimpleBlogNavigation />
       
-      {/* Hero Section Optimizado */}
-      <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 py-12 sm:py-16">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
-              <Star className="h-4 w-4 mr-2 text-yellow-300" />
-              <span className="text-sm font-medium">Blog MedAI Pro</span>
-            </div>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-              Medicina del Futuro
-            </h1>
-            
-            <p className="text-lg sm:text-xl mb-6 text-blue-100 max-w-2xl mx-auto">
-              Descubre las últimas tendencias en inteligencia artificial médica y diagnósticos avanzados.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-sm mx-auto sm:max-w-none">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold">
-                <TrendingUp className="h-4 w-4 mr-2" />
-                Explorar Artículos
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold">
-                Newsletter Gratis
-              </Button>
-            </div>
+      {/* Hero Section Minimalista */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+            <Star className="h-4 w-4 mr-2 text-yellow-300" />
+            <span className="text-sm font-medium">Blog MedAI</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Medicina del Futuro
+          </h1>
+          
+          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+            Descubre las últimas tendencias en inteligencia artificial médica y diagnósticos avanzados.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+              <TrendingUp className="h-4 w-4 mr-2" />
+              Explorar Artículos
+            </Button>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 sm:py-12">
-        {/* Stats Section */}
+      <div className="container mx-auto px-4 py-12">
+        {/* Stats Minimalistas */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
-            { label: 'Artículos', value: `${allPosts.length}+`, color: 'text-blue-600' },
+            { label: 'Artículos', value: `${allPosts.length}`, color: 'text-blue-600' },
             { label: 'Categorías', value: categories.length, color: 'text-green-600' },
-            { label: 'Lectores', value: '50K+', color: 'text-purple-600' },
-            { label: 'Satisfacción', value: '98%', color: 'text-orange-600' }
+            { label: 'Lectores', value: '25K+', color: 'text-purple-600' },
+            { label: 'Actualizado', value: 'Hoy', color: 'text-orange-600' }
           ].map((stat, index) => (
             <div key={index} className="text-center p-4 bg-white rounded-lg shadow-sm">
-              <div className={`text-2xl sm:text-3xl font-bold ${stat.color}`}>
+              <div className={`text-2xl font-bold ${stat.color}`}>
                 {stat.value}
               </div>
               <div className="text-sm text-gray-600">{stat.label}</div>
@@ -159,72 +152,8 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* Featured Articles */}
-        <div className="mb-12">
-          <div className="flex items-center mb-6">
-            <TrendingUp className="h-5 w-5 text-orange-500 mr-2" />
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Artículos Destacados</h2>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {trendingPosts.map((post, index) => (
-              <Link key={post.id} to={`/blog/${post.id}`} className="group">
-                <article className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                  <div className="relative">
-                    <Badge className="absolute top-3 left-3 z-10 bg-orange-500 text-white">
-                      #{index + 1} Trending
-                    </Badge>
-                    <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500">
-                      <img 
-                        src={post.image} 
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
-                        }}
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="p-4">
-                    <Badge variant="secondary" className="mb-2 text-xs">
-                      {post.category}
-                    </Badge>
-                    
-                    <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                    
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <div className="flex items-center space-x-3">
-                        <span className="flex items-center">
-                          <User className="h-3 w-3 mr-1" />
-                          {post.author.split(' ')[0]}
-                        </span>
-                        <span className="flex items-center">
-                          <Clock className="h-3 w-3 mr-1" />
-                          {post.readTime}min
-                        </span>
-                      </div>
-                      <span className="flex items-center">
-                        <Eye className="h-3 w-3 mr-1" />
-                        {post.views > 1000 ? `${Math.floor(post.views/1000)}k` : post.views}
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Search and Filters */}
-        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-8">
+        {/* Búsqueda y Filtros */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <div className="space-y-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -233,19 +162,19 @@ const Blog = () => {
                 placeholder="Buscar artículos..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 border-2 border-gray-200 focus:border-blue-500 rounded-lg"
+                className="pl-10"
               />
             </div>
             
             <div className="flex flex-col sm:flex-row gap-3">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="w-full sm:w-48 bg-white border-2 border-gray-200 rounded-lg">
+                <SelectTrigger className="w-full sm:w-48 bg-white">
                   <div className="flex items-center">
                     <Filter className="h-4 w-4 mr-2" />
                     <SelectValue placeholder="Categoría" />
                   </div>
                 </SelectTrigger>
-                <SelectContent className="bg-white border rounded-lg z-50">
+                <SelectContent className="bg-white z-50">
                   <SelectItem value="">Todas</SelectItem>
                   {categories.map(category => (
                     <SelectItem key={category} value={category}>{category}</SelectItem>
@@ -254,10 +183,10 @@ const Blog = () => {
               </Select>
               
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-full sm:w-48 bg-white border-2 border-gray-200 rounded-lg">
+                <SelectTrigger className="w-full sm:w-48 bg-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white border rounded-lg z-50">
+                <SelectContent className="bg-white z-50">
                   <SelectItem value="date">Más recientes</SelectItem>
                   <SelectItem value="views">Más populares</SelectItem>
                   <SelectItem value="title">A-Z</SelectItem>
@@ -272,11 +201,11 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Articles Grid */}
+        {/* Grid de Artículos */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {currentPosts.map((post) => (
             <Link key={post.id} to={`/blog/${post.id}`} className="group">
-              <article className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+              <article className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                 <div className="aspect-video relative overflow-hidden">
                   <img 
                     src={post.image} 
@@ -288,7 +217,7 @@ const Blog = () => {
                     }}
                   />
                   <div className="absolute top-3 right-3">
-                    <Badge className="bg-white/90 text-gray-800 backdrop-blur-sm text-xs">
+                    <Badge className="bg-white/90 text-gray-800 text-xs">
                       {post.category}
                     </Badge>
                   </div>
@@ -332,7 +261,7 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* Pagination */}
+        {/* Paginación */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-2 mb-8">
             <Button
@@ -347,21 +276,17 @@ const Blog = () => {
             <div className="flex items-center gap-1">
               {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                 const page = i + 1;
-                if (totalPages <= 5 || page === 1 || page === totalPages || 
-                    (page >= currentPage - 1 && page <= currentPage + 1)) {
-                  return (
-                    <Button
-                      key={page}
-                      variant={page === currentPage ? "default" : "outline"}
-                      onClick={() => setCurrentPage(page)}
-                      size="sm"
-                      className="w-8 h-8 text-sm"
-                    >
-                      {page}
-                    </Button>
-                  );
-                }
-                return null;
+                return (
+                  <Button
+                    key={page}
+                    variant={page === currentPage ? "default" : "outline"}
+                    onClick={() => setCurrentPage(page)}
+                    size="sm"
+                    className="w-8 h-8 text-sm"
+                  >
+                    {page}
+                  </Button>
+                );
               })}
             </div>
             
@@ -376,7 +301,7 @@ const Blog = () => {
           </div>
         )}
 
-        {/* No Results */}
+        {/* Sin Resultados */}
         {filteredAndSortedPosts.length === 0 && (
           <div className="text-center py-12">
             <div className="max-w-md mx-auto">
@@ -398,38 +323,9 @@ const Blog = () => {
             </div>
           </div>
         )}
-
-        {/* Newsletter Section */}
-        <div className="mt-16">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-center text-white relative overflow-hidden">
-            <div className="relative max-w-2xl mx-auto">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                ¿No te quieres perder nada?
-              </h3>
-              <p className="text-lg mb-6 text-blue-100">
-                Suscríbete a nuestro newsletter y recibe las últimas novedades en medicina digital.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <Input 
-                  type="email" 
-                  placeholder="tu@email.com"
-                  className="flex-1 py-3 px-4 text-gray-900 bg-white border-0 rounded-lg"
-                />
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold">
-                  Suscribirse
-                </Button>
-              </div>
-              
-              <p className="text-xs text-blue-200 mt-3">
-                Sin spam. Cancela cuando quieras.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <Footer />
+      <SimpleBlogFooter />
     </div>
   );
 };
