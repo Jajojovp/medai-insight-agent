@@ -1,7 +1,6 @@
-
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Calendar, Clock, User, Eye, Filter, ArrowRight, Star, TrendingUp } from 'lucide-react';
+import { Search, Calendar, Clock, User, Eye, Filter, ArrowRight, Star, TrendingUp, Brain, Heart, Microscope } from 'lucide-react';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import SimpleBlogNavigation from '@/components/SimpleBlogNavigation';
 import SimpleBlogFooter from '@/components/SimpleBlogFooter';
@@ -11,20 +10,20 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Blog = () => {
-  console.log('🚀 Blog component iniciando - Versión Minimalista...');
+  console.log('🚀 Blog component optimizado - Sin imágenes para máximo rendimiento...');
   
   const { getAllPosts } = useBlogPosts();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 6; // Optimizado para móvil
+  const articlesPerPage = 6;
 
   // Obtener posts de forma segura
   let allPosts = [];
   try {
     allPosts = getAllPosts();
-    console.log('✅ Posts cargados exitosamente:', allPosts.length);
+    console.log('✅ Posts cargados exitosamente sin imágenes:', allPosts.length);
   } catch (error) {
     console.error('❌ Error cargando posts:', error);
   }
@@ -96,9 +95,45 @@ const Blog = () => {
     currentPage * articlesPerPage
   );
 
-  const featuredPost = allPosts[0];
+  // Función para obtener icono y color por categoría
+  const getCategoryStyle = (category: string) => {
+    switch (category) {
+      case 'IA Médica':
+        return { 
+          icon: Brain, 
+          gradient: 'from-blue-500 to-purple-600',
+          bgColor: 'bg-blue-50',
+          borderColor: 'border-blue-200',
+          textColor: 'text-blue-700'
+        };
+      case 'Cardiología':
+        return { 
+          icon: Heart, 
+          gradient: 'from-red-500 to-pink-600',
+          bgColor: 'bg-red-50',
+          borderColor: 'border-red-200',
+          textColor: 'text-red-700'
+        };
+      case 'Oncología':
+        return { 
+          icon: Microscope, 
+          gradient: 'from-purple-500 to-indigo-600',
+          bgColor: 'bg-purple-50',
+          borderColor: 'border-purple-200',
+          textColor: 'text-purple-700'
+        };
+      default:
+        return { 
+          icon: Star, 
+          gradient: 'from-gray-500 to-gray-600',
+          bgColor: 'bg-gray-50',
+          borderColor: 'border-gray-200',
+          textColor: 'text-gray-700'
+        };
+    }
+  };
 
-  console.log('📊 Blog minimalista cargado:', {
+  console.log('📊 Blog optimizado sin imágenes cargado:', {
     totalPosts: allPosts.length,
     filteredPosts: filteredAndSortedPosts.length,
     currentPagePosts: currentPosts.length,
@@ -109,12 +144,12 @@ const Blog = () => {
     <div className="min-h-screen bg-gray-50">
       <SimpleBlogNavigation />
       
-      {/* Hero Section Minimalista */}
+      {/* Hero Section Optimizado */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
             <Star className="h-4 w-4 mr-2 text-yellow-300" />
-            <span className="text-sm font-medium">Blog MedAI</span>
+            <span className="text-sm font-medium">Blog MedAI - Optimizado</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -135,13 +170,13 @@ const Blog = () => {
       </div>
 
       <div className="container mx-auto px-4 py-12">
-        {/* Stats Minimalistas */}
+        {/* Stats Optimizadas */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
             { label: 'Artículos', value: `${allPosts.length}`, color: 'text-blue-600' },
             { label: 'Categorías', value: categories.length, color: 'text-green-600' },
             { label: 'Lectores', value: '25K+', color: 'text-purple-600' },
-            { label: 'Actualizado', value: 'Hoy', color: 'text-orange-600' }
+            { label: 'Sin Imágenes', value: '✓', color: 'text-green-600' }
           ].map((stat, index) => (
             <div key={index} className="text-center p-4 bg-white rounded-lg shadow-sm">
               <div className={`text-2xl font-bold ${stat.color}`}>
@@ -201,64 +236,62 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Grid de Artículos */}
+        {/* Grid de Artículos Optimizado Sin Imágenes */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {currentPosts.map((post) => (
-            <Link key={post.id} to={`/blog/${post.id}`} className="group">
-              <article className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                <div className="aspect-video relative overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
-                    }}
-                  />
-                  <div className="absolute top-3 right-3">
-                    <Badge className="bg-white/90 text-gray-800 text-xs">
-                      {post.category}
-                    </Badge>
-                  </div>
-                </div>
-                
-                <div className="p-4">
-                  <div className="flex items-center text-xs text-gray-500 mb-2">
-                    <Calendar className="h-3 w-3 mr-1" />
-                    <span>{new Date(post.date).toLocaleDateString('es-ES')}</span>
-                  </div>
-                  
-                  <h2 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {post.title}
-                  </h2>
-                  
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3 text-xs text-gray-500">
-                      <span className="flex items-center">
-                        <User className="h-3 w-3 mr-1" />
-                        {post.author.split(' ')[0]}
-                      </span>
-                      <span className="flex items-center">
-                        <Clock className="h-3 w-3 mr-1" />
-                        {post.readTime}min
-                      </span>
-                      <span className="flex items-center">
-                        <Eye className="h-3 w-3 mr-1" />
-                        {post.views > 1000 ? `${Math.floor(post.views/1000)}k` : post.views}
-                      </span>
+          {currentPosts.map((post) => {
+            const categoryStyle = getCategoryStyle(post.category);
+            const CategoryIcon = categoryStyle.icon;
+            
+            return (
+              <Link key={post.id} to={`/blog/${post.id}`} className="group">
+                <article className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
+                  {/* Header con Gradiente e Icono */}
+                  <div className={`bg-gradient-to-r ${categoryStyle.gradient} p-6 text-white relative`}>
+                    <div className="flex items-center justify-between mb-3">
+                      <Badge className="bg-white/20 text-white text-xs">
+                        {post.category}
+                      </Badge>
+                      <CategoryIcon className="h-6 w-6 text-white/80" />
                     </div>
                     
-                    <ArrowRight className="h-4 w-4 text-blue-600 group-hover:translate-x-1 transition-transform" />
+                    <div className="flex items-center text-sm text-white/80 mb-2">
+                      <Calendar className="h-4 w-4 mr-1" />
+                      <span>{new Date(post.date).toLocaleDateString('es-ES')}</span>
+                    </div>
+                    
+                    <h2 className="font-bold text-white mb-2 group-hover:text-white/90 transition-colors line-clamp-2 text-lg">
+                      {post.title}
+                    </h2>
                   </div>
-                </div>
-              </article>
-            </Link>
-          ))}
+                  
+                  <div className="p-6">
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3 text-xs text-gray-500">
+                        <span className="flex items-center">
+                          <User className="h-3 w-3 mr-1" />
+                          {post.author.split(' ')[0]}
+                        </span>
+                        <span className="flex items-center">
+                          <Clock className="h-3 w-3 mr-1" />
+                          {post.readTime}min
+                        </span>
+                        <span className="flex items-center">
+                          <Eye className="h-3 w-3 mr-1" />
+                          {post.views > 1000 ? `${Math.floor(post.views/1000)}k` : post.views}
+                        </span>
+                      </div>
+                      
+                      <ArrowRight className="h-4 w-4 text-blue-600 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Paginación */}

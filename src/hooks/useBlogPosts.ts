@@ -11,11 +11,10 @@ export interface BlogPostData {
   readTime: number;
   category: string;
   tags: string[];
-  image: string;
   views: number;
 }
 
-// Memoized blog posts data for better performance
+// Optimized blog posts data without images for better mobile performance
 const blogPostsData: BlogPostData[] = [
   // IA Médica
   {
@@ -112,7 +111,6 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
     readTime: 12,
     category: 'IA Médica',
     tags: ['Inteligencia Artificial', 'Diagnóstico', 'Tecnología Médica', 'Innovación'],
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
     views: 15420
   },
   {
@@ -125,7 +123,6 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
     readTime: 15,
     category: 'IA Médica',
     tags: ['Machine Learning', 'Medicina Predictiva', 'Prevención', 'Algoritmos'],
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
     views: 12890
   },
   {
@@ -138,7 +135,6 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
     readTime: 8,
     category: 'Endocrinología',
     tags: ['Diabetes', 'Tecnología', 'Monitoreo', 'Glucosa'],
-    image: 'https://images.unsplash.com/photo-1585435463990-1425934a5f8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
     views: 9500
   },
   {
@@ -151,7 +147,6 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
     readTime: 10,
     category: 'Cardiología',
     tags: ['Cardiología', 'Digital', 'Diagnóstico', 'Corazón'],
-    image: 'https://images.unsplash.com/photo-1628354475334-71391a49ef01?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
     views: 11200
   },
   {
@@ -164,36 +159,35 @@ La colaboración entre profesionales médicos, científicos de datos y regulador
     readTime: 14,
     category: 'Oncología',
     tags: ['Oncología', 'Precisión', 'Genética', 'Personalizado'],
-    image: 'https://images.unsplash.com/photo-1618773928121-c1374054a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80',
     views: 8900
   }
 ];
 
 export const useBlogPosts = () => {
-  console.log('🔍 useBlogPosts hook optimizado - Posts disponibles:', blogPostsData.length);
+  console.log('🔍 useBlogPosts hook optimizado - Posts sin imágenes:', blogPostsData.length);
   
-  // Optimized memoization for mobile performance
+  // Ultra-optimized memoization for mobile performance without images
   const memoizedPosts = useMemo(() => {
-    console.log('✅ Optimizando posts para rendimiento móvil mejorado');
+    console.log('✅ Posts optimizados sin imágenes para máximo rendimiento móvil');
     return blogPostsData;
   }, []);
 
   const getAllPosts = () => {
-    console.log('📚 getAllPosts - Retornando', memoizedPosts.length, 'posts (optimizado)');
+    console.log('📚 getAllPosts - Retornando', memoizedPosts.length, 'posts optimizados sin imágenes');
     return memoizedPosts;
   };
 
   const getPostById = (id: string) => {
     console.log('🔍 Buscando post optimizado con ID:', id);
     const post = memoizedPosts.find(post => post.id === id);
-    console.log(post ? '✅ Post encontrado (cache hit):' : '❌ Post no encontrado:', post?.title || 'N/A');
+    console.log(post ? '✅ Post encontrado (sin imagen):' : '❌ Post no encontrado:', post?.title || 'N/A');
     return post;
   };
 
   const getPostsByCategory = (category: string) => {
-    console.log('🔍 Filtrando posts optimizado por categoría:', category);
+    console.log('🔍 Filtrando posts optimizados por categoría:', category);
     const posts = memoizedPosts.filter(post => post.category === category);
-    console.log('✅ Posts encontrados en categoría (optimizado):', posts.length);
+    console.log('✅ Posts encontrados en categoría (sin imágenes):', posts.length);
     return posts;
   };
 

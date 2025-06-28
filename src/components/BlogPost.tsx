@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, Clock, User, ArrowLeft, Share2, Eye } from 'lucide-react';
+import { Calendar, Clock, User, ArrowLeft, Share2, Eye, Brain, Heart, Microscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -76,7 +75,7 @@ const TableOfContents = ({ content }: TableOfContentsProps) => {
 };
 
 const BlogPost = ({ id }: { id: string }) => {
-  console.log('🔍 BlogPost component iniciando para ID:', id);
+  console.log('🔍 BlogPost component optimizado sin imágenes para ID:', id);
   
   const navigate = useNavigate();
   const { getPostById, getPostsByCategory } = useBlogPosts();
@@ -84,7 +83,7 @@ const BlogPost = ({ id }: { id: string }) => {
   const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {
-    console.log('🔍 Buscando post con ID:', id);
+    console.log('🔍 Buscando post optimizado con ID:', id);
     const foundPost = getPostById(id);
     console.log('🔍 Post encontrado:', foundPost?.title || 'No encontrado');
     if (foundPost) {
@@ -115,6 +114,36 @@ const BlogPost = ({ id }: { id: string }) => {
       } catch (error) {
         console.log('Error sharing:', error);
       }
+    }
+  };
+
+  // Función para obtener estilo por categoría
+  const getCategoryStyle = (category: string) => {
+    switch (category) {
+      case 'IA Médica':
+        return { 
+          icon: Brain, 
+          gradient: 'from-blue-500 to-purple-600',
+          bgColor: 'bg-blue-50'
+        };
+      case 'Cardiología':
+        return { 
+          icon: Heart, 
+          gradient: 'from-red-500 to-pink-600',
+          bgColor: 'bg-red-50'
+        };
+      case 'Oncología':
+        return { 
+          icon: Microscope, 
+          gradient: 'from-purple-500 to-indigo-600',
+          bgColor: 'bg-purple-50'
+        };
+      default:
+        return { 
+          icon: Brain, 
+          gradient: 'from-gray-500 to-gray-600',
+          bgColor: 'bg-gray-50'
+        };
     }
   };
 
@@ -183,11 +212,14 @@ const BlogPost = ({ id }: { id: string }) => {
     );
   }
 
-  console.log('🔍 Renderizando BlogPost para:', post.title);
+  console.log('🔍 Renderizando BlogPost optimizado para:', post.title);
 
   const relatedPosts = getPostsByCategory(post.category)
     .filter(relatedPost => relatedPost.id !== post.id)
     .slice(0, 2);
+
+  const categoryStyle = getCategoryStyle(post.category);
+  const CategoryIcon = categoryStyle.icon;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -220,7 +252,7 @@ const BlogPost = ({ id }: { id: string }) => {
           <span className="mx-2">›</span>
           <span 
             className="cursor-pointer hover:text-gray-900 transition-colors"
-            onClick={() => navigate('/blog')}
+            onClick={()={() => navigate('/blog')}
           >
             Blog
           </span>
@@ -232,63 +264,55 @@ const BlogPost = ({ id }: { id: string }) => {
           <span className="text-gray-900">{post.title}</span>
         </nav>
 
-        {/* Hero Image */}
-        <div className="mb-8">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-64 md:h-96 object-cover rounded-xl shadow-2xl"
-            loading="lazy"
-            onError={(e) => {
-              console.error('❌ Error cargando imagen del artículo:', post.image);
-              e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
-            }}
-          />
-        </div>
-
-        {/* Article Header */}
-        <header className="mb-8">
-          <div className="flex flex-wrap items-center gap-4 mb-4">
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+        {/* Hero Section Sin Imagen - Con Gradiente */}
+        <div className={`bg-gradient-to-r ${categoryStyle.gradient} rounded-xl p-8 md:p-12 mb-8 text-white`}>
+          <div className="flex items-center justify-between mb-6">
+            <Badge variant="secondary" className="bg-white/20 text-white hover:bg-white/30">
               {post.category}
             </Badge>
-            <div className="flex items-center text-sm text-gray-600">
-              <Calendar className="h-4 w-4 mr-1" />
+            <CategoryIcon className="h-8 w-8 text-white/80" />
+          </div>
+          
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+            {post.title}
+          </h1>
+
+          <p className="text-xl mb-6 leading-relaxed text-white/90">
+            {post.excerpt}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-6 text-white/80">
+            <div className="flex items-center">
+              <User className="h-5 w-5 mr-2" />
+              <span className="font-medium">{post.author}</span>
+            </div>
+            <div className="flex items-center">
+              <Calendar className="h-5 w-5 mr-2" />
               {new Date(post.date).toLocaleDateString('es-ES', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
               })}
             </div>
-            <div className="flex items-center text-sm text-gray-600">
-              <Clock className="h-4 w-4 mr-1" />
+            <div className="flex items-center">
+              <Clock className="h-5 w-5 mr-2" />
               {post.readTime} min lectura
             </div>
-            <div className="flex items-center text-sm text-gray-600">
-              <Eye className="h-4 w-4 mr-1" />
+            <div className="flex items-center">
+              <Eye className="h-5 w-5 mr-2" />
               {post.views.toLocaleString()} vistas
             </div>
-          </div>
-
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            {post.title}
-          </h1>
-
-          <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-            {post.excerpt}
-          </p>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <User className="h-5 w-5 text-gray-600 mr-2" />
-              <span className="text-gray-900 font-medium">{post.author}</span>
-            </div>
-            <Button variant="outline" size="sm" onClick={handleShare}>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleShare}
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            >
               <Share2 className="h-4 w-4 mr-2" />
               Compartir
             </Button>
           </div>
-        </header>
+        </div>
 
         {/* Table of Contents */}
         <TableOfContents content={post.content} />
@@ -317,19 +341,34 @@ const BlogPost = ({ id }: { id: string }) => {
           <div className="mt-12 pt-8 border-t border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Artículos Relacionados</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              {relatedPosts.map((relatedPost) => (
-                <Card key={relatedPost.id} 
-                  className="p-6 hover:shadow-lg transition-shadow cursor-pointer"
-                  onClick={() => navigate(`/blog/${relatedPost.id}`)}
-                >
-                  <h4 className="font-semibold text-gray-900 mb-2">{relatedPost.title}</h4>
-                  <p className="text-sm text-gray-600">{relatedPost.excerpt}</p>
-                  <div className="flex items-center mt-3 text-xs text-gray-600">
-                    <Clock className="h-3 w-3 mr-1" />
-                    {relatedPost.readTime} min
-                  </div>
-                </Card>
-              ))}
+              {relatedPosts.map((relatedPost) => {
+                const relatedCategoryStyle = getCategoryStyle(relatedPost.category);
+                const RelatedIcon = relatedCategoryStyle.icon;
+                
+                return (
+                  <Card key={relatedPost.id} 
+                    className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                    onClick={() => navigate(`/blog/${relatedPost.id}`)}
+                  >
+                    <div className={`bg-gradient-to-r ${relatedCategoryStyle.gradient} p-4 text-white`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge className="bg-white/20 text-white text-xs">
+                          {relatedPost.category}
+                        </Badge>
+                        <RelatedIcon className="h-5 w-5 text-white/80" />
+                      </div>
+                      <h4 className="font-semibold text-white mb-1 line-clamp-2">{relatedPost.title}</h4>
+                    </div>
+                    <div className="p-4">
+                      <p className="text-sm text-gray-600 mb-3 line-clamp-2">{relatedPost.excerpt}</p>
+                      <div className="flex items-center text-xs text-gray-600">
+                        <Clock className="h-3 w-3 mr-1" />
+                        {relatedPost.readTime} min
+                      </div>
+                    </div>
+                  </Card>
+                )
+              })}
             </div>
           </div>
         )}
