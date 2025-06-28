@@ -15,6 +15,8 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('date');
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 12;
 
   const allPosts = getAllPosts();
   const categories = Array.from(new Set(allPosts.map(post => post.category)));
@@ -46,8 +48,14 @@ const Blog = () => {
     return filtered;
   }, [allPosts, searchTerm, selectedCategory, sortBy]);
 
+  const totalPages = Math.ceil(filteredAndSortedPosts.length / articlesPerPage);
+  const currentPosts = filteredAndSortedPosts.slice(
+    (currentPage - 1) * articlesPerPage,
+    currentPage * articlesPerPage
+  );
+
   const featuredPost = allPosts.find(post => post.id === 'ai-diagnostico-medico') || allPosts[0];
-  const trendingPosts = allPosts.slice(0, 3);
+  const trendingPosts = allPosts.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-white">
@@ -56,7 +64,10 @@ const Blog = () => {
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          opacity: 0.3
+        }}></div>
         
         <div className="relative container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center text-white">
@@ -87,6 +98,26 @@ const Blog = () => {
       </div>
 
       <div className="container mx-auto px-4 py-16">
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-600">{allPosts.length}+</div>
+            <div className="text-gray-600">Artículos</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-green-600">{categories.length}</div>
+            <div className="text-gray-600">Categorías</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-purple-600">500K+</div>
+            <div className="text-gray-600">Lectores</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-orange-600">98%</div>
+            <div className="text-gray-600">Satisfacción</div>
+          </div>
+        </div>
+
         {/* Trending Articles */}
         <div className="mb-16">
           <div className="flex items-center mb-8">
@@ -95,7 +126,7 @@ const Blog = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {trendingPosts.map((post, index) => (
+            {trendingPosts.slice(0, 3).map((post, index) => (
               <div key={post.id} className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
                 <div className="absolute top-4 left-4 z-10">
                   <Badge className="bg-orange-500 hover:bg-orange-600 text-white">
@@ -210,8 +241,8 @@ const Blog = () => {
         </div>
 
         {/* Articles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredAndSortedPosts.map((post) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {currentPosts.map((post) => (
             <article key={post.id} className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
               <div className="aspect-video relative overflow-hidden">
                 <img 
@@ -282,6 +313,38 @@ const Blog = () => {
           ))}
         </div>
 
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mb-12">
+            <Button
+              variant="outline"
+              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+            >
+              Anterior
+            </Button>
+            
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+              <Button
+                key={page}
+                variant={page === currentPage ? "default" : "outline"}
+                onClick={() => setCurrentPage(page)}
+                className="w-10 h-10"
+              >
+                {page}
+              </Button>
+            ))}
+            
+            <Button
+              variant="outline"
+              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+            >
+              Siguiente
+            </Button>
+          </div>
+        )}
+
         {/* No Results */}
         {filteredAndSortedPosts.length === 0 && (
           <div className="text-center py-16">
@@ -308,7 +371,10 @@ const Blog = () => {
         {/* Newsletter Section */}
         <div className="mt-20">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="white" fill-opacity="0.1"%3E%3Cpath d="M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z"/%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`,
+              opacity: 0.2
+            }}></div>
             
             <div className="relative max-w-2xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-bold mb-4">
