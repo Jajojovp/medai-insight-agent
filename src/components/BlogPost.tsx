@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Clock, User, ArrowLeft, Share2, Eye, Brain, Heart, Microscope } from 'lucide-react';
@@ -252,7 +253,7 @@ const BlogPost = ({ id }: { id: string }) => {
           <span className="mx-2">›</span>
           <span 
             className="cursor-pointer hover:text-gray-900 transition-colors"
-            onClick={()={() => navigate('/blog')}
+            onClick={() => navigate('/blog')}
           >
             Blog
           </span>
@@ -367,7 +368,7 @@ const BlogPost = ({ id }: { id: string }) => {
                       </div>
                     </div>
                   </Card>
-                )
+                );
               })}
             </div>
           </div>
