@@ -11,6 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Blog = () => {
+  console.log('🔍 Blog component iniciando...');
+  
   const { getAllPosts } = useBlogPosts();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -18,10 +20,28 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 12;
 
-  const allPosts = getAllPosts();
+  console.log('🔍 Intentando obtener posts...');
+  let allPosts = [];
+  
+  try {
+    allPosts = getAllPosts();
+    console.log('✅ Posts obtenidos exitosamente:', allPosts.length);
+  } catch (error) {
+    console.error('❌ Error obteniendo posts:', error);
+    allPosts = [];
+  }
+
   const categories = Array.from(new Set(allPosts.map(post => post.category)));
+  console.log('🔍 Categorías encontradas:', categories);
 
   const filteredAndSortedPosts = useMemo(() => {
+    console.log('🔍 Filtrando posts...');
+    
+    if (!allPosts || allPosts.length === 0) {
+      console.log('❌ No hay posts para filtrar');
+      return [];
+    }
+
     let filtered = allPosts.filter(post => {
       const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -45,6 +65,7 @@ const Blog = () => {
       }
     });
 
+    console.log('✅ Posts filtrados:', filtered.length);
     return filtered;
   }, [allPosts, searchTerm, selectedCategory, sortBy]);
 
@@ -57,39 +78,67 @@ const Blog = () => {
   const featuredPost = allPosts.find(post => post.id === 'ai-diagnostico-medico') || allPosts[0];
   const trendingPosts = allPosts.slice(0, 6);
 
+  console.log('🔍 Datos finales - Posts actuales:', currentPosts.length);
+  console.log('🔍 Featured post:', featuredPost?.title);
+
+  // Fallback si no hay posts
+  if (!allPosts || allPosts.length === 0) {
+    console.log('❌ Renderizando estado de error - no posts');
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-white">
+        <PublicNavigation />
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Cargando contenido del blog...
+            </h1>
+            <p className="text-gray-600">
+              Si este mensaje persiste, por favor contacta soporte.
+            </p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-white">
       <PublicNavigation />
       
-      {/* Hero Section */}
+      {/* Hero Section - Optimizado para móviles */}
       <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          opacity: 0.3
-        }}></div>
+        <div className="absolute inset-0 opacity-30">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}
+          ></div>
+        </div>
         
-        <div className="relative container mx-auto px-4 py-20">
+        <div className="relative container mx-auto px-4 py-12 sm:py-20">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6">
               <Star className="h-4 w-4 mr-2 text-yellow-300" />
               <span className="text-sm font-medium">Blog MedAI Pro</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               Medicina del Futuro
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
               Descubre las últimas tendencias en inteligencia artificial médica, diagnósticos avanzados y el futuro de la atención sanitaria.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 sm:px-8">
                 <TrendingUp className="h-5 w-5 mr-2" />
                 Explorar Artículos
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-8">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-6 sm:px-8">
                 Newsletter Gratis
               </Button>
             </div>
@@ -97,36 +146,36 @@ const Blog = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{allPosts.length}+</div>
-            <div className="text-gray-600">Artículos</div>
+      <div className="container mx-auto px-4 py-8 sm:py-16">
+        {/* Stats Section - Optimizado para móviles */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
+          <div className="text-center p-4">
+            <div className="text-2xl sm:text-3xl font-bold text-blue-600">{allPosts.length}+</div>
+            <div className="text-sm sm:text-base text-gray-600">Artículos</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{categories.length}</div>
-            <div className="text-gray-600">Categorías</div>
+          <div className="text-center p-4">
+            <div className="text-2xl sm:text-3xl font-bold text-green-600">{categories.length}</div>
+            <div className="text-sm sm:text-base text-gray-600">Categorías</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600">500K+</div>
-            <div className="text-gray-600">Lectores</div>
+          <div className="text-center p-4">
+            <div className="text-2xl sm:text-3xl font-bold text-purple-600">500K+</div>
+            <div className="text-sm sm:text-base text-gray-600">Lectores</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">98%</div>
-            <div className="text-gray-600">Satisfacción</div>
+          <div className="text-center p-4">
+            <div className="text-2xl sm:text-3xl font-bold text-orange-600">98%</div>
+            <div className="text-sm sm:text-base text-gray-600">Satisfacción</div>
           </div>
         </div>
 
-        {/* Trending Articles */}
-        <div className="mb-16">
-          <div className="flex items-center mb-8">
-            <TrendingUp className="h-6 w-6 text-orange-500 mr-3" />
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Artículos Destacados</h2>
+        {/* Trending Articles - Optimizado para móviles */}
+        <div className="mb-12 sm:mb-16">
+          <div className="flex items-center mb-6 sm:mb-8">
+            <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 mr-2 sm:mr-3" />
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">Artículos Destacados</h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {trendingPosts.slice(0, 3).map((post, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {trendingPosts && trendingPosts.slice(0, 3).map((post, index) => (
               <div key={post.id} className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
                 <div className="absolute top-4 left-4 z-10">
                   <Badge className="bg-orange-500 hover:bg-orange-600 text-white">
@@ -140,37 +189,41 @@ const Blog = () => {
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>
                 
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <Badge variant="secondary" className="mb-3">
                     {post.category}
                   </Badge>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   
-                  <p className="text-gray-600 mb-4 line-clamp-2">
+                  <p className="text-gray-600 mb-4 line-clamp-2 text-sm sm:text-base">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500">
+                    <div className="flex items-center space-x-2 sm:space-x-4">
                       <span className="flex items-center">
-                        <User className="h-4 w-4 mr-1" />
-                        {post.author}
+                        <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                        <span className="hidden sm:inline">{post.author}</span>
+                        <span className="sm:hidden">{post.author.split(' ')[0]}</span>
                       </span>
                       <span className="flex items-center">
-                        <Clock className="h-4 w-4 mr-1" />
+                        <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                         {post.readTime}min
                       </span>
                     </div>
                     <span className="flex items-center">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {post.views.toLocaleString()}
+                      <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                      {post.views > 1000 ? `${Math.floor(post.views/1000)}k` : post.views}
                     </span>
                   </div>
                   
@@ -181,29 +234,29 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Search and Filters */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+        {/* Search and Filters - Optimizado para móviles */}
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-8 mb-8 sm:mb-12">
+          <div className="flex flex-col gap-4 sm:gap-6">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
               <Input
                 type="text"
                 placeholder="Buscar artículos, tags, autores..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 py-6 text-lg border-2 border-gray-200 focus:border-blue-500 rounded-xl"
+                className="pl-10 sm:pl-12 py-4 sm:py-6 text-base sm:text-lg border-2 border-gray-200 focus:border-blue-500 rounded-xl"
               />
             </div>
             
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="w-48 py-6 border-2 border-gray-200 rounded-xl">
+                <SelectTrigger className="w-full sm:w-48 py-4 sm:py-6 border-2 border-gray-200 rounded-xl bg-white z-10">
                   <div className="flex items-center">
                     <Filter className="h-4 w-4 mr-2" />
                     <SelectValue placeholder="Categoría" />
                   </div>
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border border-gray-200 rounded-xl z-50">
                   <SelectItem value="">Todas las categorías</SelectItem>
                   {categories.map(category => (
                     <SelectItem key={category} value={category}>{category}</SelectItem>
@@ -212,10 +265,10 @@ const Blog = () => {
               </Select>
               
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48 py-6 border-2 border-gray-200 rounded-xl">
+                <SelectTrigger className="w-full sm:w-48 py-4 sm:py-6 border-2 border-gray-200 rounded-xl bg-white z-10">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border border-gray-200 rounded-xl z-50">
                   <SelectItem value="date">Más recientes</SelectItem>
                   <SelectItem value="views">Más populares</SelectItem>
                   <SelectItem value="title">A-Z</SelectItem>
@@ -225,14 +278,14 @@ const Blog = () => {
             </div>
           </div>
           
-          <div className="mt-6 flex items-center justify-between">
-            <p className="text-gray-600">
+          <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <p className="text-gray-600 text-sm sm:text-base">
               <span className="font-semibold text-blue-600">{filteredAndSortedPosts.length}</span> artículos encontrados
             </p>
             
             <div className="flex flex-wrap gap-2">
               {['IA', 'Diagnóstico', 'Cáncer', 'Tecnología', 'Futuro'].map(tag => (
-                <Badge key={tag} variant="outline" className="cursor-pointer hover:bg-blue-50">
+                <Badge key={tag} variant="outline" className="cursor-pointer hover:bg-blue-50 text-xs sm:text-sm">
                   {tag}
                 </Badge>
               ))}
@@ -240,9 +293,9 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Articles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {currentPosts.map((post) => (
+        {/* Articles Grid - Optimizado para móviles */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+          {currentPosts && currentPosts.map((post) => (
             <article key={post.id} className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
               <div className="aspect-video relative overflow-hidden">
                 <img 
@@ -250,19 +303,22 @@ const Blog = () => {
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 
                 <div className="absolute top-4 right-4">
-                  <Badge className="bg-white/90 text-gray-800 backdrop-blur-sm">
+                  <Badge className="bg-white/90 text-gray-800 backdrop-blur-sm text-xs">
                     {post.category}
                   </Badge>
                 </div>
               </div>
               
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-3">
-                  <Calendar className="h-4 w-4 mr-1" />
+              <div className="p-4 sm:p-6">
+                <div className="flex items-center text-xs sm:text-sm text-gray-500 mb-3">
+                  <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                   <span>{new Date(post.date).toLocaleDateString('es-ES', { 
                     year: 'numeric', 
                     month: 'long', 
@@ -270,27 +326,28 @@ const Blog = () => {
                   })}</span>
                 </div>
                 
-                <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                   {post.title}
                 </h2>
                 
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 mb-4 line-clamp-3 text-sm sm:text-base">
                   {post.excerpt}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                  <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500">
                     <span className="flex items-center">
-                      <User className="h-4 w-4 mr-1" />
-                      {post.author}
+                      <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                      <span className="hidden sm:inline">{post.author}</span>
+                      <span className="sm:hidden">{post.author.split(' ')[0]}</span>
                     </span>
                     <span className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
+                      <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                       {post.readTime}min
                     </span>
                     <span className="flex items-center">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {post.views}
+                      <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                      {post.views > 1000 ? `${Math.floor(post.views/1000)}k` : post.views}
                     </span>
                   </div>
                   
@@ -301,8 +358,8 @@ const Blog = () => {
                   </Link>
                 </div>
                 
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {post.tags.slice(0, 3).map((tag) => (
+                <div className="flex flex-wrap gap-1 sm:gap-2 mt-4">
+                  {post.tags && post.tags.slice(0, 3).map((tag) => (
                     <Badge key={tag} variant="outline" className="text-xs">
                       {tag}
                     </Badge>
@@ -313,49 +370,63 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* Pagination */}
+        {/* Pagination - Optimizado para móviles */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mb-12">
+          <div className="flex justify-center items-center gap-2 mb-8 sm:mb-12">
             <Button
               variant="outline"
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
+              size="sm"
+              className="px-3 py-2"
             >
               Anterior
             </Button>
             
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-              <Button
-                key={page}
-                variant={page === currentPage ? "default" : "outline"}
-                onClick={() => setCurrentPage(page)}
-                className="w-10 h-10"
-              >
-                {page}
-              </Button>
-            ))}
+            {/* Mostrar menos páginas en móvil */}
+            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+              const page = i + 1;
+              const shouldShow = page === 1 || page === totalPages || 
+                               (page >= currentPage - 1 && page <= currentPage + 1);
+              
+              if (!shouldShow && totalPages > 5) return null;
+              
+              return (
+                <Button
+                  key={page}
+                  variant={page === currentPage ? "default" : "outline"}
+                  onClick={() => setCurrentPage(page)}
+                  size="sm"
+                  className="w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-sm"
+                >
+                  {page}
+                </Button>
+              );
+            })}
             
             <Button
               variant="outline"
               onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
+              size="sm"
+              className="px-3 py-2"
             >
               Siguiente
             </Button>
           </div>
         )}
 
-        {/* No Results */}
-        {filteredAndSortedPosts.length === 0 && (
-          <div className="text-center py-16">
-            <div className="max-w-md mx-auto">
-              <div className="bg-gray-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
-                <Search className="h-12 w-12 text-gray-400" />
+        {/* No Results - Optimizado para móviles */}
+        {filteredAndSortedPosts.length === 0 && allPosts.length > 0 && (
+          <div className="text-center py-12 sm:py-16">
+            <div className="max-w-md mx-auto px-4">
+              <div className="bg-gray-100 rounded-full w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <Search className="h-8 w-8 sm:h-12 sm:w-12 text-gray-400" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                 No se encontraron artículos
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                 Intenta modificar tu búsqueda o filtros para encontrar contenido relevante.
               </p>
               <Button onClick={() => {
@@ -368,19 +439,23 @@ const Blog = () => {
           </div>
         )}
 
-        {/* Newsletter Section */}
-        <div className="mt-20">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`,
-              opacity: 0.2
-            }}></div>
+        {/* Newsletter Section - Optimizado para móviles */}
+        <div className="mt-12 sm:mt-20">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20">
+              <div 
+                className="w-full h-full"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              ></div>
+            </div>
             
             <div className="relative max-w-2xl mx-auto">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                 ¿No te quieres perder nada?
               </h3>
-              <p className="text-xl mb-8 text-blue-100">
+              <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-blue-100">
                 Suscríbete a nuestro newsletter y recibe las últimas novedades en medicina digital directamente en tu inbox.
               </p>
               
@@ -388,14 +463,14 @@ const Blog = () => {
                 <Input 
                   type="email" 
                   placeholder="tu@email.com"
-                  className="flex-1 py-4 px-6 text-gray-900 bg-white border-0 rounded-xl"
+                  className="flex-1 py-3 sm:py-4 px-4 sm:px-6 text-gray-900 bg-white border-0 rounded-xl"
                 />
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 sm:px-8">
                   Suscribirse
                 </Button>
               </div>
               
-              <p className="text-sm text-blue-200 mt-4">
+              <p className="text-xs sm:text-sm text-blue-200 mt-4">
                 Sin spam. Cancela cuando quieras.
               </p>
             </div>
