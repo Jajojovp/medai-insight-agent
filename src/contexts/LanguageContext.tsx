@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface LanguageContextProps {
@@ -84,41 +85,6 @@ const translations = {
     landing: {
       title: "Professional Medical Analysis with AI",
       subtitle: "Precise and efficient diagnosis to improve your patients' health",
-      cta: {
-        start: "Start Now",
-        features: "View Features",
-        demo: "Request Demo",
-        professional: "Professional Access",
-        final: "Ready to transform your medical practice?",
-        finalDesc: "Join the artificial intelligence revolution in medicine and offer faster and more accurate diagnoses."
-      },
-      features: {
-        title: "Key Features",
-        subtitle: "Discover how MedAI can transform your medical practice",
-      },
-      feature: {
-        ai: "Advanced Artificial Intelligence",
-        aiDesc: "State-of-the-art AI models for accurate analysis.",
-        diagnosis: "Automated Diagnosis",
-        diagnosisDesc: "Accelerate the diagnosis process with AI.",
-        reports: "Detailed Reports",
-        reportsDesc: "Generate comprehensive and personalized reports.",
-        security: "Data Security",
-        securityDesc: "Protect your patients' information with high security standards.",
-        waitlist: "Waiting List Reduction",
-        waitlistDesc: "Optimize patient flow and reduce waiting times.",
-        efficiency: "Greater Efficiency",
-        efficiencyDesc: "Increase the productivity of your medical team."
-      },
-      models: {
-        title: "Machine Learning Models",
-        subtitle: "We use open source machine learning models validated by the scientific community."
-      },
-      stats: {
-        accuracy: "Accuracy in Diagnostics",
-        models: "AI Models",
-        cases: "Cases Analyzed"
-      }
     },
     auth: {
       login: "Login",
@@ -151,41 +117,6 @@ const translations = {
     landing: {
       title: "Analyse Médicale Professionnelle avec IA",
       subtitle: "Diagnostic précis et efficace pour améliorer la santé de vos patients",
-      cta: {
-        start: "Commencer Maintenant",
-        features: "Voir les Caractéristiques",
-        demo: "Demander une Démo",
-        professional: "Accès Professionnel",
-        final: "Prêt à transformer votre pratique médicale ?",
-        finalDesc: "Rejoignez la révolution de l'intelligence artificielle en médecine et offrez des diagnostics plus rapides et plus précis."
-      },
-       features: {
-        title: "Principales Caractéristiques",
-        subtitle: "Découvrez comment MedAI peut transformer votre pratique médicale",
-      },
-      feature: {
-        ai: "Intelligence Artificielle Avancée",
-        aiDesc: "Modèles d'IA de pointe pour une analyse précise.",
-        diagnosis: "Diagnostic Automatisé",
-        diagnosisDesc: "Accélérer le processus de diagnostic avec l'IA.",
-        reports: "Rapports Détaillés",
-        reportsDesc: "Générer des rapports complets et personnalisés.",
-        security: "Sécurité des Données",
-        securityDesc: "Protégez les informations de vos patients avec des normes de sécurité élevées.",
-        waitlist: "Réduction des Listes d'Attente",
-        waitlistDesc: "Optimisez le flux de patients et réduisez les temps d'attente.",
-        efficiency: "Plus d'Efficacité",
-        efficiencyDesc: "Augmentez la productivité de votre équipe médicale."
-      },
-      models: {
-        title: "Modèles d'Apprentissage Automatique",
-        subtitle: "Nous utilisons des modèles d'apprentissage automatique open source validés par la communauté scientifique."
-      },
-      stats: {
-        accuracy: "Précision des Diagnostics",
-        models: "Modèles d'IA",
-        cases: "Cas Analysés"
-      }
     },
     auth: {
       login: "Se Connecter",
@@ -217,23 +148,52 @@ const translations = {
 };
 
 const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState(localStorage.getItem('language') || 'es');
+  const [language, setLanguageState] = useState('es');
 
   useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
+    console.log('🌐 LanguageProvider inicializando...');
+    try {
+      const storedLanguage = localStorage.getItem('language');
+      if (storedLanguage && ['es', 'en', 'fr'].includes(storedLanguage)) {
+        setLanguageState(storedLanguage);
+        console.log('✅ Idioma cargado desde localStorage:', storedLanguage);
+      }
+    } catch (error) {
+      console.error('❌ Error cargando idioma desde localStorage:', error);
+    }
+    console.log('✅ LanguageProvider inicializado correctamente');
+  }, []);
+
+  const setLanguage = (newLanguage: string) => {
+    try {
+      console.log('🌐 Cambiando idioma a:', newLanguage);
+      setLanguageState(newLanguage);
+      localStorage.setItem('language', newLanguage);
+      console.log('✅ Idioma cambiado correctamente');
+    } catch (error) {
+      console.error('❌ Error guardando idioma:', error);
+    }
+  };
 
   const t = (key: string): string => {
-    const keys = key.split('.');
-    let value: any = translations[language as keyof typeof translations];
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k as keyof typeof value];
-      } else {
-        return key;
+    try {
+      const keys = key.split('.');
+      let value: any = translations[language as keyof typeof translations];
+      
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = value[k as keyof typeof value];
+        } else {
+          console.warn('⚠️ Traducción no encontrada:', key, 'para idioma:', language);
+          return key;
+        }
       }
+      
+      return typeof value === 'string' ? value : key;
+    } catch (error) {
+      console.error('❌ Error en traducción:', error, 'key:', key);
+      return key;
     }
-    return typeof value === 'string' ? value : key;
   };
 
   return (
@@ -246,7 +206,13 @@ const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
 const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    console.error('🚨 useLanguage debe ser usado dentro de LanguageProvider');
+    // Return safe defaults instead of throwing
+    return {
+      language: 'es',
+      setLanguage: () => {},
+      t: (key: string) => key
+    };
   }
   return context;
 };
