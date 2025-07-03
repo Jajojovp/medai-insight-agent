@@ -1,20 +1,8 @@
 
 import { Link } from 'react-router-dom';
 import { Brain } from 'lucide-react';
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
-  const { language, t } = useLanguage();
-
-  // Safe fallback texts
-  const getFooterText = (key: string, fallback: string) => {
-    try {
-      return t(key) || fallback;
-    } catch {
-      return fallback;
-    }
-  };
-
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -26,23 +14,19 @@ const Footer = () => {
               <span className="text-xl font-bold">MedAI</span>
             </div>
             <p className="text-gray-400 text-sm">
-              {language === 'es' ? 'Plataforma profesional de análisis médico con inteligencia artificial y 62+ modelos especializados para 12 enfermedades críticas.' :
-               language === 'fr' ? 'Plateforme professionnelle d\'analyse médicale avec intelligence artificielle et 62+ modèles spécialisés pour 12 maladies critiques.' :
-               'Professional medical analysis platform with artificial intelligence and 62+ specialized models for 12 critical diseases.'}
+              Plataforma profesional de análisis médico con inteligencia artificial y 62+ modelos especializados para 12 enfermedades críticas.
             </p>
           </div>
 
           {/* Product */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">
-              {getFooterText('footer.product', language === 'es' ? 'Producto' : language === 'fr' ? 'Produit' : 'Product')}
-            </h4>
+            <h4 className="font-semibold text-lg">Producto</h4>
             <div className="space-y-2">
               <Link to="/features" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.features', language === 'es' ? 'Características' : language === 'fr' ? 'Caractéristiques' : 'Features')}
+                Características
               </Link>
               <Link to="/pricing" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.pricing', language === 'es' ? 'Precios' : language === 'fr' ? 'Prix' : 'Pricing')}
+                Precios
               </Link>
               <Link to="/api" className="block text-gray-400 hover:text-white transition-colors">
                 API
@@ -52,36 +36,32 @@ const Footer = () => {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">
-              {getFooterText('footer.resources', language === 'es' ? 'Recursos' : language === 'fr' ? 'Ressources' : 'Resources')}
-            </h4>
+            <h4 className="font-semibold text-lg">Recursos</h4>
             <div className="space-y-2">
               <Link to="/blog" className="block text-gray-400 hover:text-white transition-colors">
                 Blog
               </Link>
               <Link to="/documentation" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.documentation', language === 'es' ? 'Documentación' : language === 'fr' ? 'Documentation' : 'Documentation')}
+                Documentación
               </Link>
               <Link to="/resources" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.resources', language === 'es' ? 'Recursos' : language === 'fr' ? 'Ressources' : 'Resources')}
+                Recursos
               </Link>
             </div>
           </div>
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">
-              {getFooterText('footer.contact', language === 'es' ? 'Contacto' : language === 'fr' ? 'Contact' : 'Contact')}
-            </h4>
+            <h4 className="font-semibold text-lg">Contacto</h4>
             <div className="space-y-2">
               <Link to="/contact" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.contact', language === 'es' ? 'Contacto' : language === 'fr' ? 'Contact' : 'Contact')}
+                Contacto
               </Link>
               <Link to="/sales" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.sales', language === 'es' ? 'Ventas' : language === 'fr' ? 'Ventes' : 'Sales')}
+                Ventas
               </Link>
               <Link to="/support" className="block text-gray-400 hover:text-white transition-colors">
-                {getFooterText('footer.support', language === 'es' ? 'Soporte' : language === 'fr' ? 'Support' : 'Support')}
+                Soporte
               </Link>
             </div>
           </div>
@@ -90,9 +70,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2024 MedAI. {getFooterText('footer.rights', language === 'es' ? 'Todos los derechos reservados.' : 
-                                                       language === 'fr' ? 'Tous droits réservés.' : 
-                                                       'All rights reserved.')}
+            © 2024 MedAI. Todos los derechos reservados.
           </p>
         </div>
       </div>

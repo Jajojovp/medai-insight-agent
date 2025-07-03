@@ -2,7 +2,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 import AuthForm from '@/components/AuthForm';
 import PublicNavigation from '@/components/PublicNavigation';
 import Footer from '@/components/Footer';
@@ -10,7 +9,6 @@ import { Brain } from 'lucide-react';
 
 const Login = () => {
   const { user } = useAuth();
-  const { language } = useLanguage();
   const navigate = useNavigate();
 
   // Redirect to dashboard if already logged in
@@ -38,14 +36,10 @@ const Login = () => {
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              {language === 'es' ? 'Iniciar Sesión' :
-               language === 'fr' ? 'Se Connecter' :
-               'Sign In'}
+              Iniciar Sesión
             </h1>
             <p className="text-gray-600">
-              {language === 'es' ? 'Accede a tu cuenta profesional de MedAI' :
-               language === 'fr' ? 'Accédez à votre compte professionnel MedAI' :
-               'Access your MedAI professional account'}
+              Accede a tu cuenta profesional de MedAI
             </p>
           </div>
 

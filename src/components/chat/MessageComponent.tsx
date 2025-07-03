@@ -2,14 +2,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Bot, User, Activity, Brain, AlertCircle, CheckCircle } from "lucide-react";
 import { Message } from "@/types/chat";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 interface MessageComponentProps {
   message: Message;
 }
 
 const MessageComponent = ({ message }: MessageComponentProps) => {
-  const { language, t } = useLanguage();
   const isUser = message.type === 'user';
   const isSystem = message.type === 'system';
   
@@ -36,17 +34,17 @@ const MessageComponent = ({ message }: MessageComponentProps) => {
               <div className="flex items-center space-x-2">
                 <Brain className="h-4 w-4 text-blue-600" />
                 <span className="font-semibold text-blue-600">
-                  {language === 'es' ? 'Diagnóstico' : language === 'fr' ? 'Diagnostic' : 'Diagnosis'}: {message.data.diagnosis}
+                  Diagnóstico: {message.data.diagnosis}
                 </span>
                 <Badge variant="default" className="bg-green-600">
-                  {message.data.confidence}% {t('dashboard.confidence')}
+                  {message.data.confidence}% Confianza
                 </Badge>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
                   <h4 className="font-semibold text-sm mb-2 flex items-center">
                     <AlertCircle className="h-3 w-3 mr-1 text-red-500" />
-                    {language === 'es' ? 'Factores de Riesgo' : language === 'fr' ? 'Facteurs de Risque' : 'Risk Factors'}
+                    Factores de Riesgo
                   </h4>
                   <ul className="text-xs space-y-1">
                     {message.data.riskFactors.map((factor: string, index: number) => (
@@ -60,7 +58,7 @@ const MessageComponent = ({ message }: MessageComponentProps) => {
                 <div>
                   <h4 className="font-semibold text-sm mb-2 flex items-center">
                     <CheckCircle className="h-3 w-3 mr-1 text-green-500" />
-                    {language === 'es' ? 'Recomendaciones' : language === 'fr' ? 'Recommandations' : 'Recommendations'}
+                    Recomendaciones
                   </h4>
                   <ul className="text-xs space-y-1">
                     {message.data.recommendations.map((rec: string, index: number) => (
@@ -74,7 +72,7 @@ const MessageComponent = ({ message }: MessageComponentProps) => {
               </div>
               <div className="mt-4">
                 <h4 className="font-semibold text-sm mb-2">
-                  {language === 'es' ? 'Resultados por Modelo' : language === 'fr' ? 'Résultats par Modèle' : 'Model Results'}
+                  Resultados por Modelo
                 </h4>
                 <div className="space-y-1">
                   {message.data.modelResults.map((result: any, index: number) => (

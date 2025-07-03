@@ -1,7 +1,7 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Brain, 
   MessageSquare, 
@@ -9,11 +9,9 @@ import {
   Settings, 
   User,
   Menu,
-  X,
-  Globe
+  X
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useLanguage } from "@/contexts/LanguageContext";
 import AuthButton from "./AuthButton";
 
 interface NavigationProps {
@@ -23,18 +21,13 @@ interface NavigationProps {
 
 const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, logout } = useAuth();
-  const { language, setLanguage, t } = useLanguage();
+  const { user } = useAuth();
 
   const navItems = [
-    { id: 'dashboard', label: t('nav.dashboard'), icon: BarChart3 },
-    { id: 'chat', label: t('nav.chat'), icon: MessageSquare },
-    { id: 'admin', label: t('nav.admin'), icon: Settings },
+    { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
+    { id: 'chat', label: 'Chat IA', icon: MessageSquare },
+    { id: 'admin', label: 'Admin', icon: Settings },
   ];
-
-  const handleLogout = () => {
-    logout();
-  };
 
   return (
     <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
@@ -73,24 +66,9 @@ const Navigation = ({ activeView, setActiveView }: NavigationProps) => {
 
           {/* User Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Language Selector */}
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-32">
-                <div className="flex items-center space-x-2">
-                  <Globe className="h-4 w-4" />
-                  <SelectValue />
-                </div>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="es">{t('language.spanish')}</SelectItem>
-                <SelectItem value="en">{t('language.english')}</SelectItem>
-                <SelectItem value="fr">{t('language.french')}</SelectItem>
-              </SelectContent>
-            </Select>
-
             {user && (
               <div className="text-sm text-gray-600">
-                {t('nav.welcome')}, <span className="font-medium">{user?.name}</span>
+                Bienvenido, <span className="font-medium">{user?.name}</span>
               </div>
             )}
             <AuthButton />
