@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,12 +13,10 @@ import {
   Calendar
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
-  const { t, language } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -31,10 +30,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: language === 'en' ? "Request Sent" : language === 'fr' ? "Demande Envoyée" : "Solicitud Enviada",
-      description: language === 'en' ? "We will contact you within 24 hours to schedule your demo." :
-                   language === 'fr' ? "Nous vous contacterons dans les 24 heures pour programmer votre démo." :
-                   "Te contactaremos en las próximas 24 horas para coordinar tu demo.",
+      title: "Solicitud Enviada",
+      description: "Te contactaremos en las próximas 24 horas para coordinar tu demo.",
     });
     setFormData({
       name: '',
@@ -52,362 +49,229 @@ const Contact = () => {
 
   const pricingPlans = [
     {
-      name: language === 'en' ? "Basic Plan" : language === 'fr' ? "Plan de Base" : "Plan Básico",
+      name: "Plan Básico",
       price: "$50",
-      period: language === 'en' ? "/month" : language === 'fr' ? "/mois" : "/mes",
+      period: "/mes",
       features: [
-        language === 'en' ? "Up to 25 monthly analyses" : language === 'fr' ? "Jusqu'à 25 analyses mensuelles" : "Hasta 25 análisis mensuales",
-        language === 'en' ? "3 basic AI models" : language === 'fr' ? "3 modèles d'IA de base" : "3 modelos de IA básicos",
-        language === 'en' ? "PDF reports" : language === 'fr' ? "Rapports PDF" : "Reportes PDF",
-        language === 'en' ? "Email support" : language === 'fr' ? "Support par email" : "Soporte por email"
+        "Hasta 25 análisis mensuales",
+        "3 modelos de IA básicos",
+        "Reportes PDF",
+        "Soporte por email"
       ],
       popular: false
     },
     {
-      name: language === 'en' ? "Professional Plan" : language === 'fr' ? "Plan Professionnel" : "Plan Profesional",
+      name: "Plan Profesional",
       price: "$150",
-      period: language === 'en' ? "/month" : language === 'fr' ? "/mois" : "/mes",
+      period: "/mes",
       features: [
-        language === 'en' ? "Up to 100 monthly analyses" : language === 'fr' ? "Jusqu'à 100 analyses mensuelles" : "Hasta 100 análisis mensuales",
-        language === 'en' ? "All 53+ AI models" : language === 'fr' ? "Tous les 53+ modèles d'IA" : "Los 53+ modelos de IA",
-        language === 'en' ? "Custom PDF reports" : language === 'fr' ? "Rapports PDF personnalisés" : "Reportes PDF personalizados",
-        language === 'en' ? "Complete n8n integration" : language === 'fr' ? "Intégration n8n complète" : "Integración n8n completa",
-        language === 'en' ? "Priority 24/7 support" : language === 'fr' ? "Support prioritaire 24/7" : "Soporte prioritario 24/7",
-        language === 'en' ? "Advanced dashboard" : language === 'fr' ? "Tableau de bord avancé" : "Dashboard avanzado"
+        "Hasta 100 análisis mensuales",
+        "Los 53+ modelos de IA",
+        "Reportes PDF personalizados",
+        "Integración n8n completa",
+        "Soporte prioritario 24/7",
+        "Dashboard avanzado"
       ],
       popular: true
     },
     {
-      name: language === 'en' ? "Hospital Plan" : language === 'fr' ? "Plan Hospitalier" : "Plan Hospitalario",
+      name: "Plan Hospitalario",
       price: "$400",
-      period: language === 'en' ? "/month" : language === 'fr' ? "/mois" : "/mes",
+      period: "/mes",
       features: [
-        language === 'en' ? "Unlimited analyses" : language === 'fr' ? "Analyses illimitées" : "Análisis ilimitados",
-        language === 'en' ? "All 53+ AI models" : language === 'fr' ? "Tous les 53+ modèles d'IA" : "Los 53+ modelos de IA",
-        language === 'en' ? "Custom API integration" : language === 'fr' ? "Intégration API personnalisée" : "Integración API personalizada",
-        language === 'en' ? "Hospital system integration" : language === 'fr' ? "Intégration système hospitalier" : "Integración sistema hospitalario",
-        language === 'en' ? "Dedicated support specialist" : language === 'fr' ? "Spécialiste support dédié" : "Especialista de soporte dedicado",
-        language === 'en' ? "Team training included" : language === 'fr' ? "Formation équipe incluse" : "Entrenamiento de equipo incluido",
-        language === 'en' ? "Multi-user unlimited access" : language === 'fr' ? "Accès multi-utilisateur illimité" : "Acceso multi-usuario ilimitado"
+        "Análisis ilimitados",
+        "Los 53+ modelos de IA",
+        "Integración API personalizada",
+        "Capacitación incluida",
+        "Soporte dedicado 24/7",
+        "SLA garantizado"
       ],
       popular: false
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30">
       <PublicNavigation />
       
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {language === 'en' ? "Contact & Subscriptions" :
-             language === 'fr' ? "Contact et Abonnements" :
-             "Contacto y Suscripciones"}
+      <main className="container mx-auto px-4 py-12">
+        <div className="text-center space-y-6 mb-12">
+          <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
+            Contacto
+          </Badge>
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Solicita tu Demo Médica
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {language === 'en' ? "Request a personalized demo or subscribe to our medical AI analysis services with 53+ specialized models for 12 critical diseases" :
-             language === 'fr' ? "Demandez une démo personnalisée ou abonnez-vous à nos services d'analyse médicale IA avec 53+ modèles spécialisés pour 12 maladies critiques" :
-             "Solicita una demo personalizada o contrata nuestros servicios de análisis médico con IA con 53+ modelos especializados para 12 enfermedades críticas"}
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Programa una demostración personalizada de MedAI y descubre cómo nuestra plataforma puede transformar tu práctica médica
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card>
+          <Card className="backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
             <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Calendar className="h-5 w-5 text-blue-600" />
-                <span>
-                  {language === 'en' ? "Request Free Demo" :
-                   language === 'fr' ? "Demander une Démo Gratuite" :
-                   "Solicitar Demo Gratuita"}
-                </span>
-              </CardTitle>
+              <CardTitle className="text-2xl">Solicitar Demo Personalizada</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1">
-                      {language === 'en' ? "Full Name" :
-                       language === 'fr' ? "Nom Complet" :
-                       "Nombre Completo"}
-                    </label>
+                    <label className="block text-sm font-medium mb-2">Nombre Completo</label>
                     <Input
+                      required
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      placeholder={language === 'en' ? "Dr. John Smith" :
-                                   language === 'fr' ? "Dr. Jean Dupont" :
-                                   "Dr. Juan Pérez"}
-                      required
+                      placeholder="Dr. María González"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">
-                      {language === 'en' ? "Professional Email" :
-                       language === 'fr' ? "Email Professionnel" :
-                       "Email Profesional"}
-                    </label>
+                    <label className="block text-sm font-medium mb-2">Email Profesional</label>
                     <Input
                       type="email"
+                      required
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      placeholder={language === 'en' ? "john.smith@hospital.com" :
-                                   language === 'fr' ? "jean.dupont@hopital.fr" :
-                                   "juan.perez@hospital.com"}
-                      required
+                      placeholder="maria@hospital.com"
                     />
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    {language === 'en' ? "Hospital/Clinic" :
-                     language === 'fr' ? "Hôpital/Clinique" :
-                     "Hospital/Clínica"}
-                  </label>
-                  <Input
-                    value={formData.hospital}
-                    onChange={(e) => handleInputChange('hospital', e.target.value)}
-                    placeholder={language === 'en' ? "General Hospital" :
-                                 language === 'fr' ? "Hôpital Général" :
-                                 "Hospital General"}
-                    required
-                  />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1">
-                      {language === 'en' ? "Specialty" :
-                       language === 'fr' ? "Spécialité" :
-                       "Especialidad"}
-                    </label>
-                    <Select onValueChange={(value) => handleInputChange('specialty', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder={
-                          language === 'en' ? "Select specialty" :
-                          language === 'fr' ? "Sélectionner spécialité" :
-                          "Selecciona especialidad"
-                        } />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="endocrinologia">
-                          {language === 'en' ? "Endocrinology" :
-                           language === 'fr' ? "Endocrinologie" :
-                           "Endocrinología"}
-                        </SelectItem>
-                        <SelectItem value="medicina-interna">
-                          {language === 'en' ? "Internal Medicine" :
-                           language === 'fr' ? "Médecine Interne" :
-                           "Medicina Interna"}
-                        </SelectItem>
-                        <SelectItem value="medicina-familiar">
-                          {language === 'en' ? "Family Medicine" :
-                           language === 'fr' ? "Médecine Familiale" :
-                           "Medicina Familiar"}
-                        </SelectItem>
-                        <SelectItem value="cardioologia">
-                          {language === 'en' ? "Cardiology" :
-                           language === 'fr' ? "Cardiologie" :
-                           "Cardiología"}
-                        </SelectItem>
-                        <SelectItem value="oncologia">
-                          {language === 'en' ? "Oncology" :
-                           language === 'fr' ? "Oncologie" :
-                           "Oncología"}
-                        </SelectItem>
-                        <SelectItem value="otro">
-                          {language === 'en' ? "Other" :
-                           language === 'fr' ? "Autre" :
-                           "Otro"}
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <label className="block text-sm font-medium mb-2">Hospital/Clínica</label>
+                    <Input
+                      required
+                      value={formData.hospital}
+                      onChange={(e) => handleInputChange('hospital', e.target.value)}
+                      placeholder="Hospital General"
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">
-                      {language === 'en' ? "Request Type" :
-                       language === 'fr' ? "Type de Demande" :
-                       "Tipo de Solicitud"}
-                    </label>
-                    <Select onValueChange={(value) => handleInputChange('requestType', value)}>
+                    <label className="block text-sm font-medium mb-2">Especialidad Médica</label>
+                    <Select value={formData.specialty} onValueChange={(value) => handleInputChange('specialty', value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder={
-                          language === 'en' ? "Request type" :
-                          language === 'fr' ? "Type de demande" :
-                          "Tipo de solicitud"
-                        } />
+                        <SelectValue placeholder="Selecciona especialidad" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="demo">
-                          {language === 'en' ? "Personalized Demo" :
-                           language === 'fr' ? "Démo Personnalisée" :
-                           "Demo Personalizada"}
-                        </SelectItem>
-                        <SelectItem value="info">
-                          {language === 'en' ? "Pricing Information" :
-                           language === 'fr' ? "Information sur les Prix" :
-                           "Información de Precios"}
-                        </SelectItem>
-                        <SelectItem value="integration">
-                          {language === 'en' ? "Hospital Integration" :
-                           language === 'fr' ? "Intégration Hospitalière" :
-                           "Integración Hospitalaria"}
-                        </SelectItem>
-                        <SelectItem value="support">
-                          {language === 'en' ? "Technical Support" :
-                           language === 'fr' ? "Support Technique" :
-                           "Soporte Técnico"}
-                        </SelectItem>
+                        <SelectItem value="endocrinologia">Endocrinología</SelectItem>
+                        <SelectItem value="oncologia">Oncología</SelectItem>
+                        <SelectItem value="cardiologia">Cardiología</SelectItem>
+                        <SelectItem value="nefrologia">Nefrología</SelectItem>
+                        <SelectItem value="medicina-interna">Medicina Interna</SelectItem>
+                        <SelectItem value="medicina-familiar">Medicina Familiar</SelectItem>
+                        <SelectItem value="otra">Otra</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">
-                    {language === 'en' ? "Message" :
-                     language === 'fr' ? "Message" :
-                     "Mensaje"}
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Tipo de Solicitud</label>
+                  <Select value={formData.requestType} onValueChange={(value) => handleInputChange('requestType', value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="¿Qué te interesa más?" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="demo">Demo Personalizada</SelectItem>
+                      <SelectItem value="pricing">Información de Precios</SelectItem>
+                      <SelectItem value="integration">Integración con Sistema Existente</SelectItem>
+                      <SelectItem value="training">Capacitación del Equipo</SelectItem>
+                      <SelectItem value="pilot">Programa Piloto</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Mensaje</label>
                   <Textarea
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    placeholder={
-                      language === 'en' ? "Tell us more about your specific needs and which diseases you want to analyze..." :
-                      language === 'fr' ? "Parlez-nous de vos besoins spécifiques et des maladies que vous souhaitez analyser..." :
-                      "Cuéntanos más sobre tus necesidades específicas y qué enfermedades quieres analizar..."
-                    }
-                    rows={4}
+                    placeholder="Cuéntanos sobre tus necesidades específicas, número de pacientes mensuales, casos de uso prioritarios..."
+                    rows={5}
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 rounded-2xl">
                   <Calendar className="h-4 w-4 mr-2" />
-                  {language === 'en' ? "Request Free Demo" :
-                   language === 'fr' ? "Demander une Démo Gratuite" :
-                   "Solicitar Demo Gratuita"}
+                  Solicitar Demo Gratuita
                 </Button>
               </form>
             </CardContent>
           </Card>
 
-          {/* Demo Information */}
-          <Card className="bg-green-50 border-green-200">
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2 mb-3">
-                <CheckCircle className="h-5 w-5 text-green-600" />
-                <span className="font-semibold text-green-800">
-                  {language === 'en' ? "Free Demo Includes:" :
-                   language === 'fr' ? "La Démo Gratuite Comprend :" :
-                   "Demo Gratuita Incluye:"}
-                </span>
-              </div>
-              <ul className="space-y-2 text-sm text-green-700">
-                <li>• {language === 'en' ? "Analysis of real cases with our 53+ AI models" :
-                         language === 'fr' ? "Analyse de cas réels avec nos 53+ modèles IA" :
-                         "Análisis de casos reales con nuestros 53+ modelos IA"}</li>
-                <li>• {language === 'en' ? "Personalized configuration for your specialty" :
-                         language === 'fr' ? "Configuration personnalisée pour votre spécialité" :
-                         "Configuración personalizada para tu especialidad"}</li>
-                <li>• {language === 'en' ? "Integration guidance with existing systems" :
-                         language === 'fr' ? "Guide d'intégration avec systèmes existants" :
-                         "Guía de integración con sistemas existentes"}</li>
-                <li>• {language === 'en' ? "Medical team training session" :
-                         language === 'fr' ? "Session de formation équipe médicale" :
-                         "Sesión de entrenamiento del equipo médico"}</li>
-                <li>• {language === 'en' ? "7-day free trial access" :
-                         language === 'fr' ? "Accès d'essai gratuit de 7 jours" :
-                         "7 días de acceso de prueba gratuito"}</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+          {/* Pricing Overview */}
+          <div className="space-y-6">
+            <Card className="backdrop-blur-md bg-white/80 border border-white/30 rounded-3xl">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <CreditCard className="h-5 w-5" />
+                  <span>Planes Disponibles</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {pricingPlans.map((plan, index) => (
+                    <div key={index} className={`p-4 rounded-2xl border ${plan.popular ? 'border-blue-500 bg-blue-50/50' : 'border-gray-200'}`}>
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <h3 className="font-semibold text-lg">{plan.name}</h3>
+                          <div className="flex items-baseline space-x-1">
+                            <span className="text-2xl font-bold text-blue-600">{plan.price}</span>
+                            <span className="text-gray-600">{plan.period}</span>
+                          </div>
+                        </div>
+                        {plan.popular && (
+                          <Badge className="bg-blue-600 text-white">Más Popular</Badge>
+                        )}
+                      </div>
+                      <ul className="space-y-1">
+                        {plan.features.slice(0, 3).map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-center text-sm">
+                            <CheckCircle className="h-3 w-3 text-green-600 mr-2 flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
 
-        {/* Pricing Plans */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {language === 'en' ? "Subscription Plans" :
-               language === 'fr' ? "Plans d'Abonnement" :
-               "Planes de Suscripción"}
-            </h2>
-            <p className="text-lg text-gray-600">
-              {language === 'en' ? "Choose the plan that best fits your medical practice needs with access to 53+ specialized AI models" :
-               language === 'fr' ? "Choisissez le plan qui convient le mieux aux besoins de votre pratique médicale avec accès à 53+ modèles IA spécialisés" :
-               "Elige el plan que mejor se adapte a las necesidades de tu práctica médica con acceso a 53+ modelos de IA especializados"}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <Card key={index} className={`relative ${plan.popular ? 'border-blue-500 border-2' : ''}`}>
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-blue-600 text-white">
-                      {language === 'en' ? "Most Popular" :
-                       language === 'fr' ? "Plus Populaire" :
-                       "Más Popular"}
-                    </Badge>
-                  </div>
-                )}
-                <CardHeader className="text-center">
-                  <CardTitle className="text-xl">{plan.name}</CardTitle>
-                  <div className="text-3xl font-bold text-blue-600">
-                    {plan.price}
-                    <span className="text-lg font-normal text-gray-600">{plan.period}</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 mb-6">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
+            <Card className="bg-gradient-to-br from-blue-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl">
+              <CardContent className="p-6">
+                <div className="text-center space-y-4">
+                  <Brain className="h-12 w-12 text-blue-600 mx-auto" />
+                  <h3 className="text-xl font-bold">¿Por qué elegir MedAI?</h3>
+                  <ul className="text-left space-y-2 text-sm">
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
+                      53+ modelos de IA médica especializados
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
+                      Análisis predictivo para 12 enfermedades críticas
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
+                      Integración completa con n8n y sistemas hospitalarios
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
+                      Reportes automáticos por email en PDF
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
+                      Soporte médico especializado 24/7
+                    </li>
                   </ul>
-                  <Button 
-                    className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-600 hover:bg-gray-700'}`}
-                    disabled
-                  >
-                    <CreditCard className="h-4 w-4 mr-2" />
-                    {language === 'en' ? "Contact for Pricing" :
-                     language === 'fr' ? "Contacter pour Prix" :
-                     "Contactar para Precios"}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
-
-        {/* Integration with Stripe Info */}
-        <Card className="bg-blue-50 border-blue-200">
-          <CardContent className="p-8 text-center">
-            <Brain className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-blue-900 mb-2">
-              {language === 'en' ? "Professional Medical AI Platform" :
-               language === 'fr' ? "Plateforme IA Médicale Professionnelle" :
-               "Plataforma de IA Médica Profesional"}
-            </h3>
-            <p className="text-blue-700 mb-4">
-              {language === 'en' ? "Request a demo to access our 53+ specialized AI models for predictive medical analysis. Payment processing and subscription management handled after demo approval." :
-               language === 'fr' ? "Demandez une démo pour accéder à nos 53+ modèles IA spécialisés pour l'analyse médicale prédictive. Traitement des paiements et gestion des abonnements après approbation de la démo." :
-               "Solicita una demo para acceder a nuestros 53+ modelos de IA especializados para análisis médico predictivo. Procesamiento de pagos y gestión de suscripciones después de la aprobación de la demo."}
-            </p>
-            <div className="flex justify-center items-center space-x-4 text-sm text-blue-600">
-              <span>• {language === 'en' ? "7-day Trial" : language === 'fr' ? "Essai 7 jours" : "Prueba 7 días"}</span>
-              <span>• {language === 'en' ? "No Setup Fees" : language === 'fr' ? "Pas de Frais d'Installation" : "Sin Tarifas de Instalación"}</span>
-              <span>• {language === 'en' ? "Medical Grade Security" : language === 'fr' ? "Sécurité Médicale" : "Seguridad Médica"}</span>
-              <span>• {language === 'en' ? "Dedicated Support" : language === 'fr' ? "Support Dédié" : "Soporte Dedicado"}</span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      </main>
       
       <Footer />
     </div>
