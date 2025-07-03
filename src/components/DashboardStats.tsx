@@ -15,14 +15,11 @@ import {
   Shield,
   Zap
 } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const DashboardStats = () => {
-  const { language } = useLanguage();
-
   const stats = [
     {
-      title: language === 'es' ? "Total de Consultas" : language === 'fr' ? "Total des Consultations" : "Total Consultations",
+      title: "Total de Consultas",
       value: "2,847",
       change: "+23%",
       changeType: "positive",
@@ -30,7 +27,7 @@ const DashboardStats = () => {
       color: "blue"
     },
     {
-      title: language === 'es' ? "Pacientes Activos" : language === 'fr' ? "Patients Actifs" : "Active Patients",
+      title: "Pacientes Activos",
       value: "1,492",
       change: "+18%",
       changeType: "positive",
@@ -38,7 +35,7 @@ const DashboardStats = () => {
       color: "green"
     },
     {
-      title: language === 'es' ? "Reportes Generados" : language === 'fr' ? "Rapports Générés" : "Reports Generated",
+      title: "Reportes Generados",
       value: "2,156",
       change: "+25%",
       changeType: "positive",
@@ -46,7 +43,7 @@ const DashboardStats = () => {
       color: "purple"
     },
     {
-      title: language === 'es' ? "Precisión Máxima" : language === 'fr' ? "Précision Maximale" : "Maximum Accuracy",
+      title: "Precisión Máxima",
       value: "98.8%",
       change: "+3.1%",
       changeType: "positive",
@@ -58,45 +55,45 @@ const DashboardStats = () => {
   const recentActivity = [
     {
       id: 1,
-      patient: language === 'es' ? "Paciente #2847" : language === 'fr' ? "Patient #2847" : "Patient #2847",
-      diagnosis: language === 'es' ? "Diabetes Tipo 2" : language === 'fr' ? "Diabète Type 2" : "Type 2 Diabetes",
+      patient: "Paciente #2847",
+      diagnosis: "Diabetes Tipo 2",
       confidence: 94,
       status: "completed",
-      time: language === 'es' ? "hace 1 hora" : language === 'fr' ? "il y a 1 heure" : "1 hour ago",
+      time: "hace 1 hora",
       icon: Droplets
     },
     {
       id: 2,
-      patient: language === 'es' ? "Paciente #2846" : language === 'fr' ? "Patient #2846" : "Patient #2846",
-      diagnosis: language === 'es' ? "Cáncer de Mama" : language === 'fr' ? "Cancer du Sein" : "Breast Cancer",
+      patient: "Paciente #2846",
+      diagnosis: "Cáncer de Mama",
       confidence: 97,
       status: "completed",
-      time: language === 'es' ? "hace 2 horas" : language === 'fr' ? "il y a 2 heures" : "2 hours ago",
+      time: "hace 2 horas",
       icon: Users
     },
     {
       id: 3,
-      patient: language === 'es' ? "Paciente #2845" : language === 'fr' ? "Patient #2845" : "Patient #2845",
-      diagnosis: language === 'es' ? "Cáncer de Próstata" : language === 'fr' ? "Cancer de la Prostate" : "Prostate Cancer",
+      patient: "Paciente #2845",
+      diagnosis: "Cáncer de Próstata",
       confidence: 98,
       status: "pending",
-      time: language === 'es' ? "hace 3 horas" : language === 'fr' ? "il y a 3 heures" : "3 hours ago",
+      time: "hace 3 horas",
       icon: Activity
     },
     {
       id: 4,
-      patient: language === 'es' ? "Paciente #2844" : language === 'fr' ? "Patient #2844" : "Patient #2844",
-      diagnosis: language === 'es' ? "Riesgo de ACV" : language === 'fr' ? "Risque d'AVC" : "Stroke Risk",
+      patient: "Paciente #2844",
+      diagnosis: "Riesgo de ACV",
       confidence: 91,
       status: "completed",
-      time: language === 'es' ? "hace 4 horas" : language === 'fr' ? "il y a 4 heures" : "4 hours ago",
+      time: "hace 4 horas",
       icon: Brain
     }
   ];
 
   const analysisTypes = [
     {
-      name: language === 'es' ? "Diabetes Tipo 2" : language === 'fr' ? "Diabète Type 2" : "Type 2 Diabetes",
+      name: "Diabetes Tipo 2",
       count: 542,
       accuracy: "94.2%",
       models: 9,
@@ -104,7 +101,7 @@ const DashboardStats = () => {
       color: "blue"
     },
     {
-      name: language === 'es' ? "Cáncer de Mama" : language === 'fr' ? "Cancer du Sein" : "Breast Cancer",
+      name: "Cáncer de Mama",
       count: 398,
       accuracy: "96.8%",
       models: 5,
@@ -112,7 +109,7 @@ const DashboardStats = () => {
       color: "pink"
     },
     {
-      name: language === 'es' ? "Cáncer de Próstata" : language === 'fr' ? "Cancer de la Prostate" : "Prostate Cancer",
+      name: "Cáncer de Próstata",
       count: 234,
       accuracy: "98.8%",
       models: 4,
@@ -120,7 +117,7 @@ const DashboardStats = () => {
       color: "indigo"
     },
     {
-      name: language === 'es' ? "Enfermedades Cardíacas" : language === 'fr' ? "Maladies Cardiaques" : "Heart Disease",
+      name: "Enfermedades Cardíacas",
       count: 467,
       accuracy: "93.7%",
       models: 5,
@@ -128,7 +125,7 @@ const DashboardStats = () => {
       color: "red"
     },
     {
-      name: language === 'es' ? "Riesgo de ACV" : language === 'fr' ? "Risque d'AVC" : "Stroke Risk",
+      name: "Riesgo de ACV",
       count: 187,
       accuracy: "91.3%",
       models: 5,
@@ -136,7 +133,7 @@ const DashboardStats = () => {
       color: "purple"
     },
     {
-      name: language === 'es' ? "Enfermedad Renal Crónica" : language === 'fr' ? "Maladie Rénale Chronique" : "Chronic Kidney Disease",
+      name: "Enfermedad Renal Crónica",
       count: 156,
       accuracy: "97.5%",
       models: 5,
@@ -144,7 +141,7 @@ const DashboardStats = () => {
       color: "teal"
     },
     {
-      name: language === 'es' ? "Cáncer de Páncreas" : language === 'fr' ? "Cancer du Pancréas" : "Pancreatic Cancer",
+      name: "Cáncer de Páncreas",
       count: 98,
       accuracy: "87.4%",
       models: 4,
@@ -189,11 +186,7 @@ const DashboardStats = () => {
                 <div className="flex items-center space-x-1 text-sm">
                   <TrendingUp className="h-3 w-3 text-green-600" />
                   <span className="text-green-600">{stat.change}</span>
-                  <span className="text-gray-500">
-                    {language === 'es' ? "desde el mes pasado" : 
-                     language === 'fr' ? "depuis le mois dernier" : 
-                     "from last month"}
-                  </span>
+                  <span className="text-gray-500">desde el mes pasado</span>
                 </div>
               </CardContent>
             </Card>
@@ -206,11 +199,7 @@ const DashboardStats = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Brain className="h-5 w-5" />
-            <span>
-              {language === 'es' ? "Tipos de Análisis Predictivos (37+ Modelos)" : 
-               language === 'fr' ? "Types d'Analyses Prédictives (37+ Modèles)" : 
-               "Predictive Analysis Types (37+ Models)"}
-            </span>
+            <span>Tipos de Análisis Predictivos (37+ Modelos)</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -226,8 +215,7 @@ const DashboardStats = () => {
                     <div>
                       <div className="font-medium text-sm">{analysis.name}</div>
                       <div className="text-xs text-gray-500">
-                        {analysis.count} {language === 'es' ? "análisis • " : language === 'fr' ? "analyses • " : "analyses • "}
-                        {analysis.models} {language === 'es' ? "modelos" : language === 'fr' ? "modèles" : "models"}
+                        {analysis.count} análisis • {analysis.models} modelos
                       </div>
                     </div>
                   </div>
@@ -249,11 +237,7 @@ const DashboardStats = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Clock className="h-5 w-5" />
-            <span>
-              {language === 'es' ? "Actividad Reciente" : 
-               language === 'fr' ? "Activité Récente" : 
-               "Recent Activity"}
-            </span>
+            <span>Actividad Reciente</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -287,7 +271,7 @@ const DashboardStats = () => {
                       variant={activity.confidence >= 95 ? "default" : "secondary"}
                       className={`${activity.confidence >= 95 ? "bg-green-600" : ""} rounded-full mb-1`}
                     >
-                      {activity.confidence}% {language === 'es' ? "confianza" : language === 'fr' ? "confiance" : "confidence"}
+                      {activity.confidence}% confianza
                     </Badge>
                     <div className="text-sm text-gray-500">{activity.time}</div>
                   </div>

@@ -4,15 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Activity, Users, Brain, Shield, Zap, Droplets } from "lucide-react";
 import { DiseaseType, DiseaseInfo } from "@/types/chat";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 interface DiseaseSelectorProps {
   onSelectDisease: (disease: DiseaseType) => void;
 }
 
 const DiseaseSelector = ({ onSelectDisease }: DiseaseSelectorProps) => {
-  const { language, t } = useLanguage();
-
   const diseases: DiseaseInfo[] = [
     {
       id: 'diabetes',
@@ -167,14 +164,10 @@ const DiseaseSelector = ({ onSelectDisease }: DiseaseSelectorProps) => {
     <div className="space-y-4">
       <div className="text-center mb-6">
         <h3 className="text-lg font-semibold mb-2">
-          {language === 'es' ? 'Selecciona el tipo de análisis' : 
-           language === 'fr' ? 'Sélectionnez le type d\'analyse' :
-           'Select Analysis Type'}
+          Selecciona el tipo de análisis
         </h3>
         <p className="text-gray-600 text-sm">
-          {language === 'es' ? 'Elige la enfermedad para la cual deseas realizar el análisis predictivo:' :
-           language === 'fr' ? 'Choisissez la maladie pour laquelle vous souhaitez effectuer l\'analyse prédictive :' :
-           'Choose the disease for which you want to perform predictive analysis:'}
+          Elige la enfermedad para la cual deseas realizar el análisis predictivo:
         </p>
       </div>
 
@@ -185,7 +178,7 @@ const DiseaseSelector = ({ onSelectDisease }: DiseaseSelectorProps) => {
               <CardTitle className="flex items-center justify-between text-base">
                 <div className="flex items-center space-x-2">
                   {getIcon(disease.id)}
-                  <span>{disease.name[language as keyof typeof disease.name]}</span>
+                  <span>{disease.name.es}</span>
                 </div>
                 <Badge variant="secondary" className="text-xs">
                   {disease.prevalence}
@@ -194,16 +187,12 @@ const DiseaseSelector = ({ onSelectDisease }: DiseaseSelectorProps) => {
             </CardHeader>
             <CardContent className="pt-0">
               <p className="text-sm text-gray-600 mb-3">
-                {disease.description[language as keyof typeof disease.description]}
+                {disease.description.es}
               </p>
               <div className="mb-4">
-                <h4 className="text-xs font-semibold mb-1">
-                  {language === 'es' ? 'Factores de Riesgo:' :
-                   language === 'fr' ? 'Facteurs de Risque :' :
-                   'Risk Factors:'}
-                </h4>
+                <h4 className="text-xs font-semibold mb-1">Factores de Riesgo:</h4>
                 <div className="flex flex-wrap gap-1">
-                  {disease.riskFactors[language as keyof typeof disease.riskFactors].slice(0, 3).map((factor, index) => (
+                  {disease.riskFactors.es.slice(0, 3).map((factor, index) => (
                     <Badge key={index} variant="outline" className="text-xs">
                       {factor}
                     </Badge>
@@ -215,9 +204,7 @@ const DiseaseSelector = ({ onSelectDisease }: DiseaseSelectorProps) => {
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 size="sm"
               >
-                {language === 'es' ? 'Seleccionar' :
-                 language === 'fr' ? 'Sélectionner' :
-                 'Select'}
+                Seleccionar
               </Button>
             </CardContent>
           </Card>

@@ -8,11 +8,9 @@ import ChatInterface from "@/components/ChatInterface";
 import Navigation from "@/components/Navigation";
 import DashboardStats from "@/components/DashboardStats";
 import AdminSettings from "@/components/AdminSettings";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
   const [activeView, setActiveView] = useState('dashboard');
-  const { language } = useLanguage();
 
   const renderContent = () => {
     switch (activeView) {
@@ -28,32 +26,28 @@ const Index = () => {
               <div className="flex items-center justify-center space-x-2">
                 <Brain className="h-8 w-8 text-blue-600" />
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {language === 'es' ? 'MedAI Dashboard' : 
-                   language === 'fr' ? 'Tableau de Bord MedAI' : 
-                   'MedAI Dashboard'}
+                  MedAI Dashboard
                 </h1>
               </div>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                {language === 'es' ? 'Plataforma de medicina predictiva con IA para diagnóstico avanzado de enfermedades críticas' :
-                 language === 'fr' ? 'Plateforme de médecine prédictive avec IA pour diagnostic avancé de maladies critiques' :
-                 'Predictive medicine platform with AI for advanced diagnosis of critical diseases'}
+                Plataforma de medicina predictiva con IA para diagnóstico avanzado de enfermedades críticas
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full backdrop-blur-sm">
                   <Droplets className="h-3 w-3 mr-1" />
-                  {language === 'es' ? '12 Enfermedades' : language === 'fr' ? '12 Maladies' : '12 Diseases'}
+                  12 Enfermedades
                 </Badge>
                 <Badge variant="secondary" className="bg-green-100/80 text-green-800 rounded-full backdrop-blur-sm">
                   <Activity className="h-3 w-3 mr-1" />
-                  {language === 'es' ? 'IA Avanzada' : language === 'fr' ? 'IA Avancée' : 'Advanced AI'}
+                  IA Avanzada
                 </Badge>
                 <Badge variant="secondary" className="bg-purple-100/80 text-purple-800 rounded-full backdrop-blur-sm">
                   <Shield className="h-3 w-3 mr-1" />
-                  {language === 'es' ? 'Seguro HIPAA' : language === 'fr' ? 'Sécurisé HIPAA' : 'HIPAA Secure'}
+                  Seguro HIPAA
                 </Badge>
                 <Badge variant="secondary" className="bg-red-100/80 text-red-800 rounded-full backdrop-blur-sm">
                   <Heart className="h-3 w-3 mr-1" />
-                  {language === 'es' ? 'Alta Precisión' : language === 'fr' ? 'Haute Précision' : 'High Accuracy'}
+                  Alta Precisión
                 </Badge>
               </div>
             </div>
@@ -66,23 +60,15 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <MessageSquare className="h-5 w-5 text-blue-600" />
-                    <span>
-                      {language === 'es' ? 'Análisis Predictivo' :
-                       language === 'fr' ? 'Analyse Prédictive' :
-                       'Predictive Analysis'}
-                    </span>
+                    <span>Análisis Predictivo</span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Diagnóstico inteligente para enfermedades críticas usando algoritmos médicos avanzados' :
-                     language === 'fr' ? 'Diagnostic intelligent pour maladies critiques utilisant algorithmes médicaux avancés' :
-                     'Intelligent diagnosis for critical diseases using advanced medical algorithms'}
+                    Diagnóstico inteligente para enfermedades críticas usando algoritmos médicos avanzados
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-2xl">
-                    {language === 'es' ? 'Iniciar Análisis' :
-                     language === 'fr' ? 'Commencer' :
-                     'Start Analysis'}
+                    Iniciar Análisis
                   </Button>
                 </CardContent>
               </Card>
@@ -91,23 +77,15 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <FileText className="h-5 w-5 text-green-600" />
-                    <span>
-                      {language === 'es' ? 'Historial Clínico' :
-                       language === 'fr' ? 'Historique' :
-                       'Clinical History'}
-                    </span>
+                    <span>Historial Clínico</span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Registro completo de análisis realizados y resultados obtenidos para seguimiento médico' :
-                     language === 'fr' ? 'Registre complet des analyses effectuées et résultats obtenus pour suivi médical' :
-                     'Complete record of analyses performed and results obtained for medical follow-up'}
+                    Registro completo de análisis realizados y resultados obtenidos para seguimiento médico
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full rounded-2xl backdrop-blur-sm border-green-200 hover:bg-green-50">
-                    {language === 'es' ? 'Ver Historial' :
-                     language === 'fr' ? 'Voir Historique' :
-                     'View History'}
+                    Ver Historial
                   </Button>
                 </CardContent>
               </Card>
@@ -116,23 +94,15 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <Users className="h-5 w-5 text-purple-600" />
-                    <span>
-                      {language === 'es' ? 'Gestión Pacientes' :
-                       language === 'fr' ? 'Gestion Patients' :
-                       'Patient Management'}
-                    </span>
+                    <span>Gestión Pacientes</span>
                   </CardTitle>
                   <CardDescription>
-                    {language === 'es' ? 'Sistema de gestión integral para el seguimiento y monitoreo continuo de pacientes' :
-                     language === 'fr' ? 'Système de gestion intégral pour suivi et surveillance continue des patients' :
-                     'Comprehensive management system for continuous patient monitoring and follow-up'}
+                    Sistema de gestión integral para el seguimiento y monitoreo continuo de pacientes
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full rounded-2xl backdrop-blur-sm border-purple-200 hover:bg-purple-50">
-                    {language === 'es' ? 'Gestionar' :
-                     language === 'fr' ? 'Gérer' :
-                     'Manage'}
+                    Gestionar
                   </Button>
                 </CardContent>
               </Card>
@@ -140,11 +110,7 @@ const Index = () => {
 
             <Card className="bg-gradient-to-br from-blue-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl">
               <CardHeader>
-                <CardTitle className="text-center">
-                  {language === 'es' ? 'Cómo Funciona MedAI' :
-                   language === 'fr' ? 'Comment Fonctionne MedAI' :
-                   'How MedAI Works'}
-                </CardTitle>
+                <CardTitle className="text-center">Cómo Funciona MedAI</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-4 gap-4 text-center">
@@ -152,60 +118,36 @@ const Index = () => {
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
                       <span className="text-white font-bold">1</span>
                     </div>
-                    <h3 className="font-semibold">
-                      {language === 'es' ? 'Seleccionar Enfermedad' :
-                       language === 'fr' ? 'Sélectionner Maladie' :
-                       'Select Disease'}
-                    </h3>
+                    <h3 className="font-semibold">Seleccionar Enfermedad</h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Elija la enfermedad a analizar entre las 12 disponibles' :
-                       language === 'fr' ? 'Choisissez la maladie à analyser parmi les 12 disponibles' :
-                       'Choose the disease to analyze from the 12 available options'}
+                      Elija la enfermedad a analizar entre las 12 disponibles
                     </p>
                   </div>
                   <div className="space-y-2">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
                       <span className="text-white font-bold">2</span>
                     </div>
-                    <h3 className="font-semibold">
-                      {language === 'es' ? 'Ingresar Datos' :
-                       language === 'fr' ? 'Saisir Données' :
-                       'Enter Data'}
-                    </h3>
+                    <h3 className="font-semibold">Ingresar Datos</h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Proporcione la información médica necesaria del paciente' :
-                       language === 'fr' ? 'Fournir les informations médicales nécessaires du patient' :
-                       'Provide the necessary medical information of the patient'}
+                      Proporcione la información médica necesaria del paciente
                     </p>
                   </div>
                   <div className="space-y-2">
                     <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
                       <span className="text-white font-bold">3</span>
                     </div>
-                    <h3 className="font-semibold">
-                      {language === 'es' ? 'Análisis IA' :
-                       language === 'fr' ? 'Analyse IA' :
-                       'AI Analysis'}
-                    </h3>
+                    <h3 className="font-semibold">Análisis IA</h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'La inteligencia artificial procesa los datos médicos' :
-                       language === 'fr' ? 'L\'intelligence artificielle traite les données médicales' :
-                       'Artificial intelligence processes the medical data'}
+                      La inteligencia artificial procesa los datos médicos
                     </p>
                   </div>
                   <div className="space-y-2">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
                       <span className="text-white font-bold">4</span>
                     </div>
-                    <h3 className="font-semibold">
-                      {language === 'es' ? 'Resultado Médico' :
-                       language === 'fr' ? 'Résultat Médical' :
-                       'Medical Result'}
-                    </h3>
+                    <h3 className="font-semibold">Resultado Médico</h3>
                     <p className="text-sm text-gray-600">
-                      {language === 'es' ? 'Obtenga un reporte detallado con recomendaciones clínicas' :
-                       language === 'fr' ? 'Obtenez un rapport détaillé avec recommandations cliniques' :
-                       'Get a detailed report with clinical recommendations'}
+                      Obtenga un reporte detallado con recomendaciones clínicas
                     </p>
                   </div>
                 </div>

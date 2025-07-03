@@ -19,10 +19,8 @@ import {
   Save
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const AdminSettings = () => {
-  const { t } = useLanguage();
   const { toast } = useToast();
   
   const [userSettings, setUserSettings] = useState({
@@ -48,10 +46,9 @@ const AdminSettings = () => {
   });
 
   const handleSaveSettings = () => {
-    // Here you would save to Supabase
     toast({
-      title: t('admin.settings.saved'),
-      description: t('admin.settings.savedDesc'),
+      title: "Configuración guardada",
+      description: "Todos los cambios han sido guardados exitosamente",
     });
   };
 
@@ -59,7 +56,7 @@ const AdminSettings = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex items-center space-x-2 mb-6">
         <Settings className="h-6 w-6 text-blue-600" />
-        <h1 className="text-2xl font-bold">{t('admin.title')}</h1>
+        <h1 className="text-2xl font-bold">Configuración del Sistema</h1>
       </div>
 
       {/* Profile Settings */}
@@ -67,13 +64,13 @@ const AdminSettings = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <User className="h-5 w-5" />
-            <span>{t('admin.profile.title')}</span>
+            <span>Perfil Profesional</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="name">{t('admin.profile.name')}</Label>
+              <Label htmlFor="name">Nombre Completo</Label>
               <Input
                 id="name"
                 value={userSettings.name}
@@ -81,7 +78,7 @@ const AdminSettings = () => {
               />
             </div>
             <div>
-              <Label htmlFor="email">{t('admin.profile.email')}</Label>
+              <Label htmlFor="email">Correo Electrónico</Label>
               <Input
                 id="email"
                 type="email"
@@ -90,7 +87,7 @@ const AdminSettings = () => {
               />
             </div>
             <div>
-              <Label htmlFor="specialty">{t('admin.profile.specialty')}</Label>
+              <Label htmlFor="specialty">Especialidad Médica</Label>
               <Input
                 id="specialty"
                 value={userSettings.specialty}
@@ -98,7 +95,7 @@ const AdminSettings = () => {
               />
             </div>
             <div>
-              <Label htmlFor="license">{t('admin.profile.license')}</Label>
+              <Label htmlFor="license">Número de Licencia</Label>
               <Input
                 id="license"
                 value={userSettings.license}
@@ -107,7 +104,7 @@ const AdminSettings = () => {
             </div>
           </div>
           <div>
-            <Label htmlFor="hospital">{t('admin.profile.hospital')}</Label>
+            <Label htmlFor="hospital">Hospital o Clínica</Label>
             <Input
               id="hospital"
               value={userSettings.hospital}
@@ -122,14 +119,14 @@ const AdminSettings = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Bell className="h-5 w-5" />
-            <span>{t('admin.notifications.title')}</span>
+            <span>Configuración de Notificaciones</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <Label>{t('admin.notifications.emailReports')}</Label>
-              <p className="text-sm text-gray-500">{t('admin.notifications.emailReportsDesc')}</p>
+              <Label>Reportes por Email</Label>
+              <p className="text-sm text-gray-500">Recibir reportes de análisis por correo electrónico</p>
             </div>
             <Switch
               checked={notificationSettings.emailReports}
@@ -141,8 +138,8 @@ const AdminSettings = () => {
           <Separator />
           <div className="flex items-center justify-between">
             <div>
-              <Label>{t('admin.notifications.weeklyDigest')}</Label>
-              <p className="text-sm text-gray-500">{t('admin.notifications.weeklyDigestDesc')}</p>
+              <Label>Resumen Semanal</Label>
+              <p className="text-sm text-gray-500">Estadísticas y resumen de actividad semanal</p>
             </div>
             <Switch
               checked={notificationSettings.weeklyDigest}
@@ -154,8 +151,8 @@ const AdminSettings = () => {
           <Separator />
           <div className="flex items-center justify-between">
             <div>
-              <Label>{t('admin.notifications.criticalAlerts')}</Label>
-              <p className="text-sm text-gray-500">{t('admin.notifications.criticalAlertsDesc')}</p>
+              <Label>Alertas Críticas</Label>
+              <p className="text-sm text-gray-500">Notificaciones inmediatas para casos de alto riesgo</p>
             </div>
             <Switch
               checked={notificationSettings.criticalAlerts}
@@ -172,23 +169,23 @@ const AdminSettings = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Webhook className="h-5 w-5" />
-            <span>{t('admin.integrations.title')}</span>
+            <span>Configuración de Integraciones</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <Label htmlFor="n8nWebhook">{t('admin.integrations.n8nWebhook')}</Label>
+            <Label htmlFor="n8nWebhook">Webhook N8N</Label>
             <Input
               id="n8nWebhook"
               placeholder="https://your-n8n-instance.com/webhook/..."
               value={integrationSettings.n8nWebhook}
               onChange={(e) => setIntegrationSettings({...integrationSettings, n8nWebhook: e.target.value})}
             />
-            <p className="text-sm text-gray-500 mt-1">{t('admin.integrations.n8nWebhookDesc')}</p>
+            <p className="text-sm text-gray-500 mt-1">URL del webhook para envío automático de análisis</p>
           </div>
           
           <div>
-            <Label htmlFor="reportFormat">{t('admin.integrations.reportFormat')}</Label>
+            <Label htmlFor="reportFormat">Formato de Reportes</Label>
             <Select 
               value={integrationSettings.reportFormat} 
               onValueChange={(value) => setIntegrationSettings({...integrationSettings, reportFormat: value})}
@@ -205,10 +202,10 @@ const AdminSettings = () => {
           </div>
 
           <div>
-            <Label htmlFor="emailTemplate">{t('admin.integrations.emailTemplate')}</Label>
+            <Label htmlFor="emailTemplate">Plantilla de Email</Label>
             <Textarea
               id="emailTemplate"
-              placeholder={t('admin.integrations.emailTemplatePlaceholder')}
+              placeholder="Estimado Dr. {{name}}, adjunto encuentra el análisis médico del paciente {{patient}}..."
               value={integrationSettings.emailTemplate}
               onChange={(e) => setIntegrationSettings({...integrationSettings, emailTemplate: e.target.value})}
               rows={6}
@@ -217,8 +214,8 @@ const AdminSettings = () => {
 
           <div className="flex items-center justify-between">
             <div>
-              <Label>{t('admin.integrations.autoSend')}</Label>
-              <p className="text-sm text-gray-500">{t('admin.integrations.autoSendDesc')}</p>
+              <Label>Envío Automático</Label>
+              <p className="text-sm text-gray-500">Enviar reportes automáticamente al completar análisis</p>
             </div>
             <Switch
               checked={integrationSettings.autoSend}
@@ -234,7 +231,7 @@ const AdminSettings = () => {
       <div className="flex justify-end">
         <Button onClick={handleSaveSettings} className="bg-blue-600 hover:bg-blue-700">
           <Save className="h-4 w-4 mr-2" />
-          {t('admin.save')}
+          Guardar Configuración
         </Button>
       </div>
     </div>

@@ -2,371 +2,222 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { 
   Brain, 
   Menu,
   X,
-  Globe,
   Home,
   ChevronDown,
   Stethoscope
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 
 const PublicNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [medicalAnalysisExpanded, setMedicalAnalysisExpanded] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
-
-  const getLanguageAbbreviation = (lang: string) => {
-    switch (lang) {
-      case 'es': return 'ES';
-      case 'en': return 'EN';
-      case 'fr': return 'FR';
-      default: return 'ES';
-    }
-  };
 
   const diseaseCategories = [
     {
-      name: {
-        es: 'Cáncer',
-        en: 'Cancer',
-        fr: 'Cancer'
-      },
+      name: 'Cáncer',
       diseases: [
-        { 
-          id: 'breast-cancer', 
-          name: {
-            es: 'Mama',
-            en: 'Breast', 
-            fr: 'Sein'
-          }
-        },
-        { 
-          id: 'prostate-cancer', 
-          name: {
-            es: 'Próstata',
-            en: 'Prostate', 
-            fr: 'Prostate'
-          }
-        },
-        { 
-          id: 'pancreatic-cancer', 
-          name: {
-            es: 'Páncreas',
-            en: 'Pancreas', 
-            fr: 'Pancréas'
-          }
-        },
-        { 
-          id: 'stomach-cancer', 
-          name: {
-            es: 'Estómago',
-            en: 'Stomach', 
-            fr: 'Estomac'
-          }
-        },
-        { 
-          id: 'liver-cancer', 
-          name: {
-            es: 'Hígado',
-            en: 'Liver', 
-            fr: 'Foie'
-          }
-        },
-        { 
-          id: 'lung-cancer', 
-          name: {
-            es: 'Pulmón',
-            en: 'Lung', 
-            fr: 'Poumon'
-          }
-        },
-        { 
-          id: 'leukemia', 
-          name: {
-            es: 'Leucemia',
-            en: 'Leukemia', 
-            fr: 'Leucémie'
-          }
-        }
+        { id: 'breast-cancer', name: 'Mama' },
+        { id: 'prostate-cancer', name: 'Próstata' },
+        { id: 'pancreatic-cancer', name: 'Páncreas' },
+        { id: 'stomach-cancer', name: 'Estómago' },
+        { id: 'liver-cancer', name: 'Hígado' },
+        { id: 'lung-cancer', name: 'Pulmón' },
+        { id: 'leukemia', name: 'Leucemia' }
       ]
     },
     {
-      name: {
-        es: 'Cardiovascular',
-        en: 'Cardiovascular',
-        fr: 'Cardiovasculaire'
-      },
+      name: 'Cardiovascular',
       diseases: [
-        { 
-          id: 'heart-disease', 
-          name: {
-            es: 'Corazón',
-            en: 'Heart', 
-            fr: 'Cœur'
-          }
-        },
-        { 
-          id: 'stroke', 
-          name: {
-            es: 'ACV',
-            en: 'Stroke', 
-            fr: 'AVC'
-          }
-        }
+        { id: 'heart-disease', name: 'Corazón' },
+        { id: 'stroke', name: 'ACV' }
       ]
     },
     {
-      name: {
-        es: 'Otras',
-        en: 'Other',
-        fr: 'Autres'
-      },
+      name: 'Otras',
       diseases: [
-        { 
-          id: 'diabetes', 
-          name: {
-            es: 'Diabetes',
-            en: 'Diabetes', 
-            fr: 'Diabète'
-          }
-        },
-        { 
-          id: 'chronic-kidney-disease', 
-          name: {
-            es: 'Riñón',
-            en: 'Kidney', 
-            fr: 'Rein'
-          }
-        },
-        { 
-          id: 'epilepsy', 
-          name: {
-            es: 'Epilepsia',
-            en: 'Epilepsy', 
-            fr: 'Épilepsie'
-          }
-        }
+        { id: 'diabetes', name: 'Diabetes' },
+        { id: 'chronic-kidney-disease', name: 'Riñón' },
+        { id: 'epilepsy', name: 'Epilepsia' }
       ]
     }
   ];
 
   return (
-    <nav className="backdrop-blur-md bg-white/10 shadow-sm border-b border-white/20 sticky top-0 z-50 rounded-b-3xl mx-4">
+    <nav className="backdrop-blur-md bg-white/10 shadow-sm border-b border-white/20 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <Brain className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">MedAI</span>
-            <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
+            <span className="text-xl font-bold text-gray-900">MedAI</span>
+            <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">
               Pro
             </Badge>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors flex items-center space-x-1">
-              <Home className="h-4 w-4" />
-              <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
-            </Link>
-            
-            {/* Diseases Dropdown - Categorized */}
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-600 hover:text-blue-600 transition-colors bg-transparent hover:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
-                    {language === 'es' ? 'Análisis Médicos' : language === 'fr' ? 'Analyses Médicales' : 'Medical Analysis'}
-                    <ChevronDown className="ml-1 h-3 w-3" />
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-white/95 backdrop-blur-md border border-white/30 rounded-2xl shadow-xl p-6 w-96">
-                    <div className="space-y-4">
-                      {diseaseCategories.map((category, idx) => (
-                        <div key={idx}>
-                          <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">
-                            {category.name[language as keyof typeof category.name]}
-                          </h4>
-                          <div className="grid grid-cols-2 gap-2">
-                            {category.diseases.map((disease) => (
-                              <Link 
-                                key={disease.id}
-                                to={`/${disease.id}`}
-                                className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg"
-                              >
-                                {disease.name[language as keyof typeof disease.name]}
-                              </Link>
-                            ))}
-                          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="relative group">
+              <button className="flex items-center space-x-1 text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                <Stethoscope className="h-4 w-4" />
+                <span>Análisis Médicos</span>
+                <ChevronDown className="h-4 w-4" />
+              </button>
+              
+              <div className="absolute left-0 mt-2 w-96 bg-white rounded-2xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="p-6">
+                  <div className="grid grid-cols-3 gap-6">
+                    {diseaseCategories.map((category, index) => (
+                      <div key={index}>
+                        <h3 className="font-semibold text-gray-900 mb-3 text-sm">
+                          {category.name}
+                        </h3>
+                        <div className="space-y-2">
+                          {category.diseases.map((disease) => (
+                            <Link
+                              key={disease.id}
+                              to={`/${disease.id}`}
+                              className="block text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-2 py-1 rounded transition-colors"
+                            >
+                              {disease.name}
+                            </Link>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-gray-100">
+                    <Link
+                      to="/health-recommendations"
+                      className="flex items-center text-sm text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      <Home className="h-4 w-4 mr-2" />
+                      Recomendaciones de Salud
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">
-              {t('nav.blog')}
+            <Link to="/features" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              Características
             </Link>
-            <Link to="/health-recommendations" className="text-gray-600 hover:text-blue-600 transition-colors">
-              {language === 'en' ? "Tips" : 
-               language === 'fr' ? "Conseils" : 
-               "Consejos"}
+            <Link to="/pricing" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              Precios
             </Link>
-            <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
-              {t('nav.contact')}
+            <Link to="/blog" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              Blog
+            </Link>
+            <Link to="/contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              Contacto
             </Link>
           </div>
 
-          {/* Right Side Actions - Desktop Only */}
+          {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Language Selector */}
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-20 backdrop-blur-sm bg-white/20 border-white/30 rounded-2xl">
-                <div className="flex items-center space-x-1">
-                  <Globe className="h-4 w-4" />
-                  <span className="text-xs">{getLanguageAbbreviation(language)}</span>
-                </div>
-              </SelectTrigger>
-              <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-50">
-                <SelectItem value="es">ES</SelectItem>
-                <SelectItem value="en">EN</SelectItem>
-                <SelectItem value="fr">FR</SelectItem>
-              </SelectContent>
-            </Select>
-            
-            <Link to="/dashboard">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-2xl">
-                {language === 'es' ? 'Iniciar' : language === 'fr' ? 'Commencer' : 'Start'}
+            <Link to="/login">
+              <Button variant="ghost" size="sm">
+                Iniciar Sesión
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 rounded-full">
+                Comenzar Gratis
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="rounded-2xl p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute left-4 right-4 top-full mt-2 backdrop-blur-xl bg-white/95 border border-white/30 rounded-2xl shadow-xl z-[55]">
-            <div className="p-4 space-y-3">
-              <Link 
-                to="/" 
-                className="flex items-center space-x-2 px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <Home className="h-4 w-4" />
-                <span>{language === 'en' ? "Home" : language === 'fr' ? "Accueil" : "Inicio"}</span>
-              </Link>
-              
-              {/* Mobile Medical Analysis Section - Collapsible */}
-              <Collapsible
-                open={medicalAnalysisExpanded}
-                onOpenChange={setMedicalAnalysisExpanded}
-              >
-                <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-left text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium">
-                  <div className="flex items-center space-x-2">
-                    <Stethoscope className="h-4 w-4" />
-                    <span>{language === 'es' ? 'Análisis Médicos' : language === 'fr' ? 'Analyses Médicales' : 'Medical Analysis'}</span>
-                  </div>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${medicalAnalysisExpanded ? 'rotate-180' : ''}`} />
-                </CollapsibleTrigger>
-                <CollapsibleContent className="space-y-2 mt-2">
-                  {diseaseCategories.map((category, idx) => (
-                    <div key={idx} className="ml-4">
-                      <h4 className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                        {category.name[language as keyof typeof category.name]}
-                      </h4>
-                      {category.diseases.map((disease) => (
-                        <Link 
-                          key={disease.id}
-                          to={`/${disease.id}`}
-                          className="block px-6 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-lg ml-2"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {disease.name[language as keyof typeof disease.name]}
-                        </Link>
-                      ))}
-                    </div>
+          <div className="md:hidden py-4 border-t border-gray-200">
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2 px-3">Cáncer</h3>
+                <div className="space-y-1 pl-6">
+                  {diseaseCategories[0].diseases.map((disease) => (
+                    <Link
+                      key={disease.id}
+                      to={`/${disease.id}`}
+                      className="block text-gray-600 hover:text-blue-600 py-1"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {disease.name}
+                    </Link>
                   ))}
-                </CollapsibleContent>
-              </Collapsible>
-
-              <Link 
-                to="/blog" 
-                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t('nav.blog')}
-              </Link>
-              <Link 
-                to="/health-recommendations" 
-                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {language === 'en' ? "Tips" : 
-                 language === 'fr' ? "Conseils" : 
-                 "Consejos"}
-              </Link>
-              <Link 
-                to="/contact" 
-                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 rounded-xl font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t('nav.contact')}
-              </Link>
+                </div>
+              </div>
               
-              {/* Language Selector for Mobile */}
-              <div className="border-t border-gray-200 pt-3">
-                <Select value={language} onValueChange={(value) => {
-                  setLanguage(value);
-                  setMobileMenuOpen(false);
-                }}>
-                  <SelectTrigger className="w-full backdrop-blur-sm bg-white/20 border-white/30 rounded-xl">
-                    <div className="flex items-center space-x-2">
-                      <Globe className="h-4 w-4" />
-                      <span>{getLanguageAbbreviation(language)}</span>
-                    </div>
-                  </SelectTrigger>
-                  <SelectContent className="backdrop-blur-md bg-white/90 border-white/30 rounded-2xl z-[60]">
-                    <SelectItem value="es">ES</SelectItem>
-                    <SelectItem value="en">EN</SelectItem>
-                    <SelectItem value="fr">FR</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2 px-3">Cardiovascular</h3>
+                <div className="space-y-1 pl-6">
+                  {diseaseCategories[1].diseases.map((disease) => (
+                    <Link
+                      key={disease.id}
+                      to={`/${disease.id}`}
+                      className="block text-gray-600 hover:text-blue-600 py-1"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {disease.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-3">
-                <Link 
-                  to="/dashboard" 
-                  className="block w-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl">
-                    {language === 'es' ? 'Iniciar' : language === 'fr' ? 'Commencer' : 'Start'}
-                  </Button>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2 px-3">Otras Enfermedades</h3>
+                <div className="space-y-1 pl-6">
+                  {diseaseCategories[2].diseases.map((disease) => (
+                    <Link
+                      key={disease.id}
+                      to={`/${disease.id}`}
+                      className="block text-gray-600 hover:text-blue-600 py-1"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {disease.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t">
+                <Link to="/features" className="block text-gray-700 hover:text-blue-600 px-3 py-2">
+                  Características
                 </Link>
+                <Link to="/pricing" className="block text-gray-700 hover:text-blue-600 px-3 py-2">
+                  Precios
+                </Link>
+                <Link to="/blog" className="block text-gray-700 hover:text-blue-600 px-3 py-2">
+                  Blog
+                </Link>
+                <Link to="/contact" className="block text-gray-700 hover:text-blue-600 px-3 py-2">
+                  Contacto
+                </Link>
+                <div className="px-3 py-2 space-y-2">
+                  <Link to="/login">
+                    <Button variant="ghost" size="sm" className="w-full">
+                      Iniciar Sesión
+                    </Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
+                      Comenzar Gratis
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

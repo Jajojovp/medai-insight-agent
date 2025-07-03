@@ -5,11 +5,8 @@ import { Button } from "@/components/ui/button";
 import { HelpCircle, MessageSquare, Clock, Shield, Book, Headphones } from "lucide-react";
 import PublicNavigation from "@/components/PublicNavigation";
 import Footer from "@/components/Footer";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Support = () => {
-  const { language } = useLanguage();
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50/30 to-white/30">
       <PublicNavigation />
@@ -17,17 +14,13 @@ const Support = () => {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center space-y-6 mb-12">
           <Badge variant="secondary" className="bg-blue-100/80 text-blue-800 rounded-full">
-            {language === 'es' ? 'Soporte' : language === 'fr' ? 'Support' : 'Support'}
+            Soporte
           </Badge>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            {language === 'es' ? 'Centro de Soporte' : 
-             language === 'fr' ? 'Centre de Support' : 
-             'Support Center'}
+            Centro de Soporte
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'es' ? 'Obtén ayuda técnica especializada para maximizar el uso de MedAI en tu práctica médica' :
-             language === 'fr' ? 'Obtenez une aide technique spécialisée pour maximiser l\'utilisation de MedAI dans votre pratique médicale' :
-             'Get specialized technical help to maximize MedAI usage in your medical practice'}
+            Obtén ayuda técnica especializada para maximizar el uso de MedAI en tu práctica médica
           </p>
         </div>
 
@@ -37,17 +30,11 @@ const Support = () => {
               <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Chat en Vivo' : 
-                 language === 'fr' ? 'Chat en Direct' : 
-                 'Live Chat'}
-              </CardTitle>
+              <CardTitle className="text-lg font-semibold">Chat en Vivo</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600">
-                {language === 'es' ? 'Soporte técnico inmediato para resolver dudas sobre los 53+ modelos de IA médica' :
-                 language === 'fr' ? 'Support technique immédiat pour résoudre les questions sur les 53+ modèles d\'IA médicale' :
-                 'Immediate technical support to resolve questions about the 53+ medical AI models'}
+                Soporte técnico inmediato para resolver dudas sobre los 53+ modelos de IA médica
               </p>
             </CardContent>
           </Card>
@@ -57,17 +44,11 @@ const Support = () => {
               <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Clock className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Soporte 24/7' : 
-                 language === 'fr' ? 'Support 24/7' : 
-                 '24/7 Support'}
-              </CardTitle>
+              <CardTitle className="text-lg font-semibold">Soporte 24/7</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600">
-                {language === 'es' ? 'Asistencia técnica disponible las 24 horas para casos críticos y emergencias médicas' :
-                 language === 'fr' ? 'Assistance technique disponible 24h/24 pour cas critiques et urgences médicales' :
-                 'Technical assistance available 24/7 for critical cases and medical emergencies'}
+                Asistencia técnica disponible las 24 horas para casos críticos y emergencias médicas
               </p>
             </CardContent>
           </Card>
@@ -77,17 +58,11 @@ const Support = () => {
               <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <HelpCircle className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-lg font-semibold">
-                {language === 'es' ? 'Base de Conocimientos' : 
-                 language === 'fr' ? 'Base de Connaissances' : 
-                 'Knowledge Base'}
-              </CardTitle>
+              <CardTitle className="text-lg font-semibold">Base de Conocimientos</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-gray-600">
-                {language === 'es' ? 'Biblioteca completa de tutoriales, FAQ y guías para cada tipo de análisis médico' :
-                 language === 'fr' ? 'Bibliothèque complète de tutoriels, FAQ et guides pour chaque type d\'analyse médicale' :
-                 'Complete library of tutorials, FAQs, and guides for each type of medical analysis'}
+                Biblioteca completa de tutoriales, FAQ y guías para cada tipo de análisis médico
               </p>
             </CardContent>
           </Card>
@@ -96,22 +71,14 @@ const Support = () => {
         <div className="mt-20 text-center">
           <Card className="bg-gradient-to-br from-blue-50/30 to-purple-50/30 border-0 backdrop-blur-md border border-white/30 rounded-3xl p-8">
             <CardHeader>
-              <CardTitle className="text-3xl font-bold">
-                {language === 'es' ? 'Soporte Especializado' : 
-                 language === 'fr' ? 'Support Spécialisé' : 
-                 'Specialized Support'}
-              </CardTitle>
+              <CardTitle className="text-3xl font-bold">Soporte Especializado</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-6">
-                {language === 'es' ? 'Nuestro equipo de soporte incluye médicos especialistas e ingenieros de IA para brindar asistencia completa.' :
-                 language === 'fr' ? 'Notre équipe de support comprend des médecins spécialistes et des ingénieurs IA pour fournir une assistance complète.' :
-                 'Our support team includes specialist physicians and AI engineers to provide complete assistance.'}
+                Nuestro equipo de soporte incluye médicos especialistas e ingenieros de IA para brindar asistencia completa.
               </p>
               <Button className="bg-blue-600 hover:bg-blue-700 rounded-2xl">
-                {language === 'es' ? 'Contactar Soporte' : 
-                 language === 'fr' ? 'Contacter le Support' : 
-                 'Contact Support'}
+                Contactar Soporte
               </Button>
             </CardContent>
           </Card>
